@@ -2,9 +2,7 @@ import type { BasicComponentProps } from "@types";
 import { applyHardSpaceBreaks } from "@utils";
 import { cva, VariantProps } from "class-variance-authority";
 import { ReactNode } from "react";
-import Tag from "../base/Tag";
-
-
+import Tag from "../base/tag";
 
 const textCva = cva("", {
     variants: {
@@ -21,10 +19,10 @@ const textCva = cva("", {
         },
 
         color: {
-            primary: "text-clr-brand-red-dark",
-            secondary: "text-clr-brand-rose",
-            base: "text-clr-text",
-            opposite: "text-clr-bg-light",
+            primary: "",
+            opposite: "",
+            // secondary: "text-clr-900",
+            // base: "text-clr-900",
         },
 
         spaced: {
@@ -51,26 +49,32 @@ const textCva = cva("", {
         {
             color: "primary",
             muted: true,
-            className: "text-clr-brand-red-dark",
+            className: "text-clr-700",
         },
         {
-            color: "secondary",
-            muted: true,
-            className: "text-clr-brand-rose-light",
-        },
-        { color: "opposite", muted: true, className: "text-clr-bg-dark" },
-
-        { intent: "lead", color: "opposite", className: "text-clr-bg-dark" },
-        {
-            intent: "lead",
             color: "primary",
-            className: "text-clr-brand-red-dark",
+            muted: false,
+            className: "text-clr-900",
         },
-        {
-            intent: "lead",
-            color: "secondary",
-            className: "text-clr-brand-rose-light",
-        },
+        // {
+        //     color: "secondary",
+        //     muted: true,
+        //     className: "text-clr-brand-rose-light",
+        // },
+        { color: "opposite", muted: true, className: "text-clr-200" },
+        { color: "opposite", muted: false, className: "text-clr-50" },
+
+        // { intent: "lead", color: "opposite", className: "text-clr-bg-dark" },
+        // {
+        //     intent: "lead",
+        //     color: "primary",
+        //     className: "text-clr-brand-red-dark",
+        // },
+        // {
+        //     intent: "lead",
+        //     color: "secondary",
+        //     className: "text-clr-brand-rose-light",
+        // },
     ],
     defaultVariants: {
         intent: "p",
@@ -92,7 +96,8 @@ const defaultTags: Record<TextIntent, keyof HTMLElementTagNameMap> = {
 };
 
 interface BaseTextProps
-    extends BasicComponentProps,
+    extends
+        BasicComponentProps,
         // varies for text styles
         VariantProps<typeof textCva> {
     as?: keyof HTMLElementTagNameMap;
@@ -102,6 +107,7 @@ interface BaseTextProps
 type TextProps<E extends keyof HTMLElementTagNameMap> = BaseTextProps & {
     as?: E;
     shouldAddHardBreaks?: boolean;
+    asChild?: boolean;
 } & React.ComponentPropsWithoutRef<E>;
 
 export default function Text<E extends keyof HTMLElementTagNameMap = "p">({
@@ -113,7 +119,7 @@ export default function Text<E extends keyof HTMLElementTagNameMap = "p">({
     intent,
     color,
     shouldAddHardBreaks = true,
-
+    asChild = false,
     muted = false,
     ...props
 }: TextProps<E>) {
@@ -124,9 +130,9 @@ export default function Text<E extends keyof HTMLElementTagNameMap = "p">({
             ? applyHardSpaceBreaks(output)
             : output;
 
-    const FinalTag = Tag;
     return (
-        <FinalTag
+        <Tag
+            asChild={asChild}
             as={asTag}
             className={textCva({
                 intent,
@@ -138,6 +144,6 @@ export default function Text<E extends keyof HTMLElementTagNameMap = "p">({
             {...props}
         >
             {processedOutput}
-        </FinalTag>
+        </Tag>
     );
 }

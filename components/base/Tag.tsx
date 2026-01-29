@@ -1,13 +1,12 @@
-import React from "react";
+import { Slot } from "radix-ui";
 
-type TagProps<E extends keyof HTMLElementTagNameMap> = {
-    as?: E;
-} & React.ComponentPropsWithoutRef<E>;
+interface TagProps {
+    asChild?: boolean;
+    as?: keyof HTMLElementTagNameMap;
+}
 
-export default function Tag<E extends keyof HTMLElementTagNameMap = "div">({
-    as,
-    ...props
-}: TagProps<E>) {
-    const Component = as || "div";
-    return React.createElement(Component, props);
+export default function Tag({ asChild, as, ...props }: TagProps) {
+    const Comp = asChild ? Slot.Root : (as ?? "div");
+
+    return <Comp {...props} />;
 }

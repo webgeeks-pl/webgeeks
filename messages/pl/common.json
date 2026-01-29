@@ -1,0 +1,14 @@
+{
+    "button": {
+        "submit": "Wyślij",
+        "cancel": "Anuluj",
+        "delete": "Usuń",
+        "update": "Aktualizuj",
+        "edit": "Edytuj",
+        "view": "Wyświetl",
+        "close": "Zamknij",
+        "save": "Zapisz",
+        "next": "Następny",
+        "previous": "Poprzedni"
+    }
+}

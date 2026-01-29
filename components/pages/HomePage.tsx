@@ -1,8 +1,19 @@
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import Text from "../typography/text";
 import { Button } from "../ui/button";
 
 export default function HomePage() {
-    return <div>
-        <h1>Welcome to the Home Page</h1>
-        <Button variant="default">Click Me</Button>
-    </div>
+    const t = useTranslations("pages.home");
+
+    return (
+        <div>
+            <Text asChild intent="h1" muted>
+                <span>{t("hero.title")}</span>
+            </Text>
+            <Button asChild variant="default">
+                <Link href="/">{t("hero.getStarted")}</Link>
+            </Button>
+        </div>
+    );
 }

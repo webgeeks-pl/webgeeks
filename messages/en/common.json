@@ -1,0 +1,14 @@
+{
+    "button": {
+        "submit": "Submit",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "update": "Update",
+        "edit": "Edit",
+        "view": "View",
+        "close": "Close",
+        "save": "Save",
+        "next": "Next",
+        "previous": "Previous"
+    }
+}
