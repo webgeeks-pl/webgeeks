@@ -19,7 +19,17 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@lib/*": ["./lib/*"],
+      "@components/*": ["./components/*"],
+      "@styles/*": ["./styles/*"],
+      "@public/*": ["./public/*"],
+      "@types/*": ["./lib/types/*"],
+      "@types": ["./lib/types/index"],
+      "@constants/*": ["./lib/constants/*"],
+      "@constants": ["./lib/constants/index"],
+      "@utils/*": ["./lib/utils/*"],
+      "@utils": ["./lib/utils/index"]
     }
   },
   "include": [
