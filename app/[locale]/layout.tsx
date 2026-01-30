@@ -1,3 +1,5 @@
+import Main from "@/components/layout/main";
+import Navigation from "@/components/navigation/navigation";
 import AppControls from "@/controls/appControls";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
@@ -45,7 +47,10 @@ export default async function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                <AppControls>{children}</AppControls>
+                <AppControls>
+                    <Navigation />
+                    <Main>{children}</Main>
+                </AppControls>
             </body>
         </html>
     );

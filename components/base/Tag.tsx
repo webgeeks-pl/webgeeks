@@ -1,12 +1,18 @@
-import { Slot } from "radix-ui";
+import { Slot } from "@radix-ui/react-slot";
 
-interface TagProps {
+type TagProps<E extends React.ElementType> = {
+    as?: E;
     asChild?: boolean;
-    as?: keyof HTMLElementTagNameMap;
-}
+    children?: React.ReactNode;
+} & React.ComponentPropsWithoutRef<E>;
 
-export default function Tag({ asChild, as, ...props }: TagProps) {
-    const Comp = asChild ? Slot.Root : (as ?? "div");
+export default function Tag<E extends React.ElementType = "div">({
+    as,
+    asChild = false,
+    children,
+    ...props
+}: TagProps<E>) {
+    const Comp = as ?? (asChild ? Slot : "div");
 
-    return <Comp {...props} />;
+    return <Comp {...props}>{children}</Comp>;
 }

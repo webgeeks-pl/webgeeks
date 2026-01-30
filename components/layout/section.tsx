@@ -1,6 +1,9 @@
+import { cn } from "@/lib/utils";
 import type { BasicComponentProps } from "@types";
 import { cva, VariantProps } from "class-variance-authority";
 import { HTMLAttributes } from "react";
+import Tag from "../base/tag";
+import Text from "../typography/text";
 
 const section = cva("flex w-full flex-col items-center", {
     variants: {
@@ -68,7 +71,7 @@ const content = cva("flex flex-col items-center px-5 w-full xs:container", {
         },
     },
     defaultVariants: {
-        gapped: "md",
+        gapped: "sm",
     },
 });
 
@@ -78,46 +81,76 @@ interface SectionProps
         HTMLAttributes<HTMLElement>,
         VariantProps<typeof section>,
         VariantProps<typeof content> {
-    contentClassName?: string;
     Wrapper?: React.ElementType;
     Overlay?: React.ElementType;
     OverlayPosition?: "top" | "bottom";
     contentEnabled?: boolean;
+    as?: keyof HTMLElementTagNameMap;
+    asChild?: boolean;
 }
 
 export default function Section({
     children,
     className,
-    contentClassName,
     padded,
     paddedTop,
+    asChild,
+    as,
     paddedBottom,
-    gapped,
-    Wrapper,
-    Overlay,
-    OverlayPosition = "bottom",
-    contentEnabled = true,
     ...props
 }: SectionProps) {
-    const sectionStyleProps = { padded, paddedTop, paddedBottom, className };
-    const contentStyleProps = { className: contentClassName, gapped };
-
-    const output = contentEnabled ? (
-        <div className={content(contentStyleProps)}>{children}</div>
-    ) : (
-        children
-    );
+    const sectionStyleProps = {
+        padded,
+        paddedTop,
+        paddedBottom,
+        className,
+    };
 
     return (
-        <section className={section(sectionStyleProps)} {...props}>
-            {/* Overlay Top */}
-            {Overlay && OverlayPosition === "top" && <Overlay />}
+        <Tag
+            as={as ?? "section"}
+            asChild={asChild}
+            className={section(sectionStyleProps)}
+            {...props}
+        >
+            {children}
+        </Tag>
+    );
+}
 
-            {/* Content */}
-            {Wrapper ? <Wrapper>{output}</Wrapper> : output}
+interface SectionContentProps
+    extends BasicComponentProps, VariantProps<typeof content> {}
 
-            {/* Overlay Bottom */}
-            {Overlay && OverlayPosition === "bottom" && <Overlay />}
-        </section>
+export function SectionContent({
+    children,
+    className,
+    gapped,
+    ...props
+}: SectionContentProps) {
+    return (
+        <Tag className={content({ className, gapped })} {...props}>
+            {children}
+        </Tag>
+    );
+}
+
+interface SectionHeaderProps extends BasicComponentProps {
+    title: string;
+    description: string;
+    className?: string;
+}
+
+export function SectionHeader({
+    title,
+    description,
+    className,
+}: SectionHeaderProps) {
+    return (
+        <div className={cn("mx-auto max-w-2xl sm:text-center", className)}>
+            <Text intent="h2">{title}</Text>
+            <Text intent="lead" muted>
+                {description}
+            </Text>
+        </div>
     );
 }

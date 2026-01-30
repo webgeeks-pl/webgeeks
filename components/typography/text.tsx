@@ -8,7 +8,7 @@ const textCva = cva("", {
     variants: {
         intent: {
             h1: "text-4xl scroll-m-20 font-extrald tracking-tight text-balance",
-            h2: "scroll-m-20 pb-2 text-3xl font-semild tracking-tight first:mt-0",
+            h2: "scroll-m-20  text-3xl font-semild tracking-tight ",
             h3: "text-2xl scroll-m-20 font-semild tracking-tight",
             h4: "text-xl scroll-m-20 font-semild tracking-tight",
             p: "leading-7",
@@ -22,7 +22,6 @@ const textCva = cva("", {
             primary: "",
             opposite: "",
             // secondary: "text-clr-900",
-            // base: "text-clr-900",
         },
 
         spaced: {
@@ -49,7 +48,7 @@ const textCva = cva("", {
         {
             color: "primary",
             muted: true,
-            className: "text-clr-700",
+            className: "text-clr-500",
         },
         {
             color: "primary",
@@ -79,6 +78,7 @@ const textCva = cva("", {
     defaultVariants: {
         intent: "p",
         color: "primary",
+        spaced: "none",
     },
 });
 type TextIntent = NonNullable<VariantProps<typeof textCva>["intent"]>;
@@ -107,8 +107,8 @@ interface BaseTextProps
 type TextProps<E extends keyof HTMLElementTagNameMap> = BaseTextProps & {
     as?: E;
     shouldAddHardBreaks?: boolean;
-    asChild?: boolean;
-} & React.ComponentPropsWithoutRef<E>;
+} & React.ComponentPropsWithoutRef<E> &
+    React.ComponentPropsWithoutRef<typeof Tag>;
 
 export default function Text<E extends keyof HTMLElementTagNameMap = "p">({
     children,
@@ -119,7 +119,6 @@ export default function Text<E extends keyof HTMLElementTagNameMap = "p">({
     intent,
     color,
     shouldAddHardBreaks = true,
-    asChild = false,
     muted = false,
     ...props
 }: TextProps<E>) {
@@ -132,7 +131,6 @@ export default function Text<E extends keyof HTMLElementTagNameMap = "p">({
 
     return (
         <Tag
-            asChild={asChild}
             as={asTag}
             className={textCva({
                 intent,

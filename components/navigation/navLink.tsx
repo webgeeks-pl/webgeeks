@@ -1,8 +1,8 @@
 "use client";
 
-import { NavigationRoutesEntry } from "@/app/[locale]/routes";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils/cn";
+import { NavigationRoutesEntry } from "@types";
 import { AnchorHTMLAttributes } from "react";
 
 const normalize = (path: string) => {
@@ -25,10 +25,12 @@ interface NavLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
     activeClassName?: string;
     ctaClassName?: string;
     onClick?: (e: React.MouseEvent) => void;
+    text?: string;
 }
 
 export default function NavLink({
-    route,
+    href,
+    text,
     className,
     activeClassName,
     ctaClassName,
@@ -43,14 +45,14 @@ export default function NavLink({
     return (
         <Link
             onClick={onClick}
-            href={route.link}
+            href={href}
             className={cn(
                 className,
                 isActive && activeClassName,
                 isCTA && ctaClassName
             )}
         >
-            {route.name}
+            {text}
         </Link>
     );
 }
