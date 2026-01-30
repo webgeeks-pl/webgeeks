@@ -1,7 +1,7 @@
 import { BasicComponentProps } from "@/lib/types";
 import { cva, VariantProps } from "class-variance-authority";
 
-const iconContainerVariants = cva("", {
+const iconContainerVariants = cva("border", {
     variants: {
         size: {
             sm: "size-8",

@@ -1,4 +1,4 @@
-import { ArrowRight, Gauge, Zap } from "lucide-react";
+import { ArrowRight, Gauge, TrendingUp, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Animate from "../animations/Animate";
@@ -17,7 +17,7 @@ export default function HomePage() {
 
     return (
         <Page>
-            <Section as="header" className="py-size-2xl">
+            <Section as="header" className="py-size-xl sm:py-size-2xl">
                 <SectionContent className="text-center" gapped="md">
                     <Animate>
                         <Badge className="p-3" variant="secondary">
@@ -28,6 +28,7 @@ export default function HomePage() {
                         </Badge>
                     </Animate>
                     <Text
+                        as="span"
                         intent="h1"
                         className="max-w-3xl text-3xl sm:text-5xl"
                     >
@@ -66,7 +67,7 @@ export default function HomePage() {
                     </div>
                 </SectionContent>
             </Section>
-            <Section className="pb-size-2xl">
+            <Section className="pb-size-xl sm:pb-size-2xl">
                 <SectionContent>
                     <Grid>
                         <Card className="">
@@ -88,7 +89,7 @@ export default function HomePage() {
                         <Card>
                             <CardContent className="flex flex-col items-center text-center">
                                 <div className="flex flex-col items-center gap-2">
-                                    <IconContainer Icon={Gauge} />
+                                    <IconContainer Icon={TrendingUp} />
                                     <Text intent="var" className="text-4xl">
                                         10x
                                     </Text>
@@ -121,7 +122,8 @@ export default function HomePage() {
                 </SectionContent>
             </Section>
             <Separator decorative />
-            <Section className="bg-clr-50 py-size-2xl">
+
+            <Section className="bg-clr-50 py-size-xl sm:py-size-2xl">
                 <SectionContent className="text-center" gapped="lg">
                     <SectionHeader
                         title="Transformacja Twojej strony"
