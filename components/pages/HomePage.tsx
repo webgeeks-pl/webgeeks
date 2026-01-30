@@ -1,12 +1,15 @@
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight, Gauge, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Animate from "../animations/Animate";
+import Grid from "../layout/grid";
 import { Page } from "../layout/page";
-import Section, { SectionContent } from "../layout/section";
+import Section, { SectionContent, SectionHeader } from "../layout/section";
 import Text from "../typography/text";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
+import { Card, CardContent } from "../ui/card";
+import IconContainer from "../ui/iconContainer";
 import { Separator } from "../ui/separator";
 
 export default function HomePage() {
@@ -14,7 +17,7 @@ export default function HomePage() {
 
     return (
         <Page>
-            <Section as="header" padded="2xl">
+            <Section as="header" className="py-size-2xl">
                 <SectionContent className="text-center" gapped="md">
                     <Animate>
                         <Badge className="p-3" variant="secondary">
@@ -63,8 +66,68 @@ export default function HomePage() {
                     </div>
                 </SectionContent>
             </Section>
-            <Section>
-                <SectionContent></SectionContent>
+            <Section className="pb-size-2xl">
+                <SectionContent>
+                    <Grid>
+                        <Card className="">
+                            <CardContent className="flex flex-col items-center text-center">
+                                <div className="flex flex-col items-center gap-2">
+                                    <IconContainer Icon={Gauge} />
+                                    <Text intent="var" className="text-4xl">
+                                        10x
+                                    </Text>
+                                </div>
+                                <div>
+                                    <Text intent="h3">Szybsze ładowanie</Text>
+                                    <Text intent="small" muted>
+                                        od stron z builderów
+                                    </Text>
+                                </div>
+                            </CardContent>
+                        </Card>
+                        <Card>
+                            <CardContent className="flex flex-col items-center text-center">
+                                <div className="flex flex-col items-center gap-2">
+                                    <IconContainer Icon={Gauge} />
+                                    <Text intent="var" className="text-4xl">
+                                        10x
+                                    </Text>
+                                </div>
+                                <div>
+                                    <Text intent="h3">Szybsze ładowanie</Text>
+                                    <Text intent="small" muted>
+                                        od stron z builderów
+                                    </Text>
+                                </div>
+                            </CardContent>
+                        </Card>
+                        <Card>
+                            <CardContent className="flex flex-col items-center text-center">
+                                <div className="flex flex-col items-center gap-2">
+                                    <IconContainer Icon={Gauge} />
+                                    <Text intent="var" className="text-4xl">
+                                        10x
+                                    </Text>
+                                </div>
+                                <div>
+                                    <Text intent="h3">Szybsze ładowanie</Text>
+                                    <Text intent="small" muted>
+                                        od stron z builderów
+                                    </Text>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                </SectionContent>
+            </Section>
+            <Separator decorative />
+            <Section className="bg-clr-50 py-size-2xl">
+                <SectionContent className="text-center" gapped="lg">
+                    <SectionHeader
+                        title="Transformacja Twojej strony"
+                        description="Zobacz jak zmienia się wszystko po migracji z WordPress na Next.js"
+                    />
+                </SectionContent>
             </Section>
         </Page>
     );

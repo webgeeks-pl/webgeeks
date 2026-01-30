@@ -146,8 +146,15 @@ export function SectionHeader({
     className,
 }: SectionHeaderProps) {
     return (
-        <div className={cn("mx-auto max-w-2xl sm:text-center", className)}>
-            <Text intent="h2">{title}</Text>
+        <div
+            className={cn(
+                "flex-start mx-auto flex max-w-2xl flex-col gap-2 sm:text-center",
+                className
+            )}
+        >
+            <Text intent="h2" className="text-3xl sm:text-4xl">
+                {title}
+            </Text>
             <Text intent="lead" muted>
                 {description}
             </Text>

@@ -16,6 +16,7 @@ const textCva = cva("", {
             lead: "text-xl",
             large: "text-lg font-semild",
             small: "text-sm leading-5 font-medium",
+            var: "font-monospace font-medium",
         },
 
         color: {
@@ -93,6 +94,7 @@ const defaultTags: Record<TextIntent, keyof HTMLElementTagNameMap> = {
     lead: "p",
     large: "p",
     small: "p",
+    var: "span",
 };
 
 interface BaseTextProps
