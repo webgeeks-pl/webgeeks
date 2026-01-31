@@ -3,5 +3,25 @@
         "title": "Fast, Scalable Pages in Next.js",
         "subtitle": "Abandon slow WordPress. Build a modern site that loads lightning fast, costs less to maintain, and dominates search engines.",
         "getStarted": "Get Started Now"
-    }
+    },
+    "cards": [
+        {
+            "icon": "Gauge",
+            "value": "10x",
+            "title": "Faster loading",
+            "description": "than builder-based sites"
+        },
+        {
+            "icon": "TrendingUp",
+            "value": "10x",
+            "title": "Better SEO",
+            "description": "for your site"
+        },
+        {
+            "icon": "Gauge",
+            "value": "10x",
+            "title": "Higher conversion",
+            "description": "on your site"
+        }
+    ]
 }

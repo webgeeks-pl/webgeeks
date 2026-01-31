@@ -12,5 +12,26 @@
             "second": "Zbudowane z myślą o przyszłości",
             "third": "Optymalizacja pod kątem SEO"
         }
+    },
+    "cards": [
+        {
+            "icon": "Gauge",
+            "value": "10x",
+            "title": "Szybsze ładowanie",
+            "description": "od stron z builderów"
+        },
+        {
+            "icon": "TrendingUp",
+            "value": "10x",
+            "title": "Lepsze SEO",
+            "description": "dla Twojej strony"
+        },
+        {
+            "icon": "Gauge",
+            "value": "10x",
+            "title": "Większa konwersja",
+            "description": "na Twojej stronie"
+        }
+    ]
     }
 }

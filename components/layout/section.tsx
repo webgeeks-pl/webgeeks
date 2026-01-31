@@ -54,26 +54,29 @@ const section = cva("flex w-full flex-col items-center", {
     },
 });
 
-const content = cva("flex flex-col items-center px-5 w-full xs:container", {
-    variants: {
-        gapped: {
-            xs: "gap-size-xs",
-            sm: "gap-size-sm",
-            md: "gap-size-md",
-            lg: "gap-size-lg",
-            xl: "gap-size-xl",
-            "2xl": "gap-size-2xl",
-            "3xl": "gap-size-3xl",
-            "4xl": "gap-size-4xl",
-            "5xl": "gap-size-5xl",
-            "6xl": "gap-size-6xl",
-            none: "",
+const content = cva(
+    "flex flex-col items-center px-5 w-full xs:container max-w-7xl! ",
+    {
+        variants: {
+            gapped: {
+                xs: "gap-size-xs",
+                sm: "gap-size-sm",
+                md: "gap-size-md",
+                lg: "gap-size-lg",
+                xl: "gap-size-xl",
+                "2xl": "gap-size-2xl",
+                "3xl": "gap-size-3xl",
+                "4xl": "gap-size-4xl",
+                "5xl": "gap-size-5xl",
+                "6xl": "gap-size-6xl",
+                none: "",
+            },
         },
-    },
-    defaultVariants: {
-        gapped: "sm",
-    },
-});
+        defaultVariants: {
+            gapped: "sm",
+        },
+    }
+);
 
 interface SectionProps
     extends
@@ -87,6 +90,7 @@ interface SectionProps
     contentEnabled?: boolean;
     as?: keyof HTMLElementTagNameMap;
     asChild?: boolean;
+    shouldRender?: boolean;
 }
 
 export default function Section({
@@ -96,6 +100,7 @@ export default function Section({
     paddedTop,
     asChild,
     as,
+    shouldRender = true,
     paddedBottom,
     ...props
 }: SectionProps) {
@@ -105,6 +110,9 @@ export default function Section({
         paddedBottom,
         className,
     };
+    if (!shouldRender) {
+        return null;
+    }
 
     return (
         <Tag
