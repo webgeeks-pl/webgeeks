@@ -10,6 +10,7 @@ import {
     CheckCircle2,
     CloudCog,
     Code2,
+    CornerLeftDown,
     CornerLeftUp,
     Database,
     DollarSign,
@@ -32,7 +33,7 @@ import Link from "next/link";
 import { z } from "zod";
 import Animate from "../animations/Animate";
 import AnimateMany from "../animations/AnimateMany";
-import { FadeInSection, ScrollReveal } from "../animations/parallaxEffects";
+import { ScrollReveal } from "../animations/parallaxEffects";
 import Grid from "../layout/grid";
 import { Page } from "../layout/page";
 import Section, { SectionContent, SectionHeader } from "../layout/section";
@@ -423,12 +424,12 @@ export default function HomePage() {
                     </Grid>
                 </SectionContent>
             </Section>
-
+            <Separator decorative />
             {/* ---------------- About Us ---------------- */}
-            <Section className="bg-clr-100 py-size-xl">
+            <Section className="bg-clr-50 py-size-xl">
                 <SectionContent>
                     <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-                        <FadeInSection>
+                        <div>
                             <div>
                                 <Text intent="sectionHeader" className="mb-size-md">
                                     O nas
@@ -491,47 +492,55 @@ export default function HomePage() {
                                     </div>
                                 </div>
                             </div>
-                        </FadeInSection>
+                        </div>
 
                         <div className="grid grid-cols-2 gap-6">
                             {values.map((value, index) => {
                                 return (
-                                    <ScrollReveal
-                                        key={index}
-                                        delay={index * 0.1}
-                                        direction="up"
-                                    >
-                                        <Card className="h-full">
-                                            <CardContent className="flex flex-col gap-1">
-                                                <IconContainer
-                                                    Icon={value.icon}
-                                                    variant="opposite"
-                                                    size="lg"
-                                                    color="opposite"
-                                                />
+                                    <Card className="h-full" key={index}>
+                                        <CardContent className="flex flex-col gap-1">
+                                            <IconContainer
+                                                Icon={value.icon}
+                                                variant="opposite"
+                                                size="lg"
+                                                color="opposite"
+                                            />
 
-                                                <Text intent="h3" text={value.title} />
+                                            <Text intent="h3" text={value.title} />
 
-                                                <Text text={value.description} muted />
-                                            </CardContent>
-                                        </Card>
-                                    </ScrollReveal>
+                                            <Text text={value.description} muted />
+                                        </CardContent>
+                                    </Card>
                                 );
                             })}
                         </div>
                     </div>
                 </SectionContent>
             </Section>
-
+            <Separator decorative />
             <Section className="py-size-xl sm:py-size-2xl relative">
                 <SectionContent className="gap-size-xl">
                     <Tabs
                         defaultValue="desktop"
                         className="gap-size-md flex w-full flex-col"
                     >
-                        <TabsList variant="default" className="mx-auto">
+                        <TabsList variant="default" className="relative mx-auto">
                             <TabsTrigger value="desktop">Komputery</TabsTrigger>
                             <TabsTrigger value="mobile">Urządzenia mobilne</TabsTrigger>
+                            <div className="text-clr-900 absolute bottom-full mb-2 flex gap-2 md:left-3/5">
+                                {/* <ArrowUp size={18} strokeWidth={3.5} /> */}
+                                <CornerLeftDown
+                                    size={18}
+                                    strokeWidth={3.5}
+                                    className="mt-2.5"
+                                />
+                                <EncryptedText
+                                    startDelayMs={1000}
+                                    text="sprawdź, jak Twoja strona działa na różnych urządzeniach"
+                                    className="font-heading font-bold text-nowrap"
+                                />
+                                {/* <CornerRightUp size={18} strokeWidth={3.5} /> */}
+                            </div>
                         </TabsList>
                         <TabsContent
                             value="desktop"
@@ -598,42 +607,31 @@ export default function HomePage() {
                 </SectionContent>
             </Section>
             <Separator decorative />
-
             {/* ---------------- Why Next.js ---------------- */}
-            <Section className="py-size-xl sm:py-size-2xl bg-clr-100">
+            <Section className="py-size-xl sm:py-size-2xl bg-clr-50">
                 <SectionContent>
-                    <FadeInSection className="mb-16 text-center">
+                    <div className="mb-16 text-center">
                         <SectionHeader
                             title="Dlaczego Next.js?"
                             description="Nie tylko szybkość. To kompletna przewaga
                             technologiczna, która przekłada się na realne
                             korzyści biznesowe."
                         />
-                    </FadeInSection>
+                    </div>
 
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                         {benefits.map((benefit, index) => {
                             return (
-                                <ScrollReveal
-                                    key={index}
-                                    delay={index * 0.05}
-                                    direction="right"
-                                >
-                                    <Card className="h-full">
-                                        <CardContent className="flex flex-col gap-2">
-                                            <IconContainer
-                                                variant={"default"}
-                                                Icon={benefit.icon}
-                                            />
-                                            <Text
-                                                intent="h4"
-                                                as="h3"
-                                                text={benefit.title}
-                                            />
-                                            <Text muted text={benefit.description} />
-                                        </CardContent>
-                                    </Card>
-                                </ScrollReveal>
+                                <Card className="h-full" key={index}>
+                                    <CardContent className="flex flex-col gap-2">
+                                        <IconContainer
+                                            variant={"default"}
+                                            Icon={benefit.icon}
+                                        />
+                                        <Text intent="h4" as="h3" text={benefit.title} />
+                                        <Text muted text={benefit.description} />
+                                    </CardContent>
+                                </Card>
                             );
                         })}
                     </div>
@@ -641,57 +639,15 @@ export default function HomePage() {
             </Section>
             <Separator decorative />
 
-            <Section className="py-size-xl md:py-size-2xl bg-clr-100">
-                <SectionContent className="gap-size-lg">
-                    <SectionHeader
-                        title="Rozwiązania technologiczne"
-                        description="Oferujemy kompleksowe rozwiązania dopasowane do potrzeb
-                            Twojego biznesu. Od prostych stron po zaawansowane platformy z
-                            pełną integracją."
-                    />
-
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                        {solutions.map((solution, index) => {
-                            return (
-                                <ScrollReveal
-                                    key={index}
-                                    delay={index * 0.05}
-                                    direction="up"
-                                >
-                                    <Card className="h-full gap-2">
-                                        <CardHeader>
-                                            <IconContainer Icon={solution.icon} />
-                                            <Text intent="h3" text={solution.title} />
-                                        </CardHeader>
-                                        <CardContent>
-                                            <Text muted text={solution.description} />
-                                        </CardContent>
-                                    </Card>
-                                </ScrollReveal>
-                            );
-                        })}
-                    </div>
-
-                    <div className="mt-12 text-center">
-                        <p className="mb-6 text-gray-600">
-                            Nie widzisz rozwiązania, którego potrzebujesz?
-                            <br className="hidden sm:block" />
-                            Zbudujemy dedykowaną integrację pod Twoje wymagania.
-                        </p>
-                    </div>
-                </SectionContent>
-            </Section>
-
-            <Separator decorative />
             <Section className="py-size-xl sm:py-size-2xl bg-white">
                 <SectionContent className="gap-size-lg">
-                    <FadeInSection className="mb-16 text-center">
+                    <div className="mb-16 text-center">
                         <SectionHeader
                             title="Nasza Oferta"
                             description="Wybierz pakiet dopasowany do potrzeb Twojego biznesu. Każdy
                             projekt realizujemy indywidualnie."
                         />
-                    </FadeInSection>
+                    </div>
 
                     <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
                         {packages.map((pkg, index) => {
@@ -759,6 +715,41 @@ export default function HomePage() {
                                 </Card>
                             );
                         })}
+                    </div>
+                </SectionContent>
+            </Section>
+            <Separator decorative />
+            <Section className="py-size-xl md:py-size-2xl bg-clr-50">
+                <SectionContent className="gap-size-lg">
+                    <SectionHeader
+                        title="Rozwiązania technologiczne"
+                        description="Oferujemy kompleksowe rozwiązania dopasowane do potrzeb
+                            Twojego biznesu. Od prostych stron po zaawansowane platformy z
+                            pełną integracją."
+                    />
+
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                        {solutions.map((solution, index) => {
+                            return (
+                                <Card className="h-full gap-2" key={index}>
+                                    <CardHeader>
+                                        <IconContainer Icon={solution.icon} />
+                                        <Text intent="h3" text={solution.title} />
+                                    </CardHeader>
+                                    <CardContent>
+                                        <Text muted text={solution.description} />
+                                    </CardContent>
+                                </Card>
+                            );
+                        })}
+                    </div>
+
+                    <div className="mt-12 text-center">
+                        <p className="mb-6 text-gray-600">
+                            Nie widzisz rozwiązania, którego potrzebujesz?
+                            <br className="hidden sm:block" />
+                            Zbudujemy dedykowaną integrację pod Twoje wymagania.
+                        </p>
                     </div>
                 </SectionContent>
             </Section>
