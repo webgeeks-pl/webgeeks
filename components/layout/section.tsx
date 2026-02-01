@@ -5,7 +5,7 @@ import { HTMLAttributes } from "react";
 import Tag from "../base/tag";
 import Text from "../typography/text";
 
-const section = cva("flex w-full flex-col items-center overflow-hidden", {
+const section = cva("flex w-full flex-col items-center ", {
     variants: {
         padded: {
             xs: "pt-size-xs pb-size-xs",
@@ -54,29 +54,26 @@ const section = cva("flex w-full flex-col items-center overflow-hidden", {
     },
 });
 
-const content = cva(
-    "flex flex-col items-center px-5 w-full xs:container max-w-7xl! ",
-    {
-        variants: {
-            gapped: {
-                xs: "gap-size-xs",
-                sm: "gap-size-sm",
-                md: "gap-size-md",
-                lg: "gap-size-lg",
-                xl: "gap-size-xl",
-                "2xl": "gap-size-2xl",
-                "3xl": "gap-size-3xl",
-                "4xl": "gap-size-4xl",
-                "5xl": "gap-size-5xl",
-                "6xl": "gap-size-6xl",
-                none: "",
-            },
+const content = cva("flex flex-col items-center px-5 w-full xs:container max-w-7xl! ", {
+    variants: {
+        gapped: {
+            xs: "gap-size-xs",
+            sm: "gap-size-sm",
+            md: "gap-size-md",
+            lg: "gap-size-lg",
+            xl: "gap-size-xl",
+            "2xl": "gap-size-2xl",
+            "3xl": "gap-size-3xl",
+            "4xl": "gap-size-4xl",
+            "5xl": "gap-size-5xl",
+            "6xl": "gap-size-6xl",
+            none: "",
         },
-        defaultVariants: {
-            gapped: "sm",
-        },
-    }
-);
+    },
+    defaultVariants: {
+        gapped: "sm",
+    },
+});
 
 interface SectionProps
     extends
@@ -126,8 +123,7 @@ export default function Section({
     );
 }
 
-interface SectionContentProps
-    extends BasicComponentProps, VariantProps<typeof content> {}
+interface SectionContentProps extends BasicComponentProps, VariantProps<typeof content> {}
 
 export function SectionContent({
     children,
@@ -157,7 +153,7 @@ export function SectionHeader({
     className,
     descriptionClassName,
     titleClassName,
-    descMuted,
+    descMuted = true,
 }: SectionHeaderProps) {
     return (
         <div
@@ -166,17 +162,10 @@ export function SectionHeader({
                 className
             )}
         >
-            <Text
-                intent="h2"
-                className={cn("text-3xl sm:text-4xl", titleClassName)}
-            >
+            <Text intent="sectionHeader" className={cn("", titleClassName)}>
                 {title}
             </Text>
-            <Text
-                intent="lead"
-                muted={descMuted}
-                className={descriptionClassName}
-            >
+            <Text intent="lead" muted={descMuted} className={descriptionClassName}>
                 {description}
             </Text>
         </div>

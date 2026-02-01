@@ -7,6 +7,7 @@ import {
     Clock,
     CloudCog,
     Code2,
+    CornerLeftUp,
     DollarSign,
     Heart,
     Lock,
@@ -32,9 +33,14 @@ import Text from "../typography/text";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
+import { EncryptedText } from "../ui/encrypted-text";
+import { Globe } from "../ui/globe";
 import IconContainer from "../ui/iconContainer";
+import { Iphone } from "../ui/iphone";
 import { getLucideIcon } from "../ui/lucideIcons";
 import { Separator } from "../ui/separator";
+import { TextShimmer } from "../ui/text-shimmer";
+import { Tilt } from "../ui/tilt";
 
 const CardSchema = z.object({
     icon: z.string(),
@@ -167,13 +173,11 @@ export default function HomePage() {
     const t = useTranslations("pages.home");
     const tHero = useTranslations("pages.home.hero");
     const heroCards = getArrayFromMessages(tHero.raw("cards"), CardSchema);
-    const heroBadges = getArrayFromMessages(
-        tHero.raw("badges.bottom"),
-        z.string()
-    );
+    const heroBadges = getArrayFromMessages(tHero.raw("badges.bottom"), z.string());
 
     return (
         <Page>
+            {/* ------------------ Hero ------------------ */}
             <Section as="header" className="py-size-xl sm:py-size-2xl">
                 <SectionContent className="text-center" gapped="md">
                     <Animate>
@@ -187,14 +191,21 @@ export default function HomePage() {
                     <Text
                         as="span"
                         intent="h1"
-                        className="max-w-3xl text-3xl sm:text-5xl"
+                        className="font-heading max-w-3xl text-3xl sm:text-5xl"
                     >
                         {t("hero.title")}
                     </Text>
                     <Text intent="lead" muted className="max-w-2xl">
-                        {t("hero.lead")}
+                        {t("hero.leadStart")}
+                        <TextShimmer
+                            as="span"
+                            className="font-bold [--base-color:var(--color-sky-500)] [--base-gradient-color:var(--color-sky-300)]"
+                        >
+                            {t("hero.leadHighlight")}
+                        </TextShimmer>
+                        {t("hero.leadEnd")}
                     </Text>
-                    <div className="flex gap-4">
+                    <div className="relative flex gap-4">
                         <Button asChild variant="default">
                             <Link href="/">
                                 <span>{t("hero.buttons.primary")}</span>
@@ -206,20 +217,26 @@ export default function HomePage() {
                                 <span>{t("hero.buttons.secondary")}</span>
                             </Link>
                         </Button>
+                        <div className="absolute top-full mt-3 flex gap-2 md:left-1/5">
+                            {/* <ArrowUp size={18} strokeWidth={3.5} /> */}
+                            <CornerLeftUp size={18} strokeWidth={3.5} />
+                            <EncryptedText
+                                startDelayMs={1000}
+                                text="Nie zwlekaj, zacznij już dziś!"
+                                className="font-heading font-bold text-nowrap"
+                            />
+                            {/* <CornerRightUp size={18} strokeWidth={3.5} /> */}
+                        </div>
                     </div>
-                    <Separator className="max-w-xl" decorative />
+                    <Separator className="mt-4 max-w-xl" decorative />
 
                     {heroBadges.length > 0 && (
                         <div className="flex flex-col gap-2 md:flex-row">
                             <AnimateMany variant="blurIn" delay={0.3}>
                                 {heroBadges.map((badge, index) => (
-                                    <Badge
-                                        className="gap-2"
-                                        variant="ghost"
-                                        key={index}
-                                    >
+                                    <Badge className="gap-2" variant="ghost" key={index}>
                                         <div className="bg-success h-1.5 w-1.5 rounded-full" />
-                                        <span>{badge}</span>
+                                        <Text intent="small" muted text={badge} />
                                     </Badge>
                                 ))}
                             </AnimateMany>
@@ -227,54 +244,64 @@ export default function HomePage() {
                     )}
                 </SectionContent>
             </Section>
-
+            {/* ---------------- Features ---------------- */}
             <Section
                 className="pb-size-xl sm:pb-size-2xl pt-0.5"
                 shouldRender={heroCards.length > 0}
             >
                 <SectionContent>
-                    <Grid cols={heroCards.length}>
-                        {heroCards.map(
-                            ({ icon, value, title, description }, index) => {
-                                return (
-                                    <ScrollReveal delay={2} key={index}>
-                                        <Card>
-                                            <CardContent className="flex flex-col items-center text-center">
-                                                <div className="flex flex-col items-center gap-2">
-                                                    <IconContainer
-                                                        Icon={getLucideIcon(
-                                                            icon
-                                                        )}
-                                                    />
-                                                    <Text
-                                                        intent="var"
-                                                        className="text-4xl"
-                                                        text={value}
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <Text
-                                                        intent="h3"
-                                                        text={title}
-                                                    />
-                                                    <Text
-                                                        intent="small"
-                                                        muted
-                                                        text={description}
-                                                    />
-                                                </div>
-                                            </CardContent>
-                                        </Card>
-                                    </ScrollReveal>
-                                );
-                            }
-                        )}
+                    <Grid
+                        cols={heroCards.length + 1}
+                        className="items-stretch max-sm:grid-rows-4"
+                    >
+                        {heroCards.map(({ icon, value, title, description }, index) => {
+                            return (
+                                <ScrollReveal delay={2} key={index} className="h-full">
+                                    <Card className="h-full">
+                                        <CardContent className="flex h-full flex-col items-center justify-between text-center">
+                                            <div className="flex flex-col items-center gap-2">
+                                                <IconContainer
+                                                    Icon={getLucideIcon(icon)}
+                                                />
+                                                <Text
+                                                    intent="var"
+                                                    className="text-4xl"
+                                                    text={value}
+                                                />
+                                            </div>
+                                            <div>
+                                                <Text intent="h3" text={title} />
+                                                <Text
+                                                    intent="small"
+                                                    muted
+                                                    text={description}
+                                                />
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                </ScrollReveal>
+                            );
+                        })}
+                        <ScrollReveal delay={2} className="h-full">
+                            <Card className="h-full">
+                                <CardContent className="relative flex h-full flex-col justify-between">
+                                    <Text
+                                        intent="h3"
+                                        className="text-center font-semibold"
+                                    >
+                                        Docieraj na cały świat
+                                    </Text>
+                                    <Globe />
+                                </CardContent>
+                            </Card>
+                        </ScrollReveal>
                     </Grid>
                 </SectionContent>
             </Section>
 
             <Separator decorative />
 
+            {/* ---------------- Comparison ---------------- */}
             <Section className="bg-clr-50 py-size-xl sm:py-size-2xl">
                 <SectionContent className="text-center" gapped="lg">
                     <SectionHeader
@@ -293,9 +320,7 @@ export default function HomePage() {
                                         <AlertTriangle className="size-6 text-red-700" />
                                     </div>
                                     <div>
-                                        <Badge className="mb-2 bg-red-600">
-                                            PRZED
-                                        </Badge>
+                                        <Badge className="mb-2 bg-red-600">PRZED</Badge>
                                         <h3 className="text-2xl text-gray-900">
                                             WordPress
                                         </h3>
@@ -355,9 +380,7 @@ export default function HomePage() {
                                         <Zap className="size-6 text-green-700" />
                                     </div>
                                     <div>
-                                        <Badge className="mb-2 bg-green-600">
-                                            PO
-                                        </Badge>
+                                        <Badge className="mb-2 bg-green-600">PO</Badge>
                                         <h3 className="text-2xl text-gray-900">
                                             Next.js
                                         </h3>
@@ -484,43 +507,30 @@ export default function HomePage() {
                     <div className="w-full rounded-2xl bg-gray-900 p-8 md:p-12">
                         <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-4">
                             <div>
-                                <div className="mb-2 text-4xl text-white">
-                                    5-10x
-                                </div>
+                                <div className="mb-2 text-4xl text-white">5-10x</div>
                                 <div className="text-sm text-gray-400">
                                     Szybsze ładowanie
                                 </div>
                             </div>
                             <div>
-                                <div className="mb-2 text-4xl text-white">
-                                    -70%
-                                </div>
-                                <div className="text-sm text-gray-400">
-                                    Niższe koszty
-                                </div>
+                                <div className="mb-2 text-4xl text-white">-70%</div>
+                                <div className="text-sm text-gray-400">Niższe koszty</div>
                             </div>
                             <div>
-                                <div className="mb-2 text-4xl text-white">
-                                    +85%
-                                </div>
-                                <div className="text-sm text-gray-400">
-                                    Lepsze SEO
-                                </div>
+                                <div className="mb-2 text-4xl text-white">+85%</div>
+                                <div className="text-sm text-gray-400">Lepsze SEO</div>
                             </div>
                             <div>
-                                <div className="mb-2 text-4xl text-white">
-                                    99.9%
-                                </div>
-                                <div className="text-sm text-gray-400">
-                                    Uptime
-                                </div>
+                                <div className="mb-2 text-4xl text-white">99.9%</div>
+                                <div className="text-sm text-gray-400">Uptime</div>
                             </div>
                         </div>
                     </div>
                 </SectionContent>
             </Section>
 
-            <Section className="bg-white py-20">
+            {/* ---------------- Why Next.js ---------------- */}
+            <Section className="py-size-xl sm:py-size-2xl bg-white">
                 <SectionContent>
                     <FadeInSection className="mb-16 text-center">
                         <SectionHeader
@@ -560,40 +570,35 @@ export default function HomePage() {
                 </SectionContent>
             </Section>
 
+            {/* ---------------- About Us ---------------- */}
             <Section className="bg-clr-100 py-size-xl">
                 <SectionContent>
                     <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
                         <FadeInSection>
                             <div>
-                                <Text
-                                    intent="sectionHeader"
-                                    className="mb-size-md"
-                                >
+                                <Text intent="sectionHeader" className="mb-size-md">
                                     O nas
                                 </Text>
                                 <div className="font space-y-4">
                                     <Text>
-                                        NextSpeed to zespół pasjonatów
-                                        nowoczesnych technologii webowych. Od
-                                        2020 roku pomagamy firmom porzucać
-                                        przestarzałe rozwiązania i przechodzić
-                                        na szybkie, skalowalne strony oparte na
-                                        Next.js.
+                                        NextSpeed to zespół pasjonatów nowoczesnych
+                                        technologii webowych. Od 2020 roku pomagamy firmom
+                                        porzucać przestarzałe rozwiązania i przechodzić na
+                                        szybkie, skalowalne strony oparte na Next.js.
                                     </Text>
                                     <Text className="text-clr-600">
-                                        Zrealizowaliśmy ponad 150 projektów dla
-                                        klientów z różnych branż - od startupów
-                                        po duże korporacje. Każda migracja z
-                                        WordPress kończyła się dramatyczną
-                                        poprawą wydajności i wzrostem konwersji.
+                                        Zrealizowaliśmy ponad 150 projektów dla klientów z
+                                        różnych branż - od startupów po duże korporacje.
+                                        Każda migracja z WordPress kończyła się
+                                        dramatyczną poprawą wydajności i wzrostem
+                                        konwersji.
                                     </Text>
                                     <Text className="text-clr-600">
-                                        Specjalizujemy się nie tylko w
-                                        technologii, ale przede wszystkim w
-                                        rozumieniu biznesu naszych klientów. Nie
-                                        budujemy tylko stron - tworzymy
-                                        narzędzia, które generują realną wartość
-                                        i przewagę konkurencyjną.
+                                        Specjalizujemy się nie tylko w technologii, ale
+                                        przede wszystkim w rozumieniu biznesu naszych
+                                        klientów. Nie budujemy tylko stron - tworzymy
+                                        narzędzia, które generują realną wartość i
+                                        przewagę konkurencyjną.
                                     </Text>
                                 </div>
 
@@ -651,15 +656,9 @@ export default function HomePage() {
                                                     color="opposite"
                                                 />
 
-                                                <Text
-                                                    intent="h3"
-                                                    text={value.title}
-                                                />
+                                                <Text intent="h3" text={value.title} />
 
-                                                <Text
-                                                    text={value.description}
-                                                    muted
-                                                />
+                                                <Text text={value.description} muted />
                                             </CardContent>
                                         </Card>
                                     </ScrollReveal>
@@ -670,6 +669,67 @@ export default function HomePage() {
                 </SectionContent>
             </Section>
 
+            {/* ---------------- Mobile Friendly ---------------- */}
+            <Section className="py-size-xl sm:py-size-2xl bg-white">
+                <SectionContent className="gap-size-md sm:gap-size-xl">
+                    <SectionHeader
+                        title="Dopasowane na urządzenia mobilne"
+                        description=" Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae
+                            hic alias illo eos dolor provident sequi reiciendis quasi
+                            animi sunt delectus cum"
+                    />
+
+                    <div className="gap-size-md grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 lg:grid-cols-3">
+                        <Tilt
+                            rotationFactor={6}
+                            isRevese
+                            style={{
+                                transformOrigin: "center center",
+                            }}
+                            springOptions={{
+                                stiffness: 26.7,
+                                damping: 4.1,
+                                mass: 0.2,
+                            }}
+                            className="group relative h-full w-full max-w-md rounded-lg max-md:mx-auto md:col-start-2 md:row-span-3"
+                        >
+                            <Iphone src="/strona.jpeg" className="" />
+                        </Tilt>
+
+                        <div className="flex flex-col md:col-start-1 md:row-start-1 md:justify-center md:text-end">
+                            <Text intent="var" className="text-4xl sm:text-6xl">
+                                1
+                            </Text>
+                            <Text intent="h3">Ogromny rynek mobilny</Text>
+                            <Text muted size="small">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            </Text>
+                        </div>
+
+                        <div className="flex flex-col md:col-start-1 md:row-start-2 md:justify-center md:text-end lg:col-start-3 lg:text-start">
+                            <Text intent="var" className="text-4xl sm:text-6xl">
+                                2
+                            </Text>
+                            <Text intent="h3">Ogromny rynek mobilny</Text>
+                            <Text muted size="small">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                Quae hic alias illo eos dolor provident sequi reiciendis
+                                quasi animi
+                            </Text>
+                        </div>
+                        <div className="flex flex-col md:col-start-1 md:row-start-3 md:justify-center md:text-end">
+                            <Text intent="var" className="text-4xl sm:text-6xl">
+                                3
+                            </Text>
+                            <Text intent="h3">Ogromny rynek mobilny</Text>
+                            <Text muted size="small">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                Quae hic alias illo eos dolor
+                            </Text>
+                        </div>
+                    </div>
+                </SectionContent>
+            </Section>
             <Section className="py-size-2xl bg-brand-darker/50">
                 <SectionContent gapped={"md"}>
                     <SectionHeader
@@ -678,16 +738,9 @@ export default function HomePage() {
                         descMuted={false}
                         description="This is the section description that gives more details about the section content."
                     />
-                    <Grid
-                        cols={0}
-                        className="w-fit items-center gap-4 sm:grid-cols-2"
-                    >
+                    <Grid cols={0} className="w-fit items-center gap-4 sm:grid-cols-2">
                         {[...heroBadges, heroBadges[0]].map((badge, index) => (
-                            <Badge
-                                className="gap-2"
-                                variant="ghost"
-                                key={index}
-                            >
+                            <Badge className="gap-2" variant="ghost" key={index}>
                                 <div className="bg-clr-700 h-1.5 w-1.5 rounded-full" />
                                 <span>{badge}</span>
                             </Badge>

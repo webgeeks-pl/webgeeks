@@ -1,7 +1,9 @@
 {
     "hero": {
         "title": "Nowoczesne strony tworzone przez specjalistów",
-        "lead": "Nasze strony kodowane są z myślą o wydajności, dostępności i SEO, aby zapewnić najlepsze wrażenia użytkownikom i maksymalną widoczność w wyszukiwarkach.",
+        "leadStart": "Nasze strony kodowane są z myślą o wydajności, dostępności i ",
+        "leadHighlight": "SEO",
+        "leadEnd": ", aby zapewnić najlepsze wrażenia użytkownikom i maksymalną widoczność w wyszukiwarkach.",
         "buttons": {
             "primary": "Zacznij teraz",
             "secondary": "Zobacz projekty"
