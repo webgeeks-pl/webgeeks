@@ -8,13 +8,15 @@ const textCva = cva("", {
     variants: {
         intent: {
             h1: "text-4xl scroll-m-20 font-extrald tracking-tight text-balance",
-            h2: "scroll-m-20  text-3xl font-semild tracking-tight ",
-            h3: "text-2xl scroll-m-20 font-semild tracking-tight",
-            h4: "text-xl scroll-m-20 font-semild tracking-tight",
-            p: "leading-7",
+            h2: "scroll-m-20 text-3xl font-semibold tracking-tight",
+            sectionHeader:
+                "scroll-m-20 text-3xl font-semibold tracking-tight md:text-4xl",
+            h3: "text-2xl scroll-m-20 font-medium tracking-tight",
+            h4: "text-xl scroll-m-20 font-medium tracking-tight",
+            p: "",
             blockquote: "mt-6 rder-l-2 rder-clr-brand-red/20 pl-6 italic",
             lead: "text-xl",
-            large: "text-lg font-semild",
+            large: "text-lg font-medium",
             small: "text-sm leading-5 font-medium",
             var: "font-monospace font-medium",
         },
@@ -94,6 +96,7 @@ const defaultTags: Record<TextIntent, keyof HTMLElementTagNameMap> = {
     lead: "p",
     large: "p",
     small: "p",
+    sectionHeader: "h2",
     var: "span",
 };
 

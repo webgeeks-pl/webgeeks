@@ -59,7 +59,7 @@ export default function Navigation({ navigation }: NavigationProps) {
                                 asChild
                                 className={
                                     isActiveRoute(route.link)
-                                        ? "bg-accent text-brand"
+                                        ? "bg-accent/80 text-brand-dark border-clr-200 border"
                                         : ""
                                 }
                             >

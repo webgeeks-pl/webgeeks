@@ -1,4 +1,5 @@
 "use client";
+import useOnMount from "@/hooks/useOnMount";
 import { usePathname } from "@/i18n/navigation";
 import {
     motion,
@@ -20,6 +21,7 @@ export type InViewProps = {
     viewOptions?: UseInViewOptions;
     as?: React.ElementType;
     once?: boolean;
+    onLoad?: () => void;
     className?: string;
 };
 
@@ -35,6 +37,7 @@ export function InView({
     viewOptions,
     as = "div",
     className,
+    onLoad,
     once = true,
 }: InViewProps) {
     const ref = useRef(null);
@@ -59,6 +62,10 @@ export function InView({
             setHasStartedAnimation(true);
         }
     }, [isInView, once, hasStartedAnimation]);
+
+    useOnMount(() => {
+        onLoad?.();
+    });
 
     const MotionComponent = motion[as as keyof typeof motion] as typeof as;
 

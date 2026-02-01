@@ -5,7 +5,7 @@ import { HTMLAttributes } from "react";
 import Tag from "../base/tag";
 import Text from "../typography/text";
 
-const section = cva("flex w-full flex-col items-center", {
+const section = cva("flex w-full flex-col items-center overflow-hidden", {
     variants: {
         padded: {
             xs: "pt-size-xs pb-size-xs",
@@ -146,12 +146,18 @@ interface SectionHeaderProps extends BasicComponentProps {
     title: string;
     description: string;
     className?: string;
+    descriptionClassName?: string;
+    titleClassName?: string;
+    descMuted?: boolean;
 }
 
 export function SectionHeader({
     title,
     description,
     className,
+    descriptionClassName,
+    titleClassName,
+    descMuted,
 }: SectionHeaderProps) {
     return (
         <div
@@ -160,10 +166,17 @@ export function SectionHeader({
                 className
             )}
         >
-            <Text intent="h2" className="text-3xl sm:text-4xl">
+            <Text
+                intent="h2"
+                className={cn("text-3xl sm:text-4xl", titleClassName)}
+            >
                 {title}
             </Text>
-            <Text intent="lead" muted>
+            <Text
+                intent="lead"
+                muted={descMuted}
+                className={descriptionClassName}
+            >
                 {description}
             </Text>
         </div>

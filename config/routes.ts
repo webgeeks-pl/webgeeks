@@ -2,13 +2,13 @@ import { NavigationRoutes } from "@/lib/types";
 
 export const routes: NavigationRoutes = [
     { link: "/" },
-    { link: "/about" },
+    // { link: "/about" },
     { link: "/offer" },
-    { link: "/portfolio" },
-    { link: "/process" },
-    { link: "/templates" },
+    // { link: "/portfolio" },
+    // { link: "/process" },
+    // { link: "/templates" },
     { link: "/contact" },
-    { link: "/testimonials" },
+    // { link: "/testimonials" },
     {
         link: "/contact",
         cta: true,

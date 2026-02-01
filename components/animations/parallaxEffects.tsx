@@ -111,7 +111,8 @@ export function ScrollReveal({
 
     const { axis } = directionMap[direction];
 
-    const adjustedMove = axis === "x" || axis === "y" ? move[0] * -1 : move[0];
+    const adjustedMove =
+        direction === "down" || direction === "left" ? move[0] * -1 : move[0];
     const values = [adjustedMove, move[1]];
 
     const animationValue = useTransform(scrollYProgress, moveOn, values);

@@ -6,14 +6,12 @@ const variants = {
     blurIn: {
         hidden: {
             opacity: 0,
-            y: 30,
             scale: 0.95,
             filter: "blur(4px)",
             willChange: "transform, opacity",
         },
         visible: {
             opacity: 1,
-            y: 0,
             scale: 1,
             filter: "blur(0px)",
             willChange: "transform, opacity",
@@ -112,15 +110,17 @@ export default function Animate({
     as,
 }: AnimateProps) {
     return (
-        <InView
-            as={as}
-            transition={{ duration, ease, delay }}
-            className={className}
-            once={once}
-            viewOptions={viewOptions}
-            variants={variants[variant]}
-        >
-            {children}
-        </InView>
+        <>
+            <InView
+                as={as}
+                transition={{ duration, ease, delay }}
+                className={className}
+                once={once}
+                viewOptions={viewOptions}
+                variants={variants[variant]}
+            >
+                {children}
+            </InView>
+        </>
     );
 }
