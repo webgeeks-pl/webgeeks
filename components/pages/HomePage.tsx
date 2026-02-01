@@ -1,10 +1,11 @@
+import { cn } from "@/lib/utils";
 import { getArrayFromMessages } from "@/lib/utils/array";
 import {
     AlertTriangle,
     ArrowRight,
     Award,
+    Check,
     CheckCircle2,
-    Clock,
     CloudCog,
     Code2,
     CornerLeftUp,
@@ -14,8 +15,7 @@ import {
     Rocket,
     Search,
     Smartphone,
-    TrendingDown,
-    TrendingUp,
+    Star,
     Users,
     X,
     Zap,
@@ -32,12 +32,14 @@ import Section, { SectionContent, SectionHeader } from "../layout/section";
 import Text from "../typography/text";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import { Card, CardContent } from "../ui/card";
+import { Card, CardContent, CardHeader } from "../ui/card";
 import { EncryptedText } from "../ui/encrypted-text";
 import { Globe } from "../ui/globe";
+import { GridBackground } from "../ui/gridBackground";
 import IconContainer from "../ui/iconContainer";
 import { Iphone } from "../ui/iphone";
 import { getLucideIcon } from "../ui/lucideIcons";
+import { Safari } from "../ui/safari";
 import { Separator } from "../ui/separator";
 import { TextShimmer } from "../ui/text-shimmer";
 import { Tilt } from "../ui/tilt";
@@ -50,30 +52,62 @@ const CardSchema = z.object({
 });
 type Card = z.infer<typeof CardSchema>;
 
-const metrics = [
+const packages = [
     {
-        label: "Czas ładowania",
-        before: { value: "4.2s", icon: Clock, status: "bad" },
-        after: { value: "0.8s", icon: Zap, status: "good" },
-        improvement: "-81%",
+        name: "Starter",
+        icon: Zap,
+        price: "od 4 999 zł",
+        description: "Idealne rozwiązanie dla małych firm i startupów",
+        features: [
+            "Do 5 podstron",
+            "Responsywny design",
+            "Podstawowe SEO",
+            "Formularz kontaktowy",
+            "Google Analytics",
+            "30 dni wsparcia",
+            "Hosting przez 12 miesięcy",
+        ],
+        popular: false,
+        color: "gray",
     },
     {
-        label: "PageSpeed Score",
-        before: { value: "32/100", icon: TrendingDown, status: "bad" },
-        after: { value: "98/100", icon: TrendingUp, status: "good" },
-        improvement: "+206%",
+        name: "Business",
+        icon: Star,
+        price: "od 8 999 zł",
+        description: "Kompleksowe rozwiązanie dla rozwijających się firm",
+        features: [
+            "Do 15 podstron",
+            "Zaawansowany design",
+            "Pełne SEO + sitemap",
+            "Blog / Aktualności",
+            "Integracje (CRM, email)",
+            "Panel administracyjny",
+            "90 dni wsparcia",
+            "Hosting przez 12 miesięcy",
+            "Optymalizacja obrazów",
+        ],
+        popular: true,
+        color: "green",
     },
     {
-        label: "Koszt miesięczny",
-        before: { value: "890 zł", icon: DollarSign, status: "bad" },
-        after: { value: "120 zł", icon: DollarSign, status: "good" },
-        improvement: "-87%",
-    },
-    {
-        label: "Bounce Rate",
-        before: { value: "68%", icon: TrendingDown, status: "bad" },
-        after: { value: "31%", icon: TrendingUp, status: "good" },
-        improvement: "-54%",
+        name: "Enterprise",
+        icon: Rocket,
+        price: "od 15 999 zł",
+        description: "Dla firm wymagających maksymalnej wydajności",
+        features: [
+            "Nielimitowane podstrony",
+            "Premium design + animacje",
+            "Zaawansowane SEO",
+            "E-commerce / Portal",
+            "API + Integracje",
+            "Dedykowany CMS",
+            "Multi-język",
+            "6 miesięcy wsparcia premium",
+            "CDN + Premium hosting",
+            "Audyt bezpieczeństwa",
+        ],
+        popular: false,
+        color: "gray",
     },
 ];
 
@@ -169,6 +203,26 @@ const benefits = [
     },
 ];
 
+const mobileFriendlyItems = [
+    {
+        number: "1",
+        title: "Ogromny rynek mobilny",
+        description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+    },
+    {
+        number: "2",
+        title: "Ogromny rynek mobilny",
+        description:
+            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae hic alias illo eos dolor provident sequi reiciendis quasi animi",
+    },
+    {
+        number: "3",
+        title: "Ogromny rynek mobilny",
+        description:
+            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae hic alias illo eos dolor",
+    },
+];
+
 export default function HomePage() {
     const t = useTranslations("pages.home");
     const tHero = useTranslations("pages.home.hero");
@@ -179,7 +233,7 @@ export default function HomePage() {
         <Page>
             {/* ------------------ Hero ------------------ */}
             <Section as="header" className="py-size-xl sm:py-size-2xl">
-                <SectionContent className="text-center" gapped="md">
+                <SectionContent className="gap-size-md text-center">
                     <Animate>
                         <Badge className="p-3" variant="secondary">
                             <span className="flex items-center">
@@ -287,7 +341,7 @@ export default function HomePage() {
                                 <CardContent className="relative flex h-full flex-col justify-between">
                                     <Text
                                         intent="h3"
-                                        className="text-center font-semibold"
+                                        className="from-clr-900 to-clr-400 z-10 bg-linear-to-b bg-clip-text text-center font-semibold text-transparent"
                                     >
                                         Docieraj na cały świat
                                     </Text>
@@ -296,277 +350,6 @@ export default function HomePage() {
                             </Card>
                         </ScrollReveal>
                     </Grid>
-                </SectionContent>
-            </Section>
-
-            <Separator decorative />
-
-            {/* ---------------- Comparison ---------------- */}
-            <Section className="bg-clr-50 py-size-xl sm:py-size-2xl">
-                <SectionContent className="text-center" gapped="lg">
-                    <SectionHeader
-                        title="Transformacja Twojej strony"
-                        description="Zobacz jak zmienia się wszystko po migracji z WordPress na Next.js"
-                    />
-
-                    {/* Main Comparison */}
-                    <div className="mb-16 grid w-full grid-cols-1 gap-8 lg:grid-cols-2">
-                        {/* BEFORE - WordPress */}
-                        <Card className="relative h-full overflow-hidden border-2 border-red-200 bg-red-50">
-                            <div className="absolute top-0 right-0 h-32 w-32 rounded-bl-full bg-red-200 opacity-20"></div>
-                            <CardContent className="relative z-10 p-8">
-                                <div className="mb-6 flex items-center gap-3">
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-red-200">
-                                        <AlertTriangle className="size-6 text-red-700" />
-                                    </div>
-                                    <div>
-                                        <Badge className="mb-2 bg-red-600">PRZED</Badge>
-                                        <h3 className="text-2xl text-gray-900">
-                                            WordPress
-                                        </h3>
-                                    </div>
-                                </div>
-
-                                {/* Browser mockup */}
-                                <div className="mb-6 overflow-hidden rounded-lg border-2 border-gray-300 bg-white">
-                                    <div className="flex items-center gap-2 border-b border-gray-300 bg-gray-200 px-4 py-2">
-                                        <div className="flex gap-1.5">
-                                            <div className="h-3 w-3 rounded-full bg-red-400"></div>
-                                            <div className="h-3 w-3 rounded-full bg-yellow-400"></div>
-                                            <div className="h-3 w-3 rounded-full bg-green-400"></div>
-                                        </div>
-                                        <div className="flex-1 rounded bg-white px-3 py-1 text-xs text-gray-600">
-                                            twojastrona.pl
-                                        </div>
-                                    </div>
-                                    <div className="flex h-48 items-center justify-center bg-gradient-to-b from-gray-100 to-gray-200 p-6">
-                                        <div className="text-center">
-                                            <div className="mb-3 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 shadow">
-                                                <div className="h-4 w-4 animate-spin rounded-full border-2 border-gray-400 border-t-gray-700"></div>
-                                                <span className="text-sm text-gray-600">
-                                                    Ładowanie...
-                                                </span>
-                                            </div>
-                                            <div className="text-xs text-gray-500">
-                                                Średnio 4.2 sekundy
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Features */}
-                                <div className="space-y-3">
-                                    {beforeFeatures.map((feature, index) => (
-                                        <div
-                                            key={index}
-                                            className="flex items-start gap-3"
-                                        >
-                                            <X className="mt-0.5 size-5 flex-shrink-0 text-red-600" />
-                                            <span className="text-gray-700">
-                                                {feature.text}
-                                            </span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </CardContent>
-                        </Card>
-
-                        {/* AFTER - Next.js */}
-                        <Card className="relative h-full overflow-hidden border-2 border-green-200 bg-green-50">
-                            <div className="absolute top-0 right-0 h-32 w-32 rounded-bl-full bg-green-200 opacity-20"></div>
-                            <CardContent className="relative z-10 p-8">
-                                <div className="mb-6 flex items-center gap-3">
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-200">
-                                        <Zap className="size-6 text-green-700" />
-                                    </div>
-                                    <div>
-                                        <Badge className="mb-2 bg-green-600">PO</Badge>
-                                        <h3 className="text-2xl text-gray-900">
-                                            Next.js
-                                        </h3>
-                                    </div>
-                                </div>
-
-                                {/* Browser mockup */}
-                                <div className="mb-6 overflow-hidden rounded-lg border-2 border-gray-300 bg-white shadow-lg">
-                                    <div className="flex items-center gap-2 border-b border-gray-700 bg-gray-900 px-4 py-2">
-                                        <div className="flex gap-1.5">
-                                            <div className="h-3 w-3 rounded-full bg-red-400"></div>
-                                            <div className="h-3 w-3 rounded-full bg-yellow-400"></div>
-                                            <div className="h-3 w-3 rounded-full bg-green-400"></div>
-                                        </div>
-                                        <div className="flex flex-1 items-center gap-2 rounded bg-gray-800 px-3 py-1 text-xs text-gray-300">
-                                            🔒 twojastrona.pl
-                                            <Badge
-                                                variant="outline"
-                                                className="border-green-500 text-xs text-green-500"
-                                            >
-                                                Secure
-                                            </Badge>
-                                        </div>
-                                    </div>
-                                    <div className="flex h-48 items-center justify-center bg-gradient-to-b from-white to-gray-50 p-6">
-                                        <div className="text-center">
-                                            <div className="mb-3 inline-flex items-center gap-2 rounded-lg bg-green-100 px-4 py-2">
-                                                <CheckCircle2 className="size-5 text-green-600" />
-                                                <span className="text-sm text-green-800">
-                                                    Załadowano!
-                                                </span>
-                                            </div>
-                                            <div className="text-xs text-gray-500">
-                                                W 0.8 sekundy ⚡
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Features */}
-                                <ScrollReveal delay={2}>
-                                    <div className="space-y-3">
-                                        {afterFeatures.map((feature, index) => (
-                                            <div
-                                                key={index}
-                                                className="flex items-start gap-3"
-                                            >
-                                                <CheckCircle2 className="mt-0.5 size-5 flex-shrink-0 text-green-600" />
-                                                <span className="text-gray-700">
-                                                    {feature.text}
-                                                </span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </ScrollReveal>
-                            </CardContent>
-                        </Card>
-                    </div>
-
-                    {/* Metrics Comparison */}
-                    <div className="mb-16 grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-                        {metrics.map((metric, index) => (
-                            <Card className="border-gray-200" key={index}>
-                                <CardContent className="p-6">
-                                    <div className="mb-4 text-sm text-gray-600">
-                                        {metric.label}
-                                    </div>
-
-                                    {/* Before */}
-                                    <div className="mb-3 flex items-center justify-between border-b border-gray-200 pb-3">
-                                        <div className="flex items-center gap-2">
-                                            <IconContainer
-                                                variant="destructive"
-                                                Icon={metric.before.icon}
-                                                size={"sm"}
-                                            />
-                                            <span className="text-lg text-gray-900">
-                                                {metric.before.value}
-                                            </span>
-                                        </div>
-                                        <Badge
-                                            variant="outline"
-                                            className="border-red-300 text-xs text-red-700"
-                                        >
-                                            WP
-                                        </Badge>
-                                    </div>
-
-                                    {/* After */}
-                                    <div className="mb-3 flex items-center justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <IconContainer
-                                                variant="success"
-                                                Icon={metric.after.icon}
-                                                size={"sm"}
-                                            />
-                                            <span className="text-lg text-gray-900">
-                                                {metric.after.value}
-                                            </span>
-                                        </div>
-                                        <Badge
-                                            variant="outline"
-                                            className="border-green-300 text-xs text-green-700"
-                                        >
-                                            Next.js
-                                        </Badge>
-                                    </div>
-
-                                    {/* Improvement */}
-                                    <div className="mt-4 border-t border-gray-200 pt-4">
-                                        <div className="flex items-center justify-center gap-2 rounded-lg bg-gray-50 py-2">
-                                            <TrendingUp className="size-4 text-green-600" />
-                                            <span className="text-sm text-green-600">
-                                                {metric.improvement}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </div>
-
-                    {/* Stats Bar */}
-                    <div className="w-full rounded-2xl bg-gray-900 p-8 md:p-12">
-                        <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-4">
-                            <div>
-                                <div className="mb-2 text-4xl text-white">5-10x</div>
-                                <div className="text-sm text-gray-400">
-                                    Szybsze ładowanie
-                                </div>
-                            </div>
-                            <div>
-                                <div className="mb-2 text-4xl text-white">-70%</div>
-                                <div className="text-sm text-gray-400">Niższe koszty</div>
-                            </div>
-                            <div>
-                                <div className="mb-2 text-4xl text-white">+85%</div>
-                                <div className="text-sm text-gray-400">Lepsze SEO</div>
-                            </div>
-                            <div>
-                                <div className="mb-2 text-4xl text-white">99.9%</div>
-                                <div className="text-sm text-gray-400">Uptime</div>
-                            </div>
-                        </div>
-                    </div>
-                </SectionContent>
-            </Section>
-
-            {/* ---------------- Why Next.js ---------------- */}
-            <Section className="py-size-xl sm:py-size-2xl bg-white">
-                <SectionContent>
-                    <FadeInSection className="mb-16 text-center">
-                        <SectionHeader
-                            title="Dlaczego Next.js?"
-                            description="Nie tylko szybkość. To kompletna przewaga
-                            technologiczna, która przekłada się na realne
-                            korzyści biznesowe."
-                        />
-                    </FadeInSection>
-
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-                        {benefits.map((benefit, index) => {
-                            return (
-                                <ScrollReveal
-                                    key={index}
-                                    delay={index * 0.05}
-                                    direction="right"
-                                >
-                                    <Card className="h-full">
-                                        <CardContent className="flex flex-col gap-2">
-                                            <IconContainer
-                                                variant={"default"}
-                                                Icon={benefit.icon}
-                                            />
-                                            <h3 className="text-gray-900">
-                                                {benefit.title}
-                                            </h3>
-                                            <p className="text-sm leading-relaxed text-gray-600">
-                                                {benefit.description}
-                                            </p>
-                                        </CardContent>
-                                    </Card>
-                                </ScrollReveal>
-                            );
-                        })}
-                    </div>
                 </SectionContent>
             </Section>
 
@@ -669,8 +452,23 @@ export default function HomePage() {
                 </SectionContent>
             </Section>
 
+            <Section className="pt-size-xl sm:pt-size-2xl pb-size-sm sm:pb-size-md relative">
+                <SectionContent className="gap-size-xl">
+                    <GridBackground />
+                    <SectionHeader
+                        title="Nowoczesny design i funkcjonalność"
+                        description="Tworzymy strony, które nie tylko wyglądają świetnie, ale są też intuicyjne i łatwe w obsłudze dla Twoich użytkowników."
+                    />
+                    <Safari
+                        url="https:\\"
+                        imageSrc="/template-hero.webp"
+                        className="max-w-7xl"
+                    />
+                </SectionContent>
+            </Section>
+            <Separator decorative />
             {/* ---------------- Mobile Friendly ---------------- */}
-            <Section className="py-size-xl sm:py-size-2xl bg-white">
+            <Section className="pb-size-xl pt-size-sm sm:pt-size-md sm:pb-size-2xl bg-white">
                 <SectionContent className="gap-size-md sm:gap-size-xl">
                     <SectionHeader
                         title="Dopasowane na urządzenia mobilne"
@@ -695,43 +493,402 @@ export default function HomePage() {
                         >
                             <Iphone src="/strona.jpeg" className="" />
                         </Tilt>
+                        {mobileFriendlyItems.map((item, index) => (
+                            <div
+                                className={cn(
+                                    "flex flex-col md:col-start-1 md:justify-center md:text-end",
+                                    index === 0 && "md:row-start-1",
+                                    index === 1 &&
+                                        "md:row-start-2 lg:col-start-3 lg:text-start",
+                                    index === 2 && "md:row-start-3"
+                                )}
+                                key={index}
+                            >
+                                <Text intent="var" className="text-4xl sm:text-6xl">
+                                    {item.number}
+                                </Text>
+                                <Text intent="h3">{item.title}</Text>
+                                <Text muted size="small">
+                                    {item.description}
+                                </Text>
+                            </div>
+                        ))}
+                    </div>
+                </SectionContent>
+            </Section>
+            <Separator decorative />
+            {/* ---------------- Why Next.js ---------------- */}
+            <Section className="py-size-xl sm:py-size-2xl bg-white">
+                <SectionContent>
+                    <FadeInSection className="mb-16 text-center">
+                        <SectionHeader
+                            title="Dlaczego Next.js?"
+                            description="Nie tylko szybkość. To kompletna przewaga
+                            technologiczna, która przekłada się na realne
+                            korzyści biznesowe."
+                        />
+                    </FadeInSection>
 
-                        <div className="flex flex-col md:col-start-1 md:row-start-1 md:justify-center md:text-end">
-                            <Text intent="var" className="text-4xl sm:text-6xl">
-                                1
-                            </Text>
-                            <Text intent="h3">Ogromny rynek mobilny</Text>
-                            <Text muted size="small">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            </Text>
-                        </div>
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+                        {benefits.map((benefit, index) => {
+                            return (
+                                <ScrollReveal
+                                    key={index}
+                                    delay={index * 0.05}
+                                    direction="right"
+                                >
+                                    <Card className="h-full">
+                                        <CardContent className="flex flex-col gap-2">
+                                            <IconContainer
+                                                variant={"default"}
+                                                Icon={benefit.icon}
+                                            />
+                                            <Text
+                                                intent="h4"
+                                                as="h3"
+                                                text={benefit.title}
+                                            />
+                                            <Text muted text={benefit.description} />
+                                        </CardContent>
+                                    </Card>
+                                </ScrollReveal>
+                            );
+                        })}
+                    </div>
+                </SectionContent>
+            </Section>
+            <Separator decorative />
+            <Section className="py-size-xl sm:py-size-2xl bg-white">
+                <SectionContent className="gap-size-lg">
+                    <FadeInSection className="mb-16 text-center">
+                        <SectionHeader
+                            title="Nasza Oferta"
+                            description="Wybierz pakiet dopasowany do potrzeb Twojego biznesu. Każdy
+                            projekt realizujemy indywidualnie."
+                        />
+                    </FadeInSection>
 
-                        <div className="flex flex-col md:col-start-1 md:row-start-2 md:justify-center md:text-end lg:col-start-3 lg:text-start">
-                            <Text intent="var" className="text-4xl sm:text-6xl">
-                                2
-                            </Text>
-                            <Text intent="h3">Ogromny rynek mobilny</Text>
-                            <Text muted size="small">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                Quae hic alias illo eos dolor provident sequi reiciendis
-                                quasi animi
-                            </Text>
-                        </div>
-                        <div className="flex flex-col md:col-start-1 md:row-start-3 md:justify-center md:text-end">
-                            <Text intent="var" className="text-4xl sm:text-6xl">
-                                3
-                            </Text>
-                            <Text intent="h3">Ogromny rynek mobilny</Text>
-                            <Text muted size="small">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                Quae hic alias illo eos dolor
-                            </Text>
+                    <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
+                        {packages.map((pkg, index) => {
+                            return (
+                                <Card
+                                    key={index}
+                                    className={cn(
+                                        "relative flex h-full flex-col overflow-visible transition-all duration-300",
+                                        pkg.popular &&
+                                            "border-brand scale-105 border-2 shadow-xl"
+                                    )}
+                                >
+                                    {pkg.popular && (
+                                        <div className="bg-brand absolute -top-4 left-1/2 z-10 -translate-x-1/2 rounded-full px-4 py-1">
+                                            <Text intent="small" color="opposite">
+                                                Najpopularniejszy
+                                            </Text>
+                                        </div>
+                                    )}
+
+                                    <CardHeader className="overflow-auto pb-4 text-center">
+                                        <IconContainer
+                                            Icon={pkg.icon}
+                                            className="mx-auto"
+                                            color={pkg.popular ? "opposite" : "default"}
+                                            variant={
+                                                pkg.popular ? "brandSolid" : "outline"
+                                            }
+                                        />
+
+                                        <Text
+                                            intent="h3"
+                                            className="mb-2"
+                                            text={pkg.name}
+                                        />
+
+                                        <Text
+                                            intent="var"
+                                            className="text-3xl"
+                                            text={pkg.price}
+                                        />
+                                        <Text muted text={pkg.description} />
+                                    </CardHeader>
+
+                                    <CardContent className="flex flex-1 flex-col">
+                                        <ul className="mb-6 flex-1 space-y-3">
+                                            {pkg.features.map((feature, idx) => (
+                                                <li
+                                                    key={idx}
+                                                    className="flex items-start gap-3"
+                                                >
+                                                    <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
+                                                    <Text>{feature}</Text>
+                                                </li>
+                                            ))}
+                                        </ul>
+
+                                        <Button
+                                            size="lg"
+                                            variant={pkg.popular ? "cta" : "outline"}
+                                        >
+                                            Wybierz pakiet
+                                        </Button>
+                                    </CardContent>
+                                </Card>
+                            );
+                        })}
+                    </div>
+                </SectionContent>
+            </Section>
+
+            <Separator decorative />
+
+            {/* ---------------- Custom Offer ---------------- */}
+
+            <Section className="py-size-lg sm:py-size-xl bg-brand-darker/50">
+                <SectionContent className="gap-size-sm">
+                    <SectionHeader
+                        title="Potrzebujesz czegoś więcej?"
+                        description="Skontaktuj się z nami, aby omówić indywidualne potrzeby Twojego projektu."
+                        descMuted={false}
+                    />
+
+                    <div className="flex gap-4">
+                        <Button variant="default" size="lg">
+                            Indywidualna wycena
+                        </Button>
+                        <Button variant="secondary" size="lg">
+                            Zobacz cennik usług
+                        </Button>
+                    </div>
+                </SectionContent>
+            </Section>
+
+            <Separator decorative />
+
+            <Separator decorative />
+
+            {/* ---------------- Comparison ---------------- */}
+            <Section className="bg-clr-50 py-size-xl sm:py-size-2xl">
+                <SectionContent className="gap-size-lg text-center">
+                    <SectionHeader
+                        title="Transformacja Twojej strony"
+                        description="Zobacz jak zmienia się wszystko po migracji z WordPress na Next.js"
+                    />
+
+                    {/* Main Comparison */}
+                    <div className="grid w-full grid-cols-1 gap-8 lg:grid-cols-2">
+                        {/* BEFORE - WordPress */}
+                        <Card className="relative h-full overflow-hidden border-2 border-red-200 bg-red-50">
+                            <div className="absolute top-0 right-0 h-32 w-32 rounded-bl-full bg-red-200 opacity-20"></div>
+                            <CardContent className="relative z-10 p-8">
+                                <div className="mb-6 flex items-center gap-3">
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-red-200">
+                                        <AlertTriangle className="size-6 text-red-700" />
+                                    </div>
+                                    <div>
+                                        <Badge className="mb-2 bg-red-600">PRZED</Badge>
+                                        <h3 className="text-2xl text-gray-900">
+                                            WordPress
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                {/* Browser mockup */}
+                                <div className="mb-6 overflow-hidden rounded-lg border-2 border-gray-300 bg-white">
+                                    <div className="flex items-center gap-2 border-b border-gray-300 bg-gray-200 px-4 py-2">
+                                        <div className="flex gap-1.5">
+                                            <div className="h-3 w-3 rounded-full bg-red-400"></div>
+                                            <div className="h-3 w-3 rounded-full bg-yellow-400"></div>
+                                            <div className="h-3 w-3 rounded-full bg-green-400"></div>
+                                        </div>
+                                        <div className="flex-1 rounded bg-white px-3 py-1 text-xs text-gray-600">
+                                            twojastrona.pl
+                                        </div>
+                                    </div>
+                                    <div className="flex h-48 items-center justify-center bg-linear-to-b from-gray-100 to-gray-200 p-6">
+                                        <div className="text-center">
+                                            <div className="mb-3 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 shadow">
+                                                <div className="h-4 w-4 animate-spin rounded-full border-2 border-gray-400 border-t-gray-700"></div>
+                                                <span className="text-sm text-gray-600">
+                                                    Ładowanie...
+                                                </span>
+                                            </div>
+                                            <div className="text-xs text-gray-500">
+                                                Średnio 4.2 sekundy
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Features */}
+                                <div className="space-y-3">
+                                    {beforeFeatures.map((feature, index) => (
+                                        <div
+                                            key={index}
+                                            className="flex items-start gap-3"
+                                        >
+                                            <X className="mt-0.5 size-5 shrink-0 text-red-600" />
+                                            <span className="text-gray-700">
+                                                {feature.text}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </CardContent>
+                        </Card>
+
+                        {/* AFTER - Next.js */}
+                        <Card className="relative h-full overflow-hidden border-2 border-green-200 bg-green-50">
+                            <div className="absolute top-0 right-0 h-32 w-32 rounded-bl-full bg-green-200 opacity-20"></div>
+                            <CardContent className="relative z-10 p-8">
+                                <div className="mb-6 flex items-center gap-3">
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-200">
+                                        <Zap className="size-6 text-green-700" />
+                                    </div>
+                                    <div>
+                                        <Badge className="mb-2 bg-green-600">PO</Badge>
+                                        <h3 className="text-2xl text-gray-900">
+                                            Next.js
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                {/* Browser mockup */}
+                                <div className="mb-6 overflow-hidden rounded-lg border-2 border-gray-300 bg-white shadow-lg">
+                                    <div className="flex items-center gap-2 border-b border-gray-700 bg-gray-900 px-4 py-2">
+                                        <div className="flex gap-1.5">
+                                            <div className="h-3 w-3 rounded-full bg-red-400"></div>
+                                            <div className="h-3 w-3 rounded-full bg-yellow-400"></div>
+                                            <div className="h-3 w-3 rounded-full bg-green-400"></div>
+                                        </div>
+                                        <div className="flex flex-1 items-center gap-2 rounded bg-gray-800 px-3 py-1 text-xs text-gray-300">
+                                            🔒 twojastrona.pl
+                                            <Badge
+                                                variant="outline"
+                                                className="border-green-500 text-xs text-green-500"
+                                            >
+                                                Secure
+                                            </Badge>
+                                        </div>
+                                    </div>
+                                    <div className="flex h-48 items-center justify-center bg-linear-to-b from-white to-gray-50 p-6">
+                                        <div className="text-center">
+                                            <div className="mb-3 inline-flex items-center gap-2 rounded-lg bg-green-100 px-4 py-2">
+                                                <CheckCircle2 className="size-5 text-green-600" />
+                                                <span className="text-sm text-green-800">
+                                                    Załadowano!
+                                                </span>
+                                            </div>
+                                            <div className="text-xs text-gray-500">
+                                                W 0.8 sekundy ⚡
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Features */}
+                                <ScrollReveal delay={2}>
+                                    <div className="space-y-3">
+                                        {afterFeatures.map((feature, index) => (
+                                            <div
+                                                key={index}
+                                                className="flex items-start gap-3"
+                                            >
+                                                <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-green-600" />
+                                                <span className="text-gray-700">
+                                                    {feature.text}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </ScrollReveal>
+                            </CardContent>
+                        </Card>
+                    </div>
+
+                    {/* Stats Bar */}
+                    <div className="bg-clr-900 w-full rounded-2xl p-8 md:p-12">
+                        <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-4">
+                            <div>
+                                <div className="mb-2 text-4xl text-white">5-10x</div>
+                                <div className="text-clr-400 text-sm">
+                                    Szybsze ładowanie
+                                </div>
+                            </div>
+                            <div>
+                                <div className="mb-2 text-4xl text-white">-70%</div>
+                                <div className="text-clr-400 text-sm">Niższe koszty</div>
+                            </div>
+                            <div>
+                                <div className="mb-2 text-4xl text-white">+85%</div>
+                                <div className="text-clr-400 text-sm">Lepsze SEO</div>
+                            </div>
+                            <div>
+                                <div className="mb-2 text-4xl text-white">99.9%</div>
+                                <div className="text-clr-400 text-sm">Uptime</div>
+                            </div>
                         </div>
                     </div>
                 </SectionContent>
             </Section>
+
+            {/* <Section className="py-size-xl md:py-size-2xl bg-clr-300">
+                <SectionContent>
+                    <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
+                            <div className="flex-1 text-center lg:text-left">
+                                <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
+                                    <Sparkles className="size-5 text-yellow-400" />
+                                    <span className="text-sm text-white">
+                                        Limitowana oferta
+                                    </span>
+                                </div>
+
+                                <h2 className="mb-4 text-3xl text-white sm:text-4xl lg:text-5xl">
+                                    Darmowy audyt Twojej strony
+                                </h2>
+
+                                <p className="mb-6 max-w-2xl text-lg text-gray-300">
+                                    Sprawdzimy wydajność, SEO i bezpieczeństwo Twojej
+                                    obecnej strony. Otrzymasz szczegółowy raport z
+                                    rekomendacjami i potencjałem oszczędności.
+                                </p>
+
+                                <div className="mb-6 flex flex-wrap justify-center gap-4 lg:mb-0 lg:justify-start">
+                                    {[
+                                        "PageSpeed Analysis",
+                                        "SEO Score",
+                                        "Koszty utrzymania",
+                                        "Plan migracji",
+                                    ].map((item, index) => (
+                                        <div
+                                            key={index}
+                                            className="flex items-center gap-2 text-sm text-gray-300"
+                                        >
+                                            <CheckCircle2 className="size-4 text-green-400" />
+                                            <span>{item}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="shrink-0">
+                                <Button
+                                    size="lg"
+                                    className="group bg-white px-8 py-6 text-lg text-gray-900 shadow-xl hover:bg-gray-100"
+                                >
+                                    Zamów darmowy audyt
+                                    <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
+                                </Button>
+                                <p className="mt-3 text-center text-xs text-gray-400">
+                                    ⚡ Raport w 24h · Bez zobowiązań
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </SectionContent>
+            </Section> */}
+
+            <Separator decorative />
             <Section className="py-size-2xl bg-brand-darker/50">
-                <SectionContent gapped={"md"}>
+                <SectionContent className="gap-size-md">
                     <SectionHeader
                         descriptionClassName="text-black"
                         title="Section Title"
@@ -742,7 +899,7 @@ export default function HomePage() {
                         {[...heroBadges, heroBadges[0]].map((badge, index) => (
                             <Badge className="gap-2" variant="ghost" key={index}>
                                 <div className="bg-clr-700 h-1.5 w-1.5 rounded-full" />
-                                <span>{badge}</span>
+                                <Text intent="small" text={badge} />
                             </Badge>
                         ))}
                     </Grid>

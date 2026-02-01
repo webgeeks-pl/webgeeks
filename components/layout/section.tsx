@@ -1,112 +1,22 @@
 import { cn } from "@/lib/utils";
 import type { BasicComponentProps } from "@types";
-import { cva, VariantProps } from "class-variance-authority";
-import { HTMLAttributes } from "react";
+import { ElementType } from "react";
 import Tag from "../base/tag";
 import Text from "../typography/text";
 
-const section = cva("flex w-full flex-col items-center ", {
-    variants: {
-        padded: {
-            xs: "pt-size-xs pb-size-xs",
-            sm: "pt-size-sm pb-size-sm",
-            md: "pt-size-md pb-size-md",
-            lg: "pt-size-lg pb-size-lg",
-            xl: "pt-size-xl pb-size-xl",
-            "2xl": "pt-size-2xl pb-size-2xl",
-            "3xl": "pt-size-3xl pb-size-3xl",
-            "4xl": "pt-size-4xl pb-size-4xl",
-            "5xl": "pt-size-5xl pb-size-5xl",
-            "6xl": "pt-size-6xl pb-size-6xl",
-            none: "",
-        },
-        paddedTop: {
-            xs: "pt-size-xs",
-            sm: "pt-size-sm",
-            md: "pt-size-md",
-            lg: "pt-size-lg",
-            xl: "pt-size-xl",
-            "2xl": "pt-size-2xl",
-            "3xl": "pt-size-3xl",
-            "4xl": "pt-size-4xl",
-            "5xl": "pt-size-5xl",
-            "6xl": "pt-size-6xl",
-            none: "",
-        },
-        paddedBottom: {
-            xs: "pb-size-xs",
-            sm: "pb-size-sm",
-            md: "pb-size-md",
-            lg: "pb-size-lg",
-            xl: "pb-size-xl",
-            "2xl": "pb-size-2xl",
-            "3xl": "pb-size-3xl",
-            "4xl": "pb-size-4xl",
-            "5xl": "pb-size-5xl",
-            "6xl": "pb-size-6xl",
-            none: "",
-        },
-    },
-    defaultVariants: {
-        padded: "none",
-        paddedTop: "none",
-        paddedBottom: "none",
-    },
-});
-
-const content = cva("flex flex-col items-center px-5 w-full xs:container max-w-7xl! ", {
-    variants: {
-        gapped: {
-            xs: "gap-size-xs",
-            sm: "gap-size-sm",
-            md: "gap-size-md",
-            lg: "gap-size-lg",
-            xl: "gap-size-xl",
-            "2xl": "gap-size-2xl",
-            "3xl": "gap-size-3xl",
-            "4xl": "gap-size-4xl",
-            "5xl": "gap-size-5xl",
-            "6xl": "gap-size-6xl",
-            none: "",
-        },
-    },
-    defaultVariants: {
-        gapped: "sm",
-    },
-});
-
-interface SectionProps
-    extends
-        BasicComponentProps,
-        HTMLAttributes<HTMLElement>,
-        VariantProps<typeof section>,
-        VariantProps<typeof content> {
-    Wrapper?: React.ElementType;
-    Overlay?: React.ElementType;
-    OverlayPosition?: "top" | "bottom";
-    contentEnabled?: boolean;
-    as?: keyof HTMLElementTagNameMap;
-    asChild?: boolean;
+interface SectionProps extends BasicComponentProps {
     shouldRender?: boolean;
+    as?: ElementType;
+    asChild?: boolean;
 }
 
 export default function Section({
     children,
     className,
-    padded,
-    paddedTop,
-    asChild,
     as,
     shouldRender = true,
-    paddedBottom,
     ...props
 }: SectionProps) {
-    const sectionStyleProps = {
-        padded,
-        paddedTop,
-        paddedBottom,
-        className,
-    };
     if (!shouldRender) {
         return null;
     }
@@ -114,8 +24,7 @@ export default function Section({
     return (
         <Tag
             as={as ?? "section"}
-            asChild={asChild}
-            className={section(sectionStyleProps)}
+            className={cn("flex w-full flex-col items-center", className)}
             {...props}
         >
             {children}
@@ -123,16 +32,15 @@ export default function Section({
     );
 }
 
-interface SectionContentProps extends BasicComponentProps, VariantProps<typeof content> {}
-
-export function SectionContent({
-    children,
-    className,
-    gapped,
-    ...props
-}: SectionContentProps) {
+export function SectionContent({ children, className, ...props }: BasicComponentProps) {
     return (
-        <Tag className={content({ className, gapped })} {...props}>
+        <Tag
+            className={cn(
+                "xs:container flex w-full max-w-7xl! flex-col items-center px-5",
+                className
+            )}
+            {...props}
+        >
             {children}
         </Tag>
     );
@@ -145,6 +53,7 @@ interface SectionHeaderProps extends BasicComponentProps {
     descriptionClassName?: string;
     titleClassName?: string;
     descMuted?: boolean;
+    color?: "default" | "opposite";
 }
 
 export function SectionHeader({
@@ -154,6 +63,7 @@ export function SectionHeader({
     descriptionClassName,
     titleClassName,
     descMuted = true,
+    color,
 }: SectionHeaderProps) {
     return (
         <div
@@ -162,10 +72,15 @@ export function SectionHeader({
                 className
             )}
         >
-            <Text intent="sectionHeader" className={cn("", titleClassName)}>
+            <Text color={color} intent="sectionHeader" className={cn("", titleClassName)}>
                 {title}
             </Text>
-            <Text intent="lead" muted={descMuted} className={descriptionClassName}>
+            <Text
+                color={color}
+                intent="lead"
+                muted={descMuted}
+                className={descriptionClassName}
+            >
                 {description}
             </Text>
         </div>

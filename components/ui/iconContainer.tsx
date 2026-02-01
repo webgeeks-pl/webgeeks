@@ -12,6 +12,7 @@ const iconContainerVariants = cva(
             },
             variant: {
                 brand: "border bg-brand/15 border-brand/30",
+                brandSolid: "bg-brand border border-brand",
                 default: "border bg-accent",
                 opposite: " border bg-clr-950",
                 success: " border text-success bg-success/15 border-success/30",

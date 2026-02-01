@@ -31,7 +31,7 @@ export default function Navigation({ navigation }: NavigationProps) {
         href === "/" ? pathname === "/" : pathname.startsWith(href);
 
     return (
-        <HeaderContainer className="sticky top-0 z-1000 border-b bg-white/50 backdrop-blur-md">
+        <HeaderContainer className="border-clr-500/30 sticky top-0 z-1000 border-b bg-white/50 backdrop-blur-md">
             <nav
                 aria-label={t("navigation")}
                 className="mx-auto flex max-w-384 items-center justify-between p-2 xl:px-6"
@@ -63,9 +63,7 @@ export default function Navigation({ navigation }: NavigationProps) {
                                         : ""
                                 }
                             >
-                                <Link href={route.link}>
-                                    {tRoutes(route.link)}
-                                </Link>
+                                <Link href={route.link}>{tRoutes(route.link)}</Link>
                             </Button>
                         );
                     })}
@@ -73,9 +71,7 @@ export default function Navigation({ navigation }: NavigationProps) {
                 <div className="hidden items-center gap-2 xl:flex xl:flex-1 xl:justify-end">
                     {ctaRoute && (
                         <Button variant="cta" asChild size="sm">
-                            <Link href={ctaRoute?.link || "#"}>
-                                {tRoutes("cta")}
-                            </Link>
+                            <Link href={ctaRoute?.link || "#"}>{tRoutes("cta")}</Link>
                         </Button>
                     )}
                 </div>
@@ -88,10 +84,7 @@ export default function Navigation({ navigation }: NavigationProps) {
                 <div className="fixed inset-0 z-5000" />
                 <DialogPanel className="fixed inset-y-0 right-0 z-5000 w-full overflow-y-auto bg-white/90 p-2 backdrop-blur-md sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                     <div className="flex items-center justify-between">
-                        <Link
-                            href="/#"
-                            className={"flex items-center justify-center"}
-                        >
+                        <Link href="/#" className={"flex items-center justify-center"}>
                             <span>Logo</span>
                         </Link>
                         <Button
@@ -101,10 +94,7 @@ export default function Navigation({ navigation }: NavigationProps) {
                             className="z-5000"
                         >
                             <span className="sr-only">{t("closeNav")}</span>
-                            <X
-                                aria-hidden="true"
-                                className="text-clr-brand-red size-6"
-                            />
+                            <X aria-hidden="true" className="text-clr-brand-red size-6" />
                         </Button>
                     </div>
                     <div className="mt-10 flow-root">
@@ -116,9 +106,7 @@ export default function Navigation({ navigation }: NavigationProps) {
                                             variant="link"
                                             asChild
                                             key={route.link}
-                                            onClick={() =>
-                                                setMobileMenuOpen(false)
-                                            }
+                                            onClick={() => setMobileMenuOpen(false)}
                                             className={
                                                 isActiveRoute(route.link)
                                                     ? "bg-accent text-brand"
