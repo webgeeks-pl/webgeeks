@@ -1,7 +1,7 @@
+import Tag from "@/components/base/tag";
 import { cn } from "@/lib/utils";
 import type { BasicComponentProps } from "@types";
 import { ElementType } from "react";
-import Tag from "../base/tag";
 import Text from "../typography/text";
 
 interface SectionProps extends BasicComponentProps {

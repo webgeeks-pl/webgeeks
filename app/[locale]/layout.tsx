@@ -1,3 +1,4 @@
+import Footer from "@/components/layout/footer";
 import Main from "@/components/layout/main";
 import Navigation from "@/components/navigation/navigation";
 import AppControls from "@/controls/appControls";
@@ -41,6 +42,7 @@ export default async function RootLayout({
                 <AppControls>
                     <Navigation />
                     <Main>{children}</Main>
+                    <Footer Logo={<div />} />
                 </AppControls>
             </body>
         </html>
