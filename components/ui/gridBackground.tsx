@@ -4,7 +4,7 @@ export function GridBackground() {
     return (
         <div
             className={cn(
-                "absolute inset-0",
+                "absolute inset-0 pointer-events-none",
                 "[background-size:40px_40px]",
                 "[background-image:linear-gradient(to_right,var(--color-clr-bg-extra-dark)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-clr-bg-extra-dark)_1px,transparent_1px)]"
                 // "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]"

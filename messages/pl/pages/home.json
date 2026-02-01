@@ -6,12 +6,12 @@
         "leadEnd": ", aby zapewnić najlepsze wrażenia użytkownikom i maksymalną widoczność w wyszukiwarkach.",
         "buttons": {
             "primary": "Zacznij teraz",
-            "secondary": "Zobacz projekty"
+            "secondary": "Skontaktuj się"
         },
         "badges": {
-            "top": "Nowość",
+            "top": "Wyprzedź konkurencję",
             "bottom": [
-                "Wyprzedz konkurencję",
+                "Profesjonalny design",
                 "Zbudowane z myślą o przyszłości",
                 "Optymalizacja pod kątem SEO"
             ]
@@ -19,19 +19,19 @@
         "cards": [
             {
                 "icon": "Gauge",
-                "value": "10x",
+                "value": "kilkukrotnie",
                 "title": "Szybsze ładowanie",
                 "description": "od stron z builderów"
             },
             {
                 "icon": "TrendingUp",
-                "value": "10x",
+                "value": "znacznie",
                 "title": "Lepsze SEO",
                 "description": "dla Twojej strony"
             },
             {
                 "icon": "Gauge",
-                "value": "10x",
+                "value": "zauważalnie",
                 "title": "Większa konwersja",
                 "description": "na Twojej stronie"
             }

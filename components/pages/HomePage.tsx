@@ -4,16 +4,23 @@ import {
     AlertTriangle,
     ArrowRight,
     Award,
+    BarChart3,
+    Blocks,
     Check,
     CheckCircle2,
     CloudCog,
     Code2,
     CornerLeftUp,
+    Database,
     DollarSign,
+    Globe2,
     Heart,
+    Infinity,
     Lock,
+    Mail,
     Rocket,
     Search,
+    ShoppingCart,
     Smartphone,
     Star,
     Users,
@@ -35,12 +42,12 @@ import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { EncryptedText } from "../ui/encrypted-text";
 import { Globe } from "../ui/globe";
-import { GridBackground } from "../ui/gridBackground";
 import IconContainer from "../ui/iconContainer";
 import { Iphone } from "../ui/iphone";
 import { getLucideIcon } from "../ui/lucideIcons";
 import { Safari } from "../ui/safari";
 import { Separator } from "../ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { TextShimmer } from "../ui/text-shimmer";
 import { Tilt } from "../ui/tilt";
 
@@ -51,6 +58,69 @@ const CardSchema = z.object({
     description: z.string(),
 });
 type Card = z.infer<typeof CardSchema>;
+
+const solutions = [
+    {
+        icon: Database,
+        title: "Headless CMS",
+        description:
+            "Sanity, Contentful lub Strapi - łatwe zarządzanie treścią bez znajomości kodu. Panel administracyjny dostosowany do Twoich potrzeb.",
+    },
+    {
+        icon: ShoppingCart,
+        title: "E-commerce",
+        description:
+            "Sklepy internetowe z Stripe, Shopify API lub WooCommerce. Szybkie, bezpieczne płatności i pełna kontrola nad produktami.",
+    },
+    {
+        icon: Zap,
+        title: "API & Integracje",
+        description:
+            "Połączenia z CRM (HubSpot, Salesforce), narzędziami marketingowymi, systemami płatności i dowolnymi zewnętrznymi serwisami.",
+    },
+    {
+        icon: Lock,
+        title: "Autentykacja",
+        description:
+            "Bezpieczne logowanie użytkowników z Auth0, NextAuth lub Supabase. Social login (Google, Facebook) i role użytkowników.",
+    },
+    {
+        icon: Globe2,
+        title: "Multi-język",
+        description:
+            "Strony wielojęzyczne z automatycznym wykrywaniem lokalizacji. SEO zoptymalizowane dla każdego języka osobno.",
+    },
+    {
+        icon: Code2,
+        title: "PWA",
+        description:
+            "Progressive Web Apps - strony działające jak natywne aplikacje mobilne. Offline mode, powiadomienia push i instalacja.",
+    },
+    {
+        icon: Blocks,
+        title: "Page Builder",
+        description:
+            "Wizualne edytory stron dla klientów. Twórz i edytuj strony bez developera - drag & drop, komponenty, preview.",
+    },
+    {
+        icon: BarChart3,
+        title: "Analytics & Tracking",
+        description:
+            "Google Analytics 4, Facebook Pixel, hotmaps i A/B testing. Pełna kontrola nad konwersjami i ruchem na stronie.",
+    },
+    {
+        icon: Mail,
+        title: "Email Marketing",
+        description:
+            "Integracje z Mailchimp, SendGrid, Klaviyo. Automatyczne kampanie, newslettery i powiadomienia transakcyjne.",
+    },
+    {
+        icon: Search,
+        title: "Wyszukiwanie",
+        description:
+            "Zaawansowane wyszukiwarki z Algolia lub ElasticSearch. Błyskawiczne wyniki, filtry i autocomplete.",
+    },
+];
 
 const packages = [
     {
@@ -133,93 +203,94 @@ const values = [
     {
         icon: Rocket,
         title: "Innowacja",
-        description: "Zawsze na czele technologii webowych",
+        description: "Zawsze na na bieżąco z nowinkami w branży webowej",
     },
     {
         icon: Users,
         title: "Partnerstwo",
-        description: "Twój sukces to nasz sukces",
+        description: "Twój sukces to nasz sukces. Wspólnie osiągamy cele",
     },
     {
         icon: Award,
         title: "Jakość",
-        description: "Perfekcja w każdym detalu",
+        description: "Perfekcja w każdym detalu. Dbamy o najwyższe standardy",
     },
     {
         icon: Heart,
         title: "Pasja",
-        description: "Kochamy to, co robimy",
+        description: "Kochamy to, co robimy i to widać w naszych projektach",
     },
 ];
 
 const benefits = [
     {
         icon: Zap,
-        title: "Błyskawiczna szybkość",
+        title: "Pacjenci czekają mniej",
         description:
-            "Strony ładują się w ułamku sekundy dzięki statycznej generacji i optymalizacji obrazów. Użytkownicy nie czekają, konwersje rosną.",
+            "Twoja strona otwiera się natychmiast. Klienci nie rezygnują z czekania, od razu widzą Twoją ofertę i mogą się umówić.",
     },
     {
         icon: Search,
-        title: "SEO na najwyższym poziomie",
+        title: "Pojawisz się w Google",
         description:
-            "Next.js to gwarancja wysokich pozycji w Google. Server-side rendering, meta tagi, sitemapy - wszystko wbudowane i działające od pierwszego dnia.",
+            "Pacjenci szukają dentysty, fryzjera czy salonu w okolicy? Pojawisz się na pierwszej stronie Google, zanim konkurencja.",
     },
     {
         icon: DollarSign,
-        title: "Niskie koszty utrzymania",
+        title: "Mniej wydatków na stronę",
         description:
-            "Zapomnij o drogim hostingu i comiesięcznych opłatach za wtyczki. Strony Next.js hostujemy za grosze, często za darmo na Vercel.",
+            "Zapomnij o corocznych opłatach za pluginy i drogi hosting. Twoja strona się sama utrzymuje, a My opiekujemy się resztą.",
     },
     {
         icon: Lock,
-        title: "Bezpieczeństwo bez zmartwień",
+        title: "Dane pacjentów bezpieczne",
         description:
-            "Zero luk w zabezpieczeniach WordPress. Brak bazy danych do zhackowania. Automatyczne aktualizacje bez ryzyka awarii strony.",
+            "Nie martwisz się o hakowanie ani wycieki danych. Informacje pacjentów są chronione jak w banku — bez zagrożeń.",
     },
     {
         icon: Smartphone,
-        title: "Mobilne doświadczenie",
+        title: "Działa idealnie na telefonie",
         description:
-            "Responsywność w DNA. Perfekcyjne działanie na każdym urządzeniu. Google to docenia i wyżej pozycjonuje strony mobile-friendly.",
+            "Większość pacjentów przegląda na smartfonie. Twoja strona wygląda pięknie na każdym ekranie, każdego urządzenia.",
     },
     {
         icon: CloudCog,
-        title: "Skalowalna infrastruktura",
+        title: "Strona rośnie z Tobą",
         description:
-            "Od startupu do milionów użytkowników - strona rośnie z Twoim biznesem. CDN, cache'owanie, edge computing - technologia najwyższej klasy.",
+            "Otworzyłeś nowy oddział, a klienci się mnożą? Strona bez problemu obsługuje wzrost — nigdy nie padnie pod naporem.",
     },
     {
         icon: Code2,
-        title: "Nowoczesna technologia",
+        title: "Łatwa do zmian",
         description:
-            "React, TypeScript, najnowsze standardy web development. Kod, który jest łatwy do rozwijania i utrzymania przez lata.",
+            "Chcesz zmienić coś na stronie? Nawet bez wiedzy technicznej możesz powiedzieć nam co zmienić — robimy to szybko i tanio.",
     },
     {
         icon: Users,
-        title: "Lepsza konwersja",
+        title: "Więcej umówionych wizyt",
         description:
-            "Szybsze strony = więcej klientów. Badania pokazują, że każda sekunda opóźnienia to 7% mniej konwersji. My dajemy Ci przewagę.",
+            "Szybka, ładna strona to większa szansa, że pacjent umówi się wizytę zamiast szukać konkurencji. Rzeczy się konwertują.",
     },
 ];
 
 const mobileFriendlyItems = [
     {
         number: "1",
-        title: "Ogromny rynek mobilny",
-        description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+        title: "Responsywny design",
+        description:
+            "Twoi klienci bez wysiłku znajdą to, czego szukają, więcej zapytań i mniej porzuceń na telefonie.",
     },
     {
         number: "2",
-        title: "Ogromny rynek mobilny",
+        title: "Mniej porzuceń, więcej leadów",
         description:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae hic alias illo eos dolor provident sequi reiciendis quasi animi",
+            "Krótka ścieżka do oferty i kontaktu zwiększa liczbę zapytań — telefonicznie i z formularza.",
     },
     {
         number: "3",
-        title: "Ogromny rynek mobilny",
+        title: "Szybkość, która sprzedaje",
         description:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae hic alias illo eos dolor",
+            "Szybsze wczytywanie to większe zaufanie i wyższa sprzedaż, a klienci zostają i wracają częściej.",
     },
 ];
 
@@ -276,7 +347,7 @@ export default function HomePage() {
                             <CornerLeftUp size={18} strokeWidth={3.5} />
                             <EncryptedText
                                 startDelayMs={1000}
-                                text="Nie zwlekaj, zacznij już dziś!"
+                                text="nie zwlekaj, ulepsz swój biznes już dziś!"
                                 className="font-heading font-bold text-nowrap"
                             />
                             {/* <CornerRightUp size={18} strokeWidth={3.5} /> */}
@@ -319,7 +390,7 @@ export default function HomePage() {
                                                 />
                                                 <Text
                                                     intent="var"
-                                                    className="text-4xl"
+                                                    className="text-2xl capitalize"
                                                     text={value}
                                                 />
                                             </div>
@@ -388,15 +459,15 @@ export default function HomePage() {
                                 <div className="mt-12 grid grid-cols-2 gap-6">
                                     <div className="border-l-4 border-gray-900 pl-4">
                                         <div className="mb-1 text-4xl text-gray-900">
-                                            150+
+                                            <Infinity size={42} />
                                         </div>
                                         <div className="text-sm text-gray-600">
-                                            Zrealizowanych projektów
+                                            Pomysłów na Twoją stronę
                                         </div>
                                     </div>
                                     <div className="border-l-4 border-gray-900 pl-4">
                                         <div className="mb-1 text-4xl text-gray-900">
-                                            98%
+                                            100%
                                         </div>
                                         <div className="text-sm text-gray-600">
                                             Zadowolonych klientów
@@ -412,10 +483,10 @@ export default function HomePage() {
                                     </div>
                                     <div className="border-l-4 border-gray-900 pl-4">
                                         <div className="mb-1 text-4xl text-gray-900">
-                                            24/7
+                                            w 24 godz.
                                         </div>
                                         <div className="text-sm text-gray-600">
-                                            Wsparcie techniczne
+                                            Gwarancja odpowiedzi na zapytania
                                         </div>
                                     </div>
                                 </div>
@@ -452,73 +523,84 @@ export default function HomePage() {
                 </SectionContent>
             </Section>
 
-            <Section className="pt-size-xl sm:pt-size-2xl pb-size-sm sm:pb-size-md relative">
+            <Section className="py-size-xl sm:py-size-2xl relative">
                 <SectionContent className="gap-size-xl">
-                    <GridBackground />
-                    <SectionHeader
-                        title="Nowoczesny design i funkcjonalność"
-                        description="Tworzymy strony, które nie tylko wyglądają świetnie, ale są też intuicyjne i łatwe w obsłudze dla Twoich użytkowników."
-                    />
-                    <Safari
-                        url="https:\\"
-                        imageSrc="/template-hero.webp"
-                        className="max-w-7xl"
-                    />
-                </SectionContent>
-            </Section>
-            <Separator decorative />
-            {/* ---------------- Mobile Friendly ---------------- */}
-            <Section className="pb-size-xl pt-size-sm sm:pt-size-md sm:pb-size-2xl bg-white">
-                <SectionContent className="gap-size-md sm:gap-size-xl">
-                    <SectionHeader
-                        title="Dopasowane na urządzenia mobilne"
-                        description=" Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae
-                            hic alias illo eos dolor provident sequi reiciendis quasi
-                            animi sunt delectus cum"
-                    />
-
-                    <div className="gap-size-md grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 lg:grid-cols-3">
-                        <Tilt
-                            rotationFactor={6}
-                            isRevese
-                            style={{
-                                transformOrigin: "center center",
-                            }}
-                            springOptions={{
-                                stiffness: 26.7,
-                                damping: 4.1,
-                                mass: 0.2,
-                            }}
-                            className="group relative h-full w-full max-w-md rounded-lg max-md:mx-auto md:col-start-2 md:row-span-3"
+                    <Tabs
+                        defaultValue="desktop"
+                        className="gap-size-md flex w-full flex-col"
+                    >
+                        <TabsList variant="default" className="mx-auto">
+                            <TabsTrigger value="desktop">Komputery</TabsTrigger>
+                            <TabsTrigger value="mobile">Urządzenia mobilne</TabsTrigger>
+                        </TabsList>
+                        <TabsContent
+                            value="desktop"
+                            className="gap-size-md flex flex-col"
                         >
-                            <Iphone src="/strona.jpeg" className="" />
-                        </Tilt>
-                        {mobileFriendlyItems.map((item, index) => (
-                            <div
-                                className={cn(
-                                    "flex flex-col md:col-start-1 md:justify-center md:text-end",
-                                    index === 0 && "md:row-start-1",
-                                    index === 1 &&
-                                        "md:row-start-2 lg:col-start-3 lg:text-start",
-                                    index === 2 && "md:row-start-3"
-                                )}
-                                key={index}
-                            >
-                                <Text intent="var" className="text-4xl sm:text-6xl">
-                                    {item.number}
-                                </Text>
-                                <Text intent="h3">{item.title}</Text>
-                                <Text muted size="small">
-                                    {item.description}
-                                </Text>
+                            <SectionHeader
+                                title="Nowoczesny design i funkcjonalność"
+                                description="Tworzymy strony, które nie tylko wyglądają świetnie, ale są też intuicyjne i łatwe w obsłudze dla Twoich użytkowników."
+                            />
+                            <Safari
+                                url="https:\\"
+                                imageSrc="/template-hero.webp"
+                                className="max-w-7xl"
+                            />
+                        </TabsContent>
+                        <TabsContent value="mobile" className="gap-size-md flex flex-col">
+                            <SectionHeader
+                                title="Dopasowane na urządzenia mobilne"
+                                description="Ponad 60% ruchu w internecie pochodzi z urządzeń mobilnych. Twoja strona będzie wyglądać i działać perfekcyjnie na każdym ekranie."
+                            />
+
+                            <div className="gap-size-md grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 lg:grid-cols-3">
+                                <Tilt
+                                    rotationFactor={6}
+                                    isRevese
+                                    style={{
+                                        transformOrigin: "center center",
+                                    }}
+                                    springOptions={{
+                                        stiffness: 26.7,
+                                        damping: 4.1,
+                                        mass: 0.2,
+                                    }}
+                                    className="group relative h-full w-full max-w-md rounded-lg max-md:mx-auto md:col-start-2 md:row-span-3"
+                                >
+                                    <Iphone src="/strona.jpeg" className="" />
+                                </Tilt>
+                                {mobileFriendlyItems.map((item, index) => (
+                                    <div
+                                        className={cn(
+                                            "flex flex-col md:col-start-1 md:justify-center md:text-end",
+                                            index === 0 && "md:row-start-1",
+                                            index === 1 &&
+                                                "md:row-start-2 lg:col-start-3 lg:text-start",
+                                            index === 2 && "md:row-start-3"
+                                        )}
+                                        key={index}
+                                    >
+                                        <Text
+                                            intent="var"
+                                            className="text-4xl sm:text-6xl"
+                                        >
+                                            {item.number}
+                                        </Text>
+                                        <Text intent="h3">{item.title}</Text>
+                                        <Text muted size="small">
+                                            {item.description}
+                                        </Text>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
+                        </TabsContent>
+                    </Tabs>
                 </SectionContent>
             </Section>
             <Separator decorative />
+
             {/* ---------------- Why Next.js ---------------- */}
-            <Section className="py-size-xl sm:py-size-2xl bg-white">
+            <Section className="py-size-xl sm:py-size-2xl bg-clr-100">
                 <SectionContent>
                     <FadeInSection className="mb-16 text-center">
                         <SectionHeader
@@ -557,6 +639,49 @@ export default function HomePage() {
                     </div>
                 </SectionContent>
             </Section>
+            <Separator decorative />
+
+            <Section className="py-size-xl md:py-size-2xl bg-clr-100">
+                <SectionContent className="gap-size-lg">
+                    <SectionHeader
+                        title="Rozwiązania technologiczne"
+                        description="Oferujemy kompleksowe rozwiązania dopasowane do potrzeb
+                            Twojego biznesu. Od prostych stron po zaawansowane platformy z
+                            pełną integracją."
+                    />
+
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                        {solutions.map((solution, index) => {
+                            return (
+                                <ScrollReveal
+                                    key={index}
+                                    delay={index * 0.05}
+                                    direction="up"
+                                >
+                                    <Card className="h-full gap-2">
+                                        <CardHeader>
+                                            <IconContainer Icon={solution.icon} />
+                                            <Text intent="h3" text={solution.title} />
+                                        </CardHeader>
+                                        <CardContent>
+                                            <Text muted text={solution.description} />
+                                        </CardContent>
+                                    </Card>
+                                </ScrollReveal>
+                            );
+                        })}
+                    </div>
+
+                    <div className="mt-12 text-center">
+                        <p className="mb-6 text-gray-600">
+                            Nie widzisz rozwiązania, którego potrzebujesz?
+                            <br className="hidden sm:block" />
+                            Zbudujemy dedykowaną integrację pod Twoje wymagania.
+                        </p>
+                    </div>
+                </SectionContent>
+            </Section>
+
             <Separator decorative />
             <Section className="py-size-xl sm:py-size-2xl bg-white">
                 <SectionContent className="gap-size-lg">
