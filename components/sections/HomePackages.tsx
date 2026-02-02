@@ -137,6 +137,90 @@ export function HomePackages() {
                         );
                     })}
                 </div>
+
+                <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
+                    <Card className="relative flex h-full flex-col overflow-visible transition-all duration-300 lg:grid lg:grid-cols-2">
+                        <CardHeader className="overflow-auto pb-4 text-center lg:text-start">
+                            <IconContainer
+                                Icon={Rocket}
+                                className="max-lg:mx-auto"
+                                color="default"
+                                variant="outline"
+                            />
+
+                            <Text intent="h3" className="mb-2" text="E-commerce" />
+
+                            <Text intent="var" className="text-3xl" text="od 11 999 zł" />
+                            <Text
+                                muted
+                                text="Sklep online z pełnym procesem zakupowym i integracjami płatności."
+                            />
+                        </CardHeader>
+
+                        <CardContent className="flex flex-1 flex-col">
+                            <ul className="mb-6 flex-1 space-y-3">
+                                {[
+                                    "Katalog produktów",
+                                    "Płatności online",
+                                    "Koszyk i zamówienia",
+                                    "Panel administracyjny",
+                                    "Automatyczne maile",
+                                    "Optymalizacja pod SEO",
+                                ].map((feature, idx) => (
+                                    <li key={idx} className="flex items-start gap-3">
+                                        <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
+                                        <Text>{feature}</Text>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <Button size="lg" variant="outline">
+                                Wybierz pakiet
+                            </Button>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="relative flex h-full flex-col overflow-visible transition-all duration-300 lg:grid lg:grid-cols-2">
+                        <CardHeader className="overflow-auto pb-4 text-center lg:text-start">
+                            <IconContainer
+                                Icon={Star}
+                                className="max-lg:mx-auto"
+                                color="default"
+                                variant="outline"
+                            />
+
+                            <Text intent="h3" className="mb-2" text="Aplikacja webowa" />
+
+                            <Text intent="var" className="text-3xl" text="od 14 999 zł" />
+                            <Text
+                                muted
+                                text="Dedykowana aplikacja webowa dopasowana do procesów w Twojej firmie."
+                            />
+                        </CardHeader>
+
+                        <CardContent className="flex flex-1 flex-col">
+                            <ul className="mb-6 flex-1 space-y-3">
+                                {[
+                                    "Indywidualny projekt UX/UI",
+                                    "Role i uprawnienia",
+                                    "Integracje z systemami",
+                                    "Panel administracyjny",
+                                    "Analityka i raporty",
+                                    "Wysoka wydajność",
+                                ].map((feature, idx) => (
+                                    <li key={idx} className="flex items-start gap-3">
+                                        <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
+                                        <Text>{feature}</Text>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <Button size="lg" variant="outline">
+                                Wybierz pakiet
+                            </Button>
+                        </CardContent>
+                    </Card>
+                </div>
             </SectionContent>
         </Section>
     );

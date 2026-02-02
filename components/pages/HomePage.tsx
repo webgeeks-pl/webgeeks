@@ -4,7 +4,6 @@ import { Page } from "../layout/page";
 import { HomeAbout } from "../sections/HomeAbout";
 import { HomeComparison } from "../sections/HomeComparison";
 import { HomeCtaFooter } from "../sections/HomeCtaFooter";
-import { HomeCustomOffer } from "../sections/HomeCustomOffer";
 import { HomeFeatures } from "../sections/HomeFeatures";
 import { HomeHero } from "../sections/HomeHero";
 import { HomePackages } from "../sections/HomePackages";
@@ -29,8 +28,6 @@ export default function HomePage() {
             <HomePackages />
             <Separator decorative />
             <HomeSolutions />
-            <Separator decorative />
-            <HomeCustomOffer />
             <Separator decorative />
             <HomeComparison />
             <Separator decorative />
