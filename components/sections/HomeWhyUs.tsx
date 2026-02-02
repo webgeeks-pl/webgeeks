@@ -1,5 +1,4 @@
 "use client";
-
 import {
     CloudCog,
     Code2,
@@ -89,7 +88,7 @@ const chartConfig = {
 
 export function HomeWhyUs() {
     return (
-        <Section className="py-size-xl sm:py-size-2xl bg-clr-50">
+        <Section className="py-size-xl sm:py-size-2xl bg-clr-50 overflow-hidden">
             <SectionContent>
                 {/* <div className="mb-16 text-center">
                     <SectionHeader
@@ -173,12 +172,12 @@ export function HomeWhyUs() {
                     </Card>
 
                     <Card className="hover:ring-brand h-full">
-                        <CardContent className="flex h-full flex-col justify-between gap-2 overflow-hidden">
-                            <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
+                        <CardContent className="flex h-full flex-col justify-between gap-2">
+                            <div className="relative flex h-full w-full items-center justify-center">
                                 <div className="absolute inset-0 z-0 overflow-hidden">
                                     <AnimatedBackgroundSwitcher />
                                 </div>
-                                <div className="relative z-10">
+                                <div className="relative z-10 overflow-hidden">
                                     <div className="h-9 w-fit">
                                         <RotatingText
                                             mainClassName="flex items-center justify-center px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 rounded-lg whitespace-nowrap h-full w-full "
