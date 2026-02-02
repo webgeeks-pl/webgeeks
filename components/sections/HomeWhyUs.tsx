@@ -1,14 +1,7 @@
 "use client";
-import {
-    CloudCog,
-    Code2,
-    DollarSign,
-    Lock,
-    Search,
-    Smartphone,
-    Users,
-    Zap,
-} from "lucide-react";
+import { ThumbsUp, User } from "lucide-react";
+import { useTranslations } from "next-intl";
+import CountUp from "../CountUp";
 import Section, { SectionContent, SectionHeader } from "../layout/section";
 import Text from "../typography/text";
 import { AnimatedBackgroundSwitcher } from "../ui/animatedBackgroundSwitcher";
@@ -16,77 +9,61 @@ import { Card, CardContent } from "../ui/card";
 import { FlickeringGrid } from "../ui/flickering-grid";
 import IconContainer from "../ui/iconContainer";
 import { Iphone } from "../ui/iphone";
+import { getLucideIcon } from "../ui/lucideIcons";
 import { Ripple } from "../ui/ripple";
 import RotatingText from "../ui/RotatingText";
 import { Safari } from "../ui/safari";
 import { TypingAnimation } from "../ui/typing-animation";
 import { WarpBackground } from "../ui/warp-background";
 
-const benefits = {
-    speed: {
-        icon: Zap,
-        title: "Pacjenci czekają mniej",
-        description: "Twoja strona otwiera się natychmiast.",
-    },
-    seo: {
-        icon: Search,
-        title: "Pojawisz się w Google",
-        description: "Pojawisz się na pierwszej stronie Google, zanim konkurencja.",
-    },
-    costs: {
-        icon: DollarSign,
-        title: "Niższe koszty utrzymania",
-        description: "Zapomnij o corocznych opłatach za pluginy i drogi hosting.",
-    },
-    security: {
-        icon: Lock,
-        title: "Bezpieczna strona",
-        description: "Nie martwisz się o hakowanie ani wycieki danych.",
-    },
-    mobile: {
-        icon: Smartphone,
-        title: "Responsywny design",
-        description: "Twoja strona wygląda pięknie na każdym ekranie.",
-    },
-    scalability: {
-        icon: CloudCog,
-        title: "Strona rośnie z Tobą",
-        description: " Strona bez problemu obsługuje wzrost ruchu i nowych funkcji.",
-    },
-    easy: {
-        icon: Code2,
-        title: "Łatwa do zmian",
-        description: "Szybkie aktualizacje treści i funkcji.",
-    },
-    conversions: {
-        icon: Users,
-        title: "Większa konwersja",
-        description: "Profesjonalna strona buduje zaufanie i przyciąga więcej pacjentów.",
-    },
-    rise: {
-        icon: Users,
-        title: "Przyspiesz rozwój twojego biznesu",
-        description: "Strona to inwestycja, która się zwraca.",
-    },
-};
-
-const chartData = [
-    { label: "1", value: 12 },
-    { label: "2", value: 18 },
-    { label: "3", value: 26 },
-    { label: "4", value: 35 },
-    { label: "5", value: 47 },
-    { label: "6", value: 62 },
-];
-
-const chartConfig = {
-    value: {
-        label: "Wzrost",
-        color: "hsl(var(--chart-1))",
-    },
-};
-
 export function HomeWhyUs() {
+    const t = useTranslations("pages.home.whyUs");
+    const benefits = {
+        speed: {
+            icon: getLucideIcon(t("benefits.speed.icon")),
+            title: t("benefits.speed.title"),
+            description: t("benefits.speed.description"),
+        },
+        seo: {
+            icon: getLucideIcon(t("benefits.seo.icon")),
+            title: t("benefits.seo.title"),
+            description: t("benefits.seo.description"),
+        },
+        costs: {
+            icon: getLucideIcon(t("benefits.costs.icon")),
+            title: t("benefits.costs.title"),
+            description: t("benefits.costs.description"),
+        },
+        security: {
+            icon: getLucideIcon(t("benefits.security.icon")),
+            title: t("benefits.security.title"),
+            description: t("benefits.security.description"),
+        },
+        mobile: {
+            icon: getLucideIcon(t("benefits.mobile.icon")),
+            title: t("benefits.mobile.title"),
+            description: t("benefits.mobile.description"),
+        },
+        scalability: {
+            icon: getLucideIcon(t("benefits.scalability.icon")),
+            title: t("benefits.scalability.title"),
+            description: t("benefits.scalability.description"),
+        },
+        easy: {
+            icon: getLucideIcon(t("benefits.easy.icon")),
+            title: t("benefits.easy.title"),
+            description: t("benefits.easy.description"),
+        },
+        conversions: {
+            icon: getLucideIcon(t("benefits.conversions.icon")),
+            title: t("benefits.conversions.title"),
+            description: t("benefits.conversions.description"),
+        },
+    };
+
+    const rotatingTexts = t.raw("rotatingTexts") as string[];
+    const typingWords = t.raw("typingWords") as string[];
+    console.log("render");
     return (
         <Section className="py-size-xl sm:py-size-2xl bg-clr-50 overflow-hidden">
             <SectionContent>
@@ -194,12 +171,7 @@ export function HomeWhyUs() {
                                                 stiffness: 400,
                                             }}
                                             rotationInterval={4000}
-                                            texts={[
-                                                "Strona",
-                                                "Internet",
-                                                "Webgeeks",
-                                                "Design",
-                                            ]}
+                                            texts={rotatingTexts}
                                         />
                                     </div>
                                 </div>
@@ -244,9 +216,9 @@ export function HomeWhyUs() {
                                 className="text-center"
                             /> */}
                             <SectionHeader
-                                title="Dlaczego nasza strona?"
+                                title={t("sectionHeader.title")}
                                 descMuted={false}
-                                description="Wiemy jak przekuć technologię w realne korzyści dla Twojego biznesu."
+                                description={t("sectionHeader.description")}
                             />
                         </CardContent>
                     </Card>
@@ -278,7 +250,18 @@ export function HomeWhyUs() {
                     </Card>
                     <Card className="hover:ring-brand col-span-2 h-full">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
-                            <div className="h-full"></div>
+                            <div className="h-full">
+                                <div className="flex gap-1">
+                                    <User size={18} />
+                                    <CountUp from={100} to={300} duration={2} />
+                                </div>
+                                <div className="flex gap-1">
+                                    <ThumbsUp size={18} />
+                                    <ThumbsUp size={18} />
+                                    <ThumbsUp size={18} />
+                                    <CountUp from={100} to={300} duration={2} />
+                                </div>
+                            </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
                                     <IconContainer
@@ -337,15 +320,7 @@ export function HomeWhyUs() {
                                 >
                                     SEO
                                 </TextShimmer> */}
-                                <TypingAnimation
-                                    startOnView
-                                    loop
-                                    words={[
-                                        "Fryzjer",
-                                        "Salon kosmetyczny",
-                                        "Gabinet masażu",
-                                    ]}
-                                />
+                                <TypingAnimation startOnView loop words={typingWords} />
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">

@@ -9,6 +9,7 @@ export const routes: NavigationRoutes = [
     // { link: "/templates" },
     { link: "/contact" },
     // { link: "/testimonials" },
+    { link: "/migration" },
     {
         link: "/contact",
         cta: true,

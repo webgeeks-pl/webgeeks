@@ -1,5 +1,8 @@
 import { cn } from "@/lib/utils";
+import { getArrayFromMessages } from "@/lib/utils/array";
 import { CornerLeftDown } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { z } from "zod";
 import Section, { SectionContent, SectionHeader } from "../layout/section";
 import Text from "../typography/text";
 import { EncryptedText } from "../ui/encrypted-text";
@@ -8,35 +11,26 @@ import { Safari } from "../ui/safari";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { Tilt } from "../ui/tilt";
 
-const mobileFriendlyItems = [
-    {
-        number: "1",
-        title: "Responsywny design",
-        description:
-            "Twoi klienci bez wysiłku znajdą to, czego szukają, więcej zapytań i mniej porzuceń na telefonie.",
-    },
-    {
-        number: "2",
-        title: "Mniej porzuceń, więcej leadów",
-        description:
-            "Krótka ścieżka do oferty i kontaktu zwiększa liczbę zapytań — telefonicznie i z formularza.",
-    },
-    {
-        number: "3",
-        title: "Szybkość, która sprzedaje",
-        description:
-            "Szybsze wczytywanie to większe zaufanie i wyższa sprzedaż, a klienci zostają i wracają częściej.",
-    },
-];
+const MobileItemSchema = z.object({
+    number: z.string(),
+    title: z.string(),
+    description: z.string(),
+});
 
 export function HomeShowcase() {
+    const t = useTranslations("pages.home.showcase");
+    const mobileFriendlyItems = getArrayFromMessages(
+        t.raw("mobile.items"),
+        MobileItemSchema
+    );
+
     return (
         <Section className="py-size-xl sm:py-size-2xl relative">
             <SectionContent className="gap-size-xl">
                 <Tabs defaultValue="desktop" className="gap-size-md flex w-full flex-col">
                     <TabsList className="relative mx-auto">
-                        <TabsTrigger value="desktop">Komputery</TabsTrigger>
-                        <TabsTrigger value="mobile">Urządzenia mobilne</TabsTrigger>
+                        <TabsTrigger value="desktop">{t("tabs.desktop")}</TabsTrigger>
+                        <TabsTrigger value="mobile">{t("tabs.mobile")}</TabsTrigger>
                         <div className="text-clr-900 absolute bottom-full mb-2 flex gap-2 md:left-3/5">
                             <CornerLeftDown
                                 size={18}
@@ -45,15 +39,15 @@ export function HomeShowcase() {
                             />
                             <EncryptedText
                                 startDelayMs={1000}
-                                text="sprawdź, jak Twoja strona działa na różnych urządzeniach"
+                                text={t("encryptedText")}
                                 className="font-heading font-bold text-nowrap"
                             />
                         </div>
                     </TabsList>
                     <TabsContent value="desktop" className="gap-size-md flex flex-col">
                         <SectionHeader
-                            title="Nowoczesny design i funkcjonalność"
-                            description="Tworzymy strony, które nie tylko wyglądają świetnie, ale są też intuicyjne i łatwe w obsłudze dla Twoich użytkowników."
+                            title={t("desktop.title")}
+                            description={t("desktop.description")}
                         />
                         <Safari
                             url="https:\\"
@@ -63,8 +57,8 @@ export function HomeShowcase() {
                     </TabsContent>
                     <TabsContent value="mobile" className="gap-size-md flex flex-col">
                         <SectionHeader
-                            title="Dopasowane na urządzenia mobilne"
-                            description="Ponad 60% ruchu w internecie pochodzi z urządzeń mobilnych. Twoja strona będzie wyglądać i działać perfekcyjnie na każdym ekranie."
+                            title={t("mobile.title")}
+                            description={t("mobile.description")}
                         />
 
                         <div className="gap-size-md grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 lg:grid-cols-3">

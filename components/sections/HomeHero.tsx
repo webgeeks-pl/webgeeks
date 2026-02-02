@@ -58,7 +58,7 @@ export function HomeHero() {
                         <CornerLeftUp size={18} strokeWidth={3.5} />
                         <EncryptedText
                             startDelayMs={1000}
-                            text="nie zwlekaj, ulepsz swój biznes już dziś!"
+                            text={t("hero.encryptedText")}
                             className="font-heading font-bold text-nowrap"
                         />
                     </div>

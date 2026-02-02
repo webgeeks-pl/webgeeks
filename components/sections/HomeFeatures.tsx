@@ -17,6 +17,7 @@ const CardSchema = z.object({
 });
 
 export function HomeFeatures() {
+    const t = useTranslations("pages.home");
     const tHero = useTranslations("pages.home.hero");
     const heroCards = getArrayFromMessages(tHero.raw("cards"), CardSchema);
     return (
@@ -55,7 +56,7 @@ export function HomeFeatures() {
                                 intent="h3"
                                 className="from-clr-900 to-clr-400 z-10 bg-linear-to-b bg-clip-text text-center font-semibold text-transparent"
                             >
-                                Docieraj na cały świat
+                                {t("features.globeTitle")}
                             </Text>
                             <Globe />
                         </CardContent>
