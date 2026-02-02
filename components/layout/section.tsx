@@ -53,7 +53,7 @@ interface SectionHeaderProps extends BasicComponentProps {
     descriptionClassName?: string;
     titleClassName?: string;
     descMuted?: boolean;
-    color?: "default" | "opposite";
+    color?: "primary" | "opposite";
 }
 
 export function SectionHeader({
@@ -63,7 +63,7 @@ export function SectionHeader({
     descriptionClassName,
     titleClassName,
     descMuted = true,
-    color,
+    color = "primary",
 }: SectionHeaderProps) {
     return (
         <div
@@ -77,8 +77,8 @@ export function SectionHeader({
             </Text>
             <Text
                 color={color}
-                intent="lead"
                 muted={descMuted}
+                intent="lead"
                 className={descriptionClassName}
             >
                 {description}
