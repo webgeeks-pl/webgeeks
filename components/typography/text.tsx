@@ -129,7 +129,6 @@ export default function Text<E extends keyof HTMLElementTagNameMap = "p">({
 }: TextProps<E>) {
     const asTag = as ?? (intent && defaultTags[intent]) ?? "p";
     const output = text || children;
-    console.log("render text", text);
 
     const processedOutput =
         shouldAddHardBreaks && typeof output === "string"

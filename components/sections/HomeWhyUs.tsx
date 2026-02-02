@@ -1,11 +1,10 @@
-"use client";
-import { ThumbsUp, User } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Section, { SectionContent, SectionHeader } from "../layout/section";
 import Text from "../typography/text";
 import { AnimatedBackgroundSwitcher } from "../ui/animatedBackgroundSwitcher";
 import { Card, CardContent } from "../ui/card";
 import { FlickeringGrid } from "../ui/flickering-grid";
+import { FloatingStats } from "../ui/floating-stats";
 import IconContainer from "../ui/iconContainer";
 import { Iphone } from "../ui/iphone";
 import { getLucideIcon } from "../ui/lucideIcons";
@@ -77,14 +76,18 @@ export function HomeWhyUs() {
                 <div className="grid grid-cols-1 grid-rows-[repeat(3,minmax(250px,1fr))] gap-6 md:grid-cols-2 lg:grid-cols-4">
                     <Card className="hover:ring-brand h-full">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
-                            <WarpBackground beamDuration={5} className="m-0 h-full p-0">
-                                <></>
-                            </WarpBackground>
+                            <div className="relative h-full">
+                                <WarpBackground
+                                    beamDuration={5}
+                                    className="absolute inset-0 m-0 h-full p-0"
+                                >
+                                    <></>
+                                </WarpBackground>
+                            </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
                                     <IconContainer
                                         variant={"ghost"}
-                                        color={"brand"}
                                         size={"md"}
                                         Icon={getLucideIcon(benefits.speed.icon)}
                                     />
@@ -109,7 +112,6 @@ export function HomeWhyUs() {
                                 <div className="mb-0.5 flex items-center gap-1">
                                     <IconContainer
                                         variant={"ghost"}
-                                        color={"brand"}
                                         size={"md"}
                                         Icon={getLucideIcon(benefits.security.icon)}
                                     />
@@ -127,12 +129,13 @@ export function HomeWhyUs() {
 
                     <Card className="hover:ring-brand col-span-2 h-full">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
-                            <div className="h-full" />
+                            <div className="relative h-full">
+                                {/* <CostSavingsAnimation /> */}
+                            </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
                                     <IconContainer
                                         variant={"ghost"}
-                                        color={"brand"}
                                         size={"md"}
                                         Icon={getLucideIcon(benefits.costs.icon)}
                                     />
@@ -180,7 +183,6 @@ export function HomeWhyUs() {
                                 <div className="mb-0.5 flex items-center gap-1">
                                     <IconContainer
                                         variant={"ghost"}
-                                        color={"brand"}
                                         size={"md"}
                                         Icon={getLucideIcon(benefits.easy.icon)}
                                     />
@@ -216,7 +218,6 @@ export function HomeWhyUs() {
                                 <div className="mb-0.5 flex items-center gap-1">
                                     <IconContainer
                                         variant={"ghost"}
-                                        color={"brand"}
                                         size={"md"}
                                         Icon={getLucideIcon(benefits.mobile.icon)}
                                     />
@@ -233,23 +234,11 @@ export function HomeWhyUs() {
                     </Card>
                     <Card className="hover:ring-brand col-span-2 h-full">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
-                            <div className="h-full">
-                                <div className="flex gap-1">
-                                    <User size={18} />
-                                    {/* <CountUp from={100} to={300} duration={2} /> */}
-                                </div>
-                                <div className="flex gap-1">
-                                    <ThumbsUp size={18} />
-
-                                    <ThumbsUp size={18} />
-                                    {/* <CountUp from={100} to={300} duration={2} /> */}
-                                </div>
-                            </div>
+                            <FloatingStats />
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
                                     <IconContainer
                                         variant={"ghost"}
-                                        color={"brand"}
                                         size={"md"}
                                         Icon={getLucideIcon(benefits.conversions.icon)}
                                     />
@@ -274,9 +263,8 @@ export function HomeWhyUs() {
                                 <div className="mb-0.5 flex items-center gap-1">
                                     <IconContainer
                                         variant={"ghost"}
-                                        color={"brand"}
                                         size={"md"}
-                                        Icon={benefits.scalability.icon}
+                                        Icon={getLucideIcon(benefits.scalability.icon)}
                                     />
                                     <Text
                                         intent="h4"
@@ -299,9 +287,8 @@ export function HomeWhyUs() {
                                 <div className="mb-0.5 flex items-center gap-1">
                                     <IconContainer
                                         variant={"ghost"}
-                                        color={"brand"}
                                         size={"md"}
-                                        Icon={benefits.seo.icon}
+                                        Icon={getLucideIcon(benefits.seo.icon)}
                                     />
                                     <Text
                                         intent="h4"

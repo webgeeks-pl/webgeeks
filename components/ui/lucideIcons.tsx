@@ -1,6 +1,11 @@
 import { FileQuestionMarkIcon, type LucideProps } from "lucide-react";
 import dynamic from "next/dynamic";
-import type { ComponentType, ForwardRefExoticComponent, RefAttributes } from "react";
+import {
+    memo,
+    type ComponentType,
+    type ForwardRefExoticComponent,
+    type RefAttributes,
+} from "react";
 
 type LucideIcon = ForwardRefExoticComponent<
     Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
@@ -33,10 +38,11 @@ interface IconProps extends LucideProps {
     name: keyof typeof import("lucide-react") | string;
 }
 
-export function LucideIcon({ name, ...props }: IconProps) {
+export const LucideIcon = memo(function LucideIcon({ name, ...props }: IconProps) {
     const Icon = getCachedIcon(name);
+    // eslint-disable-next-line react-hooks/static-components
     return <Icon {...props} />;
-}
+});
 
 export function getLucideIcon(name: string | null): ComponentType<LucideProps> {
     if (!name) {

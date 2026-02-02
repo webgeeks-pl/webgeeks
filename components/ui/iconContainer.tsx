@@ -20,6 +20,7 @@ const iconContainerVariants = cva(
                     "border text-destructive bg-destructive/15 border-destructive/30",
                 ghost: "bg-transparent",
                 outline: "border bg-transparent border border-border",
+                none: "",
             },
             color: {
                 brand: "",
