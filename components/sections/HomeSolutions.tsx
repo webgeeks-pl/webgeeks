@@ -10,6 +10,7 @@ import {
     ShoppingCart,
     Zap,
 } from "lucide-react";
+import { MotionCarousel } from "../animate-ui/components/community/motion-carousel";
 import Section, { SectionContent, SectionHeader } from "../layout/section";
 import Text from "../typography/text";
 import { Card, CardContent, CardHeader } from "../ui/card";
@@ -19,60 +20,70 @@ const solutions = [
     {
         icon: Database,
         title: "Headless CMS",
+        label: "CMS",
         description:
             "Sanity, Contentful lub Strapi - łatwe zarządzanie treścią bez znajomości kodu. Panel administracyjny dostosowany do Twoich potrzeb.",
     },
     {
         icon: ShoppingCart,
         title: "E-commerce",
+        label: "shop",
         description:
             "Sklepy internetowe z Stripe, Shopify API lub WooCommerce. Szybkie, bezpieczne płatności i pełna kontrola nad produktami.",
     },
     {
         icon: Zap,
         title: "API & Integracje",
+        label: "API",
         description:
             "Połączenia z CRM (HubSpot, Salesforce), narzędziami marketingowymi, systemami płatności i dowolnymi zewnętrznymi serwisami.",
     },
     {
         icon: Lock,
         title: "Autentykacja",
+        label: "Logowanie",
         description:
             "Bezpieczne logowanie użytkowników z Auth0, NextAuth lub Supabase. Social login (Google, Facebook) i role użytkowników.",
     },
     {
         icon: Globe2,
         title: "Multi-język",
+        label: "języki",
         description:
             "Strony wielojęzyczne z automatycznym wykrywaniem lokalizacji. SEO zoptymalizowane dla każdego języka osobno.",
     },
     {
         icon: Code2,
         title: "PWA",
+        label: "PWA",
         description:
             "Progressive Web Apps - strony działające jak natywne aplikacje mobilne. Offline mode, powiadomienia push i instalacja.",
     },
     {
         icon: Blocks,
         title: "Page Builder",
+        label: "Edycja",
         description:
             "Wizualne edytory stron dla klientów. Twórz i edytuj strony bez developera - drag & drop, komponenty, preview.",
     },
     {
         icon: BarChart3,
         title: "Analytics & Tracking",
+        label: "Analityka",
         description:
             "Google Analytics 4, Facebook Pixel, hotmaps i A/B testing. Pełna kontrola nad konwersjami i ruchem na stronie.",
     },
     {
         icon: Mail,
         title: "Email Marketing",
+        label: "E-mail",
         description:
             "Integracje z Mailchimp, SendGrid, Klaviyo. Automatyczne kampanie, newslettery i powiadomienia transakcyjne.",
     },
     {
         icon: Search,
         title: "Wyszukiwanie",
+        label: "Szukaj",
         description:
             "Zaawansowane wyszukiwarki z Algolia lub ElasticSearch. Błyskawiczne wyniki, filtry i autocomplete.",
     },
@@ -87,8 +98,22 @@ export function HomeSolutions() {
                     description="Oferujemy kompleksowe rozwiązania dopasowane do potrzeb Twojego biznesu. Od prostych stron po zaawansowane platformy z pełną integracją."
                 />
 
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {solutions.map((solution, index) => {
+                {/* <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"> */}
+                {/* {solutions.map((solution, index) => {
+                        return (
+                            <Card className="h-full gap-2" key={index}>
+                                <CardHeader>
+                                    <IconContainer Icon={solution.icon} />
+                                    <Text intent="h3" text={solution.title} />
+                                </CardHeader>
+                                <CardContent>
+                                    <Text muted text={solution.description} />
+                                </CardContent>
+                            </Card>
+                        );
+                    })} */}
+                <MotionCarousel
+                    slides={solutions.map((solution, index) => {
                         return (
                             <Card className="h-full gap-2" key={index}>
                                 <CardHeader>
@@ -101,7 +126,11 @@ export function HomeSolutions() {
                             </Card>
                         );
                     })}
-                </div>
+                    labels={solutions.map((s) => s.label)}
+                    options={{ loop: true }}
+                    className="w-full [--slide-height:h-fit] [--slide-size:33%]"
+                />
+                {/* </div> */}
 
                 <div className="mt-12 text-center">
                     <p className="mb-6 text-gray-600">
