@@ -1,7 +1,6 @@
 "use client";
 import { ThumbsUp, User } from "lucide-react";
 import { useTranslations } from "next-intl";
-import CountUp from "../CountUp";
 import Section, { SectionContent, SectionHeader } from "../layout/section";
 import Text from "../typography/text";
 import { AnimatedBackgroundSwitcher } from "../ui/animatedBackgroundSwitcher";
@@ -20,42 +19,42 @@ export function HomeWhyUs() {
     const t = useTranslations("pages.home.whyUs");
     const benefits = {
         speed: {
-            icon: getLucideIcon(t("benefits.speed.icon")),
+            icon: t("benefits.speed.icon"),
             title: t("benefits.speed.title"),
             description: t("benefits.speed.description"),
         },
         seo: {
-            icon: getLucideIcon(t("benefits.seo.icon")),
+            icon: t("benefits.seo.icon"),
             title: t("benefits.seo.title"),
             description: t("benefits.seo.description"),
         },
         costs: {
-            icon: getLucideIcon(t("benefits.costs.icon")),
+            icon: t("benefits.costs.icon"),
             title: t("benefits.costs.title"),
             description: t("benefits.costs.description"),
         },
         security: {
-            icon: getLucideIcon(t("benefits.security.icon")),
+            icon: t("benefits.security.icon"),
             title: t("benefits.security.title"),
             description: t("benefits.security.description"),
         },
         mobile: {
-            icon: getLucideIcon(t("benefits.mobile.icon")),
+            icon: t("benefits.mobile.icon"),
             title: t("benefits.mobile.title"),
             description: t("benefits.mobile.description"),
         },
         scalability: {
-            icon: getLucideIcon(t("benefits.scalability.icon")),
+            icon: t("benefits.scalability.icon"),
             title: t("benefits.scalability.title"),
             description: t("benefits.scalability.description"),
         },
         easy: {
-            icon: getLucideIcon(t("benefits.easy.icon")),
+            icon: t("benefits.easy.icon"),
             title: t("benefits.easy.title"),
             description: t("benefits.easy.description"),
         },
         conversions: {
-            icon: getLucideIcon(t("benefits.conversions.icon")),
+            icon: t("benefits.conversions.icon"),
             title: t("benefits.conversions.title"),
             description: t("benefits.conversions.description"),
         },
@@ -64,6 +63,7 @@ export function HomeWhyUs() {
     const rotatingTexts = t.raw("rotatingTexts") as string[];
     const typingWords = t.raw("typingWords") as string[];
     console.log("render");
+    console.log(benefits.conversions.icon);
     return (
         <Section className="py-size-xl sm:py-size-2xl bg-clr-50 overflow-hidden">
             <SectionContent>
@@ -86,7 +86,7 @@ export function HomeWhyUs() {
                                         variant={"ghost"}
                                         color={"brand"}
                                         size={"md"}
-                                        Icon={benefits.speed.icon}
+                                        Icon={getLucideIcon(benefits.speed.icon)}
                                     />
                                     <Text
                                         intent="h4"
@@ -111,7 +111,7 @@ export function HomeWhyUs() {
                                         variant={"ghost"}
                                         color={"brand"}
                                         size={"md"}
-                                        Icon={benefits.security.icon}
+                                        Icon={getLucideIcon(benefits.security.icon)}
                                     />
                                     <Text
                                         intent="h4"
@@ -134,7 +134,7 @@ export function HomeWhyUs() {
                                         variant={"ghost"}
                                         color={"brand"}
                                         size={"md"}
-                                        Icon={benefits.costs.icon}
+                                        Icon={getLucideIcon(benefits.costs.icon)}
                                     />
                                     <Text
                                         intent="h4"
@@ -182,7 +182,7 @@ export function HomeWhyUs() {
                                         variant={"ghost"}
                                         color={"brand"}
                                         size={"md"}
-                                        Icon={benefits.easy.icon}
+                                        Icon={getLucideIcon(benefits.easy.icon)}
                                     />
                                     <Text
                                         intent="h4"
@@ -198,23 +198,6 @@ export function HomeWhyUs() {
 
                     <Card className="hover:ring-brand-darker ring-brand bg-brand/50 col-span-2 h-full">
                         <CardContent className="flex h-full flex-col items-center justify-center gap-2">
-                            {/* <IconContainer
-                                variant={"ghost"}
-                                color={"default"}
-                                size={"md"}
-                                Icon={benefits.rise.icon}
-                            />
-
-                            <Text
-                                intent="h4"
-                                as="h3"
-                                className="font-heading"
-                                text={benefits.rise.title}
-                            />
-                            <Text
-                                text={benefits.rise.description}
-                                className="text-center"
-                            /> */}
                             <SectionHeader
                                 title={t("sectionHeader.title")}
                                 descMuted={false}
@@ -235,7 +218,7 @@ export function HomeWhyUs() {
                                         variant={"ghost"}
                                         color={"brand"}
                                         size={"md"}
-                                        Icon={benefits.mobile.icon}
+                                        Icon={getLucideIcon(benefits.mobile.icon)}
                                     />
                                     <Text
                                         intent="h4"
@@ -253,13 +236,13 @@ export function HomeWhyUs() {
                             <div className="h-full">
                                 <div className="flex gap-1">
                                     <User size={18} />
-                                    <CountUp from={100} to={300} duration={2} />
+                                    {/* <CountUp from={100} to={300} duration={2} /> */}
                                 </div>
                                 <div className="flex gap-1">
                                     <ThumbsUp size={18} />
+
                                     <ThumbsUp size={18} />
-                                    <ThumbsUp size={18} />
-                                    <CountUp from={100} to={300} duration={2} />
+                                    {/* <CountUp from={100} to={300} duration={2} /> */}
                                 </div>
                             </div>
                             <div className="h-fit">
@@ -268,7 +251,7 @@ export function HomeWhyUs() {
                                         variant={"ghost"}
                                         color={"brand"}
                                         size={"md"}
-                                        Icon={benefits.conversions.icon}
+                                        Icon={getLucideIcon(benefits.conversions.icon)}
                                     />
                                     <Text
                                         intent="h4"
@@ -285,9 +268,6 @@ export function HomeWhyUs() {
                     <Card className="hover:ring-brand h-full">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative h-full">
-                                {/* mainCircleSize = 210,
-  mainCircleOpacity = 0.24,
-  numCircles = 8, */}
                                 <Ripple mainCircleSize={10} numCircles={4} />
                             </div>
                             <div className="h-fit">
@@ -313,13 +293,6 @@ export function HomeWhyUs() {
                     <Card className="hover:ring-brand h-full">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="flex h-full max-h-full flex-col items-center justify-center overflow-hidden">
-                                {/* <TextShimmer
-                                    duration={5}
-                                    as="span"
-                                    className="font-heading text-5xl font-bold [--base-color:var(--color-sky-500)] [--base-gradient-color:var(--color-sky-300)]"
-                                >
-                                    SEO
-                                </TextShimmer> */}
                                 <TypingAnimation startOnView loop words={typingWords} />
                             </div>
                             <div className="h-fit">
