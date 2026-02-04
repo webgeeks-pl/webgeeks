@@ -2,6 +2,7 @@
 
 import { routes as mainRoutes } from "@/config/routes";
 import { usePathname } from "@/i18n/navigation";
+import { cn } from "@/lib/utils";
 import { Dialog, DialogPanel, PopoverGroup } from "@headlessui/react";
 import { NavigationRoutes } from "@types";
 import { Menu, X } from "lucide-react";
@@ -9,6 +10,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "../ui/button";
+import { Separator } from "../ui/separator";
 import { HeaderContainer } from "./navigation.client";
 
 interface NavigationProps {
@@ -97,9 +99,9 @@ export default function Navigation({ navigation }: NavigationProps) {
                             <X aria-hidden="true" className="text-clr-brand-red size-6" />
                         </Button>
                     </div>
-                    <div className="mt-10 flow-root">
-                        <div className="-my-6 divide-y divide-gray-500/10">
-                            <div className="flex flex-col gap-4 space-y-2 py-6">
+                    <div className="mt-10 flex flex-col items-center">
+                        <div className="-my-6 divide-gray-500/10">
+                            <div className="flex flex-col items-center gap-4 space-y-2 py-6">
                                 {defaultRoutes.map((route) => {
                                     return (
                                         <Button
@@ -107,11 +109,12 @@ export default function Navigation({ navigation }: NavigationProps) {
                                             asChild
                                             key={route.link}
                                             onClick={() => setMobileMenuOpen(false)}
-                                            className={
+                                            className={cn(
+                                                "w-fit",
                                                 isActiveRoute(route.link)
                                                     ? "bg-accent text-brand"
                                                     : ""
-                                            }
+                                            )}
                                         >
                                             <Link href={route.link}>
                                                 {tRoutes(route.link)}
@@ -120,13 +123,10 @@ export default function Navigation({ navigation }: NavigationProps) {
                                     );
                                 })}
                             </div>
-                            <div className="py-6">
+                            <Separator />
+                            <div className="mx-auto py-6">
                                 {ctaRoute && (
-                                    <Button
-                                        variant="cta"
-                                        asChild
-                                        className="text-clr-brand-red"
-                                    >
+                                    <Button variant="cta" asChild size="sm" className="">
                                         <Link href={ctaRoute?.link || "#"}>
                                             {tRoutes("cta")}
                                         </Link>
