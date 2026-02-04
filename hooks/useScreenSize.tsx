@@ -1,11 +1,9 @@
-import { BREAKPOINT_VALUES } from "@/lib/constants/global";
-import type { ScreenBreakpoint } from "@/lib/types/global";
+import { BREAKPOINT_VALUES } from "@/lib/constants";
+import type { ScreenBreakpoint } from "@/lib/types/breakpoints";
 import { useEffect, useState } from "react";
 
 function getBreakpoint(size: number): ScreenBreakpoint {
-    for (const [breakpoint, value] of Object.entries(
-        BREAKPOINT_VALUES
-    ).reverse()) {
+    for (const [breakpoint, value] of Object.entries(BREAKPOINT_VALUES).reverse()) {
         if (value <= size) return breakpoint as ScreenBreakpoint;
     }
     return "base";
