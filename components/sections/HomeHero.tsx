@@ -17,7 +17,10 @@ export function HomeHero() {
     const heroBadges = getArrayFromMessages(tHero.raw("badges.bottom"), z.string());
 
     return (
-        <Section as="header" className="py-size-xl sm:py-size-2xl absolute inset-0">
+        <Section
+            as="header"
+            className="py-size-xl sm:py-size-2xl absolute top-0 right-0 left-0"
+        >
             <SectionContent className="gap-size-md z-10 text-center">
                 <Badge className="p-3" variant="secondary">
                     <span className="flex items-center">
