@@ -1,6 +1,6 @@
 "use client";
 
-import { Page } from "../layout/page";
+import Page from "../layout/page";
 import { HomeAbout } from "../sections/HomeAbout";
 import { HomeComparison } from "../sections/HomeComparison";
 import { HomeCtaFooter } from "../sections/HomeCtaFooter";

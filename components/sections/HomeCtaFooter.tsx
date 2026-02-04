@@ -1,6 +1,12 @@
 import { useTranslations } from "next-intl";
 import Grid from "../layout/grid";
-import Section, { SectionContent, SectionHeader } from "../layout/section";
+import Section, {
+    SectionContent,
+    SectionHeader,
+    SectionHeaderContent,
+    SectionLead,
+    SectionTitle,
+} from "../layout/section";
 import Text from "../typography/text";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
@@ -12,12 +18,16 @@ export function HomeCtaFooter() {
     return (
         <Section className="py-size-2xl bg-brand-darker/50">
             <SectionContent className="gap-size-md">
-                <SectionHeader
-                    descriptionClassName="text-black"
-                    title={t("sectionHeader.title")}
-                    descMuted={false}
-                    description={t("sectionHeader.description")}
-                />
+                <SectionHeader>
+                    <SectionHeaderContent>
+                        <SectionTitle text={t("sectionHeader.title")} />
+                        <SectionLead
+                            text={t("sectionHeader.description")}
+                            muted={false}
+                            className="text-black"
+                        />
+                    </SectionHeaderContent>
+                </SectionHeader>
                 <Grid cols={0} className="w-fit items-center gap-4 sm:grid-cols-2">
                     {badges.map((badge, index) => (
                         <Badge className="gap-2" variant="ghost" key={index}>

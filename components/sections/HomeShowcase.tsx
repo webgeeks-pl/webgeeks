@@ -3,7 +3,13 @@ import { getArrayFromMessages } from "@/lib/utils/array";
 import { CornerLeftDown } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { z } from "zod";
-import Section, { SectionContent, SectionHeader } from "../layout/section";
+import Section, {
+    SectionContent,
+    SectionHeader,
+    SectionHeaderContent,
+    SectionLead,
+    SectionTitle,
+} from "../layout/section";
 import Text from "../typography/text";
 import { EncryptedText } from "../ui/encrypted-text";
 import { Iphone } from "../ui/iphone";
@@ -45,10 +51,12 @@ export function HomeShowcase() {
                         </div>
                     </TabsList>
                     <TabsContent value="desktop" className="gap-size-md flex flex-col">
-                        <SectionHeader
-                            title={t("desktop.title")}
-                            description={t("desktop.description")}
-                        />
+                        <SectionHeader>
+                            <SectionHeaderContent>
+                                <SectionTitle text={t("desktop.title")} />
+                                <SectionLead text={t("desktop.description")} />
+                            </SectionHeaderContent>
+                        </SectionHeader>
                         <Safari
                             url="https:\\"
                             imageSrc="/template-hero.webp"
@@ -56,10 +64,12 @@ export function HomeShowcase() {
                         />
                     </TabsContent>
                     <TabsContent value="mobile" className="gap-size-md flex flex-col">
-                        <SectionHeader
-                            title={t("mobile.title")}
-                            description={t("mobile.description")}
-                        />
+                        <SectionHeader>
+                            <SectionHeaderContent>
+                                <SectionTitle text={t("mobile.title")} />
+                                <SectionLead text={t("mobile.description")} />
+                            </SectionHeaderContent>
+                        </SectionHeader>
 
                         <div className="gap-size-md grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 lg:grid-cols-3">
                             <Tilt

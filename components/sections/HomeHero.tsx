@@ -28,7 +28,7 @@ export function HomeHero() {
                 <Text
                     as="span"
                     intent="h1"
-                    className="font-heading xs:text-4xl! max-w-3xl text-3xl! md:text-5xl"
+                    className="font-heading xs:text-4xl! max-w-3xl text-3xl! md:text-5xl!"
                 >
                     {t("hero.title")}
                 </Text>

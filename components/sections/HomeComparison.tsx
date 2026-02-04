@@ -1,6 +1,12 @@
 import { AlertTriangle, CheckCircle2, X, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Section, { SectionContent, SectionHeader } from "../layout/section";
+import Section, {
+    SectionContent,
+    SectionHeader,
+    SectionHeaderContent,
+    SectionLead,
+    SectionTitle,
+} from "../layout/section";
 import Text from "../typography/text";
 import { Badge } from "../ui/badge";
 import { Card, CardContent } from "../ui/card";
@@ -14,10 +20,12 @@ export function HomeComparison() {
     return (
         <Section className="bg-clr-50 py-size-xl sm:py-size-2xl">
             <SectionContent className="gap-size-lg text-center">
-                <SectionHeader
-                    title={t("sectionHeader.title")}
-                    description={t("sectionHeader.description")}
-                />
+                <SectionHeader>
+                    <SectionHeaderContent>
+                        <SectionTitle text={t("sectionHeader.title")} />
+                        <SectionLead text={t("sectionHeader.description")} />
+                    </SectionHeaderContent>
+                </SectionHeader>
                 {/* Main Comparison */}
                 <div className="grid w-full grid-cols-1 gap-8 lg:grid-cols-2">
                     {/* BEFORE - WordPress */}

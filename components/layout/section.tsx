@@ -47,24 +47,14 @@ export function SectionContent({ children, className, ...props }: BasicComponent
 }
 
 interface SectionHeaderProps extends BasicComponentProps {
-    title: string;
-    description: string;
     className?: string;
-    descriptionClassName?: string;
-    titleClassName?: string;
-    descMuted?: boolean;
-    color?: "primary" | "opposite";
 }
 
-export function SectionHeader({
-    title,
-    description,
-    className,
-    descriptionClassName,
-    titleClassName,
-    descMuted = true,
-    color = "primary",
-}: SectionHeaderProps) {
+export function SectionHeader({ className, children }: SectionHeaderProps) {
+    return <div className={cn("w-full", className)}>{children}</div>;
+}
+
+export function SectionHeaderContent({ children, className }: BasicComponentProps) {
     return (
         <div
             className={cn(
@@ -72,17 +62,45 @@ export function SectionHeader({
                 className
             )}
         >
-            <Text color={color} intent="sectionHeader" className={cn("", titleClassName)}>
-                {title}
-            </Text>
-            <Text
-                color={color}
-                muted={descMuted}
-                intent="lead"
-                className={descriptionClassName}
-            >
-                {description}
-            </Text>
+            {children}
         </div>
+    );
+}
+
+interface SectionTitleProps extends BasicComponentProps {
+    text?: string;
+    color?: "primary" | "opposite";
+}
+
+export function SectionTitle({
+    text,
+    children,
+    className,
+    color = "primary",
+}: SectionTitleProps) {
+    return (
+        <Text color={color} intent="sectionHeader" className={cn("", className)}>
+            {text ?? children}
+        </Text>
+    );
+}
+
+interface SectionLeadProps extends BasicComponentProps {
+    text?: string;
+    muted?: boolean;
+    color?: "primary" | "opposite";
+}
+
+export function SectionLead({
+    text,
+    children,
+    className,
+    muted = true,
+    color = "primary",
+}: SectionLeadProps) {
+    return (
+        <Text color={color} muted={muted} intent="lead" className={className}>
+            {text ?? children}
+        </Text>
     );
 }

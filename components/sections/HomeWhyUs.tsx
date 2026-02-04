@@ -1,5 +1,11 @@
 import { useTranslations } from "next-intl";
-import Section, { SectionContent, SectionHeader } from "../layout/section";
+import Section, {
+    SectionContent,
+    SectionHeader,
+    SectionHeaderContent,
+    SectionLead,
+    SectionTitle,
+} from "../layout/section";
 import Text from "../typography/text";
 import { AnimatedBackgroundSwitcher } from "../ui/animatedBackgroundSwitcher";
 import { Card, CardContent } from "../ui/card";
@@ -191,11 +197,15 @@ export function HomeWhyUs() {
 
                     <Card className="hover:ring-brand-darker ring-brand bg-brand/50 -order-1 h-full sm:col-span-2 lg:order-0">
                         <CardContent className="flex h-full flex-col items-center justify-center gap-2">
-                            <SectionHeader
-                                title={t("sectionHeader.title")}
-                                descMuted={false}
-                                description={t("sectionHeader.description")}
-                            />
+                            <SectionHeader>
+                                <SectionHeaderContent>
+                                    <SectionTitle text={t("sectionHeader.title")} />
+                                    <SectionLead
+                                        text={t("sectionHeader.description")}
+                                        muted={false}
+                                    />
+                                </SectionHeaderContent>
+                            </SectionHeader>
                         </CardContent>
                     </Card>
 

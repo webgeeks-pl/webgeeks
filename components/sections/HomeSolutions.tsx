@@ -2,7 +2,13 @@ import { getArrayFromMessages } from "@/lib/utils/array";
 import { useTranslations } from "next-intl";
 import { z } from "zod";
 import { MotionCarousel } from "../animate-ui/components/community/motion-carousel";
-import Section, { SectionContent, SectionHeader } from "../layout/section";
+import Section, {
+    SectionContent,
+    SectionHeader,
+    SectionHeaderContent,
+    SectionLead,
+    SectionTitle,
+} from "../layout/section";
 import Text from "../typography/text";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import IconContainer from "../ui/iconContainer";
@@ -22,10 +28,12 @@ export function HomeSolutions() {
     return (
         <Section className="py-size-xl md:py-size-2xl bg-clr-50">
             <SectionContent className="gap-size-lg">
-                <SectionHeader
-                    title={t("sectionHeader.title")}
-                    description={t("sectionHeader.description")}
-                />
+                <SectionHeader>
+                    <SectionHeaderContent>
+                        <SectionTitle text={t("sectionHeader.title")} />
+                        <SectionLead text={t("sectionHeader.description")} />
+                    </SectionHeaderContent>
+                </SectionHeader>
 
                 <MotionCarousel
                     slides={solutions.map((solution, index) => {

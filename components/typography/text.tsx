@@ -13,7 +13,7 @@ const textCva = cva("", {
                 "scroll-m-20 text-2xl sm:text-3xl font-semibold tracking-tight md:text-4xl font-heading",
             h3: "text-2xl scroll-m-20 font-medium tracking-tight",
             h4: "text-xl scroll-m-20 font-medium tracking-tight",
-            p: "",
+            p: "text-base",
             blockquote: "mt-6 rder-l-2 rder-clr-brand-red/20 pl-6 italic",
             lead: "text-lg sm:text-xl",
             large: "text-lg font-medium",
