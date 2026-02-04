@@ -69,7 +69,6 @@ function FloatingStat({
 }
 
 export function FloatingStats() {
-    // 12 elementów w 3 grupach czasowych
     const items = icons.map((icon, i) => {
         const idx = i * 2;
         const group = idx % 3;

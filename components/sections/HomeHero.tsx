@@ -17,8 +17,11 @@ export function HomeHero() {
     const heroBadges = getArrayFromMessages(tHero.raw("badges.bottom"), z.string());
 
     return (
-        <Section as="header" className="py-size-xl sm:py-size-2xl">
-            <SectionContent className="gap-size-md text-center">
+        <Section
+            as="header"
+            className="py-size-xl sm:py-size-2xl absolute inset-0 z-10000"
+        >
+            <SectionContent className="gap-size-md z-10 text-center">
                 <Badge className="p-3" variant="secondary">
                     <span className="flex items-center">
                         <Zap className="h-3.5 w-3.5 text-yellow-400" />
@@ -49,7 +52,7 @@ export function HomeHero() {
                             <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
                     </Button>
-                    <Button asChild variant="outline">
+                    <Button asChild variant="secondary">
                         <Link href="/">
                             <span>{t("hero.buttons.secondary")}</span>
                         </Link>

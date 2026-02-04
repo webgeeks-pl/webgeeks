@@ -129,9 +129,7 @@ export function HomeWhyUs() {
 
                     <Card className="hover:ring-brand col-span-2 h-full">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
-                            <div className="relative h-full">
-                                {/* <CostSavingsAnimation /> */}
-                            </div>
+                            <div className="h-full"></div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
                                     <IconContainer

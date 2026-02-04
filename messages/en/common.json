@@ -1,1 +1,34 @@
-{"button":{"submit":"Submit","cancel":"Cancel","delete":"Delete","update":"Update","edit":"Edit","view":"View","close":"Close","save":"Save","next":"Next","previous":"Previous"},"navigation":{"routes":{"/":"Home","/about":"AboutUs","/services":"Services","/contact":"Contact","/blog":"Blog","/process":"Process","/portfolio":"Portfolio","/templates":"Templates","/offer":"Offer","/testimonials":"Testimonials","/privacy-policy":"PrivacyPolicy","/terms-of-service":"TermsofService","cta":"StartProject"},"navigation":"Navigation","openNav":"Opennavigationmenu","closeNav":"Closenavigationmenu"}}
+{
+    "button": {
+        "submit": "Submit",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "update": "Update",
+        "edit": "Edit",
+        "view": "View",
+        "close": "Close",
+        "save": "Save",
+        "next": "Next",
+        "previous": "Previous"
+    },
+    "navigation": {
+        "routes": {
+            "/": "Home",
+            "/about": "AboutUs",
+            "/services": "Services",
+            "/contact": "Contact",
+            "/blog": "Blog",
+            "/process": "Process",
+            "/portfolio": "Portfolio",
+            "/templates": "Templates",
+            "/offer": "Offer",
+            "/testimonials": "Testimonials",
+            "/privacy-policy": "Privacy Policy",
+            "/terms-of-service": "Terms of Service",
+            "cta": "Start Project"
+        },
+        "navigation": "Navigation",
+        "openNav": "Open navigation menu",
+        "closeNav": "Close navigation menu"
+    }
+}
