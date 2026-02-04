@@ -43,7 +43,7 @@ export function HomeSolutions() {
                     })}
                     labels={solutions.map((s) => s.label)}
                     options={{ loop: true }}
-                    className="w-full [--slide-height:h-fit] [--slide-size:33%]"
+                    className="w-full [--slide-height:h-fit] [--slide-size:80%] sm:[--slide-size:60%] md:[--sile-size:50%] lg:[--slide-size:33%]"
                 />
 
                 <div className="mt-12 text-center">

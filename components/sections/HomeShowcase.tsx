@@ -73,9 +73,9 @@ export function HomeShowcase() {
                                     damping: 4.1,
                                     mass: 0.2,
                                 }}
-                                className="group relative h-full w-full max-w-md rounded-lg max-md:mx-auto md:col-start-2 md:row-span-3"
+                                className="group relative h-full w-full max-w-md rounded-lg max-md:mx-auto max-sm:max-w-xs! md:col-start-2 md:row-span-3"
                             >
-                                <Iphone src="/strona.jpeg" className="" />
+                                <Iphone src="/strona.jpeg" />
                             </Tilt>
                             {mobileFriendlyItems.map((item, index) => (
                                 <div

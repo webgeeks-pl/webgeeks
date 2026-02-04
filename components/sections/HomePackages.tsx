@@ -45,15 +45,18 @@ export function HomePackages() {
                     />
                 </div>
 
-                <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
+                <div className="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-6">
                     {packages.map((pkg, index) => {
                         return (
                             <Card
                                 key={index}
                                 className={cn(
-                                    "relative flex h-full flex-col overflow-visible transition-all duration-300",
+                                    "relative flex h-full flex-col overflow-visible transition-all duration-300 md:col-span-2",
                                     pkg.popular &&
-                                        "border-brand scale-105 border-2 shadow-xl"
+                                        "border-brand scale-105 border-2 shadow-xl",
+                                    index === 2 && "sm:col-span-2"
+                                    // index === 0 && "max-md:-order-1",
+                                    // index === 2 && "max-md:-order-1"
                                 )}
                             >
                                 {pkg.popular && (
@@ -83,7 +86,13 @@ export function HomePackages() {
                                 </CardHeader>
 
                                 <CardContent className="flex flex-1 flex-col">
-                                    <ul className="mb-6 flex-1 space-y-3">
+                                    <ul
+                                        className={cn(
+                                            "mb-6 flex-1 space-y-3",
+                                            index === 2 &&
+                                                "sm:grid sm:grid-cols-2 md:block"
+                                        )}
+                                    >
                                         {pkg.features.map((feature, idx) => (
                                             <li
                                                 key={idx}
@@ -105,13 +114,10 @@ export function HomePackages() {
                             </Card>
                         );
                     })}
-                </div>
-
-                <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
                     {extraPackages.map((pkg, index) => (
                         <Card
                             key={index}
-                            className="relative flex h-full flex-col overflow-visible transition-all duration-300 lg:grid lg:grid-cols-2"
+                            className="relative flex h-full flex-col overflow-visible transition-all duration-300 md:col-span-3 lg:grid lg:grid-cols-2"
                         >
                             <CardHeader className="overflow-auto pb-4 text-center lg:text-start">
                                 <IconContainer

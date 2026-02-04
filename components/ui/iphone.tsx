@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import type { HTMLAttributes } from "react";
 const PHONE_WIDTH = 433;
@@ -18,18 +19,15 @@ export interface IphoneProps extends HTMLAttributes<HTMLDivElement> {
     src?: string;
     videoSrc?: string;
 }
-export function Iphone({
-    src,
-    videoSrc,
-    className,
-    style,
-    ...props
-}: IphoneProps) {
+export function Iphone({ src, videoSrc, className, style, ...props }: IphoneProps) {
     const hasVideo = !!videoSrc;
     const hasMedia = hasVideo || !!src;
     return (
         <div
-            className={`relative inline-block w-full align-middle leading-none ${className}`}
+            className={cn(
+                "relative inline-block w-full align-middle leading-none",
+                className
+            )}
             style={{
                 aspectRatio: `${PHONE_WIDTH}/${PHONE_HEIGHT}`,
                 ...style,

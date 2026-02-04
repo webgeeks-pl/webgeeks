@@ -49,7 +49,7 @@
             "Specjalizujemy się nie tylko w technologii, ale przede wszystkim w rozumieniu biznesu naszych klientów. Nie budujemy tylko stron - tworzymy narzędzia, które generują realną wartość i przewagę konkurencyjną."
         ],
         "stats": [
-            { "value": "∞", "label": "Pomysłów na Twoją stronę" },
+            { "value": "$infinity", "label": "Pomysłów na Twoją stronę" },
             { "value": "100%", "label": "Zadowolonych klientów" },
             { "value": "5 lat", "label": "Doświadczenia" },
             { "value": "w 24 godz.", "label": "Gwarancja odpowiedzi na zapytania" }
