@@ -1,14 +1,12 @@
 import { getArrayFromMessages } from "@/lib/utils/array";
-import { ArrowRight, CornerLeftUp, Zap } from "lucide-react";
+import { ArrowRight, CornerLeftUp } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { z } from "zod";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
-import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { EncryptedText } from "../ui/encrypted-text";
-import { Separator } from "../ui/separator";
 import { TextShimmer } from "../ui/text-shimmer";
 
 export function HomeHero() {
@@ -22,20 +20,20 @@ export function HomeHero() {
             className="py-size-xl sm:py-size-2xl absolute top-0 right-0 left-0"
         >
             <SectionContent className="gap-size-md z-10 text-center">
-                <Badge className="p-3" variant="secondary">
+                {/* <Badge className="p-3" variant="secondary">
                     <span className="flex items-center">
                         <Zap className="h-3.5 w-3.5 text-yellow-400" />
                     </span>
                     <span>{t("hero.badges.top")}</span>
-                </Badge>
+                </Badge> */}
                 <Text
                     as="span"
                     intent="h1"
-                    className="font-heading max-w-3xl text-3xl sm:text-5xl"
+                    className="font-heading mt-10 max-w-3xl text-3xl sm:text-5xl"
                 >
                     {t("hero.title")}
                 </Text>
-                <Text intent="lead" muted className="max-w-2xl">
+                <Text intent="lead" className="max-w-2xl">
                     {t("hero.leadStart")}
                     <TextShimmer
                         as="span"
@@ -57,7 +55,7 @@ export function HomeHero() {
                             <span>{t("hero.buttons.secondary")}</span>
                         </Link>
                     </Button>
-                    <div className="absolute top-full mt-3 flex gap-2 md:left-1/5">
+                    <div className="absolute top-full mt-3 flex hidden gap-2 md:left-1/5">
                         <CornerLeftUp size={18} strokeWidth={3.5} />
                         <EncryptedText
                             startDelayMs={1000}
@@ -66,9 +64,9 @@ export function HomeHero() {
                         />
                     </div>
                 </div>
-                <Separator className="mt-4 max-w-xl" decorative />
+                {/* <Separator className="mt-4 max-w-xl" decorative /> */}
 
-                {heroBadges.length > 0 && (
+                {/* {heroBadges.length > 0 && (
                     <div className="flex flex-col gap-2 md:flex-row">
                         {heroBadges.map((badge, index) => (
                             <Badge className="gap-2" variant="ghost" key={index}>
@@ -77,7 +75,7 @@ export function HomeHero() {
                             </Badge>
                         ))}
                     </div>
-                )}
+                )} */}
             </SectionContent>
         </Section>
     );
