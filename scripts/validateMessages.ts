@@ -4,7 +4,7 @@ import { messagesDirStructure, routingConfig } from "../config/i18n";
 
 type MessageConfig = string | { [key: string]: MessageConfig };
 
-const MESSAGES_DIR = path.join(__dirname, "..", "messages");
+const MESSAGES_DIR = path.join(process.cwd(), "messages");
 
 interface ValidationResult {
     isValid: boolean;
@@ -197,14 +197,18 @@ export function runValidateMessages() {
         console.log("✅ Messages structure is valid!");
     } else if (result.isValid) {
         console.log("✅ Messages structure is valid (with warnings)");
-        process.exit(0);
+        if (isDirectRun) {
+            process.exit(0);
+        }
     } else {
         console.error("❌ Messages structure validation failed!");
         console.error("");
         console.log("💡 Hint: Run the following command to generate missing files:");
         console.log("   pnpm generate:messages");
         console.error("");
-        process.exit(1);
+        if (isDirectRun) {
+            process.exit(1);
+        }
     }
 }
 
