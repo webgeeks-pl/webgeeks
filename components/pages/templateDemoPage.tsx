@@ -60,6 +60,13 @@ function TemplateDemoContent() {
     const [iframeWidth, setIframeWidth] = useState<number | null>(null);
     const [iframeHeight, setIframeHeight] = useState<number | null>(null);
     const [isResizing, setIsResizing] = useState<"width" | "height" | null>(null);
+    const [isMobile] = useState(() => {
+        // Check only once on initial mount
+        if (typeof window !== "undefined") {
+            return window.innerWidth < 768;
+        }
+        return false;
+    });
     const iframeRef = useRef<HTMLDivElement>(null);
     const startPosRef = useRef({ x: 0, y: 0, width: 0, height: 0 });
 
@@ -126,6 +133,27 @@ function TemplateDemoContent() {
 
     const selectedTemplate = templates.find((t) => t.id === selectedTemplateId);
     const currentDemoUrl = selectedTemplate?.demoUrl || "";
+
+    // Redirect to demo URL on mobile
+    useEffect(() => {
+        if (isMobile && currentDemoUrl) {
+            window.location.href = currentDemoUrl;
+        }
+    }, [isMobile, currentDemoUrl]);
+
+    // Show loading on mobile while redirecting
+    if (isMobile) {
+        return (
+            <Page>
+                <div className="flex min-h-screen items-center justify-center">
+                    <div className="space-y-4 text-center">
+                        <p className="text-lg">Przekierowanie do demo...</p>
+                        <p className="text-muted-foreground text-sm">{currentDemoUrl}</p>
+                    </div>
+                </div>
+            </Page>
+        );
+    }
 
     return (
         <Page>
