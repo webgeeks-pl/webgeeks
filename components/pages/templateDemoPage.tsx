@@ -2,9 +2,11 @@
 
 import { cn } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Page from "../layout/page";
 import { Card } from "../ui/card";
+import { Iphone } from "../ui/iphone";
+import { Safari } from "../ui/safari";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 
 // Template data structure (same as templatesPage)
@@ -57,9 +59,6 @@ function TemplateDemoContent() {
     const [selectedTemplateId, setSelectedTemplateId] =
         useState<string>(initialTemplateId);
     const [deviceType, setDeviceType] = useState<DeviceType>("desktop");
-    const [iframeWidth, setIframeWidth] = useState<number | null>(null);
-    const [iframeHeight, setIframeHeight] = useState<number | null>(null);
-    const [isResizing, setIsResizing] = useState<"width" | "height" | null>(null);
     const [isMobile] = useState(() => {
         // Check only once on initial mount
         if (typeof window !== "undefined") {
@@ -67,72 +66,28 @@ function TemplateDemoContent() {
         }
         return false;
     });
-    const iframeRef = useRef<HTMLDivElement>(null);
-    const startPosRef = useRef({ x: 0, y: 0, width: 0, height: 0 });
-
-    const handleMouseDown = useCallback(
-        (type: "width" | "height", e: React.MouseEvent) => {
-            e.preventDefault();
-            if (!iframeRef.current) return;
-
-            const rect = iframeRef.current.getBoundingClientRect();
-            startPosRef.current = {
-                x: e.clientX,
-                y: e.clientY,
-                width: rect.width,
-                height: rect.height,
-            };
-            setIsResizing(type);
-        },
-        []
-    );
-
-    const handleMouseMove = useCallback(
-        (e: MouseEvent) => {
-            if (!isResizing) return;
-
-            if (isResizing === "width") {
-                const deltaX = e.clientX - startPosRef.current.x;
-                const newWidth = startPosRef.current.width + deltaX;
-                setIframeWidth(Math.max(320, newWidth));
-            } else if (isResizing === "height") {
-                const deltaY = e.clientY - startPosRef.current.y;
-                const newHeight = startPosRef.current.height + deltaY;
-                setIframeHeight(Math.max(400, newHeight));
-            }
-        },
-        [isResizing]
-    );
-
-    const handleMouseUp = useCallback(() => {
-        setIsResizing(null);
-    }, []);
-
-    // Reset dimensions when device type changes
-    useEffect(() => {
-        setIframeWidth(null);
-        setIframeHeight(null);
-    }, [deviceType]);
-
-    // Add event listeners
-    useEffect(() => {
-        if (isResizing) {
-            // Prevent text selection during resize
-            document.body.style.userSelect = "none";
-
-            document.addEventListener("mousemove", handleMouseMove);
-            document.addEventListener("mouseup", handleMouseUp);
-            return () => {
-                document.removeEventListener("mousemove", handleMouseMove);
-                document.removeEventListener("mouseup", handleMouseUp);
-                // Re-enable text selection
-                document.body.style.userSelect = "";
-            };
-        }
-    }, [isResizing, handleMouseMove, handleMouseUp]);
+    const [isLargeScreen, setIsLargeScreen] = useState(true);
 
     const selectedTemplate = templates.find((t) => t.id === selectedTemplateId);
     const currentDemoUrl = selectedTemplate?.demoUrl || "";
+
+    // Check screen size for lg breakpoint (1024px)
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsLargeScreen(window.innerWidth >= 1024);
+        };
+
+        checkScreenSize();
+        window.addEventListener("resize", checkScreenSize);
+        return () => window.removeEventListener("resize", checkScreenSize);
+    }, []);
+
+    // Force mobile view on smaller screens
+    useEffect(() => {
+        if (!isLargeScreen && deviceType === "desktop") {
+            setDeviceType("mobile");
+        }
+    }, [isLargeScreen, deviceType]);
 
     // Redirect to demo URL on mobile
     useEffect(() => {
@@ -166,7 +121,9 @@ function TemplateDemoContent() {
                         className="gap-size-md flex w-full flex-col"
                     >
                         <TabsList className="relative mx-auto my-4">
-                            <TabsTrigger value="desktop">Komputery</TabsTrigger>
+                            <TabsTrigger value="desktop" disabled={!isLargeScreen}>
+                                Komputery
+                            </TabsTrigger>
                             <TabsTrigger value="mobile">Urządzenia mobilne</TabsTrigger>
                         </TabsList>
                     </Tabs>
@@ -204,70 +161,21 @@ function TemplateDemoContent() {
                     </aside>
 
                     {/* Main Content - Iframe */}
-                    <main className="from-muted/30 to-muted/10 flex-1 bg-linear-to-br p-8">
-                        <div className="mx-auto h-full">
+                    <main className="from-muted/30 to-muted/10 flex-1 bg-linear-to-br p-0 sm:p-2 md:p-8">
+                        <div className="mx-auto flex h-full items-start justify-center">
                             {currentDemoUrl ? (
-                                <div
-                                    ref={iframeRef}
-                                    style={{
-                                        width: iframeWidth
-                                            ? `${iframeWidth}px`
-                                            : undefined,
-                                        height: iframeHeight
-                                            ? `${iframeHeight}px`
-                                            : undefined,
-                                    }}
-                                    className={cn(
-                                        "bg-background border-primary/20 ring-primary/10 group relative mx-auto overflow-hidden rounded-xl border-4 shadow-2xl ring-4",
-                                        deviceType === "mobile" &&
-                                            !iframeWidth &&
-                                            "max-w-[500px]",
-                                        !iframeHeight && "h-full"
-                                    )}
-                                >
-                                    {/* Visual indicator bar */}
-                                    <div className="bg-primary/10 border-primary/20 flex items-center justify-between border-b-2 px-4 py-2">
-                                        <div className="flex items-center gap-2">
-                                            <div className="h-3 w-3 rounded-full bg-red-500" />
-                                            <div className="h-3 w-3 rounded-full bg-yellow-500" />
-                                            <div className="h-3 w-3 rounded-full bg-green-500" />
-                                        </div>
-                                        <div className="bg-background/80 text-muted-foreground rounded px-3 py-1 text-xs font-medium">
-                                            Podgląd szablonu
-                                        </div>
-                                    </div>
-                                    <iframe
-                                        src={currentDemoUrl}
-                                        className="h-[calc(100%-40px)] w-full"
-                                        title={`Demo: ${selectedTemplate?.name}`}
-                                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                                deviceType === "desktop" ? (
+                                    <Safari
+                                        url={currentDemoUrl}
+                                        iframeSrc={currentDemoUrl}
+                                        className="max-w-[75vw]"
                                     />
-
-                                    {/* Overlay to prevent iframe from capturing mouse during resize */}
-                                    {isResizing && (
-                                        <div className="absolute inset-0 z-50" />
-                                    )}
-
-                                    {/* Right resize handle */}
-                                    <div
-                                        className="absolute top-0 right-0 h-full w-2 cursor-ew-resize opacity-0 transition-opacity group-hover:opacity-50 hover:opacity-100"
-                                        onMouseDown={(e) => handleMouseDown("width", e)}
-                                        style={{
-                                            background:
-                                                "linear-gradient(90deg, transparent, rgba(var(--primary), 0.5))",
-                                        }}
+                                ) : (
+                                    <Iphone
+                                        iframeSrc={currentDemoUrl}
+                                        className="w-full sm:max-w-md"
                                     />
-
-                                    {/* Bottom resize handle */}
-                                    <div
-                                        className="absolute bottom-0 left-0 h-2 w-full cursor-ns-resize opacity-0 transition-opacity group-hover:opacity-50 hover:opacity-100"
-                                        onMouseDown={(e) => handleMouseDown("height", e)}
-                                        style={{
-                                            background:
-                                                "linear-gradient(180deg, transparent, rgba(var(--primary), 0.5))",
-                                        }}
-                                    />
-                                </div>
+                                )
                             ) : (
                                 <div className="flex h-full items-center justify-center">
                                     <p className="text-muted-foreground">

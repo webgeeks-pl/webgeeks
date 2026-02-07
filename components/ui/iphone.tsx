@@ -18,10 +18,19 @@ const RADIUS_V = (SCREEN_RADIUS / SCREEN_HEIGHT) * 100;
 export interface IphoneProps extends HTMLAttributes<HTMLDivElement> {
     src?: string;
     videoSrc?: string;
+    iframeSrc?: string;
 }
-export function Iphone({ src, videoSrc, className, style, ...props }: IphoneProps) {
+export function Iphone({
+    src,
+    videoSrc,
+    iframeSrc,
+    className,
+    style,
+    ...props
+}: IphoneProps) {
     const hasVideo = !!videoSrc;
-    const hasMedia = hasVideo || !!src;
+    const hasIframe = !!iframeSrc;
+    const hasMedia = hasVideo || !!src || hasIframe;
     return (
         <div
             className={cn(
@@ -72,6 +81,30 @@ export function Iphone({ src, videoSrc, className, style, ...props }: IphoneProp
                         alt=""
                         fill
                         className="block size-full object-cover object-top"
+                    />
+                </div>
+            )}
+            {!hasVideo && !src && iframeSrc && (
+                <div
+                    className="absolute z-20 overflow-hidden"
+                    style={{
+                        left: `${LEFT_PCT}%`,
+                        top: `${TOP_PCT}%`,
+                        width: `${WIDTH_PCT}%`,
+                        height: `${HEIGHT_PCT}%`,
+                        borderRadius: `${RADIUS_H}% / ${RADIUS_V}%`,
+                    }}
+                >
+                    <iframe
+                        src={iframeSrc}
+                        className="block h-full"
+                        style={{
+                            width: "calc(100% + 20px)",
+                            marginRight: "-20px",
+                            overflowX: "hidden",
+                        }}
+                        title="iPhone preview"
+                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
                     />
                 </div>
             )}
