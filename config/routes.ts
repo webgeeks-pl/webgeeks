@@ -8,6 +8,7 @@ export const routes: NavigationRoutes = [
     // { link: "/process" },
     // { link: "/templates" },
     { link: "/contact" },
+    { link: "/templates" },
     // { link: "/testimonials" },
     {
         link: "/contact",
