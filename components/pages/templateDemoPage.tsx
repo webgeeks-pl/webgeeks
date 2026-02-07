@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import Page from "../layout/page";
 import { Card } from "../ui/card";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
@@ -50,7 +50,7 @@ const templates: Template[] = [
 
 type DeviceType = "desktop" | "mobile";
 
-export default function TemplateDemoPage() {
+function TemplateDemoContent() {
     const searchParams = useSearchParams();
     const initialTemplateId = searchParams.get("template") || templates[0]?.id;
 
@@ -252,5 +252,21 @@ export default function TemplateDemoPage() {
                 </div>
             </div>
         </Page>
+    );
+}
+
+export default function TemplateDemoPage() {
+    return (
+        <Suspense
+            fallback={
+                <Page>
+                    <div className="flex min-h-screen items-center justify-center">
+                        Ładowanie...
+                    </div>
+                </Page>
+            }
+        >
+            <TemplateDemoContent />
+        </Suspense>
     );
 }
