@@ -3,6 +3,12 @@ import { getRequestConfig } from "next-intl/server";
 import { loadMessages, messagesConfig } from "./loadMessages";
 import { routing } from "./routing";
 
+if (!messagesConfig) {
+    throw new Error(
+        "Messages configuration not found. Please define 'messagesConfig' in config/i18n.ts"
+    );
+}
+
 export default getRequestConfig(async ({ requestLocale }) => {
     const requested = await requestLocale;
     const locale = hasLocale(routing.locales, requested)

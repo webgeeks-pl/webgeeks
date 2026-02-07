@@ -1,4 +1,4 @@
-import { messagesConfig } from "../config/i18n";
+import { messagesDirStructure } from "../config/i18n";
 
 export type MessageConfig = string | { [key: string]: MessageConfig };
 
@@ -22,4 +22,4 @@ export async function loadMessages(
     return result;
 }
 
-export { messagesConfig };
+export { messagesDirStructure as messagesConfig };
