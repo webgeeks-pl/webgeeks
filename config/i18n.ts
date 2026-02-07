@@ -1,4 +1,4 @@
-export const messagesConfig = {
+export const messagesDirStructure = {
     common: "common.json",
     pages: {
         home: "pages/home.json",
@@ -6,9 +6,7 @@ export const messagesConfig = {
 } as const;
 
 export const routingConfig = {
-    // A list of all locales that are supported
-    locales: ["en", "pl"],
+    locales: ["en", "pl", "de"],
     localePrefix: "as-needed",
-    // Used when no locale matches
     defaultLocale: "pl",
 } as const;
