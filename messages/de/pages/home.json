@@ -1,1 +1,382 @@
-{}
+{
+    "hero": {
+        "title": "Nowoczesne strony tworzone przez specjalistów",
+        "leadStart": "Nasze strony kodowane są z myślą o wydajności, dostępności i ",
+        "leadHighlight": "SEO",
+        "leadEnd": ", aby zapewnić najlepsze wrażenia użytkownikom i maksymalną widoczność w wyszukiwarkach.",
+        "encryptedText": "nie zwlekaj, ulepsz swój biznes już dziś!",
+        "buttons": {
+            "primary": "Zacznij teraz",
+            "secondary": "Skontaktuj się"
+        },
+        "badges": {
+            "top": "Wyprzedź konkurencję",
+            "bottom": [
+                "Profesjonalny design",
+                "Zbudowane z myślą o przyszłości",
+                "Optymalizacja pod kątem SEO"
+            ]
+        },
+        "cards": [
+            {
+                "icon": "Gauge",
+                "value": "kilkukrotnie",
+                "title": "Szybsze ładowanie",
+                "description": "od stron z builderów"
+            },
+            {
+                "icon": "TrendingUp",
+                "value": "znacznie",
+                "title": "Lepsze SEO",
+                "description": "dla Twojej strony"
+            },
+            {
+                "icon": "Gauge",
+                "value": "zauważalnie",
+                "title": "Większa konwersja",
+                "description": "na Twojej stronie"
+            }
+        ]
+    },
+    "features": {
+        "globeTitle": "Docieraj na cały świat"
+    },
+    "about": {
+        "sectionHeader": "O nas",
+        "paragraphs": [
+            "NextSpeed to zespół pasjonatów nowoczesnych technologii webowych. Od 2020 roku pomagamy firmom porzucać przestarzałe rozwiązania i przechodzić na szybkie, skalowalne strony oparte na Next.js.",
+            "Zrealizowaliśmy ponad 150 projektów dla klientów z różnych branż - od startupów po duże korporacje. Każda migracja z WordPress kończyła się dramatyczną poprawą wydajności i wzrostem konwersji.",
+            "Specjalizujemy się nie tylko w technologii, ale przede wszystkim w rozumieniu biznesu naszych klientów. Nie budujemy tylko stron - tworzymy narzędzia, które generują realną wartość i przewagę konkurencyjną."
+        ],
+        "stats": [
+            { "value": "$infinity", "label": "Pomysłów na Twoją stronę" },
+            { "value": "100%", "label": "Zadowolonych klientów" },
+            { "value": "5 lat", "label": "Doświadczenia" },
+            { "value": "w 24 godz.", "label": "Gwarancja odpowiedzi na zapytania" }
+        ],
+        "values": [
+            {
+                "icon": "Rocket",
+                "title": "Innowacja",
+                "description": "Zawsze na na bieżąco z nowinkami w branży webowej"
+            },
+            {
+                "icon": "Users",
+                "title": "Partnerstwo",
+                "description": "Twój sukces to nasz sukces. Wspólnie osiągamy cele"
+            },
+            {
+                "icon": "Award",
+                "title": "Jakość",
+                "description": "Perfekcja w każdym detalu. Dbamy o najwyższe standardy"
+            },
+            {
+                "icon": "Heart",
+                "title": "Pasja",
+                "description": "Kochamy to, co robimy i to widać w naszych projektach"
+            }
+        ]
+    },
+    "showcase": {
+        "tabs": {
+            "desktop": "Komputery",
+            "mobile": "Urządzenia mobilne"
+        },
+        "encryptedText": "sprawdź, jak Twoja strona działa na różnych urządzeniach",
+        "desktop": {
+            "title": "Nowoczesny design i funkcjonalność",
+            "description": "Tworzymy strony, które nie tylko wyglądają świetnie, ale są też intuicyjne i łatwe w obsłudze dla Twoich użytkowników."
+        },
+        "mobile": {
+            "title": "Dopasowane na urządzenia mobilne",
+            "description": "Ponad 60% ruchu w internecie pochodzi z urządzeń mobilnych. Twoja strona będzie wyglądać i działać perfekcyjnie na każdym ekranie.",
+            "items": [
+                {
+                    "number": "1",
+                    "title": "Responsywny design",
+                    "description": "Twoi klienci bez wysiłku znajdą to, czego szukają, więcej zapytań i mniej porzuceń na telefonie."
+                },
+                {
+                    "number": "2",
+                    "title": "Mniej porzuceń, więcej leadów",
+                    "description": "Krótka ścieżka do oferty i kontaktu zwiększa liczbę zapytań — telefonicznie i z formularza."
+                },
+                {
+                    "number": "3",
+                    "title": "Szybkość, która sprzedaje",
+                    "description": "Szybsze wczytywanie to większe zaufanie i wyższa sprzedaż, a klienci zostają i wracają częściej."
+                }
+            ]
+        }
+    },
+    "whyUs": {
+        "sectionHeader": {
+            "title": "Dlaczego nasza strona?",
+            "description": "Wiemy jak przekuć technologię w realne korzyści dla Twojego biznesu."
+        },
+        "rotatingTexts": ["Strona", "Internet", "Webgeeks", "Design"],
+        "typingWords": ["Fryzjer", "Salon kosmetyczny", "Gabinet masażu"],
+        "benefits": {
+            "speed": {
+                "icon": "Zap",
+                "title": "Pacjenci czekają mniej",
+                "description": "Twoja strona otwiera się natychmiast."
+            },
+            "seo": {
+                "icon": "Search",
+                "title": "Pojawisz się w Google",
+                "description": "Pojawisz się na pierwszej stronie Google, zanim konkurencja."
+            },
+            "costs": {
+                "icon": "DollarSign",
+                "title": "Niższe koszty utrzymania",
+                "description": "Zapomnij o corocznych opłatach za pluginy i drogi hosting."
+            },
+            "security": {
+                "icon": "Lock",
+                "title": "Bezpieczna strona",
+                "description": "Nie martwisz się o hakowanie ani wycieki danych."
+            },
+            "mobile": {
+                "icon": "Smartphone",
+                "title": "Responsywny design",
+                "description": "Twoja strona wygląda pięknie na każdym ekranie."
+            },
+            "scalability": {
+                "icon": "CloudCog",
+                "title": "Strona rośnie z Tobą",
+                "description": "Strona bez problemu obsługuje wzrost ruchu i nowych funkcji."
+            },
+            "easy": {
+                "icon": "Code2",
+                "title": "Łatwa do zmian",
+                "description": "Szybkie aktualizacje treści i funkcji."
+            },
+            "conversions": {
+                "icon": "Users",
+                "title": "Większa konwersja",
+                "description": "Profesjonalna strona buduje zaufanie i przyciąga więcej pacjentów."
+            }
+        }
+    },
+    "packages": {
+        "sectionHeader": {
+            "title": "Nasza Oferta",
+            "description": "Wybierz pakiet dopasowany do potrzeb Twojego biznesu. Każdy projekt realizujemy indywidualnie."
+        },
+        "popularBadge": "Najpopularniejszy",
+        "selectButton": "Wybierz pakiet",
+        "items": [
+            {
+                "name": "Starter",
+                "icon": "Zap",
+                "price": "od 4 999 zł",
+                "description": "Idealne rozwiązanie dla małych firm i startupów",
+                "features": [
+                    "Do 5 podstron",
+                    "Responsywny design",
+                    "Podstawowe SEO",
+                    "Formularz kontaktowy",
+                    "Google Analytics",
+                    "30 dni wsparcia",
+                    "Hosting przez 12 miesięcy"
+                ],
+                "popular": false
+            },
+            {
+                "name": "Business",
+                "icon": "Star",
+                "price": "od 8 999 zł",
+                "description": "Kompleksowe rozwiązanie dla rozwijających się firm",
+                "features": [
+                    "Do 15 podstron",
+                    "Zaawansowany design",
+                    "Pełne SEO + sitemap",
+                    "Blog / Aktualności",
+                    "Integracje (CRM, email)",
+                    "Panel administracyjny",
+                    "90 dni wsparcia",
+                    "Hosting przez 12 miesięcy",
+                    "Optymalizacja obrazów"
+                ],
+                "popular": true
+            },
+            {
+                "name": "Enterprise",
+                "icon": "Rocket",
+                "price": "od 15 999 zł",
+                "description": "Dla firm wymagających maksymalnej wydajności",
+                "features": [
+                    "Nielimitowane podstrony",
+                    "Premium design + animacje",
+                    "Zaawansowane SEO",
+                    "E-commerce / Portal",
+                    "API + Integracje",
+                    "Dedykowany CMS",
+                    "Multi-język",
+                    "6 miesięcy wsparcia premium",
+                    "CDN + Premium hosting",
+                    "Audyt bezpieczeństwa"
+                ],
+                "popular": false
+            }
+        ],
+        "extraPackages": [
+            {
+                "name": "E-commerce",
+                "icon": "Rocket",
+                "price": "od 11 999 zł",
+                "description": "Sklep online z pełnym procesem zakupowym i integracjami płatności.",
+                "features": [
+                    "Katalog produktów",
+                    "Płatności online",
+                    "Koszyk i zamówienia",
+                    "Panel administracyjny",
+                    "Automatyczne maile",
+                    "Optymalizacja pod SEO"
+                ]
+            },
+            {
+                "name": "Aplikacja webowa",
+                "icon": "Star",
+                "price": "od 14 999 zł",
+                "description": "Dedykowana aplikacja webowa dopasowana do procesów w Twojej firmie.",
+                "features": [
+                    "Indywidualny projekt UX/UI",
+                    "Role i uprawnienia",
+                    "Integracje z systemami",
+                    "Panel administracyjny",
+                    "Analityka i raporty",
+                    "Wysoka wydajność"
+                ]
+            }
+        ]
+    },
+    "solutions": {
+        "sectionHeader": {
+            "title": "Rozwiązania technologiczne",
+            "description": "Oferujemy kompleksowe rozwiązania dopasowane do potrzeb Twojego biznesu. Od prostych stron po zaawansowane platformy z pełną integracją."
+        },
+        "cta": {
+            "text": "Nie widzisz rozwiązania, którego potrzebujesz?",
+            "subtext": "Zbudujemy dedykowaną integrację pod Twoje wymagania."
+        },
+        "items": [
+            {
+                "icon": "Database",
+                "title": "Headless CMS",
+                "label": "CMS",
+                "description": "Sanity, Contentful lub Strapi - łatwe zarządzanie treścią bez znajomości kodu. Panel administracyjny dostosowany do Twoich potrzeb."
+            },
+            {
+                "icon": "ShoppingCart",
+                "title": "E-commerce",
+                "label": "shop",
+                "description": "Sklepy internetowe z Stripe, Shopify API lub WooCommerce. Szybkie, bezpieczne płatności i pełna kontrola nad produktami."
+            },
+            {
+                "icon": "Zap",
+                "title": "API & Integracje",
+                "label": "API",
+                "description": "Połączenia z CRM (HubSpot, Salesforce), narzędziami marketingowymi, systemami płatności i dowolnymi zewnętrznymi serwisami."
+            },
+            {
+                "icon": "Lock",
+                "title": "Autentykacja",
+                "label": "Logowanie",
+                "description": "Bezpieczne logowanie użytkowników z Auth0, NextAuth lub Supabase. Social login (Google, Facebook) i role użytkowników."
+            },
+            {
+                "icon": "Globe2",
+                "title": "Multi-język",
+                "label": "języki",
+                "description": "Strony wielojęzyczne z automatycznym wykrywaniem lokalizacji. SEO zoptymalizowane dla każdego języka osobno."
+            },
+            {
+                "icon": "Code2",
+                "title": "PWA",
+                "label": "PWA",
+                "description": "Progressive Web Apps - strony działające jak natywne aplikacje mobilne. Offline mode, powiadomienia push i instalacja."
+            },
+            {
+                "icon": "Blocks",
+                "title": "Page Builder",
+                "label": "Edycja",
+                "description": "Wizualne edytory stron dla klientów. Twórz i edytuj strony bez developera - drag & drop, komponenty, preview."
+            },
+            {
+                "icon": "BarChart3",
+                "title": "Analytics & Tracking",
+                "label": "Analityka",
+                "description": "Google Analytics 4, Facebook Pixel, hotmaps i A/B testing. Pełna kontrola nad konwersjami i ruchem na stronie."
+            },
+            {
+                "icon": "Mail",
+                "title": "Email Marketing",
+                "label": "E-mail",
+                "description": "Integracje z Mailchimp, SendGrid, Klaviyo. Automatyczne kampanie, newslettery i powiadomienia transakcyjne."
+            },
+            {
+                "icon": "Search",
+                "title": "Wyszukiwanie",
+                "label": "Szukaj",
+                "description": "Zaawansowane wyszukiwarki z Algolia lub ElasticSearch. Błyskawiczne wyniki, filtry i autocomplete."
+            }
+        ]
+    },
+    "comparison": {
+        "sectionHeader": {
+            "title": "Transformacja Twojej strony",
+            "description": "Zobacz jak zmienia się wszystko po migracji z WordPress na Next.js"
+        },
+        "before": {
+            "title": "Strona z Kreatora",
+            "features": [
+                "Ciągłe aktualizacje wtyczek",
+                "Problemy z bezpieczeństwem",
+                "Wolne ładowanie (3-5s)",
+                "Wysokie koszty hostingu",
+                "Awarie przy dużym ruchu",
+                "Trudne skalowanie"
+            ],
+            "browser": {
+                "url": "twojastrona.pl",
+                "loading": "Ładowanie...",
+                "time": "Średnio 4.2 sekundy"
+            }
+        },
+        "after": {
+            "title": "Next.js",
+            "features": [
+                "Automatyczne aktualizacje",
+                "Bezpieczeństwo na najwyższym poziomie",
+                "Błyskawiczne ładowanie (<1s)",
+                "Niskie koszty hostingu",
+                "99.99% uptime",
+                "Nieograniczone skalowanie"
+            ],
+            "browser": {
+                "url": "twojastrona.pl",
+                "secure": "Secure",
+                "loaded": "Załadowano!",
+                "time": "W 0.8 sekundy ⚡"
+            }
+        }
+    },
+    "ctaFooter": {
+        "sectionHeader": {
+            "title": "Gotowy na nową stronę?",
+            "description": "Skontaktuj się z nami i otrzymaj bezpłatną wycenę swojego projektu."
+        },
+        "badges": [
+            "Gwarancja odpowiedzi",
+            "Szybka wycena",
+            "Elastyczność",
+            "Dostosowanie do potrzeb"
+        ],
+        "buttons": {
+            "secondary": "Dowiedz się więcej",
+            "primary": "Rozpocznij projekt"
+        }
+    }
+}

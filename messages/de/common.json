@@ -1,1 +1,35 @@
-{}
+{
+    "button": {
+        "submit": "Wyślij",
+        "cancel": "Anuluj",
+        "delete": "Usuń",
+        "update": "Aktualizuj",
+        "edit": "Edytuj",
+        "view": "Wyświetl",
+        "close": "Zamknij",
+        "save": "Zapisz",
+        "next": "Następny",
+        "previous": "Poprzedni"
+    },
+    "navigation": {
+        "routes": {
+            "/": "Strona Główna",
+            "/about": "O nas",
+            "/services": "Usługi",
+            "/contact": "Kontakt",
+            "/blog": "Blog",
+            "/migration": "Migracja",
+            "/process": "Proces",
+            "/portfolio": "Portfolio",
+            "/templates": "Szablony",
+            "/offer": "Oferta",
+            "/testimonials": "Referencje",
+            "/privacy-policy": "Polityka prywatności",
+            "/terms-of-service": "Regulamin",
+            "cta": "Rozpocznij projekt"
+        },
+        "navigation": "Nawigacja",
+        "openNav": "Otwórz menu nawigacji",
+        "closeNav": "Zamknij menu nawigacji"
+    }
+}
