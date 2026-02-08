@@ -42,7 +42,7 @@ export default async function RootLayout({
                 <AppControls>
                     <Navigation />
                     <Main>{children}</Main>
-                    <Footer Logo={<div />} />
+                    <Footer Logo={<div>Logo</div>} />
                 </AppControls>
             </body>
         </html>

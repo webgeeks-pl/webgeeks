@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import Section, { SectionContent } from "@/components/layout/section";
 import Text from "@/components/typography/text";
 import { Button } from "@/components/ui/button";
-import { routes } from "@/config/routes";
+import { legalRoutes, routes } from "@/config/routes";
 import type { BasicComponentProps, NavigationRoutes } from "@/lib/types";
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -54,9 +54,11 @@ function FooterBottomContent() {
             </Text>
 
             <div className="flex gap-5">
-                <div className="flex items-center gap-2">
-                    <FooterSocial link="https://discord.com" />
-                    <FooterSocial link="https://github.com/KM-WebDev" />
+                <div className="flex items-center gap-3">
+                    <FooterSocial link="https://github.com/webgeeks-pl" />
+                    <FooterSocial link="https://www.linkedin.com/company/webgeeks" />
+                    <FooterSocial link="https://facebook.com/webgeeks" />
+                    <FooterSocial link="https://twitter.com/webgeeks" />
                 </div>
 
                 {/* <ThemeSwitcher /> */}
@@ -69,17 +71,34 @@ function FooterCTA({ Logo }: FooterLogoProps) {
     return (
         <div
             className={cn(
-                "bg-clr-bg-light border-clr-border flex h-fit flex-col gap-5 rounded-xl border p-5",
+                "border-border bg-card relative overflow-hidden rounded-2xl border p-8 shadow-lg transition-shadow hover:shadow-xl",
                 "md:max-w-sm"
             )}
         >
-            <FooterLogo Logo={Logo} />
-            <div className="flex flex-col gap-3">
-                <Text semantic="h6" text="Bezpłatny audyt twojej strony" />
-                <Text muted className="leading-normal">
-                    Przeprowadzimy pełną inspekcję strony i pokażemy jak ją usprawnić
-                </Text>
-                <Button className="w-fit">Zamów teraz</Button>
+            <div className="relative z-10 flex flex-col gap-6">
+                <FooterLogo Logo={Logo} />
+                <div className="flex flex-col gap-3">
+                    <Text
+                        semantic="h6"
+                        text="Potrzebujesz strony?"
+                        className="text-2xl font-bold"
+                    />
+                    <Text muted className="text-sm leading-relaxed">
+                        Stwórzmy razem profesjonalną stronę, która przyciągnie klientów
+                    </Text>
+                </div>
+                <Button
+                    className="group w-full shadow-md hover:shadow-lg"
+                    size="lg"
+                    asChild
+                >
+                    <Link href="/contact" className="flex items-center gap-2">
+                        Rozpocznij projekt
+                        <span className="transition-transform group-hover:translate-x-1">
+                            →
+                        </span>
+                    </Link>
+                </Button>
             </div>
         </div>
     );
@@ -110,22 +129,32 @@ function FooterSocial({ link }: SocialProps) {
 }
 
 function FooterNav() {
+    const mainRoutes = routes.filter(
+        (r) => !r.cta && ["/", "/offer", "/process", "/portfolio"].includes(r.link)
+    );
+    const contactRoutes = routes.filter((r) => !r.cta && ["/contact"].includes(r.link));
+    contactRoutes[0].name = "Napisz do nas";
+    contactRoutes.push({
+        link: "mailto:kontakt@webgeeks.pl",
+        name: "kontakt@webgeeks.pl",
+    });
+
     return (
         <div
             className={cn(
                 "grid w-full grid-cols-1 gap-y-10",
                 "sm:grid-cols-2",
-                "lg:flex lg:flex-row lg:justify-between"
+                "lg:grid-cols-4 lg:gap-x-12"
             )}
         >
-            <Column title="Szybkie Linki">
-                <FooterNavigation routes={routes} />
+            <Column title="Usługi">
+                <FooterNavigation routes={mainRoutes} />
             </Column>
-            <Column title="Szybkie Linki">
-                <FooterNavigation routes={routes} />
+            <Column title="Kontakt">
+                <FooterNavigation routes={contactRoutes} />
             </Column>
-            <Column title="Szybkie Linki">
-                <FooterNavigation routes={routes} />
+            <Column title="Informacje prawne">
+                <FooterNavigation routes={legalRoutes} />
             </Column>
         </div>
     );
@@ -144,19 +173,16 @@ function Column({ title, children, className }: ColumnProps) {
 function FooterNavigation({ routes }: { routes: NavigationRoutes }) {
     return (
         <ul className="flex flex-col gap-2">
-            {routes.map(
-                (route, i) =>
-                    !route.cta && (
-                        <li key={route.link}>
-                            <Link
-                                href={route.link}
-                                className="transition-colors hover:text-sky-500"
-                            >
-                                <Text text={route.link} muted />
-                            </Link>
-                        </li>
-                    )
-            )}
+            {routes.map((route) => (
+                <li key={route.link}>
+                    <Link
+                        href={route.link}
+                        className="transition-colors hover:text-sky-500"
+                    >
+                        <Text text={route.name} muted size="small" />
+                    </Link>
+                </li>
+            ))}
         </ul>
     );
 }
