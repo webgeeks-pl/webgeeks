@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
     /* config options here */
     reactCompiler: true,
     experimental: {
-        instrumentationHook: true,
+        // instrumentationHook: true,
     },
 };
 const withNextIntl = createNextIntlPlugin();
