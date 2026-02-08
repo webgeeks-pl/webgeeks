@@ -1,11 +1,6 @@
 "use client";
 
-import {
-    ResizableHandle,
-    ResizablePanel,
-    ResizablePanelGroup,
-} from "@/components/ui/resizable";
-import { ResponsiveDevice } from "@/components/ui/responsive-device";
+import { ResizableDevice } from "@/components/ui/resizable-device";
 import { Safari } from "@/components/ui/safari";
 import { cn } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
@@ -176,43 +171,8 @@ function TemplateDemoContent() {
                                         className="max-w-[70vw]"
                                     />
                                 ) : (
-                                    <div className="flex h-[70vh] w-300">
-                                        <ResizablePanelGroup orientation="horizontal">
-                                            <ResizablePanel
-                                                defaultSize="100%"
-                                                minSize={400}
-                                                className="flex items-center justify-center"
-                                            >
-                                                <ResizablePanelGroup orientation="vertical">
-                                                    <ResizablePanel
-                                                        defaultSize="100%"
-                                                        minSize={400}
-                                                        className="flex items-center justify-center p-4"
-                                                    >
-                                                        <ResponsiveDevice
-                                                            iframeSrc={currentDemoUrl}
-                                                        />
-                                                    </ResizablePanel>
-                                                    <ResizableHandle withHandle />
-                                                    <ResizablePanel
-                                                        className="w-0!"
-                                                        defaultSize={0}
-                                                        minSize={0}
-                                                    />
-                                                </ResizablePanelGroup>
-                                            </ResizablePanel>
-
-                                            <ResizableHandle withHandle />
-
-                                            <ResizablePanel
-                                                defaultSize={0}
-                                                minSize={0}
-                                                style={{
-                                                    width: 0,
-                                                    flexGrow: 0,
-                                                }}
-                                            />
-                                        </ResizablePanelGroup>
+                                    <div className="flex h-[70vh] w-full items-center justify-center p-4">
+                                        <ResizableDevice iframeSrc={currentDemoUrl} />
                                     </div>
                                 )
                             ) : (
