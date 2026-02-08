@@ -19,14 +19,12 @@ export interface SafariProps extends HTMLAttributes<HTMLDivElement> {
     url?: string;
     imageSrc?: string;
     videoSrc?: string;
-    iframeSrc?: string;
     mode?: SafariMode;
 }
 
 export function Safari({
     imageSrc,
     videoSrc,
-    iframeSrc,
     url,
     mode = "default",
     className,
@@ -34,8 +32,7 @@ export function Safari({
     ...props
 }: SafariProps) {
     const hasVideo = !!videoSrc;
-    const hasIframe = !!iframeSrc;
-    const hasMedia = hasVideo || !!imageSrc || hasIframe;
+    const hasMedia = hasVideo || !!imageSrc;
 
     return (
         <div
@@ -83,26 +80,6 @@ export function Safari({
                         src={imageSrc}
                         alt=""
                         className="block size-full object-cover object-top"
-                    />
-                </div>
-            )}
-
-            {!hasVideo && !imageSrc && iframeSrc && (
-                <div
-                    className="absolute z-20 overflow-hidden"
-                    style={{
-                        left: `${LEFT_PCT}%`,
-                        top: `${TOP_PCT}%`,
-                        width: `${WIDTH_PCT}%`,
-                        height: `${HEIGHT_PCT}%`,
-                        borderRadius: "0 0 11px 11px",
-                    }}
-                >
-                    <iframe
-                        src={iframeSrc}
-                        className="block size-full"
-                        title="Safari preview"
-                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
                     />
                 </div>
             )}

@@ -5,8 +5,6 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import Page from "../layout/page";
 import { Card } from "../ui/card";
-import { Iphone } from "../ui/iphone";
-import { Safari } from "../ui/safari";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 
 // Template data structure (same as templatesPage)
@@ -163,7 +161,7 @@ function TemplateDemoContent() {
                     {/* Main Content - Iframe */}
                     <main className="from-muted/30 to-muted/10 flex-1 bg-linear-to-br p-0 sm:p-2 md:p-8">
                         <div className="mx-auto flex h-full items-start justify-center">
-                            {currentDemoUrl ? (
+                            {/* {currentDemoUrl ? (
                                 deviceType === "desktop" ? (
                                     <Safari
                                         url={currentDemoUrl}
@@ -182,7 +180,7 @@ function TemplateDemoContent() {
                                         Brak dostępnego demo dla tego szablonu
                                     </p>
                                 </div>
-                            )}
+                            )} */}
                         </div>
                     </main>
                 </div>
