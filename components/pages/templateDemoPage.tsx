@@ -21,12 +21,12 @@ const templates: Template[] = [
     {
         id: "modern-business",
         name: "Nowoczesny Biznes",
-        demoUrl: "http://127.0.0.1:3000/",
+        demoUrl: "https://cafe-luna-template.vercel.app/",
     },
     {
         id: "e-commerce",
         name: "Sklep E-Commerce",
-        demoUrl: "https://cafe-luna-template.vercel.app/",
+        demoUrl: "http://127.0.0.1:3000/",
     },
     {
         id: "portfolio",
