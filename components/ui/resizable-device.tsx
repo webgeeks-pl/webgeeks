@@ -14,6 +14,20 @@ export function ResizableDevice({ iframeSrc, className }: ResizableDeviceProps) 
     const [isResizing, setIsResizing] = useState<string | null>(null);
     const startPos = useRef({ x: 0, y: 0, width: 0, height: 0 });
 
+    // Initialize dimensions based on container size
+    useEffect(() => {
+        if (!containerRef.current) return;
+
+        const containerRect = containerRef.current.getBoundingClientRect();
+        const maxWidth = containerRect.width - 40;
+        const maxHeight = containerRect.height - 40;
+
+        setDimensions({
+            width: Math.min(400, maxWidth),
+            height: Math.min(800, maxHeight),
+        });
+    }, []);
+
     const handleMouseDown = (e: React.MouseEvent, handle: string) => {
         e.preventDefault();
         setIsResizing(handle);

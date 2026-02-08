@@ -8,49 +8,25 @@ import { Suspense, useEffect, useState } from "react";
 import Page from "../layout/page";
 import { Card } from "../ui/card";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
-
-// Template data structure (same as templatesPage)
-interface Template {
-    id: string;
-    name: string;
-    demoUrl?: string;
-}
-
-// Sample templates - should match the ones from templatesPage
-const templates: Template[] = [
-    {
-        id: "modern-business",
-        name: "Nowoczesny Biznes",
-        demoUrl: "https://cafe-luna-template.vercel.app/",
-    },
-    {
-        id: "e-commerce",
-        name: "Sklep E-Commerce",
-        demoUrl: "http://127.0.0.1:3000/",
-    },
-    {
-        id: "portfolio",
-        name: "Portfolio Kreatywne",
-        demoUrl: "https://example.com/portfolio",
-    },
-    {
-        id: "restaurant",
-        name: "Restauracja i Kawiarnia",
-        demoUrl: "https://example.com/restaurant",
-    },
-    {
-        id: "landing-page",
-        name: "Landing Page SaaS",
-        demoUrl: "https://example.com/saas",
-    },
-    {
-        id: "blog",
-        name: "Nowoczesny Blog",
-        demoUrl: "https://example.com/blog",
-    },
-];
+import { templates } from "./templatesPage";
 
 type DeviceType = "desktop" | "mobile";
+
+export default function TemplateDemoPage() {
+    return (
+        <Suspense
+            fallback={
+                <Page>
+                    <div className="flex min-h-screen items-center justify-center">
+                        Ładowanie...
+                    </div>
+                </Page>
+            }
+        >
+            <TemplateDemoContent />
+        </Suspense>
+    );
+}
 
 function TemplateDemoContent() {
     const searchParams = useSearchParams();
@@ -161,7 +137,7 @@ function TemplateDemoContent() {
                     </aside>
 
                     {/* Main Content - Iframe */}
-                    <main className="from-muted/30 to-muted/10 flex-1 bg-linear-to-br p-0 sm:p-2 md:p-8">
+                    <main className="from-muted/30 to-muted/10 flex-1 bg-linear-to-br p-0">
                         <div className="flex h-full items-start justify-center">
                             {currentDemoUrl ? (
                                 deviceType === "desktop" ? (
@@ -171,7 +147,7 @@ function TemplateDemoContent() {
                                         className="max-w-[70vw]"
                                     />
                                 ) : (
-                                    <div className="flex h-[70vh] w-full items-center justify-center p-4">
+                                    <div className="flex h-[80vh] w-full items-center justify-center">
                                         <ResizableDevice iframeSrc={currentDemoUrl} />
                                     </div>
                                 )
@@ -187,21 +163,5 @@ function TemplateDemoContent() {
                 </div>
             </div>
         </Page>
-    );
-}
-
-export default function TemplateDemoPage() {
-    return (
-        <Suspense
-            fallback={
-                <Page>
-                    <div className="flex min-h-screen items-center justify-center">
-                        Ładowanie...
-                    </div>
-                </Page>
-            }
-        >
-            <TemplateDemoContent />
-        </Suspense>
     );
 }

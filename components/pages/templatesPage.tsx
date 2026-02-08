@@ -23,7 +23,7 @@ interface Template {
 }
 
 // Sample templates - you can move this to a constants file later
-const templates: Template[] = [
+export const templates: Template[] = [
     {
         id: "modern-business",
         name: "Nowoczesny Biznes",
@@ -33,7 +33,7 @@ const templates: Template[] = [
         tags: ["Profesjonalny", "Nowoczesny", "Korporacyjny"],
         desktopImage: "/template-hero.webp",
         mobileImage: "/strona.jpeg",
-        demoUrl: "https://example.com",
+        demoUrl: "https://cafe-luna-template.vercel.app/",
         features: [
             "Responsywny Design",
             "Optymalizacja SEO",
@@ -50,6 +50,7 @@ const templates: Template[] = [
         tags: ["Sklep", "Produkty", "Płatności"],
         desktopImage: "/template-hero.webp",
         mobileImage: "/strona.jpeg",
+        demoUrl: "http://127.0.0.1:3000/",
         features: [
             "Katalog Produktów",
             "Koszyk",
