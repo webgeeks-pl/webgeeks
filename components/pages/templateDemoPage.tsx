@@ -1,5 +1,7 @@
 "use client";
 
+import { Iphone } from "@/components/ui/iphone";
+import { Safari } from "@/components/ui/safari";
 import { cn } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
@@ -19,12 +21,12 @@ const templates: Template[] = [
     {
         id: "modern-business",
         name: "Nowoczesny Biznes",
-        demoUrl: "https://cafe-luna-template.vercel.app/",
+        demoUrl: "http://127.0.0.1:3000/",
     },
     {
         id: "e-commerce",
         name: "Sklep E-Commerce",
-        demoUrl: "https://example.com/shop",
+        demoUrl: "https://cafe-luna-template.vercel.app/",
     },
     {
         id: "portfolio",
@@ -161,7 +163,7 @@ function TemplateDemoContent() {
                     {/* Main Content - Iframe */}
                     <main className="from-muted/30 to-muted/10 flex-1 bg-linear-to-br p-0 sm:p-2 md:p-8">
                         <div className="mx-auto flex h-full items-start justify-center">
-                            {/* {currentDemoUrl ? (
+                            {currentDemoUrl ? (
                                 deviceType === "desktop" ? (
                                     <Safari
                                         url={currentDemoUrl}
@@ -180,7 +182,7 @@ function TemplateDemoContent() {
                                         Brak dostępnego demo dla tego szablonu
                                     </p>
                                 </div>
-                            )} */}
+                            )}
                         </div>
                     </main>
                 </div>

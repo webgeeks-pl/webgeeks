@@ -18,6 +18,7 @@ type SafariMode = "default" | "simple";
 export interface SafariProps extends HTMLAttributes<HTMLDivElement> {
     url?: string;
     imageSrc?: string;
+    iframeSrc?: string;
     videoSrc?: string;
     mode?: SafariMode;
 }
@@ -25,6 +26,7 @@ export interface SafariProps extends HTMLAttributes<HTMLDivElement> {
 export function Safari({
     imageSrc,
     videoSrc,
+    iframeSrc,
     url,
     mode = "default",
     className,
@@ -32,7 +34,8 @@ export function Safari({
     ...props
 }: SafariProps) {
     const hasVideo = !!videoSrc;
-    const hasMedia = hasVideo || !!imageSrc;
+    const hasIframe = !!iframeSrc;
+    const hasMedia = hasVideo || !!imageSrc || hasIframe;
 
     return (
         <div
@@ -82,6 +85,23 @@ export function Safari({
                         className="block size-full object-cover object-top"
                     />
                 </div>
+            )}
+
+            {!hasVideo && !imageSrc && hasIframe && (
+                <iframe
+                    src={iframeSrc}
+                    title="Safari preview"
+                    className="absolute z-20 border-0"
+                    style={{
+                        left: `${LEFT_PCT}%`,
+                        top: `${TOP_PCT}%`,
+                        width: `${WIDTH_PCT}%`,
+                        height: `${HEIGHT_PCT}%`,
+                        borderRadius: "0 0 11px 11px",
+                        overflow: "auto",
+                    }}
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation-by-user-activation"
+                />
             )}
 
             <svg

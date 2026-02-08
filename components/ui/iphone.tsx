@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import type { HTMLAttributes } from "react";
+
 const PHONE_WIDTH = 433;
 const PHONE_HEIGHT = 882;
 const SCREEN_X = 21.25;
@@ -15,6 +16,7 @@ const WIDTH_PCT = (SCREEN_WIDTH / PHONE_WIDTH) * 100;
 const HEIGHT_PCT = (SCREEN_HEIGHT / PHONE_HEIGHT) * 100;
 const RADIUS_H = (SCREEN_RADIUS / SCREEN_WIDTH) * 100;
 const RADIUS_V = (SCREEN_RADIUS / SCREEN_HEIGHT) * 100;
+
 export interface IphoneProps extends HTMLAttributes<HTMLDivElement> {
     src?: string;
     videoSrc?: string;
@@ -86,22 +88,20 @@ export function Iphone({
             )}
 
             {!hasVideo && !src && iframeSrc && (
-                <div
-                    className="pointer-events-none absolute z-0 overflow-hidden"
+                <iframe
+                    src={iframeSrc}
+                    title="iPhone Demo"
+                    className="absolute z-20 border-0"
                     style={{
                         left: `${LEFT_PCT}%`,
                         top: `${TOP_PCT}%`,
                         width: `${WIDTH_PCT}%`,
                         height: `${HEIGHT_PCT}%`,
                         borderRadius: `${RADIUS_H}% / ${RADIUS_V}%`,
+                        overflow: "auto",
                     }}
-                >
-                    <iframe
-                        src={iframeSrc}
-                        title="iPhone Demo"
-                        className="block size-full border-0"
-                    />
-                </div>
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation-by-user-activation"
+                />
             )}
 
             <svg
