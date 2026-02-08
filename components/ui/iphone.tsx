@@ -20,9 +20,17 @@ export interface IphoneProps extends HTMLAttributes<HTMLDivElement> {
     videoSrc?: string;
     iframeSrc?: string;
 }
-export function Iphone({ src, videoSrc, className, style, ...props }: IphoneProps) {
+export function Iphone({
+    src,
+    videoSrc,
+    iframeSrc,
+    className,
+    style,
+    ...props
+}: IphoneProps) {
     const hasVideo = !!videoSrc;
-    const hasMedia = hasVideo || !!src;
+    const hasIframe = !!iframeSrc;
+    const hasMedia = hasVideo || !!src || !!iframeSrc;
     return (
         <div
             className={cn(
@@ -73,6 +81,25 @@ export function Iphone({ src, videoSrc, className, style, ...props }: IphoneProp
                         alt=""
                         fill
                         className="block size-full object-cover object-top"
+                    />
+                </div>
+            )}
+
+            {!hasVideo && !src && iframeSrc && (
+                <div
+                    className="pointer-events-none absolute z-0 overflow-hidden"
+                    style={{
+                        left: `${LEFT_PCT}%`,
+                        top: `${TOP_PCT}%`,
+                        width: `${WIDTH_PCT}%`,
+                        height: `${HEIGHT_PCT}%`,
+                        borderRadius: `${RADIUS_H}% / ${RADIUS_V}%`,
+                    }}
+                >
+                    <iframe
+                        src={iframeSrc}
+                        title="iPhone Demo"
+                        className="block size-full border-0"
                     />
                 </div>
             )}
