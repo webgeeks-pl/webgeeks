@@ -1,6 +1,11 @@
 "use client";
 
-import { Iphone } from "@/components/ui/iphone";
+import {
+    ResizableHandle,
+    ResizablePanel,
+    ResizablePanelGroup,
+} from "@/components/ui/resizable";
+import { ResponsiveDevice } from "@/components/ui/responsive-device";
 import { Safari } from "@/components/ui/safari";
 import { cn } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
@@ -112,7 +117,7 @@ function TemplateDemoContent() {
 
     return (
         <Page>
-            <div className="flex min-h-screen flex-col">
+            <div className="flex flex-col">
                 {/* Device Toggle Buttons */}
                 <div className="bg-background/95 supports-backdrop-filter:bg-background/60 border-b backdrop-blur">
                     <Tabs
@@ -162,19 +167,53 @@ function TemplateDemoContent() {
 
                     {/* Main Content - Iframe */}
                     <main className="from-muted/30 to-muted/10 flex-1 bg-linear-to-br p-0 sm:p-2 md:p-8">
-                        <div className="mx-auto flex h-full items-start justify-center">
+                        <div className="flex h-full items-start justify-center">
                             {currentDemoUrl ? (
                                 deviceType === "desktop" ? (
                                     <Safari
                                         url={currentDemoUrl}
                                         iframeSrc={currentDemoUrl}
-                                        className="max-w-[75vw]"
+                                        className="max-w-[70vw]"
                                     />
                                 ) : (
-                                    <Iphone
-                                        iframeSrc={currentDemoUrl}
-                                        className="w-full sm:max-w-md"
-                                    />
+                                    <div className="flex h-[70vh] w-300">
+                                        <ResizablePanelGroup orientation="horizontal">
+                                            <ResizablePanel
+                                                defaultSize="100%"
+                                                minSize={400}
+                                                className="flex items-center justify-center"
+                                            >
+                                                <ResizablePanelGroup orientation="vertical">
+                                                    <ResizablePanel
+                                                        defaultSize="100%"
+                                                        minSize={400}
+                                                        className="flex items-center justify-center p-4"
+                                                    >
+                                                        <ResponsiveDevice
+                                                            iframeSrc={currentDemoUrl}
+                                                        />
+                                                    </ResizablePanel>
+                                                    <ResizableHandle withHandle />
+                                                    <ResizablePanel
+                                                        className="w-0!"
+                                                        defaultSize={0}
+                                                        minSize={0}
+                                                    />
+                                                </ResizablePanelGroup>
+                                            </ResizablePanel>
+
+                                            <ResizableHandle withHandle />
+
+                                            <ResizablePanel
+                                                defaultSize={0}
+                                                minSize={0}
+                                                style={{
+                                                    width: 0,
+                                                    flexGrow: 0,
+                                                }}
+                                            />
+                                        </ResizablePanelGroup>
+                                    </div>
                                 )
                             ) : (
                                 <div className="flex h-full items-center justify-center">
