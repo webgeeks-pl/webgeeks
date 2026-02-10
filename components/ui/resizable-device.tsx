@@ -163,14 +163,14 @@ export function ResizableDevice({ iframeSrc, className }: ResizableDeviceProps) 
             >
                 {/* Device Body */}
                 <div
-                    className="absolute inset-0 bg-[#E5E5E5] dark:bg-[#404040]"
+                    className="absolute inset-0 z-100000 bg-[#E5E5E5] dark:bg-[#404040]"
                     style={{
                         borderRadius: `${RADIUS_PX}px`,
                     }}
                 >
                     {/* Inner Screen Bezel */}
                     <div
-                        className="absolute bg-white dark:bg-[#262626]"
+                        className="absolute z-100000 bg-white dark:bg-[#262626]"
                         style={{
                             top: `${BEZEL_SIZE}px`,
                             left: `${BEZEL_SIZE}px`,
@@ -264,67 +264,67 @@ export function ResizableDevice({ iframeSrc, className }: ResizableDeviceProps) 
                 {/* Resize Handles */}
                 {/* Top */}
                 <div
-                    className="absolute top-0 left-1/2 h-2 w-24 -translate-x-1/2 -translate-y-1 cursor-n-resize"
+                    className="absolute top-0 left-1/2 h-3 w-24 -translate-x-1/2 -translate-y-1.5 cursor-n-resize"
                     onMouseDown={(e) => handleMouseDown(e, "top")}
                 >
-                    <div className="mx-auto mt-0.5 h-1 w-12 rounded-full bg-gray-400/50 hover:bg-gray-400" />
+                    <div className="mx-auto mt-0.5 h-1.5 w-16 rounded-full bg-gray-500/70 hover:bg-gray-600" />
                 </div>
 
                 {/* Bottom */}
                 <div
-                    className="absolute bottom-0 left-1/2 h-2 w-24 -translate-x-1/2 translate-y-1 cursor-s-resize"
+                    className="absolute bottom-0 left-1/2 flex h-3 w-24 -translate-x-1/2 translate-y-1.5 cursor-s-resize items-center justify-center"
                     onMouseDown={(e) => handleMouseDown(e, "bottom")}
                 >
-                    <div className="mx-auto mb-0.5 h-1 w-12 rounded-full bg-gray-400/50 hover:bg-gray-400" />
+                    <div className="h-1.5 w-16 rounded-full bg-gray-500/70 hover:bg-gray-600" />
                 </div>
 
                 {/* Left */}
                 <div
-                    className="absolute top-1/2 left-0 h-24 w-2 -translate-x-1 -translate-y-1/2 cursor-w-resize"
+                    className="absolute top-1/2 left-0 flex h-24 w-3 -translate-x-1.5 -translate-y-1/2 cursor-w-resize items-center justify-center"
                     onMouseDown={(e) => handleMouseDown(e, "left")}
                 >
-                    <div className="ml-0.5 h-12 w-1 rounded-full bg-gray-400/50 hover:bg-gray-400" />
+                    <div className="h-16 w-1.5 rounded-full bg-gray-500/70 hover:bg-gray-600" />
                 </div>
 
                 {/* Right */}
                 <div
-                    className="absolute top-1/2 right-0 h-24 w-2 translate-x-1 -translate-y-1/2 cursor-e-resize"
+                    className="absolute top-1/2 right-0 flex h-24 w-3 translate-x-1.5 -translate-y-1/2 cursor-e-resize items-center justify-center"
                     onMouseDown={(e) => handleMouseDown(e, "right")}
                 >
-                    <div className="mr-0.5 h-12 w-1 rounded-full bg-gray-400/50 hover:bg-gray-400" />
+                    <div className="h-16 w-1.5 rounded-full bg-gray-500/70 hover:bg-gray-600" />
                 </div>
 
                 {/* Corners */}
                 {/* Top-left */}
                 <div
-                    className="absolute top-0 left-0 h-4 w-4 -translate-x-2 -translate-y-2 cursor-nw-resize"
+                    className="absolute top-0 left-0 flex size-5 -translate-x-2.5 -translate-y-2.5 cursor-nw-resize items-center justify-center"
                     onMouseDown={(e) => handleMouseDown(e, "top-left")}
                 >
-                    <div className="size-2 rounded-full bg-gray-400/50 hover:bg-gray-400" />
+                    <div className="size-2.5 rounded-full bg-gray-500/70 hover:bg-gray-600" />
                 </div>
 
                 {/* Top-right */}
                 <div
-                    className="absolute top-0 right-0 h-4 w-4 translate-x-2 -translate-y-2 cursor-ne-resize"
+                    className="absolute top-0 right-0 flex size-5 translate-x-2.5 -translate-y-2.5 cursor-ne-resize items-center justify-center"
                     onMouseDown={(e) => handleMouseDown(e, "top-right")}
                 >
-                    <div className="size-2 rounded-full bg-gray-400/50 hover:bg-gray-400" />
+                    <div className="size-2.5 rounded-full bg-gray-500/70 hover:bg-gray-600" />
                 </div>
 
                 {/* Bottom-left */}
                 <div
-                    className="absolute bottom-0 left-0 h-4 w-4 -translate-x-2 translate-y-2 cursor-sw-resize"
+                    className="absolute bottom-0 left-0 flex size-5 -translate-x-2.5 translate-y-2.5 cursor-sw-resize items-center justify-center"
                     onMouseDown={(e) => handleMouseDown(e, "bottom-left")}
                 >
-                    <div className="size-2 rounded-full bg-gray-400/50 hover:bg-gray-400" />
+                    <div className="size-2.5 rounded-full bg-gray-500/70 hover:bg-gray-600" />
                 </div>
 
                 {/* Bottom-right */}
                 <div
-                    className="absolute right-0 bottom-0 h-4 w-4 translate-x-2 translate-y-2 cursor-se-resize"
+                    className="absolute right-0 bottom-0 flex size-5 translate-x-2.5 translate-y-2.5 cursor-se-resize items-center justify-center"
                     onMouseDown={(e) => handleMouseDown(e, "bottom-right")}
                 >
-                    <div className="size-2 rounded-full bg-gray-400/50 hover:bg-gray-400" />
+                    <div className="size-2.5 rounded-full bg-gray-500/70 hover:bg-gray-600" />
                 </div>
             </div>
         </div>
