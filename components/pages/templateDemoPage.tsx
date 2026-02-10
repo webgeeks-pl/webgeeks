@@ -2,11 +2,15 @@
 
 import { ResizableDevice } from "@/components/ui/resizable-device";
 import { Safari } from "@/components/ui/safari";
+import { useNavigation } from "@/context/navigationContext";
 import { cn } from "@/lib/utils";
+import { ExternalLink, Fullscreen, Monitor, Smartphone } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useEffectEvent, useRef, useState } from "react";
 import Page from "../layout/page";
-import { Card } from "../ui/card";
+import { Button } from "../ui/button";
+import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "../ui/item";
+import { ScrollArea } from "../ui/scroll-area";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 import { templates } from "./templatesPage";
 
@@ -31,7 +35,11 @@ export default function TemplateDemoPage() {
 function TemplateDemoContent() {
     const searchParams = useSearchParams();
     const initialTemplateId = searchParams.get("template") || templates[0]?.id;
-
+    const demoContainerRef = useRef<HTMLDivElement>(null);
+    const asideRef = useRef<HTMLDivElement>(null);
+    const asideHeaderRef = useRef<HTMLDivElement>(null);
+    const asideScrollRef = useRef<HTMLDivElement>(null);
+    const { headerRef } = useNavigation();
     const [selectedTemplateId, setSelectedTemplateId] =
         useState<string>(initialTemplateId);
     const [deviceType, setDeviceType] = useState<DeviceType>("desktop");
@@ -65,6 +73,36 @@ function TemplateDemoContent() {
         }
     }, [isLargeScreen, deviceType]);
 
+    // adjusting available height for demo iframe to fill the screen without overflow
+
+    const handleResize = useEffectEvent(() => {
+        const windowHeight = window.innerHeight;
+        const headerHeight = headerRef.current?.getBoundingClientRect().height || 0;
+        if (demoContainerRef.current) {
+            // const windowHeight = window.document.body.offsetHeight || window.innerHeight;
+            console.log("Window height:", windowHeight, "Header height:", headerHeight);
+            const availableHeight = windowHeight - headerHeight;
+            const asideAvailableHeight =
+                windowHeight -
+                headerHeight -
+                (asideHeaderRef.current?.getBoundingClientRect().height || 0);
+            demoContainerRef.current.style.height = `${availableHeight}px`;
+            asideRef.current?.style.setProperty("height", `${availableHeight}px`);
+            if (asideScrollRef.current) {
+                asideScrollRef.current.style.height = `${asideAvailableHeight}px`;
+            }
+            console.log("Demo container height set to:", availableHeight);
+        }
+        console.log("Window height:", windowHeight, "Header height:", headerHeight);
+    });
+    useEffect(() => {
+        if (!window) return;
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     // Redirect to demo URL on mobile
     useEffect(() => {
         if (isMobile && currentDemoUrl) {
@@ -88,57 +126,121 @@ function TemplateDemoContent() {
 
     return (
         <Page>
-            <div className="flex flex-col">
-                {/* Device Toggle Buttons */}
-                <div className="bg-background/95 supports-backdrop-filter:bg-background/60 border-b backdrop-blur">
-                    <Tabs
-                        value={deviceType}
-                        onValueChange={(value) => setDeviceType(value as DeviceType)}
-                        className="gap-size-md flex w-full flex-col"
-                    >
-                        <TabsList className="relative mx-auto my-4">
-                            <TabsTrigger value="desktop" disabled={!isLargeScreen}>
-                                Komputery
-                            </TabsTrigger>
-                            <TabsTrigger value="mobile">Urządzenia mobilne</TabsTrigger>
-                        </TabsList>
-                    </Tabs>
-                </div>
-
+            <div className="relative flex flex-col" ref={demoContainerRef}>
                 {/* Main Content */}
                 <div className="flex flex-1">
                     {/* Left Sidebar - Domain List */}
-                    <aside className="bg-muted/30 w-64 border-r p-4">
-                        <h2 className="mb-4 text-lg font-semibold">Szablony</h2>
-                        <div className="space-y-2">
-                            {templates.map((template) => (
-                                <Card
-                                    key={template.id}
-                                    className={cn(
-                                        "cursor-pointer p-3 transition-all hover:shadow-md",
-                                        selectedTemplateId === template.id &&
-                                            "border-primary bg-primary/5"
-                                    )}
-                                    onClick={() => setSelectedTemplateId(template.id)}
-                                >
-                                    <div className="space-y-1">
-                                        <p className="text-sm leading-none font-medium">
-                                            {template.name}
-                                        </p>
-                                        {template.demoUrl && (
-                                            <p className="text-muted-foreground truncate text-xs">
-                                                {template.demoUrl}
-                                            </p>
-                                        )}
-                                    </div>
-                                </Card>
-                            ))}
+                    <aside
+                        className="bg-muted/30 w-64 overflow-y-hidden border-r p-4"
+                        ref={asideRef}
+                    >
+                        <div
+                            className="mb-4 flex items-center justify-between"
+                            ref={asideHeaderRef}
+                        >
+                            <h1 className="text-lg font-semibold">Szablony</h1>
+
+                            <Tabs
+                                value={deviceType}
+                                onValueChange={(value) =>
+                                    setDeviceType(value as DeviceType)
+                                }
+                                className=""
+                            >
+                                <TabsList className="relative mx-auto gap-1 rounded-2xl border-0 bg-transparent p-1 ring-0">
+                                    <TabsTrigger value="desktop" disabled={true} asChild>
+                                        <Button
+                                            size="icon"
+                                            variant={"secondary"}
+                                            className="aspect-square"
+                                        >
+                                            <Fullscreen className="text-inherit" />
+                                        </Button>
+                                    </TabsTrigger>
+                                    <TabsTrigger
+                                        value="desktop"
+                                        disabled={!isLargeScreen}
+                                        asChild
+                                    >
+                                        <Button
+                                            size="icon"
+                                            variant={"secondary"}
+                                            className="aspect-square"
+                                        >
+                                            <Monitor className="text-inherit" />
+                                        </Button>
+                                    </TabsTrigger>
+                                    <TabsTrigger value="mobile" asChild>
+                                        <Button
+                                            size="icon"
+                                            variant={"secondary"}
+                                            className="aspect-square"
+                                        >
+                                            <Smartphone className="text-inherit" />
+                                        </Button>
+                                    </TabsTrigger>
+                                </TabsList>
+                            </Tabs>
                         </div>
+
+                        <ScrollArea className="" ref={asideScrollRef}>
+                            <div className="flex flex-col gap-2">
+                                {templates.map((template) => (
+                                    <Item
+                                        key={template.id}
+                                        variant={"outline"}
+                                        className={cn(
+                                            "flex cursor-pointer transition-all",
+                                            selectedTemplateId === template.id &&
+                                                "border-primary/20 bg-primary/5"
+                                        )}
+                                        onClick={() => setSelectedTemplateId(template.id)}
+                                    >
+                                        <ItemContent>
+                                            <ItemTitle>{template.name}</ItemTitle>
+                                            <ItemDescription>
+                                                Lorem ipsum dolor sit amet consectetur
+                                                adipisicing elit.
+                                            </ItemDescription>
+                                        </ItemContent>
+                                        <ItemActions>
+                                            <Button
+                                                variant={
+                                                    template.demoUrl
+                                                        ? "default"
+                                                        : "secondary"
+                                                }
+                                                disabled={!template.demoUrl}
+                                            >
+                                                <span>Demo</span>
+                                            </Button>
+                                            <Button
+                                                size="sm"
+                                                variant={"secondary"}
+                                                disabled={!template.demoUrl}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    if (template.demoUrl) {
+                                                        window.open(
+                                                            template.demoUrl,
+                                                            "_blank"
+                                                        );
+                                                    }
+                                                }}
+                                            >
+                                                <span>Link</span>
+                                                <ExternalLink />
+                                            </Button>
+                                        </ItemActions>
+                                    </Item>
+                                ))}
+                            </div>
+                        </ScrollArea>
                     </aside>
 
                     {/* Main Content - Iframe */}
-                    <main className="from-muted/30 to-muted/10 flex-1 bg-linear-to-br p-0">
-                        <div className="flex h-full items-start justify-center">
+                    <div className="from-muted/30 to-muted/10 flex-1 bg-linear-to-br p-0">
+                        <div className="flex h-full items-center justify-center">
                             {currentDemoUrl ? (
                                 deviceType === "desktop" ? (
                                     <Safari
@@ -159,7 +261,7 @@ function TemplateDemoContent() {
                                 </div>
                             )}
                         </div>
-                    </main>
+                    </div>
                 </div>
             </div>
         </Page>
