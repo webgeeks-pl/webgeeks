@@ -17,6 +17,12 @@ export const routes: NavigationRoutes = [
     },
 ];
 
+export const footerRoutes = {
+    links: [],
+    contacts: [],
+    legal: [],
+};
+
 export const legalRoutes: NavigationRoutes = [
     { link: "/privacy-policy", name: "Polityka prywatności" },
     {

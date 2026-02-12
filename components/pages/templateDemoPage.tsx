@@ -82,7 +82,7 @@ function TemplateDemoContent() {
             console.log("Window height:", windowHeight, "Header height:", headerHeight);
             const availableHeight = windowHeight - headerHeight;
             const asideAvailableHeight =
-                windowHeight -
+                demoContainerRef.current.style.height -
                 headerHeight -
                 (asideHeaderRef.current?.getBoundingClientRect().height || 0);
             demoContainerRef.current.style.height = `${availableHeight}px`;
