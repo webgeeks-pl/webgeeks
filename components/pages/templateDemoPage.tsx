@@ -7,6 +7,13 @@ import { ExternalLink, Fullscreen, Monitor, Smartphone } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useEffectEvent, useRef, useState } from "react";
 import Page from "../layout/page";
+import Section, {
+    SectionContent,
+    SectionHeader,
+    SectionHeaderContent,
+    SectionLead,
+    SectionTitle,
+} from "../layout/section";
 import { Button } from "../ui/button";
 import { Item, ItemActions, ItemContent, ItemTitle } from "../ui/item";
 import { ScrollArea } from "../ui/scroll-area";
@@ -75,24 +82,26 @@ function TemplateDemoContent() {
     // adjusting available height for demo iframe to fill the screen without overflow
 
     const handleResize = useEffectEvent(() => {
+        if (!demoContainerRef.current) return;
+
         const windowHeight = window.innerHeight;
         const headerHeight = headerRef.current?.getBoundingClientRect().height || 0;
-        if (demoContainerRef.current) {
-            // const windowHeight = window.document.body.offsetHeight || window.innerHeight;
-            console.log("Window height:", windowHeight, "Header height:", headerHeight);
-            const availableHeight = windowHeight - headerHeight;
-            const asideAvailableHeight =
-                demoContainerRef.current.style.height -
-                headerHeight -
-                (asideHeaderRef.current?.getBoundingClientRect().height || 0);
-            demoContainerRef.current.style.height = `${availableHeight}px`;
-            asideRef.current?.style.setProperty("height", `${availableHeight}px`);
-            if (asideScrollRef.current) {
-                asideScrollRef.current.style.height = `${asideAvailableHeight}px`;
-            }
-            console.log("Demo container height set to:", availableHeight);
+
+        const asideHeaderHeight =
+            asideHeaderRef.current?.getBoundingClientRect().height || 0;
+
+        const availableHeight = windowHeight - headerHeight;
+
+        // ustawiamy główną wysokość
+        demoContainerRef.current.style.height = `${availableHeight}px`;
+        asideRef.current?.style.setProperty("height", `${availableHeight}px`);
+
+        // obliczamy height scrolla poprawnie
+        const asideAvailableHeight = availableHeight - asideHeaderHeight;
+
+        if (asideScrollRef.current) {
+            asideScrollRef.current.style.height = `${asideAvailableHeight}px`;
         }
-        console.log("Window height:", windowHeight, "Header height:", headerHeight);
     });
     useEffect(() => {
         if (!window) return;
@@ -132,10 +141,10 @@ function TemplateDemoContent() {
         <Page>
             <div className="relative flex flex-col" ref={demoContainerRef}>
                 {/* Main Content */}
-                <div className="flex flex-1">
+                <div className="flex h-full min-h-0 flex-1">
                     {/* Left Sidebar - Domain List */}
                     <aside
-                        className="bg-muted/30 w-64 overflow-y-hidden border-r p-4"
+                        className="bg-muted/30 flex min-h-0 w-64 flex-col border-r p-4"
                         ref={asideRef}
                     >
                         <div
@@ -161,11 +170,7 @@ function TemplateDemoContent() {
                                             <Fullscreen className="" />
                                         </Button>
                                     </TabsTrigger>
-                                    <TabsTrigger
-                                        value="desktop"
-                                        disabled={!isLargeScreen}
-                                        asChild
-                                    >
+                                    <TabsTrigger value="desktop" asChild>
                                         <Button
                                             size="icon"
                                             variant={"secondary"}
@@ -187,7 +192,11 @@ function TemplateDemoContent() {
                             </Tabs>
                         </div>
 
-                        <ScrollArea className="" ref={asideScrollRef}>
+                        <ScrollArea
+                            type="always"
+                            className="h-full min-h-0 flex-1"
+                            ref={asideScrollRef}
+                        >
                             <div className="flex flex-col gap-2">
                                 {templates.map((template) => {
                                     const isActive = selectedTemplateId === template.id;
@@ -198,7 +207,8 @@ function TemplateDemoContent() {
                                             key={template.id}
                                             variant={"outline"}
                                             className={cn(
-                                                "flex cursor-pointer transition-all",
+                                                "flex cursor-pointer bg-white transition-all",
+                                                !template.demoUrl && "opacity-50",
                                                 isActive &&
                                                     "border-foreground/20 bg-brand-300"
                                             )}
@@ -250,7 +260,7 @@ function TemplateDemoContent() {
                     </aside>
 
                     {/* Main Content - Iframe */}
-                    <div className="from-muted/30 to-muted/10 flex-1 bg-linear-to-br p-0">
+                    <div className="from-muted/30 to-muted/10 w-[calc(100%-256px)] flex-1 bg-linear-to-br p-0">
                         <div className="flex h-full items-center justify-center">
                             {currentDemoUrl ? (
                                 deviceType === "fullscreen" ? (
@@ -284,6 +294,32 @@ function TemplateDemoContent() {
                     </div>
                 </div>
             </div>
+
+            <Section className="py-size-2xl bg-brand-darker/50">
+                <SectionContent className="gap-size-md">
+                    <SectionHeader>
+                        <SectionHeaderContent>
+                            <SectionTitle text={"Rozpocznij projekt"} />
+                            <SectionLead
+                                text={
+                                    "Skorzystaj z naszych szablonów, aby szybko wystartować z projektem. Każdy szablon jest w pełni konfigurowalny i gotowy do rozbudowy."
+                                }
+                                muted={false}
+                                className="text-black"
+                            />
+                        </SectionHeaderContent>
+                    </SectionHeader>
+
+                    <div className="flex gap-4">
+                        <Button variant="secondary" className="flex-1">
+                            {"learn more"}
+                        </Button>
+                        <Button variant="default" className="flex-1">
+                            {"get started"}
+                        </Button>
+                    </div>
+                </SectionContent>
+            </Section>
         </Page>
     );
 }

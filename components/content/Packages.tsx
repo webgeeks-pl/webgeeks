@@ -8,17 +8,26 @@ import { Card, CardContent, CardHeader } from "../ui/card";
 import IconContainer from "../ui/iconContainer";
 import { getLucideIcon } from "../ui/lucideIcons";
 
+export interface Feature {
+    name: string;
+    details: string;
+}
+
 export interface Package {
     key: string;
     name: string;
     icon: string;
     price: string;
     description: string;
-    features: string[];
+    category: string;
+    features: {
+        main: Feature[];
+        additional: Feature[];
+    };
 }
 
-export function useAllPackages(): Package[] {
-    const t = useTranslations("pages.home.packages");
+export function UseAllPackages(): Package[] {
+    const t = useTranslations("packages.packages");
 
     return [
         {
@@ -27,7 +36,11 @@ export function useAllPackages(): Package[] {
             icon: t("onePage.icon"),
             price: t("onePage.price"),
             description: t("onePage.description"),
-            features: t.raw("onePage.features") as string[],
+            category: t("onePage.category"),
+            features: t.raw("onePage.features") as {
+                main: Feature[];
+                additional: Feature[];
+            },
         },
         {
             key: "starter",
@@ -35,7 +48,11 @@ export function useAllPackages(): Package[] {
             icon: t("starter.icon"),
             price: t("starter.price"),
             description: t("starter.description"),
-            features: t.raw("starter.features") as string[],
+            category: t("starter.category"),
+            features: t.raw("starter.features") as {
+                main: Feature[];
+                additional: Feature[];
+            },
         },
         {
             key: "business",
@@ -43,7 +60,11 @@ export function useAllPackages(): Package[] {
             icon: t("business.icon"),
             price: t("business.price"),
             description: t("business.description"),
-            features: t.raw("business.features") as string[],
+            category: t("business.category"),
+            features: t.raw("business.features") as {
+                main: Feature[];
+                additional: Feature[];
+            },
         },
         {
             key: "enterprise",
@@ -51,7 +72,11 @@ export function useAllPackages(): Package[] {
             icon: t("enterprise.icon"),
             price: t("enterprise.price"),
             description: t("enterprise.description"),
-            features: t.raw("enterprise.features") as string[],
+            category: t("enterprise.category"),
+            features: t.raw("enterprise.features") as {
+                main: Feature[];
+                additional: Feature[];
+            },
         },
         {
             key: "webapp",
@@ -59,7 +84,11 @@ export function useAllPackages(): Package[] {
             icon: t("webapp.icon"),
             price: t("webapp.price"),
             description: t("webapp.description"),
-            features: t.raw("webapp.features") as string[],
+            category: t("webapp.category"),
+            features: t.raw("webapp.features") as {
+                main: Feature[];
+                additional: Feature[];
+            },
         },
         {
             key: "ecommerce",
@@ -67,14 +96,19 @@ export function useAllPackages(): Package[] {
             icon: t("ecommerce.icon"),
             price: t("ecommerce.price"),
             description: t("ecommerce.description"),
-            features: t.raw("ecommerce.features") as string[],
+            category: t("ecommerce.category"),
+            features: t.raw("ecommerce.features") as {
+                main: Feature[];
+                additional: Feature[];
+            },
         },
     ];
 }
 
 export function Packages() {
-    const t = useTranslations("pages.home.packages");
-    const allPackages = useAllPackages();
+    const t = useTranslations("packages.packages");
+
+    const allPackages = UseAllPackages();
 
     return (
         <>
@@ -120,17 +154,30 @@ export function Packages() {
 
                             <CardContent className="flex flex-1 flex-col">
                                 <ul className="mb-6 flex-1 space-y-3">
-                                    {(pkg.features as string[]).map((feature, idx) => (
+                                    {pkg.features.main.map((feature, idx) => (
                                         <li key={idx} className="flex items-start gap-3">
                                             <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
-                                            <Text>{feature}</Text>
+                                            <Text>{feature.name}</Text>
                                         </li>
                                     ))}
                                 </ul>
 
-                                <Button size="lg" variant="outline">
-                                    {t("selectButton")}
-                                </Button>
+                                <div className="flex w-full gap-2">
+                                    <Button
+                                        size="lg"
+                                        variant="outline"
+                                        className="flex-1"
+                                    >
+                                        {"Zobacz więcej"}
+                                    </Button>
+                                    <Button
+                                        size="lg"
+                                        variant="default"
+                                        className="flex-1"
+                                    >
+                                        {t("selectButton")}
+                                    </Button>
+                                </div>
                             </CardContent>
                         </Card>
                     );
@@ -144,7 +191,7 @@ export function Packages() {
 }
 
 function OnePagePackage() {
-    const t = useTranslations("pages.home.packages");
+    const t = useTranslations("packages.packages");
     return (
         <Card className="relative flex flex-col overflow-visible transition-all duration-300">
             <CardHeader className="overflow-auto pb-4 text-center">
@@ -163,24 +210,32 @@ function OnePagePackage() {
 
             <CardContent className="flex flex-1 flex-col">
                 <ul className="mb-6 flex-1 space-y-3">
-                    {(t.raw("onePage.features") as string[]).map((feature, idx) => (
+                    {(t.raw("onePage.features.main") as Feature[]).map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-3">
                             <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
-                            <Text>{feature}</Text>
+                            <Text>{feature.name}</Text>
                         </li>
                     ))}
                 </ul>
-
-                <Button size="lg" variant="outline">
-                    {t("selectButton")}
-                </Button>
+                <div className="flex w-full gap-2">
+                    <Button
+                        size="lg"
+                        variant="ghost"
+                        className="flex-1 underline underline-offset-2"
+                    >
+                        {"Zobacz więcej"}
+                    </Button>
+                    <Button size="lg" variant="outline" className="flex-1">
+                        {t("selectButton")}
+                    </Button>
+                </div>
             </CardContent>
         </Card>
     );
 }
 
 function StarterPackage() {
-    const t = useTranslations("pages.home.packages");
+    const t = useTranslations("packages.packages");
     return (
         <Card className="relative flex flex-col overflow-visible transition-all duration-300">
             <CardHeader className="overflow-auto pb-4 text-center">
@@ -199,24 +254,33 @@ function StarterPackage() {
 
             <CardContent className="flex flex-1 flex-col">
                 <ul className="mb-6 flex-1 space-y-3">
-                    {(t.raw("starter.features") as string[]).map((feature, idx) => (
+                    {(t.raw("starter.features.main") as Feature[]).map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-3">
                             <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
-                            <Text>{feature}</Text>
+                            <Text>{feature.name}</Text>
                         </li>
                     ))}
                 </ul>
 
-                <Button size="lg" variant="outline">
-                    {t("selectButton")}
-                </Button>
+                <div className="flex w-full gap-2">
+                    <Button
+                        size="lg"
+                        variant="ghost"
+                        className="flex-1 underline underline-offset-2"
+                    >
+                        {"Zobacz więcej"}
+                    </Button>
+                    <Button size="lg" variant="outline" className="flex-1">
+                        {t("selectButton")}
+                    </Button>
+                </div>
             </CardContent>
         </Card>
     );
 }
 
 function BusinessPackage() {
-    const t = useTranslations("pages.home.packages");
+    const t = useTranslations("packages.packages");
     return (
         <Card className="border-brand relative flex h-full scale-102 flex-col overflow-visible border-2 shadow-lg transition-all duration-300 lg:col-span-2">
             <div className="bg-brand absolute -top-4 left-1/2 z-10 -translate-x-1/2 rounded-full px-4 py-1">
@@ -241,24 +305,35 @@ function BusinessPackage() {
 
             <CardContent className="flex flex-1 flex-col">
                 <ul className="mb-6 flex-1 space-y-3">
-                    {(t.raw("business.features") as string[]).map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3">
-                            <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
-                            <Text>{feature}</Text>
-                        </li>
-                    ))}
+                    {(t.raw("business.features.main") as Feature[]).map(
+                        (feature, idx) => (
+                            <li key={idx} className="flex items-start gap-3">
+                                <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
+                                <Text>{feature.name}</Text>
+                            </li>
+                        )
+                    )}
                 </ul>
 
-                <Button size="lg" variant="cta">
-                    {t("selectButton")}
-                </Button>
+                <div className="flex w-full gap-2">
+                    <Button
+                        size="lg"
+                        variant="ghost"
+                        className="flex-1 underline underline-offset-2"
+                    >
+                        {"Zobacz więcej"}
+                    </Button>
+                    <Button size="lg" variant="cta" className="flex-1">
+                        {t("selectButton")}
+                    </Button>
+                </div>
             </CardContent>
         </Card>
     );
 }
 
 function EnterprisePackage() {
-    const t = useTranslations("pages.home.packages");
+    const t = useTranslations("packages.packages");
     return (
         <Card className="relative flex h-full flex-col overflow-visible transition-all duration-300 sm:col-span-2 lg:col-span-2">
             <CardHeader className="overflow-auto pb-4 text-center">
@@ -277,17 +352,29 @@ function EnterprisePackage() {
 
             <CardContent className="flex flex-1 flex-col">
                 <ul className="mb-6 flex-1 space-y-3 sm:grid sm:grid-cols-2 lg:block">
-                    {(t.raw("enterprise.features") as string[]).map((feature, idx) => (
+                    {[
+                        ...(t.raw("enterprise.features.main") as Feature[]),
+                        ...(t.raw("enterprise.features.additional") as Feature[]),
+                    ].map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-3">
                             <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
-                            <Text>{feature}</Text>
+                            <Text>{feature.name}</Text>
                         </li>
                     ))}
                 </ul>
 
-                <Button size="lg" variant="outline">
-                    {t("selectButton")}
-                </Button>
+                <div className="flex w-full gap-2">
+                    <Button
+                        size="lg"
+                        variant="ghost"
+                        className="flex-1 underline underline-offset-2"
+                    >
+                        {"Zobacz więcej"}
+                    </Button>
+                    <Button size="lg" variant="outline" className="flex-1">
+                        {t("selectButton")}
+                    </Button>
+                </div>
             </CardContent>
         </Card>
     );
@@ -303,7 +390,7 @@ export function ComplexPackages() {
 }
 
 function WebAppPackage({ horizontal = true }: { horizontal?: boolean }) {
-    const t = useTranslations("pages.home.packages");
+    const t = useTranslations("packages.packages");
     return (
         <Card
             className={cn(
@@ -334,24 +421,33 @@ function WebAppPackage({ horizontal = true }: { horizontal?: boolean }) {
 
             <CardContent className="flex flex-1 flex-col">
                 <ul className="mb-6 flex-1 space-y-3">
-                    {(t.raw("webapp.features") as string[]).map((feature, idx) => (
+                    {(t.raw("webapp.features.main") as Feature[]).map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-3">
                             <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
-                            <Text>{feature}</Text>
+                            <Text>{feature.name}</Text>
                         </li>
                     ))}
                 </ul>
 
-                <Button size="lg" variant="outline">
-                    {t("selectButton")}
-                </Button>
+                <div className="flex w-full gap-2">
+                    <Button
+                        size="lg"
+                        variant="ghost"
+                        className="flex-1 underline underline-offset-2"
+                    >
+                        {"Zobacz więcej"}
+                    </Button>
+                    <Button size="lg" variant="outline" className="flex-1">
+                        {t("selectButton")}
+                    </Button>
+                </div>
             </CardContent>
         </Card>
     );
 }
 
 function EcommercePackage({ horizontal = true }: { horizontal?: boolean }) {
-    const t = useTranslations("pages.home.packages");
+    const t = useTranslations("packages.packages");
     return (
         <Card
             className={cn(
@@ -382,24 +478,35 @@ function EcommercePackage({ horizontal = true }: { horizontal?: boolean }) {
 
             <CardContent className="flex flex-1 flex-col">
                 <ul className="mb-6 flex-1 space-y-3">
-                    {(t.raw("ecommerce.features") as string[]).map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3">
-                            <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
-                            <Text>{feature}</Text>
-                        </li>
-                    ))}
+                    {(t.raw("ecommerce.features.main") as Feature[]).map(
+                        (feature, idx) => (
+                            <li key={idx} className="flex items-start gap-3">
+                                <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
+                                <Text>{feature.name}</Text>
+                            </li>
+                        )
+                    )}
                 </ul>
 
-                <Button size="lg" variant="outline">
-                    {t("selectButton")}
-                </Button>
+                <div className="flex w-full gap-2">
+                    <Button
+                        size="lg"
+                        variant="ghost"
+                        className="flex-1 underline underline-offset-2"
+                    >
+                        {"Zobacz więcej"}
+                    </Button>
+                    <Button size="lg" variant="outline" className="flex-1">
+                        {t("selectButton")}
+                    </Button>
+                </div>
             </CardContent>
         </Card>
     );
 }
 
 // export function MarketingPackage() {
-//     const t = useTranslations("pages.home.packages");
+//      const t = useTranslations("packages.packages");
 //     return (
 //         <Card className="relative flex h-full flex-col overflow-visible transition-all duration-300 sm:col-span-2 lg:col-span-2">
 //             <CardHeader className="overflow-auto pb-4 text-center">

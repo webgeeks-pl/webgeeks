@@ -1,5 +1,6 @@
 "use client";
 
+import useOnResize from "@/hooks/useOnResize";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 
@@ -151,6 +152,19 @@ export function ResizableDevice({
             document.removeEventListener("mouseup", handleMouseUp);
         };
     }, [isResizing, dimensions]);
+
+    useOnResize(() => {
+        if (!containerRef.current) return;
+
+        const containerRect = containerRef.current.getBoundingClientRect();
+        const maxWidth = containerRect.width;
+        const maxHeight = containerRect.height;
+
+        setDimensions((prev) => ({
+            width: Math.min(prev.width, maxWidth),
+            height: Math.min(prev.height, maxHeight),
+        }));
+    }, containerRef);
 
     const BEZEL_SIZE = 8;
     const INNER_MARGIN = 3;

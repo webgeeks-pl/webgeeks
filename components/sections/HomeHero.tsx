@@ -1,5 +1,5 @@
 import { getArrayFromMessages } from "@/lib/utils/array";
-import { ArrowRight, CornerLeftUp, Zap } from "lucide-react";
+import { ArrowRight, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { z } from "zod";
@@ -7,7 +7,6 @@ import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import { EncryptedText } from "../ui/encrypted-text";
 import { Separator } from "../ui/separator";
 import { TextShimmer } from "../ui/text-shimmer";
 
@@ -17,7 +16,7 @@ export function HomeHero() {
     const heroBadges = getArrayFromMessages(tHero.raw("badges.bottom"), z.string());
 
     return (
-        <Section as="header" className="py-size-lg xs:py-size-xl sm:py-size-2xl">
+        <Section as="header" className="py-size-lg xs:py-size-xl sm:py-size-2xl relative">
             <SectionContent className="gap-size-sm sm:gap-size-md z-10 text-center">
                 <Badge className="p-3" variant="secondary">
                     <span className="flex items-center">
@@ -54,14 +53,14 @@ export function HomeHero() {
                             <span>{t("hero.buttons.secondary")}</span>
                         </Link>
                     </Button>
-                    <div className="absolute top-full mt-3 flex gap-2 md:left-1/5">
+                    {/* <div className="absolute top-full mt-3 flex gap-2 md:left-1/5">
                         <CornerLeftUp size={18} strokeWidth={3.5} />
                         <EncryptedText
                             startDelayMs={1000}
                             text={t("hero.encryptedText")}
                             className="font-heading font-bold text-nowrap"
                         />
-                    </div>
+                    </div> */}
                 </div>
                 <Separator className="mt-4 max-w-xl" decorative />
 

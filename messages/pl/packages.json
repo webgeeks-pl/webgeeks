@@ -1,0 +1,208 @@
+{
+    "packages": {
+        "sectionHeader": {
+            "title": "Nasza Oferta",
+            "description": "Wybierz pakiet dopasowany do potrzeb Twojego biznesu. Każdy projekt realizujemy indywidualnie."
+        },
+        "popularBadge": "Najpopularniejszy",
+        "selectButton": "Wybierz pakiet",
+
+        "onePage": {
+            "name": "Wizytówka",
+            "icon": "BadgeCheck",
+            "price": "od 1 799 zł",
+            "description": "Pojedyncza, prosta strona prezentująca Twoją firmę w sieci",
+            "category": "marketing",
+            "features": {
+                "main": [
+                    {
+                        "name": "Strona Główna"
+                    }
+                ],
+                "additional": [{}]
+            }
+        },
+
+        "starter": {
+            "name": "Mała Strona",
+            "icon": "Zap",
+            "price": "od 2 799 zł",
+            "description": "Strona z kilkoma podstronami, przeznaczona dla małych firm i startupów",
+            "category": "marketing",
+            "features": {
+                "main": [
+                    {
+                        "name": "Strona Główna + 3 podstrony",
+                        "details": "podstawowa struktura dla małej firmy"
+                    },
+                    {
+                        "name": "Częściowy CMS",
+                        "details": "do edycji treści"
+                    },
+                    {
+                        "name": "Prosty formularz kontaktowy",
+                        "details": "kontakt z klientami"
+                    }
+                ],
+                "additional": []
+            }
+        },
+        "business": {
+            "name": "Strona Firmowa",
+            "icon": "Star",
+            "price": "od 4 999 zł",
+            "description": "Pełna strona z zaawansowanym designem i funkcjonalnościami, idealna dla rozwijających się firm",
+            "category": "marketing",
+            "features": {
+                "main": [
+                    {
+                        "name": "Strona Główna + 5 podstron",
+                        "details": "rozbudowana struktura"
+                    },
+                    {
+                        "name": "Pełny CMS",
+                        "details": "do edycji treści"
+                    },
+                    {
+                        "name": "Zaawansowany formularz kontaktowy",
+                        "details": "z walidacją i automatycznymi odpowiedziami"
+                    },
+                    {
+                        "name": "Rozszerzone SEO",
+                        "details": "optymalizacja widoczności w wyszukiwarkach"
+                    },
+                    {
+                        "name": "Integracje z opiniami klientów",
+                        "details": "budowanie zaufania"
+                    }
+                ],
+                "additional": []
+            }
+        },
+        "enterprise": {
+            "name": "Strona Premium",
+            "icon": "Rocket",
+            "price": "od 9 999 zł",
+            "description": "Kompleksowa strona z unikalnym designem, stworzona dla firm, które chcę się wyróżnić",
+            "category": "marketing",
+            "features": {
+                "main": [
+                    {
+                        "name": "Nielimitowane podstrony",
+                        "details": "pełna swoboda struktury"
+                    },
+                    {
+                        "name": "Premium design + animacje",
+                        "details": "unikalne doświadczenie użytkownika"
+                    },
+                    {
+                        "name": "Zaawansowane SEO",
+                        "details": "maksymalna widoczność w wyszukiwarkach"
+                    },
+                    {
+                        "name": "E-commerce / Portal",
+                        "details": "możliwość sprzedaży lub platformy"
+                    },
+                    {
+                        "name": "API + Integracje",
+                        "details": "połączenia z zewnętrznymi systemami"
+                    }
+                ],
+                "additional": [
+                    {
+                        "name": "Dedykowany CMS",
+                        "details": "dopasowany do Twoich potrzeb"
+                    },
+                    {
+                        "name": "Multi-język",
+                        "details": "obsługa wielu języków"
+                    },
+                    {
+                        "name": "6 miesięcy wsparcia premium",
+                        "details": "priorytetowa pomoc techniczna"
+                    },
+                    {
+                        "name": "CDN + Premium hosting",
+                        "details": "szybkość i dostępność na najwyższym poziomie"
+                    },
+                    {
+                        "name": "Audyt bezpieczeństwa",
+                        "details": "ochrona przed zagrożeniami"
+                    }
+                ]
+            }
+        },
+        "ecommerce": {
+            "name": "E-commerce",
+            "icon": "ShoppingCart",
+            "price": "od 11 999 zł",
+            "description": "Sklep online z pełnym procesem zakupowym i integracjami płatności.",
+            "category": "special",
+            "features": {
+                "main": [
+                    {
+                        "name": "Katalog produktów",
+                        "details": "zarządzanie asortymentem"
+                    },
+                    {
+                        "name": "Płatności online",
+                        "details": "integracja z systemami płatności"
+                    },
+                    {
+                        "name": "Koszyk i zamówienia",
+                        "details": "pełny proces zakupowy"
+                    },
+                    {
+                        "name": "Panel administracyjny",
+                        "details": "zarządzanie sklepem"
+                    },
+                    {
+                        "name": "Automatyczne maile",
+                        "details": "potwierdzenia i statusy zamówień"
+                    },
+                    {
+                        "name": "Optymalizacja pod SEO",
+                        "details": "widoczność produktów w wyszukiwarkach"
+                    }
+                ],
+                "additional": []
+            }
+        },
+        "webapp": {
+            "name": "Aplikacja webowa",
+            "icon": "AppWindow",
+            "price": "od 14 999 zł",
+            "description": "Dedykowana aplikacja webowa dopasowana do procesów w Twojej firmie.",
+            "category": "special",
+            "features": {
+                "main": [
+                    {
+                        "name": "Indywidualny projekt UX/UI",
+                        "details": "dopasowany do użytkowników"
+                    },
+                    {
+                        "name": "Role i uprawnienia",
+                        "details": "zarządzanie dostępem"
+                    },
+                    {
+                        "name": "Integracje z systemami",
+                        "details": "połączenie z istniejącą infrastrukturą"
+                    },
+                    {
+                        "name": "Panel administracyjny",
+                        "details": "pełna kontrola nad aplikacją"
+                    },
+                    {
+                        "name": "Analityka i raporty",
+                        "details": "wgląd w dane biznesowe"
+                    },
+                    {
+                        "name": "Wysoka wydajność",
+                        "details": "optymalizacja pod dużą liczbę użytkowników"
+                    }
+                ],
+                "additional": []
+            }
+        }
+    }
+}
