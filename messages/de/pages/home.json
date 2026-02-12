@@ -109,6 +109,76 @@
             ]
         }
     },
+    "crafted": {
+        "sectionHeader": {
+            "title": "Von Grund auf gebaut. Von einem Programmierer.",
+            "description": "Wir verwenden keine vorgefertigten Vorlagen. Wir installieren keine Dutzende von Plugins. Jedes Pixel und jede Codezeile wird speziell für Sie erstellt."
+        },
+        "codeFile": "ihre-website.tsx",
+        "codeBadge": "100% Custom Code",
+        "codeLines": [
+            { "indent": 0, "text": "<html lang=\"de\">", "color": "text-clr-500" },
+            { "indent": 1, "text": "<head>", "color": "text-clr-500" },
+            {
+                "indent": 2,
+                "text": "<meta charset=\"UTF-8\" />",
+                "color": "text-clr-400"
+            },
+            {
+                "indent": 2,
+                "text": "<title>Ihre Website</title>",
+                "color": "text-clr-900"
+            },
+            { "indent": 1, "text": "</head>", "color": "text-clr-500" },
+            { "indent": 1, "text": "<body>", "color": "text-clr-500" },
+            {
+                "indent": 2,
+                "text": "<main className=\"custom\">",
+                "color": "text-clr-900"
+            },
+            { "indent": 3, "text": "// Ihr eindeutiger Code", "color": "text-clr-400" },
+            { "indent": 3, "text": "// Von Grund auf gebaut", "color": "text-clr-400" },
+            { "indent": 3, "text": "// Keine Vorlagen", "color": "text-clr-400" },
+            { "indent": 2, "text": "</main>", "color": "text-clr-900" },
+            { "indent": 1, "text": "</body>", "color": "text-clr-500" },
+            { "indent": 0, "text": "</html>", "color": "text-clr-500" }
+        ],
+        "differences": [
+            {
+                "icon": "Code2",
+                "title": "Handgeschriebener Code",
+                "description": "Jede Codezeile wird von einem erfahrenen Programmierer geschrieben. Keine vorgefertigten Vorlagen, kein Copy-Paste.",
+                "our": "Maßgeschneidert",
+                "other": "Von der Stange"
+            },
+            {
+                "icon": "Fingerprint",
+                "title": "Einzigartig wie Ihr Unternehmen",
+                "description": "Website, die genau auf Ihre Vision und Geschäftsanforderungen abgestimmt ist – keine überarbeitete Vorlage, die aussieht wie Tausende andere.",
+                "our": "Entspricht Ihrer Vision",
+                "other": "Eins für alle"
+            },
+            {
+                "icon": "Layers",
+                "title": "Null überflüssiger Code",
+                "description": "Keine Plugins, die Ihre Website verlangsamen. Keine unnötigen Bibliotheken. Nur das, was Sie wirklich brauchen.",
+                "our": "Nur das Notwendigste",
+                "other": "Bloatware"
+            },
+            {
+                "icon": "Puzzle",
+                "title": "Vollständige Kontrolle",
+                "description": "Sie können buchstäblich alles ändern. Keine Plattformbeschränkungen, keine kreativen Grenzen.",
+                "our": "Volle Flexibilität",
+                "other": "Restriktive Grenzen"
+            }
+        ],
+        "stats": [
+            { "value": "0", "label": "vorgefertigte Vorlagen – alles von Grund auf" },
+            { "value": "0", "label": "unnötige Plugins – sauberer, leichter Code" },
+            { "value": "100%", "label": "Einzigartigkeit – Website nur für Sie" }
+        ]
+    },
     "whyUs": {
         "sectionHeader": {
             "title": "Dlaczego nasza strona?",

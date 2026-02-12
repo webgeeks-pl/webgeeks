@@ -367,6 +367,76 @@
             }
         }
     },
+    "crafted": {
+        "sectionHeader": {
+            "title": "Tworzone od zera. Przez programistę.",
+            "description": "Nie korzystamy z gotowych szablonów. Nie instalujemy dziesiątek wtyczek. Każdy piksel i każda linia kodu jest stworzona specjalnie dla Ciebie."
+        },
+        "codeFile": "twoja-strona.tsx",
+        "codeBadge": "100% Custom Code",
+        "codeLines": [
+            { "indent": 0, "text": "<html lang=\"pl\">", "color": "text-clr-500" },
+            { "indent": 1, "text": "<head>", "color": "text-clr-500" },
+            {
+                "indent": 2,
+                "text": "<meta charset=\"UTF-8\" />",
+                "color": "text-clr-400"
+            },
+            {
+                "indent": 2,
+                "text": "<title>Twoja Strona</title>",
+                "color": "text-clr-900"
+            },
+            { "indent": 1, "text": "</head>", "color": "text-clr-500" },
+            { "indent": 1, "text": "<body>", "color": "text-clr-500" },
+            {
+                "indent": 2,
+                "text": "<main className=\"custom\">",
+                "color": "text-clr-900"
+            },
+            { "indent": 3, "text": "// Twój unikalny kod", "color": "text-clr-400" },
+            { "indent": 3, "text": "// Pisany od zera", "color": "text-clr-400" },
+            { "indent": 3, "text": "// Żadnych szablonów", "color": "text-clr-400" },
+            { "indent": 2, "text": "</main>", "color": "text-clr-900" },
+            { "indent": 1, "text": "</body>", "color": "text-clr-500" },
+            { "indent": 0, "text": "</html>", "color": "text-clr-500" }
+        ],
+        "differences": [
+            {
+                "icon": "Code2",
+                "title": "Kod pisany ręcznie",
+                "description": "Każda linia kodu jest napisana przez doświadczonego programistę. Żadnych gotowych szablonów, żadnego copy-paste.",
+                "our": "Dopracowanie",
+                "other": "Wadliwość"
+            },
+            {
+                "icon": "Fingerprint",
+                "title": "Unikalna jak Twoja firma",
+                "description": "Strona dopasowana dokładnie do Twojej wizji i potrzeb biznesowych — nie przerobiony szablon, który wygląda jak tysiące innych.",
+                "our": "Unikalność",
+                "other": "Powtarzalność"
+            },
+            {
+                "icon": "Layers",
+                "title": "Zero zbędnego kodu",
+                "description": "Bez wtyczek, które spowalniają stronę. Bez niepotrzebnych bibliotek. Tylko to, czego naprawdę potrzebujesz.",
+                "our": "Lekkość i wydajność",
+                "other": "Przeciążenie"
+            },
+            {
+                "icon": "Puzzle",
+                "title": "Pełna kontrola",
+                "description": "Możesz zmienić dosłownie wszystko. Żadnych ograniczeń platformy, żadnych limitów kreatywności.",
+                "our": "Elastyczność",
+                "other": "Ograniczenia"
+            }
+        ],
+        "stats": [
+            { "value": "0", "label": "gotowych szablonów — wszystko od zera" },
+            { "value": "0", "label": "zbędnych wtyczek — czysty, lekki kod" },
+            { "value": "100%", "label": "unikalności — strona tylko dla Ciebie" }
+        ]
+    },
     "ctaFooter": {
         "sectionHeader": {
             "title": "Gotowy na nową stronę?",

@@ -1,89 +1,59 @@
-import { Code2, Fingerprint, Layers, Puzzle, Sparkles, Terminal } from "lucide-react";
-import { useState } from "react";
-import Section, { SectionContent } from "../layout/section";
+import { getArrayFromMessages } from "@/lib/utils/array";
+import { Sparkles } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { z } from "zod";
+import Section, {
+    SectionContent,
+    SectionHeader,
+    SectionHeaderContent,
+    SectionLead,
+    SectionTitle,
+} from "../layout/section";
+import IconContainer from "../ui/iconContainer";
+import { getLucideIcon } from "../ui/lucideIcons";
 
-const codeLines = [
-    { indent: 0, text: '<html lang="pl">', color: "text-gray-500" },
-    { indent: 1, text: "<head>", color: "text-gray-500" },
-    { indent: 2, text: '<meta charset="UTF-8" />', color: "text-gray-400" },
-    { indent: 2, text: "<title>Twoja Strona</title>", color: "text-gray-900" },
-    { indent: 1, text: "</head>", color: "text-gray-500" },
-    { indent: 1, text: "<body>", color: "text-gray-500" },
-    { indent: 2, text: '<main className="custom">', color: "text-gray-900" },
-    { indent: 3, text: "// Twój unikalny kod", color: "text-gray-400" },
-    { indent: 3, text: "// Pisany od zera", color: "text-gray-400" },
-    { indent: 3, text: "// Żadnych szablonów", color: "text-gray-400" },
-    { indent: 2, text: "</main>", color: "text-gray-900" },
-    { indent: 1, text: "</body>", color: "text-gray-500" },
-    { indent: 0, text: "</html>", color: "text-gray-500" },
-];
-
-const differences = [
-    {
-        icon: Code2,
-        title: "Kod pisany ręcznie",
-        description:
-            "Każda linia kodu jest napisana przez doświadczonego programistę. Żadnych gotowych szablonów, żadnego copy-paste.",
-        vs: "Szablony i generatory kodu",
-    },
-    {
-        icon: Fingerprint,
-        title: "Unikalna jak Twoja firma",
-        description:
-            "Strona dopasowana dokładnie do Twojej wizji i potrzeb biznesowych — nie przerobiony szablon, który wygląda jak tysiące innych.",
-        vs: "Ten sam wygląd co konkurencja",
-    },
-    {
-        icon: Layers,
-        title: "Zero zbędnego kodu",
-        description:
-            "Bez wtyczek, które spowalniają stronę. Bez niepotrzebnych bibliotek. Tylko to, czego naprawdę potrzebujesz.",
-        vs: "Dziesiątki wtyczek i bloatware",
-    },
-    {
-        icon: Puzzle,
-        title: "Pełna kontrola",
-        description:
-            "Możesz zmienić dosłownie wszystko. Żadnych ograniczeń platformy, żadnych limitów kreatywności.",
-        vs: "Ograniczenia szablonu i platformy",
-    },
-];
+const DifferenceSchema = z.object({
+    icon: z.string(),
+    title: z.string(),
+    description: z.string(),
+    our: z.string(),
+    other: z.string(),
+});
 
 export function HandCrafted() {
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const t = useTranslations("pages.home.crafted");
+    const codeLines = t.raw("codeLines") as Array<{
+        indent: number;
+        text: string;
+        color: string;
+    }>;
+    const differences = getArrayFromMessages(
+        t.raw("differences"),
+        DifferenceSchema
+    );
 
     return (
-        <Section className="overflow-hidden border-b border-gray-100 bg-white py-20 sm:py-28">
+        <Section className="border-clr-100 overflow-hidden border-b bg-white py-20 sm:py-28">
             <SectionContent>
-                {/* Header */}
-                <div className="mb-16 text-center">
-                    <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-gray-700">
-                        <Terminal className="size-4" />
-                        <span className="text-sm">Co nas wyróżnia</span>
-                    </div>
-                    <h2 className="mb-4 text-3xl text-gray-900 sm:text-4xl lg:text-5xl">
-                        Tworzone od zera.{" "}
-                        <span className="text-gray-400">Przez programistę.</span>
-                    </h2>
-                    <p className="mx-auto max-w-2xl text-lg text-gray-500">
-                        Nie korzystamy z gotowych szablonów. Nie instalujemy dziesiątek
-                        wtyczek. Każdy piksel i każda linia kodu jest stworzona specjalnie
-                        dla Ciebie.
-                    </p>
-                </div>
+                <SectionHeader className="mb-8">
+                    <SectionHeaderContent>
+                        <SectionTitle text={t("sectionHeader.title")} />
+                        <SectionLead text={t("sectionHeader.description")} />
+                    </SectionHeaderContent>
+                </SectionHeader>
 
                 {/* Main content grid */}
                 <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
                     {/* Left: Code visualization */}
                     <div className="relative">
-                        <div className="rounded-2xl bg-gray-950 p-6 shadow-2xl sm:p-8">
+                        <div className="bg-clr-950 rounded-2xl p-6 shadow-2xl sm:p-8">
                             {/* Window chrome */}
                             <div className="mb-6 flex items-center gap-2">
-                                <div className="h-3 w-3 rounded-full bg-gray-700"></div>
-                                <div className="h-3 w-3 rounded-full bg-gray-700"></div>
-                                <div className="h-3 w-3 rounded-full bg-gray-700"></div>
-                                <span className="ml-3 font-mono text-xs text-gray-500">
-                                    twoja-strona.tsx
+                                <div className="bg-clr-700 h-3 w-3 rounded-full"></div>
+                                <div className="bg-clr-700 h-3 w-3 rounded-full"></div>
+                                <div className="bg-clr-700 h-3 w-3 rounded-full"></div>
+                                <span className="text-clr-500 ml-3 font-mono text-xs">
+                                    {t("codeFile")}
                                 </span>
                             </div>
 
@@ -105,11 +75,11 @@ export function HandCrafted() {
                                                     : 0.3),
                                         }}
                                     >
-                                        <span className="w-6 text-right text-xs text-gray-600 select-none">
+                                        <span className="text-clr-600 w-6 text-right text-xs select-none">
                                             {i + 1}
                                         </span>
                                         <span
-                                            className={`${line.text.startsWith("//") ? "text-gray-500" : "text-gray-300"}`}
+                                            className={`${line.text.startsWith("//") ? "text-clr-500" : "text-clr-300"}`}
                                             style={{
                                                 paddingLeft: `${line.indent * 1.25}rem`,
                                             }}
@@ -122,69 +92,52 @@ export function HandCrafted() {
 
                             {/* Cursor blink */}
                             <div className="mt-3 flex items-center gap-3">
-                                <span className="w-6 text-right font-mono text-xs text-gray-600 select-none">
+                                <span className="text-clr-600 w-6 text-right font-mono text-xs select-none">
                                     14
                                 </span>
-                                <span
-                                    className="inline-block h-5 w-2 animate-pulse bg-gray-400"
-                                    style={{ paddingLeft: "2.5rem" }}
-                                ></span>
+                                <span className="bg-clr-400 inline-block h-5 w-0.5 animate-pulse"></span>
                             </div>
                         </div>
 
                         {/* Floating badge */}
-                        <div className="absolute -top-4 -right-4 flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2 text-sm text-white shadow-lg">
+                        <div className="bg-clr-900 absolute -top-4 -right-4 flex items-center gap-2 rounded-full px-4 py-2 text-sm text-white shadow-lg">
                             <Sparkles className="size-4" />
-                            <span>100% Custom Code</span>
+                            <span>{t("codeBadge")}</span>
                         </div>
 
                         {/* Background decoration */}
-                        <div className="absolute top-8 left-8 -z-10 h-full w-full rounded-2xl bg-gray-100"></div>
+                        <div className="bg-clr-100 absolute top-8 left-8 -z-10 h-full w-full rounded-2xl"></div>
                     </div>
 
                     {/* Right: Differences list */}
                     <div className="space-y-6">
                         {differences.map((item, index) => {
-                            const Icon = item.icon;
-                            const isHovered = hoveredIndex === index;
-
                             return (
                                 <div
                                     key={index}
                                     className="group relative"
-                                    onMouseEnter={() => setHoveredIndex(index)}
-                                    onMouseLeave={() => setHoveredIndex(null)}
                                 >
-                                    <div
-                                        className={`flex gap-4 rounded-xl border p-5 transition-all duration-300 ${
-                                            isHovered
-                                                ? "border-gray-200 bg-gray-50 shadow-sm"
-                                                : "border-transparent bg-white"
-                                        }`}
-                                    >
-                                        <div
-                                            className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg transition-colors duration-300 ${
-                                                isHovered
-                                                    ? "bg-gray-900 text-white"
-                                                    : "bg-gray-100 text-gray-700"
-                                            }`}
-                                        >
-                                            <Icon className="size-5" />
+                                    <div className="flex gap-4 rounded-xl border border-transparent bg-white p-5">
+                                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-clr-100 text-clr-700">
+                                            <IconContainer
+                                                Icon={getLucideIcon(item.icon)}
+                                                variant="ghost"
+                                            />
                                         </div>
                                         <div className="flex-1">
-                                            <h3 className="mb-1 text-gray-900">
+                                            <h3 className="text-clr-900 mb-1">
                                                 {item.title}
                                             </h3>
-                                            <p className="mb-2 text-sm text-gray-500">
+                                            <p className="text-clr-500 mb-2 text-sm">
                                                 {item.description}
                                             </p>
                                             <div className="flex items-center gap-2 text-xs">
-                                                <span className="rounded-full bg-gray-900 px-2.5 py-1 text-white">
-                                                    Nasze podejście
+                                                <span className="bg-clr-900 rounded-full px-2.5 py-1 text-white">
+                                                    {item.our}
                                                 </span>
-                                                <span className="text-gray-400">vs</span>
-                                                <span className="rounded-full bg-gray-100 px-2.5 py-1 text-gray-500 line-through">
-                                                    {item.vs}
+                                                <span className="text-clr-400">vs</span>
+                                                <span className="bg-clr-100 text-clr-500 rounded-full px-2.5 py-1 line-through">
+                                                    {item.other}
                                                 </span>
                                             </div>
                                         </div>
@@ -196,30 +149,30 @@ export function HandCrafted() {
                 </div>
 
                 {/* Bottom summary bar */}
-                <div className="mt-16 rounded-2xl border border-gray-100 bg-gray-50 p-6 sm:p-8">
+                <div className="border-clr-100 bg-clr-50 mt-16 rounded-2xl border p-6 sm:p-8">
                     <div className="grid gap-6 text-center sm:grid-cols-3">
                         <div>
-                            <div className="mb-1 text-2xl text-gray-900 sm:text-3xl">
-                                0
+                            <div className="text-clr-900 mb-1 text-2xl sm:text-3xl">
+                                {t("stats.0.value")}
                             </div>
-                            <div className="text-sm text-gray-500">
-                                gotowych szablonów — wszystko od zera
+                            <div className="text-clr-500 text-sm">
+                                {t("stats.0.label")}
                             </div>
                         </div>
-                        <div className="sm:border-x sm:border-gray-200">
-                            <div className="mb-1 text-2xl text-gray-900 sm:text-3xl">
-                                0
+                        <div className="sm:border-clr-200 sm:border-x">
+                            <div className="text-clr-900 mb-1 text-2xl sm:text-3xl">
+                                {t("stats.1.value")}
                             </div>
-                            <div className="text-sm text-gray-500">
-                                zbędnych wtyczek — czysty, lekki kod
+                            <div className="text-clr-500 text-sm">
+                                {t("stats.1.label")}
                             </div>
                         </div>
                         <div>
-                            <div className="mb-1 text-2xl text-gray-900 sm:text-3xl">
-                                100%
+                            <div className="text-clr-900 mb-1 text-2xl sm:text-3xl">
+                                {t("stats.2.value")}
                             </div>
-                            <div className="text-sm text-gray-500">
-                                unikalności — strona tylko dla Ciebie
+                            <div className="text-clr-500 text-sm">
+                                {t("stats.2.label")}
                             </div>
                         </div>
                     </div>

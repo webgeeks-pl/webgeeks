@@ -23,9 +23,9 @@ export default function HomePage() {
             <Separator decorative />
             <HandCrafted />
             <Separator decorative />
-            <HomeShowcase />
-            <Separator decorative />
             <HomeWhyUs />
+            <Separator decorative />
+            <HomeShowcase />
             <Separator decorative />
             <HomeSolutions />
             <Separator decorative />
