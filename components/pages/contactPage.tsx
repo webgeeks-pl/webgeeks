@@ -7,6 +7,7 @@ import Section, {
     SectionTitle,
 } from "../layout/section";
 
+import ContactForm from "@/components/forms/contactForm";
 import { FileText, Mail, Phone, Share2 } from "lucide-react";
 import Text from "../typography/text";
 import { Card, CardContent } from "../ui/card";
@@ -96,7 +97,7 @@ export default function ContactPage() {
                     </SectionHeader>
                     <div className="w-full max-w-2xl bg-white">
                         <div className="flex h-50 w-full items-center justify-center">
-                            formularz zamiast tego diva
+                            <ContactForm />
                         </div>
                     </div>
                 </SectionContent>
