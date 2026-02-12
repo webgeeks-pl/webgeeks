@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import Grid from "../layout/grid";
 import Section, {
     SectionContent,
     SectionHeader,
@@ -7,8 +6,6 @@ import Section, {
     SectionLead,
     SectionTitle,
 } from "../layout/section";
-import Text from "../typography/text";
-import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 
 export function HomeCtaFooter() {
@@ -28,14 +25,14 @@ export function HomeCtaFooter() {
                         />
                     </SectionHeaderContent>
                 </SectionHeader>
-                <Grid cols={0} className="w-fit items-center gap-4 sm:grid-cols-2">
+                {/* <Grid cols={0} className="w-fit items-center gap-4 sm:grid-cols-2">
                     {badges.map((badge, index) => (
                         <Badge className="gap-2" variant="ghost" key={index}>
                             <div className="bg-clr-700 h-1.5 w-1.5 rounded-full" />
                             <Text intent="small" text={badge} />
                         </Badge>
                     ))}
-                </Grid>
+                </Grid> */}
                 <div className="flex gap-4">
                     <Button variant="secondary" className="flex-1">
                         {t("buttons.secondary")}
