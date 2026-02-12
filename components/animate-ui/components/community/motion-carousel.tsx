@@ -14,6 +14,7 @@ type PropType<T = React.ReactNode> = {
     render?: (slide: T, index: number) => React.ReactNode;
     className?: string;
     labels?: string[];
+    shouldBlur?: boolean;
 };
 
 type EmblaControls = {
@@ -91,7 +92,7 @@ const useEmblaControls = (emblaApi: EmblaCarouselType | undefined): EmblaControl
 };
 
 function MotionCarousel<T = React.ReactNode>(props: PropType<T>) {
-    const { slides, options, render, className, labels } = props;
+    const { slides, options, render, className, labels, shouldBlur } = props;
     const [emblaRef, emblaApi] = useEmblaCarousel(options);
     const {
         selectedIndex,
@@ -106,7 +107,7 @@ function MotionCarousel<T = React.ReactNode>(props: PropType<T>) {
     return (
         <div
             className={cn(
-                "w-full space-y-4 [--slide-height:9rem] [--slide-size:55%] [--slide-spacing:1.5rem]",
+                "w-full space-y-4 will-change-auto [--slide-height:9rem] [--slide-size:55%] [--slide-spacing:1.5rem]",
                 className
             )}
         >
@@ -118,7 +119,7 @@ function MotionCarousel<T = React.ReactNode>(props: PropType<T>) {
                         return (
                             <motion.div
                                 key={index}
-                                className="mr-[var(--slide-spacing)] flex h-[var(--slide-height)] min-w-0 flex-none basis-[var(--slide-size)]"
+                                className="mr-[var(--slide-spacing)] flex h-[var(--slide-height)] min-w-0 flex-none basis-[var(--slide-size)] will-change-transform"
                             >
                                 <motion.div
                                     className="flex size-full items-center justify-center select-none"
@@ -146,6 +147,7 @@ function MotionCarousel<T = React.ReactNode>(props: PropType<T>) {
                 <div className="flex flex-wrap items-center justify-end gap-2">
                     {scrollSnaps.map((_, index) => (
                         <DotButton
+                            shouldBlur={shouldBlur}
                             key={index}
                             label={
                                 labels && labels.length === slides.length
@@ -166,7 +168,12 @@ function MotionCarousel<T = React.ReactNode>(props: PropType<T>) {
     );
 }
 
-function DotButton({ selected = false, label, onClick }: DotButtonProps) {
+function DotButton({
+    selected = false,
+    label,
+    onClick,
+    shouldBlur = true,
+}: DotButtonProps & { shouldBlur?: boolean }) {
     const labelWidth = Math.max(12, label.length * 8 + 24);
 
     return (
@@ -175,7 +182,7 @@ function DotButton({ selected = false, label, onClick }: DotButtonProps) {
             onClick={onClick}
             layout
             initial={false}
-            className="bg-primary text-primary-foreground flex cursor-pointer items-center justify-center rounded-full border-none text-sm select-none"
+            className="bg-primary text-primary-foreground flex cursor-pointer items-center justify-center rounded-full border-none text-sm will-change-transform select-none"
             animate={{
                 width: selected ? labelWidth : 12,
                 height: selected ? 28 : 12,
@@ -189,7 +196,7 @@ function DotButton({ selected = false, label, onClick }: DotButtonProps) {
                 animate={{
                     opacity: selected ? 1 : 0,
                     scale: selected ? 1 : 0,
-                    filter: selected ? "blur(0)" : "blur(4px)",
+                    filter: shouldBlur ? (selected ? "blur(0)" : "blur(4px)") : "blur(0)",
                 }}
                 transition={transition}
             >

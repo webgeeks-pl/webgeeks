@@ -3,6 +3,7 @@
 import Page from "../layout/page";
 import { HomeAbout } from "../sections/HomeAbout";
 import { HomeComparison } from "../sections/HomeComparison";
+import { HandCrafted } from "../sections/HomeCrafted";
 import { HomeCtaFooter } from "../sections/HomeCtaFooter";
 import { HomeFeatures } from "../sections/HomeFeatures";
 import { HomeHero } from "../sections/HomeHero";
@@ -20,13 +21,15 @@ export default function HomePage() {
             <Separator decorative />
             <HomeAbout />
             <Separator decorative />
+            <HandCrafted />
+            <Separator decorative />
             <HomeShowcase />
             <Separator decorative />
             <HomeWhyUs />
             <Separator decorative />
-            <HomePackages />
-            <Separator decorative />
             <HomeSolutions />
+            <Separator decorative />
+            <HomePackages />
             <Separator decorative />
             <HomeComparison />
             <Separator decorative />

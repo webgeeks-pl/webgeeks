@@ -54,7 +54,7 @@ export function HomeHero() {
                             <span>{t("hero.buttons.secondary")}</span>
                         </Link>
                     </Button>
-                    <div className="absolute top-full mt-3 flex hidden gap-2 md:left-1/5">
+                    <div className="absolute top-full mt-3 flex gap-2 md:left-1/5">
                         <CornerLeftUp size={18} strokeWidth={3.5} />
                         <EncryptedText
                             startDelayMs={1000}

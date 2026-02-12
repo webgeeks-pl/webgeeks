@@ -58,7 +58,7 @@ export function SectionHeaderContent({ children, className }: BasicComponentProp
     return (
         <div
             className={cn(
-                "flex-start mx-auto flex max-w-2xl flex-col gap-2 sm:text-center",
+                "flex-start mx-auto flex max-w-3xl flex-col gap-4 sm:gap-6 sm:text-center",
                 className
             )}
         >

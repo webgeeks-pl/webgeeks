@@ -15,7 +15,6 @@ import { EncryptedText } from "../ui/encrypted-text";
 import { Iphone } from "../ui/iphone";
 import { Safari } from "../ui/safari";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { Tilt } from "../ui/tilt";
 
 const MobileItemSchema = z.object({
     number: z.string(),
@@ -57,11 +56,29 @@ export function HomeShowcase() {
                                 <SectionLead text={t("desktop.description")} />
                             </SectionHeaderContent>
                         </SectionHeader>
-                        <Safari
-                            url="https:\\"
-                            imageSrc="/template-hero.webp"
-                            className="max-w-7xl"
-                        />
+                        <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
+                            <Safari
+                                url="https:\\"
+                                imageSrc="/template-hero.webp"
+                                className="max-w-7xl"
+                            />
+                            <div className="flex flex-col gap-4">
+                                {mobileFriendlyItems.map((item, index) => (
+                                    <div className={cn("flex flex-col")} key={index}>
+                                        <Text
+                                            intent="var"
+                                            className="text-4xl sm:text-6xl"
+                                        >
+                                            {item.number}
+                                        </Text>
+                                        <Text intent="h3">{item.title}</Text>
+                                        <Text muted size="small">
+                                            {item.description}
+                                        </Text>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </TabsContent>
                     <TabsContent value="mobile" className="gap-size-md flex flex-col">
                         <SectionHeader>
@@ -72,7 +89,7 @@ export function HomeShowcase() {
                         </SectionHeader>
 
                         <div className="gap-size-md grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 lg:grid-cols-3">
-                            <Tilt
+                            {/* <Tilt
                                 rotationFactor={6}
                                 isRevese
                                 style={{
@@ -84,9 +101,11 @@ export function HomeShowcase() {
                                     mass: 0.2,
                                 }}
                                 className="group relative h-full w-full max-w-md rounded-lg max-md:mx-auto max-sm:max-w-xs! md:col-start-2 md:row-span-3"
-                            >
+                            > */}
+                            <div className="group relative h-full w-full max-w-md rounded-lg max-md:mx-auto max-sm:max-w-xs! md:col-start-2 md:row-span-3">
                                 <Iphone src="/strona.jpeg" />
-                            </Tilt>
+                            </div>
+                            {/* </Tilt> */}
                             {mobileFriendlyItems.map((item, index) => (
                                 <div
                                     className={cn(

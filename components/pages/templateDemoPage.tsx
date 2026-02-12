@@ -1,7 +1,6 @@
 "use client";
 
 import { ResizableDevice } from "@/components/ui/resizable-device";
-import { Safari } from "@/components/ui/safari";
 import { useNavigation } from "@/context/navigationContext";
 import { cn } from "@/lib/utils";
 import { ExternalLink, Fullscreen, Monitor, Smartphone } from "lucide-react";
@@ -9,12 +8,12 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useEffectEvent, useRef, useState } from "react";
 import Page from "../layout/page";
 import { Button } from "../ui/button";
-import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "../ui/item";
+import { Item, ItemActions, ItemContent, ItemTitle } from "../ui/item";
 import { ScrollArea } from "../ui/scroll-area";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 import { templates } from "./templatesPage";
 
-type DeviceType = "desktop" | "mobile";
+type DeviceType = "desktop" | "mobile" | "fullscreen";
 
 export default function TemplateDemoPage() {
     return (
@@ -110,6 +109,11 @@ function TemplateDemoContent() {
         }
     }, [isMobile, currentDemoUrl]);
 
+    const deviceDimensions = {
+        desktop: { width: 1200, height: 800 },
+        mobile: { width: 400, height: 800 }, // iPhone 8 dimensions as an example
+    };
+
     // Show loading on mobile while redirecting
     if (isMobile) {
         return (
@@ -147,14 +151,14 @@ function TemplateDemoContent() {
                                 }
                                 className=""
                             >
-                                <TabsList className="relative mx-auto gap-1 rounded-2xl border-0 bg-transparent p-1 ring-0">
-                                    <TabsTrigger value="desktop" disabled={true} asChild>
+                                <TabsList className="bg-sidebar-accent border-border relative mx-auto gap-1 rounded-2xl border p-1 ring-0">
+                                    <TabsTrigger value="fullscreen" asChild>
                                         <Button
                                             size="icon"
                                             variant={"secondary"}
                                             className="aspect-square"
                                         >
-                                            <Fullscreen className="text-inherit" />
+                                            <Fullscreen className="" />
                                         </Button>
                                     </TabsTrigger>
                                     <TabsTrigger
@@ -185,55 +189,62 @@ function TemplateDemoContent() {
 
                         <ScrollArea className="" ref={asideScrollRef}>
                             <div className="flex flex-col gap-2">
-                                {templates.map((template) => (
-                                    <Item
-                                        key={template.id}
-                                        variant={"outline"}
-                                        className={cn(
-                                            "flex cursor-pointer transition-all",
-                                            selectedTemplateId === template.id &&
-                                                "border-primary/20 bg-primary/5"
-                                        )}
-                                        onClick={() => setSelectedTemplateId(template.id)}
-                                    >
-                                        <ItemContent>
-                                            <ItemTitle>{template.name}</ItemTitle>
-                                            <ItemDescription>
-                                                Lorem ipsum dolor sit amet consectetur
-                                                adipisicing elit.
-                                            </ItemDescription>
-                                        </ItemContent>
-                                        <ItemActions>
-                                            <Button
-                                                variant={
-                                                    template.demoUrl
-                                                        ? "default"
-                                                        : "secondary"
-                                                }
-                                                disabled={!template.demoUrl}
-                                            >
-                                                <span>Demo</span>
-                                            </Button>
-                                            <Button
-                                                size="sm"
-                                                variant={"secondary"}
-                                                disabled={!template.demoUrl}
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    if (template.demoUrl) {
-                                                        window.open(
-                                                            template.demoUrl,
-                                                            "_blank"
-                                                        );
+                                {templates.map((template) => {
+                                    const isActive = selectedTemplateId === template.id;
+
+                                    return (
+                                        <Item
+                                            size={"xs"}
+                                            key={template.id}
+                                            variant={"outline"}
+                                            className={cn(
+                                                "flex cursor-pointer transition-all",
+                                                isActive &&
+                                                    "border-foreground/20 bg-brand-300"
+                                            )}
+                                            onClick={() =>
+                                                setSelectedTemplateId(template.id)
+                                            }
+                                        >
+                                            <ItemContent>
+                                                <ItemTitle
+                                                    className={cn("", isActive && "")}
+                                                >
+                                                    {template.name}
+                                                </ItemTitle>
+                                            </ItemContent>
+                                            <ItemActions className="flex w-full justify-end">
+                                                <Button
+                                                    size="sm"
+                                                    variant={"ghost"}
+                                                    disabled={!template.demoUrl}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        if (template.demoUrl) {
+                                                            window.open(
+                                                                template.demoUrl,
+                                                                "_blank"
+                                                            );
+                                                        }
+                                                    }}
+                                                >
+                                                    <span>Link</span>
+                                                    <ExternalLink />
+                                                </Button>
+                                                {/* <Button
+                                                    variant={
+                                                        template.demoUrl
+                                                            ? "default"
+                                                            : "secondary"
                                                     }
-                                                }}
-                                            >
-                                                <span>Link</span>
-                                                <ExternalLink />
-                                            </Button>
-                                        </ItemActions>
-                                    </Item>
-                                ))}
+                                                    disabled={!template.demoUrl}
+                                                >
+                                                    <span>Demo</span>
+                                                </Button> */}
+                                            </ItemActions>
+                                        </Item>
+                                    );
+                                })}
                             </div>
                         </ScrollArea>
                     </aside>
@@ -242,15 +253,24 @@ function TemplateDemoContent() {
                     <div className="from-muted/30 to-muted/10 flex-1 bg-linear-to-br p-0">
                         <div className="flex h-full items-center justify-center">
                             {currentDemoUrl ? (
-                                deviceType === "desktop" ? (
-                                    <Safari
-                                        url={currentDemoUrl}
-                                        iframeSrc={currentDemoUrl}
-                                        className="max-w-[70vw]"
+                                deviceType === "fullscreen" ? (
+                                    <iframe
+                                        src={currentDemoUrl}
+                                        title="Device Preview"
+                                        className="size-full border-0"
+                                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation-by-user-activation"
                                     />
                                 ) : (
-                                    <div className="flex h-[80vh] w-full items-center justify-center">
-                                        <ResizableDevice iframeSrc={currentDemoUrl} />
+                                    <div className="flex h-[calc(100%-1rem)] w-[calc(100%-1rem)] items-center justify-center p-4">
+                                        <ResizableDevice
+                                            iframeSrc={currentDemoUrl}
+                                            startWidth={
+                                                deviceDimensions[deviceType].width
+                                            }
+                                            startHeight={
+                                                deviceDimensions[deviceType].height
+                                            }
+                                        />
                                     </div>
                                 )
                             ) : (

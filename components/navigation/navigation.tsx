@@ -36,7 +36,7 @@ export default function Navigation({ navigation }: NavigationProps) {
         <HeaderContainer className="border-clr-500/30 sticky top-0 z-1000 border-b bg-white/50 backdrop-blur-md">
             <nav
                 aria-label={t("navigation")}
-                className="mx-auto flex max-w-384 items-center justify-between p-2 xl:px-6"
+                className="mx-auto flex max-w-7xl items-center justify-between p-2 xl:px-6"
             >
                 <div className="flex xl:flex-1">
                     <span>Logo</span>

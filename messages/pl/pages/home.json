@@ -4,7 +4,7 @@
         "leadStart": "Nasze strony kodowane są z myślą o wydajności, dostępności i ",
         "leadHighlight": "SEO",
         "leadEnd": ", aby zapewnić najlepsze wrażenia użytkownikom i maksymalną widoczność w wyszukiwarkach.",
-        "encryptedText": "nie zwlekaj, ulepsz swój biznes już dziś!",
+        "encryptedText": "nie zwlekaj, działaj!",
         "buttons": {
             "primary": "Zacznij teraz",
             "secondary": "Skontaktuj się"
@@ -82,7 +82,7 @@
             "desktop": "Komputery",
             "mobile": "Urządzenia mobilne"
         },
-        "encryptedText": "sprawdź, jak Twoja strona działa na różnych urządzeniach",
+        "encryptedText": "zadbaj o responsywność",
         "desktop": {
             "title": "Nowoczesny design i funkcjonalność",
             "description": "Tworzymy strony, które nie tylko wyglądają świetnie, ale są też intuicyjne i łatwe w obsłudze dla Twoich użytkowników."
@@ -166,91 +166,95 @@
         },
         "popularBadge": "Najpopularniejszy",
         "selectButton": "Wybierz pakiet",
-        "items": [
-            {
-                "name": "Starter",
-                "icon": "Zap",
-                "price": "od 4 999 zł",
-                "description": "Idealne rozwiązanie dla małych firm i startupów",
-                "features": [
-                    "Do 5 podstron",
-                    "Responsywny design",
-                    "Podstawowe SEO",
-                    "Formularz kontaktowy",
-                    "Google Analytics",
-                    "30 dni wsparcia",
-                    "Hosting przez 12 miesięcy"
-                ],
-                "popular": false
-            },
-            {
-                "name": "Business",
-                "icon": "Star",
-                "price": "od 8 999 zł",
-                "description": "Kompleksowe rozwiązanie dla rozwijających się firm",
-                "features": [
-                    "Do 15 podstron",
-                    "Zaawansowany design",
-                    "Pełne SEO + sitemap",
-                    "Blog / Aktualności",
-                    "Integracje (CRM, email)",
-                    "Panel administracyjny",
-                    "90 dni wsparcia",
-                    "Hosting przez 12 miesięcy",
-                    "Optymalizacja obrazów"
-                ],
-                "popular": true
-            },
-            {
-                "name": "Enterprise",
-                "icon": "Rocket",
-                "price": "od 15 999 zł",
-                "description": "Dla firm wymagających maksymalnej wydajności",
-                "features": [
-                    "Nielimitowane podstrony",
-                    "Premium design + animacje",
-                    "Zaawansowane SEO",
-                    "E-commerce / Portal",
-                    "API + Integracje",
-                    "Dedykowany CMS",
-                    "Multi-język",
-                    "6 miesięcy wsparcia premium",
-                    "CDN + Premium hosting",
-                    "Audyt bezpieczeństwa"
-                ],
-                "popular": false
-            }
-        ],
-        "extraPackages": [
-            {
-                "name": "E-commerce",
-                "icon": "Rocket",
-                "price": "od 11 999 zł",
-                "description": "Sklep online z pełnym procesem zakupowym i integracjami płatności.",
-                "features": [
-                    "Katalog produktów",
-                    "Płatności online",
-                    "Koszyk i zamówienia",
-                    "Panel administracyjny",
-                    "Automatyczne maile",
-                    "Optymalizacja pod SEO"
-                ]
-            },
-            {
-                "name": "Aplikacja webowa",
-                "icon": "Star",
-                "price": "od 14 999 zł",
-                "description": "Dedykowana aplikacja webowa dopasowana do procesów w Twojej firmie.",
-                "features": [
-                    "Indywidualny projekt UX/UI",
-                    "Role i uprawnienia",
-                    "Integracje z systemami",
-                    "Panel administracyjny",
-                    "Analityka i raporty",
-                    "Wysoka wydajność"
-                ]
-            }
-        ]
+
+        "onePage": {
+            "name": "Landing Page",
+            "icon": "BadgeCheck",
+            "price": "od 2 999 zł",
+            "description": "Profesjonalna wizytówka online twojego biznesu",
+            "features": [
+                "Responsywny design",
+                "Podstawowe SEO",
+                "Hosting przez 12 miesięcy"
+            ]
+        },
+
+        "starter": {
+            "name": "Starter",
+            "icon": "Zap",
+            "price": "od 4 999 zł",
+            "description": "Idealne rozwiązanie dla małych firm i startupów",
+            "features": [
+                "Do 5 podstron",
+                "Responsywny design",
+                "Podstawowe SEO",
+                "Formularz kontaktowy",
+                "Google Analytics"
+            ]
+        },
+        "business": {
+            "name": "Business",
+            "icon": "Star",
+            "price": "od 8 999 zł",
+            "description": "Kompleksowe rozwiązanie dla rozwijających się firm",
+            "features": [
+                "Do 15 podstron",
+                "Zaawansowany design",
+                "Pełne SEO + sitemap",
+                "Blog / Aktualności",
+                "Integracje (CRM, email)",
+                "Panel administracyjny",
+                "90 dni wsparcia",
+                "Hosting przez 12 miesięcy",
+                "Optymalizacja obrazów"
+            ]
+        },
+        "enterprise": {
+            "name": "Enterprise",
+            "icon": "Rocket",
+            "price": "od 15 999 zł",
+            "description": "Dla firm wymagających maksymalnej wydajności",
+            "features": [
+                "Nielimitowane podstrony",
+                "Premium design + animacje",
+                "Zaawansowane SEO",
+                "E-commerce / Portal",
+                "API + Integracje",
+                "Dedykowany CMS",
+                "Multi-język",
+                "6 miesięcy wsparcia premium",
+                "CDN + Premium hosting",
+                "Audyt bezpieczeństwa"
+            ]
+        },
+        "ecommerce": {
+            "name": "E-commerce",
+            "icon": "ShoppingCart",
+            "price": "od 11 999 zł",
+            "description": "Sklep online z pełnym procesem zakupowym i integracjami płatności.",
+            "features": [
+                "Katalog produktów",
+                "Płatności online",
+                "Koszyk i zamówienia",
+                "Panel administracyjny",
+                "Automatyczne maile",
+                "Optymalizacja pod SEO"
+            ]
+        },
+        "webapp": {
+            "name": "Aplikacja webowa",
+            "icon": "AppWindow",
+            "price": "od 14 999 zł",
+            "description": "Dedykowana aplikacja webowa dopasowana do procesów w Twojej firmie.",
+            "features": [
+                "Indywidualny projekt UX/UI",
+                "Role i uprawnienia",
+                "Integracje z systemami",
+                "Panel administracyjny",
+                "Analityka i raporty",
+                "Wysoka wydajność"
+            ]
+        }
     },
     "solutions": {
         "sectionHeader": {

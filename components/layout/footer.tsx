@@ -71,7 +71,7 @@ function FooterCTA({ Logo }: FooterLogoProps) {
     return (
         <div
             className={cn(
-                "border-border bg-card relative overflow-hidden rounded-2xl border p-8 shadow-lg transition-shadow hover:shadow-xl",
+                "border-border bg-card relative overflow-hidden rounded-2xl border p-8",
                 "md:max-w-sm"
             )}
         >

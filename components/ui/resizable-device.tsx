@@ -6,11 +6,21 @@ import { useEffect, useRef, useState } from "react";
 export interface ResizableDeviceProps {
     iframeSrc: string;
     className?: string;
+    startWidth?: number;
+    startHeight?: number;
 }
 
-export function ResizableDevice({ iframeSrc, className }: ResizableDeviceProps) {
+export function ResizableDevice({
+    iframeSrc,
+    className,
+    startWidth = 400,
+    startHeight = 800,
+}: ResizableDeviceProps) {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [dimensions, setDimensions] = useState({ width: 400, height: 800 });
+    const [dimensions, setDimensions] = useState({
+        width: startWidth,
+        height: startHeight,
+    });
     const [isResizing, setIsResizing] = useState<string | null>(null);
     const startPos = useRef({ x: 0, y: 0, width: 0, height: 0 });
 
@@ -19,14 +29,14 @@ export function ResizableDevice({ iframeSrc, className }: ResizableDeviceProps) 
         if (!containerRef.current) return;
 
         const containerRect = containerRef.current.getBoundingClientRect();
-        const maxWidth = containerRect.width - 40;
-        const maxHeight = containerRect.height - 40;
+        const maxWidth = containerRect.width;
+        const maxHeight = containerRect.height;
 
         setDimensions({
-            width: Math.min(400, maxWidth),
-            height: Math.min(800, maxHeight),
+            width: Math.min(startWidth, maxWidth),
+            height: Math.min(startHeight, maxHeight),
         });
-    }, []);
+    }, [startWidth, startHeight]);
 
     const handleMouseDown = (e: React.MouseEvent, handle: string) => {
         e.preventDefault();
@@ -44,8 +54,8 @@ export function ResizableDevice({ iframeSrc, className }: ResizableDeviceProps) 
             if (!isResizing || !containerRef.current) return;
 
             const containerRect = containerRef.current.getBoundingClientRect();
-            const maxWidth = containerRect.width - 40; // 40px padding
-            const maxHeight = containerRect.height - 40;
+            const maxWidth = containerRect.width; // 40px padding
+            const maxHeight = containerRect.height;
 
             const deltaX = e.clientX - startPos.current.x;
             const deltaY = e.clientY - startPos.current.y;
@@ -163,14 +173,14 @@ export function ResizableDevice({ iframeSrc, className }: ResizableDeviceProps) 
             >
                 {/* Device Body */}
                 <div
-                    className="absolute inset-0 z-100000 bg-[#E5E5E5] dark:bg-[#404040]"
+                    className="absolute inset-0 z-100 bg-[#E5E5E5] dark:bg-[#404040]"
                     style={{
                         borderRadius: `${RADIUS_PX}px`,
                     }}
                 >
                     {/* Inner Screen Bezel */}
                     <div
-                        className="absolute z-100000 bg-white dark:bg-[#262626]"
+                        className="absolute z-100 bg-white dark:bg-[#262626]"
                         style={{
                             top: `${BEZEL_SIZE}px`,
                             left: `${BEZEL_SIZE}px`,
@@ -197,68 +207,7 @@ export function ResizableDevice({ iframeSrc, className }: ResizableDeviceProps) 
                                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation-by-user-activation"
                             />
                         </div>
-
-                        {/* Notch/Camera at top */}
-                        <div
-                            className="absolute left-1/2 -translate-x-1/2 bg-[#F5F5F5] dark:bg-[#262626]"
-                            style={{
-                                top: "8px",
-                                width: "120px",
-                                height: "24px",
-                                borderRadius: "999px",
-                            }}
-                        >
-                            {/* Camera dot */}
-                            <div
-                                className="absolute top-1/2 right-[15%] -translate-y-1/2 rounded-full bg-[#E5E5E5] dark:bg-[#404040]"
-                                style={{
-                                    width: "8px",
-                                    height: "8px",
-                                }}
-                            />
-                        </div>
-
-                        {/* Home Indicator at bottom */}
-                        <div
-                            className="absolute left-1/2 -translate-x-1/2 bg-[#E5E5E5] opacity-50 dark:bg-[#404040]"
-                            style={{
-                                bottom: "8px",
-                                width: "140px",
-                                height: "4px",
-                                borderRadius: "999px",
-                            }}
-                        />
                     </div>
-
-                    {/* Side Buttons */}
-                    <>
-                        {/* Left side buttons (volume) */}
-                        <div
-                            className="absolute left-0 rounded-r-sm bg-[#E5E5E5] dark:bg-[#404040]"
-                            style={{
-                                top: "20%",
-                                width: "3px",
-                                height: "50px",
-                            }}
-                        />
-                        <div
-                            className="absolute left-0 rounded-r-sm bg-[#E5E5E5] dark:bg-[#404040]"
-                            style={{
-                                top: "30%",
-                                width: "3px",
-                                height: "50px",
-                            }}
-                        />
-                        {/* Right side button (power) */}
-                        <div
-                            className="absolute right-0 rounded-l-sm bg-[#E5E5E5] dark:bg-[#404040]"
-                            style={{
-                                top: "32%",
-                                width: "3px",
-                                height: "70px",
-                            }}
-                        />
-                    </>
                 </div>
 
                 {/* Resize Handles */}
