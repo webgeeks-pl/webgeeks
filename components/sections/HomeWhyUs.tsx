@@ -70,9 +70,9 @@ export function HomeWhyUs() {
     console.log("render");
     console.log(benefits.conversions.icon);
     return (
-        <Section className="py-size-xl sm:py-size-2xl bg-clr-50 overflow-hidden">
+        <Section className="py-size-xl md:py-size-2xl bg-clr-50 overflow-hidden">
             <SectionContent>
-                <div className="grid grid-cols-1 grid-rows-[repeat(9,250px)] gap-6 sm:grid-cols-2 sm:grid-rows-[repeat(5,250px)] xl:grid-cols-4 xl:grid-rows-[repeat(3,minmax(250px,1fr))]">
+                <div className="grid grid-cols-1 grid-rows-[repeat(9,250px)] gap-6 md:grid-cols-2 md:grid-rows-[repeat(5,250px)] xl:grid-cols-4 xl:grid-rows-[repeat(3,minmax(250px,1fr))]">
                     <Card className="hover:ring-brand h-full">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative h-full">
@@ -107,7 +107,7 @@ export function HomeWhyUs() {
                             <div className="relative h-full">
                                 <FlickeringGrid />
                             </div>
-                            <div className="h-fit">
+                            <div className="h-fit shrink-0">
                                 <div className="mb-0.5 flex items-center gap-1">
                                     <IconContainer
                                         variant={"ghost"}
@@ -157,13 +157,13 @@ export function HomeWhyUs() {
                                 <div className="relative z-10 overflow-hidden">
                                     <div className="h-9 w-fit">
                                         <RotatingText
-                                            mainClassName="flex items-center justify-center px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 rounded-lg whitespace-nowrap h-full w-full "
+                                            mainClassName="flex items-center justify-center px-2 md:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 md:py-1 md:py-2 rounded-lg whitespace-nowrap h-full w-full "
                                             staggerFrom={"last"}
                                             initial={{ y: "100%" }}
                                             animate={{ y: 0 }}
                                             exit={{ y: "-120%" }}
                                             staggerDuration={0.025}
-                                            splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1 "
+                                            splitLevelClassName="overflow-hidden pb-0.5 md:pb-1 md:pb-1 "
                                             elementLevelClassName="font-heading"
                                             transition={{
                                                 type: "spring",
@@ -195,7 +195,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand-darker ring-brand bg-brand/50 -order-1 h-full sm:col-span-2 xl:order-0">
+                    <Card className="hover:ring-brand-darker ring-brand bg-brand/50 -order-1 h-full md:col-span-2 xl:order-0">
                         <CardContent className="flex h-full flex-col items-center justify-center gap-2">
                             <SectionHeader>
                                 <SectionHeaderContent>

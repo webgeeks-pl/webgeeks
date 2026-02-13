@@ -44,7 +44,7 @@
     "about": {
         "sectionHeader": "O Mnie",
         "paragraphs": [
-            "Nazywam się Jakub Pniewski i tworzę strony internetowe. Mam kilkuletnie doświadczenie w programowaniu, a obecnie rozwijam się jako freelancer. Stawiam na prostotę, wydajność i solidny, przemyślany kod.",
+            "Nazywam się Jakub Pniewski i w ramach Webgeeks tworzę strony internetowe. Mam kilkuletnie doświadczenie w programowaniu, a obecnie rozwijam się jako freelancer. Stawiam na prostotę, wydajność i solidny, przemyślany kod.",
             "Projektuję i buduję nowoczesne strony, które nie tylko dobrze wyglądają, ale przede wszystkim działają szybko i bez problemów. Korzystam ze sprawdzonych technologii i zawsze staram się dobrać rozwiązania do realnych potrzeb projektu, a nie na odwrót.",
             "Poza kodowaniem interesuję się historią i grami komputerowymi. Mieszkam w Krakowie i aktualnie skupiam się na rozwijaniu własnego freelancingu oraz podejmowaniu nowych, ciekawych wyzwań."
         ],
@@ -85,7 +85,24 @@
         "encryptedText": "zadbaj o responsywność",
         "desktop": {
             "title": "Nowoczesny design i funkcjonalność",
-            "description": "Tworzymy strony, które nie tylko wyglądają świetnie, ale są też intuicyjne i łatwe w obsłudze dla Twoich użytkowników."
+            "description": "Tworzę strony, które nie tylko wyglądają świetnie, ale są też intuicyjne i łatwe w obsłudze dla Twoich użytkowników.",
+            "items": [
+                {
+                    "number": "1",
+                    "title": "Intuicyjna nawigacja",
+                    "description": "Prosty i przejrzysty układ, który pozwala Twoim klientom szybko znaleźć to, czego szukają."
+                },
+                {
+                    "number": "2",
+                    "title": "Czytelna struktura treści",
+                    "description": "Dobrze zaprojektowane sekcje, nagłówki i odstępy sprawiają, że użytkownik łatwo skanuje stronę i szybciej podejmuje decyzję."
+                },
+                {
+                    "number": "3",
+                    "title": "Maksymalne wykorzystanie przestrzeni",
+                    "description": "Przemyślany layout na dużych ekranach pozwala lepiej zaprezentować ofertę, portfolio i kluczowe informacje bez chaosu."
+                }
+            ]
         },
         "mobile": {
             "title": "Dopasowane na urządzenia mobilne",
@@ -98,7 +115,7 @@
                 },
                 {
                     "number": "2",
-                    "title": "Mniej porzuceń, więcej leadów",
+                    "title": "Mniej porzuceń.",
                     "description": "Krótka ścieżka do oferty i kontaktu zwiększa liczbę zapytań — telefonicznie i z formularza."
                 },
                 {
@@ -111,51 +128,51 @@
     },
     "whyUs": {
         "sectionHeader": {
-            "title": "Dlaczego nasza strona?",
-            "description": "Wiemy jak przekuć technologię w realne korzyści dla Twojego biznesu."
+            "title": "Czemu strona z Webgeeks?",
+            "description": "Wiem jak przekuć technologię w realne korzyści dla Twojego biznesu."
         },
         "rotatingTexts": ["Strona", "Internet", "Webgeeks", "Design"],
         "typingWords": ["Fryzjer", "Salon kosmetyczny", "Gabinet masażu"],
         "benefits": {
             "speed": {
                 "icon": "Zap",
-                "title": "Pacjenci czekają mniej",
-                "description": "Twoja strona otwiera się natychmiast."
+                "title": "Użytkownicy czekają mniej",
+                "description": "Twoja strona otwiera się natychmiast"
             },
             "seo": {
                 "icon": "Search",
                 "title": "Pojawisz się w Google",
-                "description": "Pojawisz się na pierwszej stronie Google, zanim konkurencja."
+                "description": "Twoja strona pojawi się w wynikach wyszukiwania Google"
             },
             "costs": {
                 "icon": "DollarSign",
                 "title": "Niższe koszty utrzymania",
-                "description": "Zapomnij o corocznych opłatach za pluginy i drogi hosting."
+                "description": "Zapomnij o corocznych opłatach za pluginy i drogi hosting"
             },
             "security": {
                 "icon": "Lock",
                 "title": "Bezpieczna strona",
-                "description": "Nie martwisz się o hakowanie ani wycieki danych."
+                "description": "Nie martwisz się o hakowanie ani wycieki danych"
             },
             "mobile": {
                 "icon": "Smartphone",
                 "title": "Responsywny design",
-                "description": "Twoja strona wygląda pięknie na każdym ekranie."
+                "description": "Twoja strona wygląda pięknie na każdym ekranie"
             },
             "scalability": {
                 "icon": "CloudCog",
                 "title": "Strona rośnie z Tobą",
-                "description": "Strona bez problemu obsługuje wzrost ruchu i nowych funkcji."
+                "description": "Strona bez problemu obsługuje większy ruch i nowe funkcje"
             },
             "easy": {
                 "icon": "Code2",
                 "title": "Łatwa do zmian",
-                "description": "Szybkie aktualizacje treści i funkcji."
+                "description": "Szybkie aktualizacje treści i funkcji"
             },
             "conversions": {
                 "icon": "Users",
                 "title": "Większa konwersja",
-                "description": "Profesjonalna strona buduje zaufanie i przyciąga więcej pacjentów."
+                "description": "Profesjonalna strona buduje zaufanie i przyciąga więcej pacjentów"
             }
         }
     },
@@ -163,11 +180,11 @@
     "solutions": {
         "sectionHeader": {
             "title": "Rozwiązania technologiczne",
-            "description": "Oferujemy kompleksowe rozwiązania dopasowane do potrzeb Twojego biznesu. Od prostych stron po zaawansowane platformy z pełną integracją."
+            "description": "Kompleksowe rozwiązania dopasowane do potrzeb Twojego biznesu. Od prostych stron po zaawansowane platformy z pełną integracją."
         },
         "cta": {
             "text": "Nie widzisz rozwiązania, którego potrzebujesz?",
-            "subtext": "Zbudujemy dedykowaną integrację pod Twoje wymagania."
+            "subtext": "Napisz do mnie, a stworzę coś specjalnie dla Ciebie!"
         },
         "items": [
             {
@@ -264,13 +281,13 @@
             }
         },
         "after": {
-            "title": "Next.js",
+            "title": "Webgeeks",
             "features": [
                 "Automatyczne aktualizacje",
                 "Bezpieczeństwo na najwyższym poziomie",
-                "Błyskawiczne ładowanie (<1s)",
-                "Niskie koszty hostingu",
-                "99.99% uptime",
+                "Błyskawiczne ładowanie (1s)",
+                "Niskie koszty hostingu od 0 zł/miesiąc",
+                "Stabilność przy dużym ruchu",
                 "Nieograniczone skalowanie"
             ],
             "browser": {
@@ -283,11 +300,11 @@
     },
     "crafted": {
         "sectionHeader": {
-            "title": "Tworzone od zera. Przez programistę.",
-            "description": "Nie korzystamy z gotowych szablonów. Nie instalujemy dziesiątek wtyczek. Każdy piksel i każda linia kodu jest stworzona specjalnie dla Ciebie."
+            "title": "Bez kreatora, bez kompromisów",
+            "description": "Nie korzystam z gotowych szablonów. Nie instaluję dziesiątek wtyczek. Każdy piksel i każda linia kodu jest precyzyjnie dopracowana."
         },
         "codeFile": "twoja-strona.tsx",
-        "codeBadge": "100% Custom Code",
+        "codeBadge": "kod",
         "codeLines": [
             { "indent": 0, "text": "<html lang=\"pl\">", "color": "text-clr-500" },
             { "indent": 1, "text": "<head>", "color": "text-clr-500" },
@@ -308,9 +325,9 @@
                 "text": "<main className=\"custom\">",
                 "color": "text-clr-900"
             },
-            { "indent": 3, "text": "// Twój unikalny kod", "color": "text-clr-400" },
-            { "indent": 3, "text": "// Pisany od zera", "color": "text-clr-400" },
-            { "indent": 3, "text": "// Żadnych szablonów", "color": "text-clr-400" },
+            { "indent": 3, "text": "// szybka i bezpieczna", "color": "text-clr-400" },
+            { "indent": 3, "text": "// gotowa na zmiany", "color": "text-clr-400" },
+            { "indent": 3, "text": "// bez zbędnych wtyczek", "color": "text-clr-400" },
             { "indent": 2, "text": "</main>", "color": "text-clr-900" },
             { "indent": 1, "text": "</body>", "color": "text-clr-500" },
             { "indent": 0, "text": "</html>", "color": "text-clr-500" }
@@ -318,37 +335,37 @@
         "differences": [
             {
                 "icon": "Code2",
-                "title": "Kod pisany ręcznie",
-                "description": "Każda linia kodu jest napisana przez doświadczonego programistę. Żadnych gotowych szablonów, żadnego copy-paste.",
+                "title": "Strona tworzona, nie składana",
+                "description": "Strona jest tworzona w środowisku programistycznym a nie w kreatorze stron. Żadnych gotowych szablonów.",
                 "our": "Dopracowanie",
                 "other": "Wadliwość"
             },
             {
                 "icon": "Fingerprint",
                 "title": "Unikalna jak Twoja firma",
-                "description": "Strona dopasowana dokładnie do Twojej wizji i potrzeb biznesowych — nie przerobiony szablon, który wygląda jak tysiące innych.",
+                "description": "Strona dopasowana dokładnie do Twoich potrzeb biznesowych. Unikalny design, który się wyróżnia",
                 "our": "Unikalność",
                 "other": "Powtarzalność"
             },
             {
                 "icon": "Layers",
-                "title": "Zero zbędnego kodu",
-                "description": "Bez wtyczek, które spowalniają stronę. Bez niepotrzebnych bibliotek. Tylko to, czego naprawdę potrzebujesz.",
+                "title": "Brak zbędnych wtyczek",
+                "description": "Bez wtyczek, które spowalniają stronę. Bez niepotrzebnych dodatków obciążających stronę. Tylko to, czego naprawdę potrzebujesz.",
                 "our": "Lekkość i wydajność",
                 "other": "Przeciążenie"
             },
             {
                 "icon": "Puzzle",
                 "title": "Pełna kontrola",
-                "description": "Możesz zmienić dosłownie wszystko. Żadnych ograniczeń platformy, żadnych limitów kreatywności.",
+                "description": "W każdej chwili możesz rozbudować stronę o nowe funkcje. Żadnych ograniczeń platformy, żadnych limitów kreatywności.",
                 "our": "Elastyczność",
                 "other": "Ograniczenia"
             }
         ],
         "stats": [
-            { "value": "0", "label": "gotowych szablonów — wszystko od zera" },
-            { "value": "0", "label": "zbędnych wtyczek — czysty, lekki kod" },
-            { "value": "100%", "label": "unikalności — strona tylko dla Ciebie" }
+            { "value": "od 0 zł ", "label": "miesięcznie za hosting i utrzymanie" },
+            { "value": "0", "label": "zbędnych wtyczek" },
+            { "value": "0", "label": "ukrytych kosztów" }
         ]
     },
     "ctaFooter": {
@@ -363,7 +380,7 @@
             "Dostosowanie do potrzeb"
         ],
         "buttons": {
-            "secondary": "Dowiedz się więcej",
+            "secondary": "Zobacz ofertę",
             "primary": "Rozpocznij projekt"
         }
     }
