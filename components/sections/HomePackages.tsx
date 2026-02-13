@@ -30,6 +30,7 @@ export function HomePackages() {
 
                 <div className="flex flex-col items-center gap-2">
                     <Text intent="h3" as="h4" text={"Potrzebujesz czegoś innego?"} />
+
                     <Text
                         intent="small"
                         muted

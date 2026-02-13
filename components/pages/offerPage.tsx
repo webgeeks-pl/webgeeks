@@ -1,5 +1,5 @@
 import { Check, ChevronUp } from "lucide-react";
-import { UseAllPackages } from "../content/Packages";
+
 import Page, { PageHeader, PageHeaderContent, PageLead, PageTitle } from "../layout/page";
 import Section, {
     SectionContent,
@@ -12,6 +12,9 @@ import Text from "../typography/text";
 import IconContainer from "../ui/iconContainer";
 import { getLucideIcon } from "../ui/lucideIcons";
 
+import { useAllPackages } from "@/hooks/useAllPackages";
+import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 import {
     Accordion,
     AccordionContent,
@@ -19,11 +22,15 @@ import {
     AccordionTrigger,
 } from "../ui/accordion";
 import { Separator } from "../ui/separator";
+import { Table, TableBody, TableCaption, TableCell, TableRow } from "../ui/table";
 
-export default function offerPage() {
-    const packages = UseAllPackages();
+export default function OfferPage() {
+    const packages = useAllPackages();
     const marketingPackages = packages.filter((pkg) => pkg.category === "marketing");
     const specialPackages = packages.filter((pkg) => pkg.category === "special");
+    const offerT = useTranslations("offer");
+    const pageT = useTranslations("pages.offer");
+    const services = offerT.raw("services");
 
     return (
         <Page>
@@ -50,104 +57,32 @@ export default function offerPage() {
                         <Text intent="h3" as="h4" text={"Pakiety marketingowe"} />
 
                         <Accordion className="flex w-full flex-col gap-4">
-                            {marketingPackages.map((pkg, i) => (
-                                <AccordionItem
-                                    value={pkg.name}
-                                    key={i}
-                                    className="border-border flex w-full flex-col rounded-lg border p-4"
-                                >
-                                    <AccordionTrigger className="flex w-full items-center gap-2 text-start">
-                                        <div className="flex w-full items-center justify-between gap-4">
-                                            <div className="flex w-full items-center gap-4">
-                                                <IconContainer
-                                                    Icon={getLucideIcon(pkg.icon)}
-                                                />
-                                                <div className="flex w-full flex-col items-start">
-                                                    <div className="flex w-full flex-col items-end justify-between sm:flex-row">
-                                                        <Text
-                                                            intent="h4"
-                                                            as="h5"
-                                                            text={pkg.name}
-                                                        />
-                                                        <Text
-                                                            intent={"var"}
-                                                            text={pkg.price}
-                                                            className="block text-xl md:hidden"
-                                                        />
-                                                    </div>
-                                                    <Text
-                                                        text={pkg.description}
-                                                        className="hidden sm:block"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <Text
-                                                intent={"var"}
-                                                text={pkg.price}
-                                                className="hidden text-2xl text-nowrap md:block"
-                                            />
-                                        </div>
-                                        <ChevronUp className="h-4 w-4 text-zinc-950 transition-transform duration-200 group-data-expanded:-rotate-180 dark:text-zinc-50" />
-                                    </AccordionTrigger>
-                                    <AccordionContent className="flex w-full flex-col">
-                                        <Text
-                                            text={pkg.description}
-                                            className="block px-2 pt-4 sm:hidden"
-                                        />
-                                        <ul className="grid w-full gap-4 py-4 sm:grid-cols-2">
-                                            {pkg.features.main.map((feature, j) => (
-                                                <li
-                                                    key={j}
-                                                    className="flex items-center gap-2"
-                                                >
-                                                    <Check />
-                                                    <div>
-                                                        <Text
-                                                            text={feature.name}
-                                                            className="text-base sm:text-lg"
-                                                        />
-                                                        <Text
-                                                            text={feature.details}
-                                                            intent="small"
-                                                            muted
-                                                        />
-                                                    </div>
-                                                </li>
-                                            ))}
-                                        </ul>
+                            {marketingPackages.map((pkg, i) => {
+                                const isPopular = i === 1;
 
-                                        <Separator decorative className="" />
-                                        <ul className="grid h-fit w-full gap-4 py-4 sm:grid-cols-2 md:grid-cols-3">
-                                            {pkg.features.additional.map((feature, j) => (
-                                                <li
-                                                    key={j}
-                                                    className="flex items-center gap-2"
-                                                >
-                                                    <Check />
-                                                    <div>
-                                                        <Text text={feature.name} />
-                                                        <Text
-                                                            text={feature.details}
-                                                            intent="small"
-                                                            muted
-                                                        />
-                                                    </div>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </AccordionContent>
-                                </AccordionItem>
-                            ))}
+                                return (
+                                    <div key={i} className="relative size-full">
+                                        <PackageCard pkg={pkg} isPopular={isPopular} />
+                                        {isPopular && (
+                                            <div className="bg-brand absolute -top-1 right-1/2 z-10 translate-x-1/2 rounded-full px-4 py-1 md:right-8 md:translate-x-0">
+                                                <Text intent="small" color="opposite">
+                                                    {pageT("popularBadge")}
+                                                </Text>
+                                            </div>
+                                        )}
+                                    </div>
+                                );
+                            })}
                         </Accordion>
                     </div>
 
-                    <div>
+                    <div className="flex w-full flex-col gap-4">
                         <Text intent="h3" as="h4" text={"Pakiety specjalne"} />
-                        <div className="flex flex-col">
+                        <Accordion className="flex w-full flex-col gap-4">
                             {specialPackages.map((pkg, i) => (
-                                <div key={i} className="mb-size-lg"></div>
+                                <PackageCard pkg={pkg} key={i} isPopular={false} />
                             ))}
-                        </div>
+                        </Accordion>
                     </div>
                 </SectionContent>
             </Section>
@@ -156,7 +91,7 @@ export default function offerPage() {
                 <SectionContent className="gap-size-lg">
                     <SectionHeader>
                         <SectionHeaderContent>
-                            <SectionTitle>Cennik usług</SectionTitle>
+                            <SectionTitle>Dodaktowe usługi</SectionTitle>
                             <SectionLead>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                 Porro, minus amet? Unde!
@@ -164,8 +99,112 @@ export default function offerPage() {
                         </SectionHeaderContent>
                     </SectionHeader>
                     {/* Cennik usług */}
+
+                    <Table>
+                        <TableCaption>A list of your recent invoices.</TableCaption>
+                        {/* <TableHeader className="col-span-1">
+                            <TableRow className="w-full">
+                                <TableHead className="w-full text-left">Usługa</TableHead>
+                                <TableHead className="w-full text-right">Cena</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableHeader>
+                            <TableRow className="w-full">
+                                <TableHead className="w-full text-left">Usługa</TableHead>
+                                <TableHead className="w-full text-right">Cena</TableHead>
+                            </TableRow>
+                        </TableHeader> */}
+                        <TableBody className="grid gap-x-4 lg:grid-cols-2">
+                            {services.map((service) => (
+                                <TableRow key={service.name} className="w-full">
+                                    <TableCell className="w-full font-medium">
+                                        <Text text={service.name} />
+                                        <Text
+                                            text={service.description}
+                                            intent="small"
+                                            muted
+                                        />
+                                    </TableCell>
+                                    <TableCell className="w-full text-right">
+                                        {service.price}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
                 </SectionContent>
             </Section>
         </Page>
+    );
+}
+
+function PackageCard({ pkg, isPopular }: { pkg: any; isPopular: boolean }) {
+    return (
+        <AccordionItem
+            value={pkg.name}
+            className={cn(
+                "border-border/70 relative flex w-full flex-col overflow-hidden rounded-lg border-2 p-4",
+                isPopular && "border-brand my-2"
+            )}
+        >
+            <AccordionTrigger className="flex w-full items-center gap-2 text-start">
+                <div className="flex w-full items-center justify-between gap-4">
+                    <div className="flex w-full items-center gap-4">
+                        <IconContainer
+                            Icon={getLucideIcon(pkg.icon)}
+                            variant={isPopular ? "brandSolid" : "default"}
+                            color={isPopular ? "opposite" : "default"}
+                        />
+                        <div className="flex w-full flex-col items-start">
+                            <div className="flex w-full flex-col items-end justify-between sm:flex-row">
+                                <Text intent="h4" as="h5" text={pkg.name} />
+                                <Text
+                                    intent={"var"}
+                                    text={pkg.price}
+                                    className="block text-xl md:hidden"
+                                />
+                            </div>
+                            <Text text={pkg.description} className="hidden sm:block" />
+                        </div>
+                    </div>
+                    <Text
+                        intent={"var"}
+                        text={pkg.price}
+                        className="hidden text-2xl text-nowrap md:block"
+                    />
+                </div>
+                <ChevronUp className="h-4 w-4 text-zinc-950 transition-transform duration-200 group-data-expanded:-rotate-180 dark:text-zinc-50" />
+            </AccordionTrigger>
+            <AccordionContent className="flex w-full flex-col">
+                <Text text={pkg.description} className="block px-2 pt-4 sm:hidden" />
+                <ul className="grid w-full gap-4 py-4 sm:grid-cols-2">
+                    {pkg.features.main.map((feature, j) => (
+                        <li key={j} className="flex items-center gap-2">
+                            <Check />
+                            <div>
+                                <Text
+                                    text={feature.name}
+                                    className="text-base sm:text-lg"
+                                />
+                                <Text text={feature.description} intent="small" muted />
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+
+                <Separator decorative className="" />
+                <ul className="grid h-fit w-full gap-4 py-4 sm:grid-cols-2 md:grid-cols-3">
+                    {pkg.features.additional.map((feature, j) => (
+                        <li key={j} className="flex items-center gap-2">
+                            <Check />
+                            <div>
+                                <Text text={feature.name} />
+                                <Text text={feature.description} intent="small" muted />
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </AccordionContent>
+        </AccordionItem>
     );
 }

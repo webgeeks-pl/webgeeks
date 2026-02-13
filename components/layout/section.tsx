@@ -2,13 +2,17 @@ import Tag from "@/components/base/tag";
 import { cn } from "@/lib/utils";
 import type { BasicComponentProps } from "@types";
 import { ElementType } from "react";
-import Text from "../typography/text";
+import Text, { TextProps } from "../typography/text";
 
 interface SectionProps extends BasicComponentProps {
     shouldRender?: boolean;
     as?: ElementType;
     asChild?: boolean;
 }
+
+type SectionTextProps = TextProps<keyof HTMLElementTagNameMap> & {
+    text?: React.ReactNode;
+};
 
 export default function Section({
     children,
@@ -67,28 +71,18 @@ export function SectionHeaderContent({ children, className }: BasicComponentProp
     );
 }
 
-interface SectionTitleProps extends BasicComponentProps {
-    text?: string;
-    color?: "primary" | "opposite";
-}
-
 export function SectionTitle({
     text,
     children,
     className,
     color = "primary",
-}: SectionTitleProps) {
+    as = "p",
+}: SectionTextProps) {
     return (
-        <Text color={color} intent="sectionHeader" className={cn("", className)}>
+        <Text as={as} color={color} intent="sectionHeader" className={cn("", className)}>
             {text ?? children}
         </Text>
     );
-}
-
-interface SectionLeadProps extends BasicComponentProps {
-    text?: string;
-    muted?: boolean;
-    color?: "primary" | "opposite";
 }
 
 export function SectionLead({
@@ -97,9 +91,10 @@ export function SectionLead({
     className,
     muted = true,
     color = "primary",
-}: SectionLeadProps) {
+    as = "h1",
+}: SectionTextProps) {
     return (
-        <Text color={color} muted={muted} intent="lead" className={className}>
+        <Text as={as} color={color} muted={muted} intent="lead" className={className}>
             {text ?? children}
         </Text>
     );

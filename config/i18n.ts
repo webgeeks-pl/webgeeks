@@ -1,6 +1,6 @@
 export const messagesDirStructure = {
     common: "common.json",
-    packages: "packages.json",
+    offer: "offer.json",
     pages: {
         home: "pages/home.json",
     },

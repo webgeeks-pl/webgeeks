@@ -159,7 +159,7 @@
             }
         }
     },
- 
+
     "solutions": {
         "sectionHeader": {
             "title": "Rozwiązania technologiczne",
@@ -232,6 +232,16 @@
             }
         ]
     },
+
+    "packages": {
+        "sectionHeader": {
+            "title": "Nasza Oferta",
+            "description": "Wybierz pakiet dopasowany do potrzeb Twojego biznesu. Każdy projekt realizujemy indywidualnie."
+        },
+        "popularBadge": "Najpopularniejszy",
+        "selectButton": "Wybierz pakiet"
+    },
+
     "comparison": {
         "sectionHeader": {
             "title": "Transformacja Twojej strony",

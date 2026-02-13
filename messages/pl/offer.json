@@ -1,11 +1,8 @@
 {
     "packages": {
-        "sectionHeader": {
-            "title": "Nasza Oferta",
-            "description": "Wybierz pakiet dopasowany do potrzeb Twojego biznesu. Każdy projekt realizujemy indywidualnie."
-        },
+        "selectButton": "Wybierz",
+        "detailsButton": "Szczegóły",
         "popularBadge": "Najpopularniejszy",
-        "selectButton": "Wybierz pakiet",
 
         "onePage": {
             "name": "Wizytówka",
@@ -33,15 +30,15 @@
                 "main": [
                     {
                         "name": "Strona Główna + 3 podstrony",
-                        "details": "podstawowa struktura dla małej firmy"
+                        "description": "podstawowa struktura dla małej firmy"
                     },
                     {
                         "name": "Częściowy CMS",
-                        "details": "do edycji treści"
+                        "description": "do edycji treści"
                     },
                     {
                         "name": "Prosty formularz kontaktowy",
-                        "details": "kontakt z klientami"
+                        "description": "kontakt z klientami"
                     }
                 ],
                 "additional": []
@@ -57,23 +54,23 @@
                 "main": [
                     {
                         "name": "Strona Główna + 5 podstron",
-                        "details": "rozbudowana struktura"
+                        "description": "rozbudowana struktura"
                     },
                     {
                         "name": "Pełny CMS",
-                        "details": "do edycji treści"
+                        "description": "do edycji treści"
                     },
                     {
                         "name": "Zaawansowany formularz kontaktowy",
-                        "details": "z walidacją i automatycznymi odpowiedziami"
+                        "description": "z walidacją i automatycznymi odpowiedziami"
                     },
                     {
                         "name": "Rozszerzone SEO",
-                        "details": "optymalizacja widoczności w wyszukiwarkach"
+                        "description": "optymalizacja widoczności w wyszukiwarkach"
                     },
                     {
                         "name": "Integracje z opiniami klientów",
-                        "details": "budowanie zaufania"
+                        "description": "budowanie zaufania"
                     }
                 ],
                 "additional": []
@@ -89,45 +86,45 @@
                 "main": [
                     {
                         "name": "Nielimitowane podstrony",
-                        "details": "pełna swoboda struktury"
+                        "description": "pełna swoboda struktury"
                     },
                     {
                         "name": "Premium design + animacje",
-                        "details": "unikalne doświadczenie użytkownika"
+                        "description": "unikalne doświadczenie użytkownika"
                     },
                     {
                         "name": "Zaawansowane SEO",
-                        "details": "maksymalna widoczność w wyszukiwarkach"
+                        "description": "maksymalna widoczność w wyszukiwarkach"
                     },
                     {
                         "name": "E-commerce / Portal",
-                        "details": "możliwość sprzedaży lub platformy"
+                        "description": "możliwość sprzedaży lub platformy"
                     },
                     {
                         "name": "API + Integracje",
-                        "details": "połączenia z zewnętrznymi systemami"
+                        "description": "połączenia z zewnętrznymi systemami"
                     }
                 ],
                 "additional": [
                     {
                         "name": "Dedykowany CMS",
-                        "details": "dopasowany do Twoich potrzeb"
+                        "description": "dopasowany do Twoich potrzeb"
                     },
                     {
                         "name": "Multi-język",
-                        "details": "obsługa wielu języków"
+                        "description": "obsługa wielu języków"
                     },
                     {
                         "name": "6 miesięcy wsparcia premium",
-                        "details": "priorytetowa pomoc techniczna"
+                        "description": "priorytetowa pomoc techniczna"
                     },
                     {
                         "name": "CDN + Premium hosting",
-                        "details": "szybkość i dostępność na najwyższym poziomie"
+                        "description": "szybkość i dostępność na najwyższym poziomie"
                     },
                     {
                         "name": "Audyt bezpieczeństwa",
-                        "details": "ochrona przed zagrożeniami"
+                        "description": "ochrona przed zagrożeniami"
                     }
                 ]
             }
@@ -142,27 +139,27 @@
                 "main": [
                     {
                         "name": "Katalog produktów",
-                        "details": "zarządzanie asortymentem"
+                        "description": "zarządzanie asortymentem"
                     },
                     {
                         "name": "Płatności online",
-                        "details": "integracja z systemami płatności"
+                        "description": "integracja z systemami płatności"
                     },
                     {
                         "name": "Koszyk i zamówienia",
-                        "details": "pełny proces zakupowy"
+                        "description": "pełny proces zakupowy"
                     },
                     {
                         "name": "Panel administracyjny",
-                        "details": "zarządzanie sklepem"
+                        "description": "zarządzanie sklepem"
                     },
                     {
                         "name": "Automatyczne maile",
-                        "details": "potwierdzenia i statusy zamówień"
+                        "description": "potwierdzenia i statusy zamówień"
                     },
                     {
                         "name": "Optymalizacja pod SEO",
-                        "details": "widoczność produktów w wyszukiwarkach"
+                        "description": "widoczność produktów w wyszukiwarkach"
                     }
                 ],
                 "additional": []
@@ -178,31 +175,158 @@
                 "main": [
                     {
                         "name": "Indywidualny projekt UX/UI",
-                        "details": "dopasowany do użytkowników"
+                        "description": "dopasowany do użytkowników"
                     },
                     {
                         "name": "Role i uprawnienia",
-                        "details": "zarządzanie dostępem"
+                        "description": "zarządzanie dostępem"
                     },
                     {
                         "name": "Integracje z systemami",
-                        "details": "połączenie z istniejącą infrastrukturą"
+                        "description": "połączenie z istniejącą infrastrukturą"
                     },
                     {
                         "name": "Panel administracyjny",
-                        "details": "pełna kontrola nad aplikacją"
+                        "description": "pełna kontrola nad aplikacją"
                     },
                     {
                         "name": "Analityka i raporty",
-                        "details": "wgląd w dane biznesowe"
+                        "description": "wgląd w dane biznesowe"
                     },
                     {
                         "name": "Wysoka wydajność",
-                        "details": "optymalizacja pod dużą liczbę użytkowników"
+                        "description": "optymalizacja pod dużą liczbę użytkowników"
                     }
                 ],
                 "additional": []
             }
         }
-    }
+    },
+    "services": [
+        {
+            "name": "Czesciowy CMS",
+            "description": "Tylko najważniejsze informacje",
+            "price": "od 300 zl"
+        },
+        {
+            "name": "Pelny CMS",
+            "description": "",
+            "price": "od 500 zl"
+        },
+        {
+            "name": "Internacjonalizacja",
+            "description": "",
+            "price": "od 300 zl"
+        },
+        {
+            "name": "Tlumaczenie tekstow ang",
+            "description": "",
+            "price": "od 500 zl"
+        },
+        {
+            "name": "Tlumaczenie tekstow AI",
+            "description": "",
+            "price": "od 200 zl"
+        },
+        {
+            "name": "Rozszerzone SEO",
+            "description": "",
+            "price": "od"
+        },
+        {
+            "name": "Profesjonalne SEO",
+            "description": "",
+            "price": "od"
+        },
+        {
+            "name": "Miesieczne raporty",
+            "description": "",
+            "price": "100 zl"
+        },
+        {
+            "name": "Aktualizacja bezpieczenstwa roczna / polroczna",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "Uslugi Amok + pakiet",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "Odwzorowanie projektu lub istniejacej strony",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "Automatyczne opinie",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "Blog + podstrona",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "Newsletter + szablon",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "Szablon do newslettera",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "Analityka na stronie",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "Reklamy",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "Kalendarz",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "System rezerwacji + kalendarz",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "Integracje",
+            "description": "Trzeba zobaczyc co mozna oferowac nawet za paywallami.",
+            "price": ""
+        },
+        {
+            "name": "Animacje",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "Napisanie tresci na strone (AI)",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "Wyszukiwarka",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "Filtrowanie i sortowanie",
+            "description": "",
+            "price": ""
+        },
+        {
+            "name": "Dark mode",
+            "description": "",
+            "price": ""
+        }
+    ]
 }

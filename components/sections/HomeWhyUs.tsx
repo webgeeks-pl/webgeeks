@@ -72,7 +72,7 @@ export function HomeWhyUs() {
     return (
         <Section className="py-size-xl sm:py-size-2xl bg-clr-50 overflow-hidden">
             <SectionContent>
-                <div className="grid grid-cols-1 grid-rows-[repeat(9,250px)] gap-6 sm:grid-cols-2 sm:grid-rows-[repeat(5,250px)] lg:grid-cols-4 lg:grid-rows-[repeat(3,minmax(250px,1fr))]">
+                <div className="grid grid-cols-1 grid-rows-[repeat(9,250px)] gap-6 sm:grid-cols-2 sm:grid-rows-[repeat(5,250px)] xl:grid-cols-4 xl:grid-rows-[repeat(3,minmax(250px,1fr))]">
                     <Card className="hover:ring-brand h-full">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative h-full">
@@ -126,7 +126,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand h-full lg:col-span-2">
+                    <Card className="hover:ring-brand h-full xl:col-span-2">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="h-full"></div>
                             <div className="h-fit">
@@ -195,7 +195,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand-darker ring-brand bg-brand/50 -order-1 h-full sm:col-span-2 lg:order-0">
+                    <Card className="hover:ring-brand-darker ring-brand bg-brand/50 -order-1 h-full sm:col-span-2 xl:order-0">
                         <CardContent className="flex h-full flex-col items-center justify-center gap-2">
                             <SectionHeader>
                                 <SectionHeaderContent>
@@ -233,7 +233,7 @@ export function HomeWhyUs() {
                             </div>
                         </CardContent>
                     </Card>
-                    <Card className="hover:ring-brand h-full lg:col-span-2">
+                    <Card className="hover:ring-brand h-full xl:col-span-2">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <FloatingStats />
                             <div className="h-fit">
