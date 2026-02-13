@@ -1,13 +1,18 @@
 import { BasicComponentProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import Text from "../typography/text";
+import Text, { TextProps } from "../typography/text";
 import Section, { SectionContent } from "./section";
 
 export default function Page({ children, className }: BasicComponentProps) {
     return <div className={cn("overflow-x-hidden", className)}>{children}</div>;
 }
 
+type PageTextProps = TextProps<keyof HTMLElementTagNameMap> & {
+    text?: React.ReactNode;
+};
+
 export function PageHeader({ className, children }: BasicComponentProps) {
+    
     return (
         <Section as={"header"} className={cn("py-size-xl", className)}>
             {children}
@@ -27,9 +32,16 @@ export function PageTitle({
     className,
     children,
     text,
-}: BasicComponentProps & { text?: string }) {
+    as = "p",
+    ...props
+}: PageTextProps) {
     return (
-        <Text intent="h1" className={cn("font-heading text-3xl", className)}>
+        <Text
+            intent="pageHeader"
+            as={as}
+            className={cn("font-heading text-3xl", className)}
+            {...props}
+        >
             {text ?? children}
         </Text>
     );
@@ -39,9 +51,17 @@ export function PageLead({
     className,
     children,
     text,
-}: BasicComponentProps & { text?: string }) {
+    as = "h1",
+    ...props
+}: PageTextProps) {
     return (
-        <Text intent="lead" muted className={cn("max-w-2xl", className)}>
+        <Text
+            intent="lead"
+            as={as}
+            muted
+            className={cn("max-w-2xl", className)}
+            {...props}
+        >
             {text ?? children}
         </Text>
     );
