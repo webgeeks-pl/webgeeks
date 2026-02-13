@@ -21,6 +21,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "../ui/accordion";
+import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 import { Table, TableBody, TableCaption, TableCell, TableRow } from "../ui/table";
 
@@ -36,8 +37,8 @@ export default function OfferPage() {
         <Page>
             <PageHeader>
                 <PageHeaderContent>
-                    <PageTitle>Nasza oferta</PageTitle>
-                    <PageLead>Znajdz odpowiednia dla siebie oferte</PageLead>
+                    <PageTitle text={pageT("pageHeader.title")} />
+                    <PageLead text={pageT("pageHeader.description")} />
                 </PageHeaderContent>
             </PageHeader>
             <Separator decorative />
@@ -45,16 +46,19 @@ export default function OfferPage() {
                 <SectionContent className="gap-size-xl">
                     <SectionHeader>
                         <SectionHeaderContent>
-                            <SectionTitle>Odkryj nasze pakiety</SectionTitle>
-                            <SectionLead>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Porro, minus amet? Unde!
-                            </SectionLead>
+                            <SectionTitle text={pageT("packages.sectionHeader.title")} />
+                            <SectionLead
+                                text={pageT("packages.sectionHeader.description")}
+                            />
                         </SectionHeaderContent>
                     </SectionHeader>
 
                     <div className="flex w-full flex-col gap-4">
-                        <Text intent="h3" as="h4" text={"Pakiety marketingowe"} />
+                        <Text
+                            intent="h3"
+                            as="h4"
+                            text={pageT("packages.marketingPackagesTitle")}
+                        />
 
                         <Accordion className="flex w-full flex-col gap-4">
                             {marketingPackages.map((pkg, i) => {
@@ -66,7 +70,7 @@ export default function OfferPage() {
                                         {isPopular && (
                                             <div className="bg-brand absolute -top-1 right-1/2 z-10 translate-x-1/2 rounded-full px-4 py-1 md:right-8 md:translate-x-0">
                                                 <Text intent="small" color="opposite">
-                                                    {pageT("popularBadge")}
+                                                    {pageT("packages.popularBadge")}
                                                 </Text>
                                             </div>
                                         )}
@@ -77,7 +81,11 @@ export default function OfferPage() {
                     </div>
 
                     <div className="flex w-full flex-col gap-4">
-                        <Text intent="h3" as="h4" text={"Pakiety specjalne"} />
+                        <Text
+                            intent="h3"
+                            as="h4"
+                            text={pageT("packages.specialPackagesTitle")}
+                        />
                         <Accordion className="flex w-full flex-col gap-4">
                             {specialPackages.map((pkg, i) => (
                                 <PackageCard pkg={pkg} key={i} isPopular={false} />
@@ -91,29 +99,17 @@ export default function OfferPage() {
                 <SectionContent className="gap-size-lg">
                     <SectionHeader>
                         <SectionHeaderContent>
-                            <SectionTitle>Dodaktowe usługi</SectionTitle>
-                            <SectionLead>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Porro, minus amet? Unde!
-                            </SectionLead>
+                            <SectionTitle text={pageT("services.sectionHeader.title")} />
+                            <SectionLead
+                                text={pageT("services.sectionHeader.description")}
+                            />
                         </SectionHeaderContent>
                     </SectionHeader>
                     {/* Cennik usług */}
 
                     <Table>
-                        <TableCaption>A list of your recent invoices.</TableCaption>
-                        {/* <TableHeader className="col-span-1">
-                            <TableRow className="w-full">
-                                <TableHead className="w-full text-left">Usługa</TableHead>
-                                <TableHead className="w-full text-right">Cena</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableHeader>
-                            <TableRow className="w-full">
-                                <TableHead className="w-full text-left">Usługa</TableHead>
-                                <TableHead className="w-full text-right">Cena</TableHead>
-                            </TableRow>
-                        </TableHeader> */}
+                        <TableCaption>{pageT("services.tableCaption")}</TableCaption>
+
                         <TableBody className="grid gap-x-4 lg:grid-cols-2">
                             {services.map((service) => (
                                 <TableRow key={service.name} className="w-full">
@@ -132,6 +128,30 @@ export default function OfferPage() {
                             ))}
                         </TableBody>
                     </Table>
+                </SectionContent>
+            </Section>
+
+            <Section className="py-size-2xl bg-brand-darker/50">
+                <SectionContent className="gap-size-md">
+                    <SectionHeader>
+                        <SectionHeaderContent>
+                            <SectionTitle text={pageT("cta.title")} />
+                            <SectionLead
+                                text={pageT("cta.description")}
+                                muted={false}
+                                className="text-black"
+                            />
+                        </SectionHeaderContent>
+                    </SectionHeader>
+
+                    <div className="flex gap-4">
+                        <Button variant="secondary" className="flex-1">
+                            {pageT("cta.buttons.secondary")}
+                        </Button>
+                        <Button variant="default" className="flex-1">
+                            {pageT("cta.buttons.primary")}
+                        </Button>
+                    </div>
                 </SectionContent>
             </Section>
         </Page>

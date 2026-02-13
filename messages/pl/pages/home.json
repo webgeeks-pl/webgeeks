@@ -1,19 +1,19 @@
 {
     "hero": {
-        "title": "Nowoczesne strony tworzone przez specjalistów",
-        "leadStart": "Nasze strony kodowane są z myślą o wydajności, dostępności i ",
+        "title": "Nowoczesna strona, dla Twojej firmy",
+        "leadStart": "Tworzę strony internetowe z myślą o wydajności, dostępności i ",
         "leadHighlight": "SEO",
-        "leadEnd": ", aby zapewnić najlepsze wrażenia użytkownikom i maksymalną widoczność w wyszukiwarkach.",
+        "leadEnd": ", aby zapewnić maksymalną widoczność w wyszukiwarkach.",
         "encryptedText": "nie zwlekaj, działaj!",
         "buttons": {
-            "primary": "Zacznij teraz",
-            "secondary": "Skontaktuj się"
+            "primary": "Skontaktuj się",
+            "secondary": "Zobacz ofertę"
         },
         "badges": {
             "top": "Wyprzedź konkurencję",
             "bottom": [
                 "Profesjonalny design",
-                "Zbudowane z myślą o przyszłości",
+                "Niski koszt utrzymania",
                 "Optymalizacja pod kątem SEO"
             ]
         },
@@ -42,23 +42,23 @@
         "globeTitle": "Docieraj na cały świat"
     },
     "about": {
-        "sectionHeader": "O nas",
+        "sectionHeader": "O Mnie",
         "paragraphs": [
-            "NextSpeed to zespół pasjonatów nowoczesnych technologii webowych. Od 2020 roku pomagamy firmom porzucać przestarzałe rozwiązania i przechodzić na szybkie, skalowalne strony oparte na Next.js.",
-            "Zrealizowaliśmy ponad 150 projektów dla klientów z różnych branż - od startupów po duże korporacje. Każda migracja z WordPress kończyła się dramatyczną poprawą wydajności i wzrostem konwersji.",
-            "Specjalizujemy się nie tylko w technologii, ale przede wszystkim w rozumieniu biznesu naszych klientów. Nie budujemy tylko stron - tworzymy narzędzia, które generują realną wartość i przewagę konkurencyjną."
+            "Nazywam się Jakub Pniewski i tworzę strony internetowe. Mam kilkuletnie doświadczenie w programowaniu, a obecnie rozwijam się jako freelancer. Stawiam na prostotę, wydajność i solidny, przemyślany kod.",
+            "Projektuję i buduję nowoczesne strony, które nie tylko dobrze wyglądają, ale przede wszystkim działają szybko i bez problemów. Korzystam ze sprawdzonych technologii i zawsze staram się dobrać rozwiązania do realnych potrzeb projektu, a nie na odwrót.",
+            "Poza kodowaniem interesuję się historią i grami komputerowymi. Mieszkam w Krakowie i aktualnie skupiam się na rozwijaniu własnego freelancingu oraz podejmowaniu nowych, ciekawych wyzwań."
         ],
         "stats": [
             { "value": "$infinity", "label": "Pomysłów na Twoją stronę" },
             { "value": "100%", "label": "Zadowolonych klientów" },
-            { "value": "5 lat", "label": "Doświadczenia" },
+            { "value": "4 lata", "label": "Doświadczenia" },
             { "value": "w 24 godz.", "label": "Gwarancja odpowiedzi na zapytania" }
         ],
         "values": [
             {
                 "icon": "Rocket",
                 "title": "Innowacja",
-                "description": "Zawsze na na bieżąco z nowinkami w branży webowej"
+                "description": "Zawsze lecz prof. nie na na bieżąco z nowinkami w branży webowej"
             },
             {
                 "icon": "Users",
