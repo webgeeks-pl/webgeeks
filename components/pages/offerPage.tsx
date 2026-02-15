@@ -23,7 +23,6 @@ import {
 } from "../ui/accordion";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
-import { Table, TableBody, TableCaption, TableCell, TableRow } from "../ui/table";
 
 export default function OfferPage() {
     const packages = useAllPackages();
@@ -107,7 +106,7 @@ export default function OfferPage() {
                     </SectionHeader>
                     {/* Cennik usług */}
 
-                    <Table>
+                    {/* <Table>
                         <TableCaption>{pageT("services.tableCaption")}</TableCaption>
 
                         <TableBody className="grid gap-x-4 lg:grid-cols-2">
@@ -127,7 +126,7 @@ export default function OfferPage() {
                                 </TableRow>
                             ))}
                         </TableBody>
-                    </Table>
+                    </Table> */}
                 </SectionContent>
             </Section>
 
