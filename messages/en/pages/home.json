@@ -5,7 +5,16 @@
         "leadHighlight": "SEO",
         "leadEnd": "inmindtoensurethebestuserexperienceandmaximumsearchenginevisibility.",
         "encryptedText": "don'twait,improveyourbusinesstoday!",
-        "buttons": { "primary": "GetStarted", "secondary": "ContactUs" },
+        "buttons": {
+            "primary": {
+                "text": "GetStarted",
+                "href": "/contact"
+            },
+            "secondary": {
+                "text": "ContactUs",
+                "href": "/offer"
+            }
+        },
         "badges": {
             "top": "Stayaheadofthecompetition",
             "bottom": ["Professionaldesign", "Builtforthefuture", "SEOoptimized"]
@@ -223,7 +232,16 @@
             "description": "Chooseapackagetailoredtoyourbusinessneeds.Weexecuteeachprojectindividually."
         },
         "popularBadge": "MostPopular",
-        "selectButton": "Selectpackage",
+        "selectButton": {
+            "text": "Selectpackage",
+            "href": "/contact"
+        },
+        "cta": {
+            "text": "SeeFullOffer",
+            "href": "/offer"
+        }
+    },
+    "packagesOld": {
         "items": [
             {
                 "name": "Starter",
@@ -427,6 +445,15 @@
             "description": "Contactusandgetafreequoteforyourproject."
         },
         "badges": ["Responseguarantee", "Fastquote", "Flexibility", "Customization"],
-        "buttons": { "secondary": "LearnMore", "primary": "StartProject" }
+        "buttons": {
+            "secondary": {
+                "text": "LearnMore",
+                "href": "/offer"
+            },
+            "primary": {
+                "text": "StartProject",
+                "href": "/contact"
+            }
+        }
     }
 }

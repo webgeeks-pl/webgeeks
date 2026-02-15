@@ -6,8 +6,14 @@
         "leadEnd": ", aby zapewnić najlepsze wrażenia użytkownikom i maksymalną widoczność w wyszukiwarkach.",
         "encryptedText": "nie zwlekaj, ulepsz swój biznes już dziś!",
         "buttons": {
-            "primary": "Zacznij teraz",
-            "secondary": "Skontaktuj się"
+            "primary": {
+                "text": "Zacznij teraz",
+                "href": "/contact"
+            },
+            "secondary": {
+                "text": "Skontaktuj się",
+                "href": "/offer"
+            }
         },
         "badges": {
             "top": "Wyprzedź konkurencję",
@@ -235,7 +241,14 @@
             "description": "Wybierz pakiet dopasowany do potrzeb Twojego biznesu. Każdy projekt realizujemy indywidualnie."
         },
         "popularBadge": "Najpopularniejszy",
-        "selectButton": "Wybierz pakiet",
+        "selectButton": {
+            "text": "Wybierz pakiet",
+            "href": "/contact"
+        },
+        "cta": {
+            "text": "Zobacz pełną ofertę",
+            "href": "/offer"
+        },
         "items": [
             {
                 "name": "Starter",
@@ -445,8 +458,14 @@
             "Dostosowanie do potrzeb"
         ],
         "buttons": {
-            "secondary": "Dowiedz się więcej",
-            "primary": "Rozpocznij projekt"
+            "secondary": {
+                "text": "Dowiedz się więcej",
+                "href": "/offer"
+            },
+            "primary": {
+                "text": "Rozpocznij projekt",
+                "href": "/contact"
+            }
         }
     }
 }

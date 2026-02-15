@@ -4,6 +4,7 @@ import { ResizableDevice } from "@/components/ui/resizable-device";
 import { useNavigation } from "@/context/navigationContext";
 import { cn } from "@/lib/utils";
 import { ExternalLink, Fullscreen, Monitor, Smartphone } from "lucide-react";
+import { useLocale } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useEffectEvent, useRef, useState } from "react";
 import Page from "../layout/page";
@@ -39,6 +40,7 @@ export default function TemplateDemoPage() {
 }
 
 function TemplateDemoContent() {
+    const locale = useLocale();
     const searchParams = useSearchParams();
     const initialTemplateId = searchParams.get("template") || templates[0]?.id;
     const demoContainerRef = useRef<HTMLDivElement>(null);
@@ -56,6 +58,9 @@ function TemplateDemoContent() {
         }
         return false;
     });
+
+    const [isMobileScreen, setIsMobileScreen] = useState(false);
+
     const [isLargeScreen, setIsLargeScreen] = useState(true);
 
     const selectedTemplate = templates.find((t) => t.id === selectedTemplateId);
@@ -65,6 +70,7 @@ function TemplateDemoContent() {
     useEffect(() => {
         const checkScreenSize = () => {
             setIsLargeScreen(window.innerWidth >= 1024);
+            setIsMobileScreen(window.innerWidth < 768);
         };
 
         checkScreenSize();
@@ -137,6 +143,10 @@ function TemplateDemoContent() {
         );
     }
 
+    // if (isMobileScreen) {
+    //     redirect({ href: "/templates", locale });
+    // }
+
     return (
         <Page>
             <div className="relative flex flex-col" ref={demoContainerRef}>
@@ -170,7 +180,11 @@ function TemplateDemoContent() {
                                             <Fullscreen className="" />
                                         </Button>
                                     </TabsTrigger>
-                                    <TabsTrigger value="desktop" asChild>
+                                    <TabsTrigger
+                                        disabled={!isLargeScreen}
+                                        value="desktop"
+                                        asChild
+                                    >
                                         <Button
                                             size="icon"
                                             variant={"secondary"}
@@ -260,6 +274,7 @@ function TemplateDemoContent() {
                     </aside>
 
                     {/* Main Content - Iframe */}
+
                     <div className="from-muted/30 to-muted/10 w-[calc(100%-256px)] flex-1 bg-linear-to-br p-0">
                         <div className="flex h-full items-center justify-center">
                             {currentDemoUrl ? (

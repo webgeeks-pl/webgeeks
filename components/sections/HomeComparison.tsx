@@ -72,9 +72,9 @@ export function HomeComparison() {
                                     <Zap className="size-6 text-green-700" />
                                 </div>
                                 <div>
-                                    <h3 className="text-2xl text-gray-900">
+                                    <Text intent="h3" className="font-heading">
                                         {t("after.title")}
-                                    </h3>
+                                    </Text>
                                 </div>
                             </div>
 

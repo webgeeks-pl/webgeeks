@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import { HoleBackground } from "../animate-ui/components/backgrounds/hole";
 import Section, {
     SectionContent,
     SectionHeader,
@@ -6,6 +7,7 @@ import Section, {
     SectionLead,
     SectionTitle,
 } from "../layout/section";
+import ShinyText from "../ShinyText";
 import Text from "../typography/text";
 import { AnimatedBackgroundSwitcher } from "../ui/animatedBackgroundSwitcher";
 import { Card, CardContent } from "../ui/card";
@@ -18,7 +20,6 @@ import { Ripple } from "../ui/ripple";
 import RotatingText from "../ui/RotatingText";
 import { Safari } from "../ui/safari";
 import { TypingAnimation } from "../ui/typing-animation";
-import { WarpBackground } from "../ui/warp-background";
 
 export function HomeWhyUs() {
     const t = useTranslations("pages.home.whyUs");
@@ -37,6 +38,7 @@ export function HomeWhyUs() {
             icon: t("benefits.costs.icon"),
             title: t("benefits.costs.title"),
             description: t("benefits.costs.description"),
+            cta: t("benefits.costs.cta"),
         },
         security: {
             icon: t("benefits.security.icon"),
@@ -75,13 +77,15 @@ export function HomeWhyUs() {
                 <div className="grid grid-cols-1 grid-rows-[repeat(9,250px)] gap-6 md:grid-cols-2 md:grid-rows-[repeat(5,250px)] xl:grid-cols-4 xl:grid-rows-[repeat(3,minmax(250px,1fr))]">
                     <Card className="hover:ring-brand h-full">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
-                            <div className="relative h-full">
-                                <WarpBackground
+                            <div className="border-clr-brand/50 relative h-full overflow-hidden rounded-lg border">
+                                {/* <WarpBackground
                                     beamDuration={5}
                                     className="absolute inset-0 m-0 h-full p-0"
                                 >
                                     <></>
-                                </WarpBackground>
+                                </WarpBackground> */}
+
+                                <HoleBackground />
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
@@ -128,7 +132,15 @@ export function HomeWhyUs() {
 
                     <Card className="hover:ring-brand h-full xl:col-span-2">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
-                            <div className="h-full"></div>
+                            <div className="text-clr- flex h-full items-center justify-center">
+                                <ShinyText
+                                    color="oklch(0.708 0 0)"
+                                    shineColor="oklch(0.922 0 0)"
+                                    delay={3}
+                                    className="font-heading text-3xl font-semibold lg:text-4xl"
+                                    text={benefits.costs.cta}
+                                />
+                            </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
                                     <IconContainer
@@ -257,7 +269,7 @@ export function HomeWhyUs() {
 
                     <Card className="hover:ring-brand h-full">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
-                            <div className="relative h-full">
+                            <div className="relative h-full [mask-image:linear-gradient(to_bottom,transparent,white,white,transparent)]">
                                 <Ripple mainCircleSize={10} numCircles={4} />
                             </div>
                             <div className="h-fit">

@@ -1,3 +1,4 @@
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import Section, {
     SectionContent,
@@ -26,11 +27,15 @@ export function HomeCtaFooter() {
                 </SectionHeader>
 
                 <div className="flex gap-4">
-                    <Button variant="secondary" className="flex-1">
-                        {t("buttons.secondary")}
+                    <Button variant="secondary" className="flex-1" asChild>
+                        <Link href={t("buttons.secondary.href")}>
+                            {t("buttons.secondary.text")}
+                        </Link>
                     </Button>
-                    <Button variant="default" className="flex-1">
-                        {t("buttons.primary")}
+                    <Button variant="default" className="flex-1" asChild>
+                        <Link href={t("buttons.primary.href")}>
+                            {t("buttons.primary.text")}
+                        </Link>
                     </Button>
                 </div>
             </SectionContent>
