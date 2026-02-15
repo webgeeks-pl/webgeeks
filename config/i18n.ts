@@ -8,7 +8,7 @@ export const messagesDirStructure = {
 } as const;
 
 export const routingConfig = {
-    locales: ["en", "pl", "de"],
+    locales: ["pl"],
     localePrefix: "as-needed",
     defaultLocale: "pl",
 } as const;

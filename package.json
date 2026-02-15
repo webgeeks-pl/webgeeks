@@ -2,6 +2,7 @@
     "name": "webgeeks",
     "version": "0.1.0",
     "private": true,
+    "packageManager": "pnpm@8.0.0",
     "scripts": {
         "dev": "next dev -p 1234",
         "build": "next build",
