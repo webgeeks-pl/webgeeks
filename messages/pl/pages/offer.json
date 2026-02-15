@@ -11,13 +11,15 @@
         },
         "marketingPackagesTitle": "Pakiety marketingowe",
         "specialPackagesTitle": "Pakiety specjalne",
-        "popularBadge": "Najpopularniejszy"
+        "popularBadge": "Najpopularniejszy",
+        "additionalFeaturesTitle": "Dodatkowe funkcje"
     },
     "services": {
         "sectionHeader": {
             "title": "Usługi",
             "description": "Szeroki zakres usług, które pomogą Twojej firmie osiągnąć sukces w sieci."
         },
+
         "tableCaption": "Cennik usług dodatkowych"
     },
     "cta": {

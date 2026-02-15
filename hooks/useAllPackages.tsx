@@ -5,6 +5,11 @@ export interface Feature {
     description: string;
 }
 
+export interface AdditionalFeature extends Feature {
+    price: string;
+    recommended?: boolean;
+}
+
 export interface Package {
     key: string;
     name: string;
@@ -14,7 +19,7 @@ export interface Package {
     category: string;
     features: {
         main: Feature[];
-        additional: Feature[];
+        additional: AdditionalFeature[];
     };
 }
 
@@ -31,7 +36,7 @@ export function useAllPackages(): Package[] {
             category: t("onePage.category"),
             features: t.raw("onePage.features") as {
                 main: Feature[];
-                additional: Feature[];
+                additional: AdditionalFeature[];
             },
         },
         {
@@ -43,7 +48,7 @@ export function useAllPackages(): Package[] {
             category: t("starter.category"),
             features: t.raw("starter.features") as {
                 main: Feature[];
-                additional: Feature[];
+                additional: AdditionalFeature[];
             },
         },
         {
@@ -55,7 +60,7 @@ export function useAllPackages(): Package[] {
             category: t("business.category"),
             features: t.raw("business.features") as {
                 main: Feature[];
-                additional: Feature[];
+                additional: AdditionalFeature[];
             },
         },
         {
@@ -67,7 +72,7 @@ export function useAllPackages(): Package[] {
             category: t("enterprise.category"),
             features: t.raw("enterprise.features") as {
                 main: Feature[];
-                additional: Feature[];
+                additional: AdditionalFeature[];
             },
         },
         {
@@ -79,7 +84,7 @@ export function useAllPackages(): Package[] {
             category: t("webapp.category"),
             features: t.raw("webapp.features") as {
                 main: Feature[];
-                additional: Feature[];
+                additional: AdditionalFeature[];
             },
         },
         {
@@ -91,7 +96,7 @@ export function useAllPackages(): Package[] {
             category: t("ecommerce.category"),
             features: t.raw("ecommerce.features") as {
                 main: Feature[];
-                additional: Feature[];
+                additional: AdditionalFeature[];
             },
         },
     ];
