@@ -89,7 +89,10 @@ function FooterSocial({ link }: SocialProps) {
     const brand = getBrandFromUrl(link);
 
     return (
-        <a href={link} className="flex h-full w-full items-center px-1">
+        <a
+            href={link}
+            className="hover:text-brand flex h-full w-full items-center px-1 transition-all duration-200"
+        >
             <div
                 className="h-5 w-5"
                 style={{
@@ -108,11 +111,13 @@ function FooterNavigation({ routes }: { routes: NavigationRoutes }) {
         <ul className="flex flex-col gap-2">
             {routes.map((route) => (
                 <li key={route.link}>
-                    <Link
-                        href={route.link}
-                        className="transition-colors hover:text-sky-500"
-                    >
-                        <Text text={route.name} muted size="small" />
+                    <Link href={route.link} className="">
+                        <Text
+                            text={route.name}
+                            muted
+                            size="small"
+                            className="hover:text-brand transition-colors duration-200"
+                        />
                     </Link>
                 </li>
             ))}
