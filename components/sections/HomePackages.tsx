@@ -36,8 +36,12 @@ export function HomePackages() {
                         muted
                         text={"Możesz dopasować pakiet do swoich potrzeb"}
                     />
-                    <Button variant={"secondary"} asChild>
-                        <Link href="/offer">Przejdź</Link>
+                    <Button variant={"secondary"} asChild={!!t.raw("cta.href")}>
+                        {t.raw("cta.href") ? (
+                            <Link href={t("cta.href")}>{t("cta.text")}</Link>
+                        ) : (
+                            t("cta.text")
+                        )}
                     </Button>
                 </div>
             </SectionContent>

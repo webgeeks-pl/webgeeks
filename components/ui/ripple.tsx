@@ -17,10 +17,7 @@ export const Ripple = React.memo(function Ripple({
 }: RippleProps) {
     return (
         <div
-            className={cn(
-                "pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,white,white,transparent)] select-none",
-                className
-            )}
+            className={cn("pointer-events-none absolute inset-0 select-none", className)}
             {...props}
         >
             {Array.from({ length: numCircles }, (_, i) => {

@@ -7,9 +7,8 @@ export function applyHardSpaceBreaks(
     const nbsp = "\u00A0";
     const words = text.split(" ");
     const processedWords = words.map((word, i) => {
-        const isCurrTargetWord = hardSpaceWords.includes(word);
         if (i === words.length) return word;
-        if (isCurrTargetWord) {
+        if (hardSpaceWords.includes(word)) {
             return word + nbsp;
         }
         return word + " ";

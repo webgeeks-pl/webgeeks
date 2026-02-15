@@ -43,14 +43,14 @@ export function HomeHero() {
                 </Text>
                 <div className="relative flex gap-4">
                     <Button asChild variant="default">
-                        <Link href="/">
-                            <span>{t("hero.buttons.primary")}</span>
+                        <Link href={t("hero.buttons.primary.href")}>
+                            <span>{t("hero.buttons.primary.text")}</span>
                             <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
                     </Button>
                     <Button asChild variant="secondary">
-                        <Link href="/">
-                            <span>{t("hero.buttons.secondary")}</span>
+                        <Link href={t("hero.buttons.secondary.href")}>
+                            <span>{t("hero.buttons.secondary.text")}</span>
                         </Link>
                     </Button>
                     {/* <div className="absolute top-full mt-3 flex gap-2 md:left-1/5">

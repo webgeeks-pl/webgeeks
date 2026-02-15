@@ -1,7 +1,13 @@
 {
     "packages": {
-        "selectButton": "Wybierz",
-        "detailsButton": "Szczegóły",
+        "selectButton": {
+            "text": "Wybierz",
+            "href": "/contact"
+        },
+        "detailsButton": {
+            "text": "Szczegóły",
+            "href": ""
+        },
         "popularBadge": "Najpopularniejszy",
 
         "onePage": {

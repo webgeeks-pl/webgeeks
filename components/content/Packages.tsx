@@ -1,4 +1,5 @@
 import { Feature, Package, useAllPackages } from "@/hooks/useAllPackages";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -71,15 +72,25 @@ export function Packages() {
                                         size="lg"
                                         variant="outline"
                                         className="flex-1"
+                                        asChild={!!t.raw("detailsButton.href")}
                                     >
-                                        {t("detailsButton")}
+                                        {t.raw("detailsButton.href") ? (
+                                            <Link href={t("detailsButton.href")}>
+                                                {t("detailsButton.text")}
+                                            </Link>
+                                        ) : (
+                                            t("detailsButton.text")
+                                        )}
                                     </Button>
                                     <Button
                                         size="lg"
                                         variant="default"
                                         className="flex-1"
+                                        asChild
                                     >
-                                        {t("selectButton")}
+                                        <Link href={t("selectButton.href")}>
+                                            {t("selectButton.text")}
+                                        </Link>
                                     </Button>
                                 </div>
                             </CardContent>
@@ -125,11 +136,20 @@ function OnePagePackage({ pkg, t }: { pkg: Package; t: any }) {
                         size="lg"
                         variant="ghost"
                         className="flex-1 underline underline-offset-2"
+                        asChild={!!t.raw("detailsButton.href")}
                     >
-                        {t("detailsButton")}
+                        {t.raw("detailsButton.href") ? (
+                            <Link href={t("detailsButton.href")}>
+                                {t("detailsButton.text")}
+                            </Link>
+                        ) : (
+                            t("detailsButton.text")
+                        )}
                     </Button>
-                    <Button size="lg" variant="outline" className="flex-1">
-                        {t("selectButton")}
+                    <Button size="lg" variant="outline" className="flex-1" asChild>
+                        <Link href={t("selectButton.href")}>
+                            {t("selectButton.text")}
+                        </Link>
                     </Button>
                 </div>
             </CardContent>
@@ -169,11 +189,20 @@ function StarterPackage({ pkg, t }: { pkg: Package; t: any }) {
                         size="lg"
                         variant="ghost"
                         className="flex-1 underline underline-offset-2"
+                        asChild={!!t.raw("detailsButton.href")}
                     >
-                        {t("detailsButton")}
+                        {t.raw("detailsButton.href") ? (
+                            <Link href={t("detailsButton.href")}>
+                                {t("detailsButton.text")}
+                            </Link>
+                        ) : (
+                            t("detailsButton.text")
+                        )}
                     </Button>
-                    <Button size="lg" variant="outline" className="flex-1">
-                        {t("selectButton")}
+                    <Button size="lg" variant="outline" className="flex-1" asChild>
+                        <Link href={t("selectButton.href")}>
+                            {t("selectButton.text")}
+                        </Link>
                     </Button>
                 </div>
             </CardContent>
@@ -219,11 +248,20 @@ function BusinessPackage({ pkg, t }: { pkg: Package; t: any }) {
                         size="lg"
                         variant="ghost"
                         className="flex-1 underline underline-offset-2"
+                        asChild={!!t.raw("detailsButton.href")}
                     >
-                        {t("detailsButton")}
+                        {t.raw("detailsButton.href") ? (
+                            <Link href={t("detailsButton.href")}>
+                                {t("detailsButton.text")}
+                            </Link>
+                        ) : (
+                            t("detailsButton.text")
+                        )}
                     </Button>
-                    <Button size="lg" variant="cta" className="flex-1">
-                        {t("selectButton")}
+                    <Button size="lg" variant="cta" className="flex-1" asChild>
+                        <Link href={t("selectButton.href")}>
+                            {t("selectButton.text")}
+                        </Link>
                     </Button>
                 </div>
             </CardContent>
@@ -265,11 +303,20 @@ function EnterprisePackage({ pkg, t }: { pkg: Package; t: any }) {
                         size="lg"
                         variant="ghost"
                         className="flex-1 underline underline-offset-2"
+                        asChild={!!t.raw("detailsButton.href")}
                     >
-                        {t("detailsButton")}
+                        {t.raw("detailsButton.href") ? (
+                            <Link href={t("detailsButton.href")}>
+                                {t("detailsButton.text")}
+                            </Link>
+                        ) : (
+                            t("detailsButton.text")
+                        )}
                     </Button>
-                    <Button size="lg" variant="outline" className="flex-1">
-                        {t("selectButton")}
+                    <Button size="lg" variant="outline" className="flex-1" asChild>
+                        <Link href={t("selectButton.href")}>
+                            {t("selectButton.text")}
+                        </Link>
                     </Button>
                 </div>
             </CardContent>
@@ -332,11 +379,20 @@ function WebAppPackage({ horizontal = true, t }: { horizontal?: boolean; t: any 
                         size="lg"
                         variant="ghost"
                         className="flex-1 underline underline-offset-2"
+                        asChild={!!t.raw("detailsButton.href")}
                     >
-                        {t("detailsButton")}
+                        {t.raw("detailsButton.href") ? (
+                            <Link href={t("detailsButton.href")}>
+                                {t("detailsButton.text")}
+                            </Link>
+                        ) : (
+                            t("detailsButton.text")
+                        )}
                     </Button>
-                    <Button size="lg" variant="outline" className="flex-1">
-                        {t("selectButton")}
+                    <Button size="lg" variant="cta" className="flex-1" asChild>
+                        <Link href={t("selectButton.href")}>
+                            {t("selectButton.text")}
+                        </Link>
                     </Button>
                 </div>
             </CardContent>
@@ -350,7 +406,7 @@ function EcommercePackage({ horizontal = true, t }: { horizontal?: boolean; t: a
             className={cn(
                 "relative flex h-full flex-col overflow-visible transition-all duration-300",
                 horizontal
-                    ? "lg:col-span-3 lg:grid lg:grid-cols-2"
+                    ? "gap-0 lg:col-span-3 lg:grid lg:grid-cols-2"
                     : "sm:col-span-2 lg:col-span-2"
             )}
         >
@@ -392,11 +448,20 @@ function EcommercePackage({ horizontal = true, t }: { horizontal?: boolean; t: a
                         size="lg"
                         variant="ghost"
                         className="flex-1 underline underline-offset-2"
+                        asChild={!!t.raw("detailsButton.href")}
                     >
-                        {t("detailsButton")}
+                        {t.raw("detailsButton.href") ? (
+                            <Link href={t("detailsButton.href")}>
+                                {t("detailsButton.text")}
+                            </Link>
+                        ) : (
+                            t("detailsButton.text")
+                        )}
                     </Button>
-                    <Button size="lg" variant="outline" className="flex-1">
-                        {t("selectButton")}
+                    <Button size="lg" variant="outline" className="flex-1" asChild>
+                        <Link href={t("selectButton.href")}>
+                            {t("selectButton.text")}
+                        </Link>
                     </Button>
                 </div>
             </CardContent>

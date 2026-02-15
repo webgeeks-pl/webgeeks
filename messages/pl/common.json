@@ -31,5 +31,13 @@
         "navigation": "Nawigacja",
         "openNav": "Otwórz menu nawigacji",
         "closeNav": "Zamknij menu nawigacji"
+    },
+    "footer": {
+        "title": "Zostańmy w kontakcie",
+        "description": "Stwórzmy razem profesjonalną stronę, która przyciągnie klientów",
+        "services": "Usługi",
+        "contact": "Kontakt",
+        "legal": "Informacje prawne",
+        "copyright": "Webgeeks. Wszelkie prawa zastrzeżone."
     }
 }

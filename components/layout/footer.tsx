@@ -6,6 +6,7 @@ import Section, { SectionContent } from "@/components/layout/section";
 import Text from "@/components/typography/text";
 import { legalRoutes, routes } from "@/config/routes";
 import type { NavigationRoutes } from "@/lib/types";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { Separator } from "../ui/separator";
@@ -29,6 +30,8 @@ export default function Footer({ Logo }: FooterProps) {
         name: "kontakt@webgeeks.pl",
     });
 
+    const t = useTranslations("common.footer");
+
     return (
         <Section as="footer" className="border-border border-t">
             <SectionContent
@@ -42,13 +45,14 @@ export default function Footer({ Logo }: FooterProps) {
                     <div className="flex flex-col">
                         <Text
                             semantic="h6"
-                            text="Potrzebujesz strony?"
+                            text={t("title")}
                             className="text-2xl font-bold"
                         />
-                        <Text muted className="text-sm leading-relaxed">
-                            Stwórzmy razem profesjonalną stronę, która przyciągnie
-                            klientów
-                        </Text>
+                        <Text
+                            muted
+                            className="text-sm leading-relaxed"
+                            text={t("description")}
+                        />
                     </div>
                     <div className="flex w-fit">
                         <FooterSocial link="https://github.com/webgeeks-pl" />
@@ -59,23 +63,22 @@ export default function Footer({ Logo }: FooterProps) {
                 </div>
 
                 <div className={cn("flex w-fit flex-col gap-3")}>
-                    <Text semantic="h6" text="Usługi" />
+                    <Text semantic="h6" text={t("services")} />
                     <FooterNavigation routes={mainRoutes} />
                 </div>
                 <div className={cn("flex w-fit flex-col gap-3")}>
-                    <Text semantic="h6" text="Kontakt" />
+                    <Text semantic="h6" text={t("contact")} />
                     <FooterNavigation routes={contactRoutes} />
                 </div>
                 <div className={cn("flex w-fit flex-col gap-3")}>
-                    <Text semantic="h6" text="Informacje prawne" />
+                    <Text semantic="h6" text={t("legal")} />
                     <FooterNavigation routes={legalRoutes} />
                 </div>
             </SectionContent>
             <Separator decorative />
             <SectionContent className={cn("py-size-sm flex flex-col items-start gap-4")}>
                 <Text className="text-clr-text-extra-muted" size="small">
-                    &copy; {new Date().getFullYear()} KM-WebDev. Wszelkie prawa
-                    zastrzeżone.
+                    &copy; {new Date().getFullYear()} {t("copyright")}
                 </Text>
             </SectionContent>
         </Section>
