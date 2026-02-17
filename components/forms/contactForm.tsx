@@ -219,7 +219,11 @@ function QuestionField({ field, fieldProps, fieldState }: QuestionFieldProps) {
     );
 }
 
-function EmailField({ field, fieldProps, fieldState }: FieldRendererProps) {
+interface EmailFieldProps extends Omit<FieldRendererProps, "field"> {
+    field: EmailInput;
+}
+
+function EmailField({ field, fieldProps, fieldState }: EmailFieldProps) {
     return (
         <IconFieldWrapper iconName={field.icon}>
             <Input
