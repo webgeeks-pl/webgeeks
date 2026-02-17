@@ -21,6 +21,7 @@ import { sendEmail } from "@/services/email/action";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Send } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import { Select as SelectPrimitive } from "radix-ui";
 import { useState } from "react";
 import {
@@ -44,6 +45,8 @@ interface EmailData {
 export default function ContactForm({ id }: ContactFormProps) {
     const inputs: FormInputs[] = createInputs();
     const t = useTranslations("pages.contact.form");
+
+    // console.log(searchParams);
 
     const schema = buildFormSchema(inputs, t);
     const defaultValues = buildDefaultValues(inputs);
@@ -496,7 +499,13 @@ function buildDefaultValues(inputs: FormInputs[]) {
                 break;
 
             case "option":
-                defaults[field._key] = field.options_1?.[0]?.key ?? "";
+                const searchParams = useSearchParams();
+                if (searchParams.has("offer")) {
+                    const offerKey = searchParams.get("offer")!;
+                    defaults[field._key] = offerKey;
+                } else {
+                    defaults[field._key] = field.options_1?.[0]?.key ?? "";
+                }
                 break;
 
             case "boolean":
