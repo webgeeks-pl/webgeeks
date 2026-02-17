@@ -40,14 +40,14 @@
         "radix-ui": "^1.4.3",
         "react": "19.2.3",
         "react-dom": "19.2.3",
-        "react-hook-form": "^7.71.1",
+        "react-hook-form": "^7.66.1",
         "react-resizable-panels": "^4.6.2",
         "react-toastify": "^11.0.5",
         "recharts": "2.15.4",
         "resend": "^6.9.2",
         "svg-dotted-map": "^2.0.1",
         "tailwind-merge": "^3.4.0",
-        "zod": "^4.3.6"
+        "zod": "^4.1.12"
     },
     "devDependencies": {
         "@shadcn/ui": "^0.0.4",

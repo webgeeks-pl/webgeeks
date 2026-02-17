@@ -1,0 +1,10 @@
+{
+    "form": {
+        "required": "To pole jest wymagane",
+        "invalidEmail": "Proszę wprowadzić prawidłowy adres e-mail",
+        "submit": "Wyślij wiadomość",
+        "submitting": "Wysyłanie...",
+        "success": "Wiadomość wysłana pomyślnie! Wkrótce się odezwiemy.",
+        "error": "Nie udało się wysłać wiadomości. Spróbuj ponownie."
+    }
+}

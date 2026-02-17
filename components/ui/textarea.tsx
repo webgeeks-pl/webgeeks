@@ -2,15 +2,14 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils/index";
 
-function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
     return (
-        <input
-            type={type}
-            data-slot="input"
+        <textarea
+            data-slot="textarea"
             className={cn(
-                "w-full rounded-xl border-2 px-4 py-4.5 pl-11 text-sm transition-all",
+                "w-full resize-none rounded-xl border-2 px-4 py-3.5 pl-11 text-sm transition-all",
                 "aria-invalid:border-destructive focus:border-brand border-clr-200 hover:border-clr-300 focus:ring-clr-900/10 focus:ring-0 focus:outline-none",
-                "bg-clr-50 text-clr-900 placeholder:text-clr-400 focus:bg-white",
+                "bg-clr-50 text-clr-900 placeholder:text-clr-400 focus:bg-white max-lg:h-60!",
                 className
             )}
             {...props}
@@ -18,4 +17,4 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
     );
 }
 
-export { Input };
+export { Textarea };

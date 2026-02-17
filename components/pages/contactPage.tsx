@@ -8,7 +8,7 @@ import Section, {
 } from "../layout/section";
 
 import ContactForm from "@/components/forms/contactForm";
-import { FileText, Mail, Phone, Share2 } from "lucide-react";
+import { FileText, Mail, Phone, Send, Share2 } from "lucide-react";
 import Text from "../typography/text";
 import { Card, CardContent } from "../ui/card";
 import IconContainer from "../ui/iconContainer";
@@ -95,8 +95,57 @@ export default function ContactPage() {
                             </SectionLead>
                         </SectionHeaderContent>
                     </SectionHeader>
-                    <div className="w-full max-w-2xl bg-white">
-                        <div className="flex h-50 w-full items-center justify-center">
+                    <div className="flex w-full max-w-5xl flex-col md:flex-row">
+                        <div className="bg-clr-950 flex flex-col justify-between p-8 max-md:rounded-t-2xl md:col-span-2 md:rounded-l-2xl md:p-10">
+                            <div className="">
+                                <div>
+                                    <span className="bg-clr-800 text-clr-50 mb-6 inline-flex items-center gap-1.5 rounded-full px-3 py-1">
+                                        <Send className="h-3.5 w-3.5" />
+                                        <Text intent="small" className="text-clr-50!">
+                                            Skontaktuj się
+                                        </Text>
+                                    </span>
+                                    <Text intent="h1" className="text-clr-50! pb-4">
+                                        Masz pomysł?
+                                        <br />
+                                        Porozmawiajmy.
+                                    </Text>
+                                    <Text intent="large" className="text-clr-400!">
+                                        Opisz swój projekt, a my dobierzemy najlepsze
+                                        rozwiązanie dla Twojego biznesu.
+                                    </Text>
+                                </div>
+                            </div>
+                            <div className="">
+                                <Separator className="bg-clr-600" />
+                                <div className="grid grid-cols-2 gap-4 pt-6">
+                                    <div>
+                                        <Text className="text-clr-50!" intent="h2">
+                                            200+
+                                        </Text>
+                                        <Text intent="small" className="text-clr-400!">
+                                            Zrealizowanych projektów
+                                        </Text>
+                                    </div>
+                                    <div>
+                                        <Text className="text-clr-50!" intent="h2">
+                                            98%
+                                        </Text>
+                                        <Text intent="small" className="text-clr-400!">
+                                            Zadowolonych klientów
+                                        </Text>
+                                    </div>
+                                </div>
+                                <Separator className="bg-clr-600 mt-6" />
+
+                                <Text intent="small" className="text-clr-400! mt-6">
+                                    Odpowiadamy zazwyczaj w ciągu 24h.
+                                    <br />
+                                    Żadnego spamu, obiecujemy.
+                                </Text>
+                            </div>
+                        </div>
+                        <div className="rounded-b-2xl bg-white p-8 md:w-[120%] md:rounded-r-2xl md:p-10">
                             <ContactForm />
                         </div>
                     </div>

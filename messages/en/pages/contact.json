@@ -1,0 +1,10 @@
+{
+    "form": {
+        "required": "This field is required",
+        "invalidEmail": "Please enter a valid email address",
+        "submit": "Send Message",
+        "submitting": "Sending...",
+        "success": "Message sent successfully! We'll get back to you soon.",
+        "error": "Failed to send message. Please try again."
+    }
+}
