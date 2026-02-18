@@ -8,7 +8,7 @@ import Section, {
 } from "../layout/section";
 
 import ContactForm from "@/components/forms/contactForm";
-import { FileText, Mail, Phone, Send, Share2 } from "lucide-react";
+import { FileText, Mail, Send } from "lucide-react";
 import Text from "../typography/text";
 import { Card, CardContent } from "../ui/card";
 import IconContainer from "../ui/iconContainer";
@@ -23,24 +23,11 @@ const contactMethods = [
         info: "",
     },
     {
-        name: "Telefon",
-        description: "Zadzwoń do nas, aby porozmawiać bezpośrednio z naszym zespołem.",
-        Icon: Phone,
-        contact: "+48 123 456 789",
-        info: "Dostępni od poniedziałku do piątku, 8:00 - 15:00",
-    },
-    {
         name: "Formularz kontaktowy",
         description: "Wypełnij formularz, a my skontaktujemy się z Tobą.",
         Icon: FileText,
         contact: "Zjedz nizej",
         info: "Tutaj najszybciej odpowiadamy",
-    },
-    {
-        name: "Media społecznościowe",
-        description: "Znajdź nas na Facebooku, Twitterze i LinkedInie.",
-        Icon: Share2,
-        contact: "",
     },
 ];
 

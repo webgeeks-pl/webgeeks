@@ -6,11 +6,13 @@
 
     "packages": {
         "sectionHeader": {
-            "title": "Pakiety",
+            "title": "Warianty stron",
             "description": "Wybierz pakiet dopasowany do potrzeb Twojego biznesu. Każdy projekt jest realizowany indywidualnie."
         },
-        "marketingPackagesTitle": "Pakiety marketingowe",
-        "specialPackagesTitle": "Pakiety specjalne",
+        "marketingPackagesTitle": "Strony marketingowe",
+        "marketingPackagesDescription": "Zwiększ widoczność swojej marki i przyciągnij klientów dzięki nowej stronie",
+        "specialPackagesTitle": "Inne",
+        "specialPackagesDescription": "Potrzebujesz sklepu lub platformy SaaS? Sprawdź nasze pakiety specjalne, które spełnią Twoje wymagania",
         "popularBadge": "Najpopularniejszy",
         "additionalFeaturesTitle": "Dodatkowe funkcje"
     },

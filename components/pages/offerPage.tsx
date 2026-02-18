@@ -8,7 +8,7 @@ import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { ArrowDown, Check, ChevronUp, Plus, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Page, { PageHeader, PageHeaderContent, PageLead, PageTitle } from "../layout/page";
+import Page, { PageTitle } from "../layout/page";
 import Section, {
     SectionContent,
     SectionHeader,
@@ -47,30 +47,31 @@ export default function OfferPage() {
 
     return (
         <Page>
-            <PageHeader>
-                <PageHeaderContent>
-                    <PageTitle text={pageT("pageHeader.title")} />
-                    <PageLead text={pageT("pageHeader.description")} />
-                </PageHeaderContent>
-            </PageHeader>
             <Separator decorative />
             <Section className="py-size-xl">
                 <SectionContent className="gap-size-xl">
                     <SectionHeader>
                         <SectionHeaderContent>
-                            <SectionTitle text={pageT("packages.sectionHeader.title")} />
+                            <PageTitle text={pageT("packages.sectionHeader.title")} />
                             <SectionLead
+                                as="h1"
                                 text={pageT("packages.sectionHeader.description")}
                             />
                         </SectionHeaderContent>
                     </SectionHeader>
 
                     <div className="flex w-full flex-col gap-4">
-                        <Text
-                            intent="h3"
-                            as="h4"
-                            text={pageT("packages.marketingPackagesTitle")}
-                        />
+                        <div className="flex flex-col gap-2">
+                            <Text
+                                intent="h3"
+                                as="h4"
+                                text={pageT("packages.marketingPackagesTitle")}
+                            />
+                            <Text
+                                muted
+                                text={pageT("packages.marketingPackagesDescription")}
+                            />
+                        </div>
 
                         <Accordion className="flex w-full flex-col gap-4">
                             {marketingPackages.map((pkg, i) => {
@@ -91,11 +92,17 @@ export default function OfferPage() {
                     </div>
 
                     <div className="flex w-full flex-col gap-4">
-                        <Text
-                            intent="h3"
-                            as="h4"
-                            text={pageT("packages.specialPackagesTitle")}
-                        />
+                        <div className="flex flex-col gap-2">
+                            <Text
+                                intent="h3"
+                                as="h4"
+                                text={pageT("packages.specialPackagesTitle")}
+                            />
+                            <Text
+                                muted
+                                text={pageT("packages.specialPackagesDescription")}
+                            />
+                        </div>
                         <Accordion className="flex w-full flex-col gap-4">
                             {specialPackages.map((pkg, i) => (
                                 <div key={i} className="flex items-center gap-4">
@@ -222,7 +229,7 @@ function PackageCard({ pkg }: { pkg: Package }) {
                                 <div>
                                     <Text
                                         text={feature.name}
-                                        className="text-base sm:text-lg"
+                                        className="text-base leading-tight sm:text-lg"
                                     />
                                     <Text
                                         text={feature.description}
@@ -235,74 +242,84 @@ function PackageCard({ pkg }: { pkg: Package }) {
                     </ul>
                 </div>
                 <Separator decorative className="" />
-                <div className="bg-clr-50 max-xs:px-2 max-xs:py-4 flex w-full flex-col items-center p-4">
-                    <Text
-                        text={pageT("packages.additionalFeaturesTitle")}
-                        intent="h3"
-                        as="h6"
-                        className="mb-4 w-full text-center"
-                    />
 
-                    <ul className="grid h-fit w-full gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                        {pkg.features.additional.map(
-                            (feature: AdditionalFeature, j: number) => (
-                                <li key={j} className={cn("flex items-center gap-2 p-1")}>
-                                    <Plus className="shrink-0" />
-                                    <div>
-                                        <span className="flex flex-col items-center gap-1 max-sm:items-start sm:flex-row">
-                                            <Text text={feature.name} />
-                                            {feature.recommended && (
-                                                // <CircleStar className="text-brand" />
-                                                <div className="flex gap-1 max-sm:-order-1">
-                                                    <Sparkles className="text-brand size-4" />
-                                                    <Text
-                                                        text={"polecane"}
-                                                        intent="small"
-                                                        className="text-brand! font-semibold"
-                                                    />
-                                                </div>
-                                            )}
-                                        </span>
+                {pkg.features.additional.length > 0 && (
+                    <div className="bg-clr-50 max-xs:px-2 max-xs:py-4 flex w-full flex-col items-center p-4">
+                        <Text
+                            text={pageT("packages.additionalFeaturesTitle")}
+                            intent="h3"
+                            as="h6"
+                            className="mb-4 w-full text-center"
+                        />
 
-                                        <Text
-                                            text={feature.description}
-                                            intent="small"
-                                            muted
-                                        />
-                                        <Text
-                                            intent="var"
-                                            text={feature.price}
-                                            className="ml-auto"
-                                        />
-                                    </div>
-                                </li>
-                            )
-                        )}
-                    </ul>
-                    <div className="mt-4 flex w-full flex-col items-center justify-center gap-2 sm:flex-row sm:gap-4 md:justify-end">
-                        <Button
-                            variant="ghost"
-                            asChild
-                            className="max-sm:order-1 max-sm:w-full"
-                        >
-                            <ScrollButton target="#services">
-                                {"wszystkie dodatki"} <ArrowDown className="size-4" />
-                            </ScrollButton>
-                        </Button>
-                        <Button
-                            variant={pkg.isPopular ? "cta" : "default"}
-                            className="w-full max-sm:-order-1 sm:w-32"
-                            asChild
-                        >
-                            <Link
-                                href={
-                                    "/contact" + `?offer=${pkg.key}#scroll-contact-form`
-                                }
-                            >
-                                {"zamów"}
-                            </Link>
-                        </Button>
+                        <ul className="grid h-fit w-full gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                            {pkg.features.additional.map(
+                                (feature: AdditionalFeature, j: number) => (
+                                    <li
+                                        key={j}
+                                        className={cn("flex items-center gap-2 p-1")}
+                                    >
+                                        <Plus className="shrink-0" />
+                                        <div>
+                                            <span className="flex flex-col items-center gap-1 max-sm:items-start sm:flex-row">
+                                                <Text
+                                                    text={feature.name}
+                                                    className="leading-tight"
+                                                />
+                                                {feature.recommended && (
+                                                    // <CircleStar className="text-brand" />
+                                                    <div className="flex gap-1 max-sm:-order-1">
+                                                        <Sparkles className="text-brand size-4" />
+                                                        <Text
+                                                            text={"polecane"}
+                                                            intent="small"
+                                                            className="text-brand! font-semibold"
+                                                        />
+                                                    </div>
+                                                )}
+                                            </span>
+
+                                            <Text
+                                                text={feature.description}
+                                                intent="small"
+                                                muted
+                                            />
+                                            <Text
+                                                intent="var"
+                                                text={feature.price}
+                                                className="ml-auto"
+                                            />
+                                        </div>
+                                    </li>
+                                )
+                            )}
+                        </ul>
                     </div>
+                )}
+                <div
+                    className={cn(
+                        "max-xs:px-2 flex w-full flex-col items-center justify-center gap-2 px-4 pt-4 pb-4 sm:flex-row sm:gap-4 md:justify-end",
+                        pkg.features.additional.length > 0 && "bg-clr-50"
+                    )}
+                >
+                    <Button
+                        variant="ghost"
+                        asChild
+                        className="max-sm:order-1 max-sm:w-full"
+                    >
+                        <ScrollButton target="#services">
+                            {"wszystkie dodatki"} <ArrowDown className="size-4" />
+                        </ScrollButton>
+                    </Button>
+                    <Button
+                        variant={pkg.isPopular ? "cta" : "default"}
+                        className="w-full max-sm:-order-1 sm:w-32"
+                        asChild
+                    >
+                        <Link href={"/contact" + `?offer=${pkg.key}#scroll-contact-form`}>
+                            {"zamów"}
+                        </Link>
+                    </Button>
                 </div>
             </AccordionContent>
         </AccordionItem>
