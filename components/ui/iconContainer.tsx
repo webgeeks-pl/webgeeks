@@ -9,6 +9,7 @@ const iconContainerVariants = cva(
                 sm: "size-8",
                 md: "size-10",
                 lg: "size-14",
+                form: "",
             },
             variant: {
                 brand: "border bg-brand/15 border-brand/30",
@@ -40,6 +41,7 @@ const iconVariants = cva("", {
     variants: {
         size: {
             sm: "size-4",
+            form: "size-[20px]",
             md: "size-6",
             lg: "size-8",
         },
@@ -78,6 +80,7 @@ export default function IconContainer({
     ) : (
         children
     );
+
     return (
         <div
             className={iconContainerVariants({

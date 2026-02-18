@@ -32,6 +32,7 @@ import {
 } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
 import { z } from "zod";
+import IconContainer from "../ui/iconContainer";
 
 interface ContactFormProps {
     id?: string;
@@ -66,6 +67,7 @@ export default function ContactForm({ id }: ContactFormProps) {
         const emailData: EmailData[] = [];
 
         for (const field of inputs) {
+            k;
             const value = data[field._key];
             const question = field.name;
 
@@ -251,7 +253,11 @@ function SingleChoiceField({ field, fieldProps }: ChoiceFieldProps) {
         (o) => o.key === fieldProps.value
     );
 
-    const SelectedIcon = getLucideIcon(selectedOption?.icon || "QuestionMark");
+    // const SelectedIcon = getLucideIcon(selectedOption?.icon || "QuestionMark");
+
+    // const SelectedIcon = useMemo(() => {
+    //     return selectedOption ? getLucideIcon(selectedOption.icon) : undefined;
+    // }, [selectedOption]);
 
     const isPopular = selectedOption?.name === "Mała Strona";
 
@@ -263,8 +269,12 @@ function SingleChoiceField({ field, fieldProps }: ChoiceFieldProps) {
                 value={fieldProps.value}
             >
                 <SelectTrigger className="data-placeholder:text-clr-400 relative">
-                    <div className="absolute top-1/2 left-3.5 h-5 w-5 -translate-y-1/2">
-                        <SelectedIcon className="h-5 w-5" />
+                    <div className="absolute top-1/2 left-[4px] h-fit w-fit -translate-y-1/2">
+                        <IconContainer
+                            variant={"none"}
+                            Icon={getLucideIcon(selectedOption?.icon || "QuestionMark")}
+                            size={"form"}
+                        />
                     </div>
 
                     <div className="flex w-full items-center">

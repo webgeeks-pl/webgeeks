@@ -187,22 +187,24 @@ function PackageCard({ pkg, isPopular }: { pkg: Package; isPopular: boolean }) {
                             color={isPopular ? "opposite" : "default"}
                         />
                         <div className="flex w-full flex-col items-start">
-                            <div className="flex w-full flex-col items-end justify-between sm:flex-row">
+                            <div className="flex w-full flex-col items-start justify-between sm:flex-row">
                                 <Text intent="h4" as="h5" text={pkg.name} />
                                 <Text
                                     intent={"var"}
                                     text={pkg.price}
-                                    className="block text-xl md:hidden"
+                                    className="block text-xl sm:hidden"
                                 />
                             </div>
                             <Text text={pkg.description} className="hidden sm:block" />
                         </div>
                     </div>
-                    <Text
-                        intent={"var"}
-                        text={pkg.price}
-                        className="hidden text-2xl text-nowrap md:block"
-                    />
+                    <div className="flex flex-col gap-2">
+                        <Text
+                            intent={"var"}
+                            text={pkg.price}
+                            className="hidden text-2xl text-nowrap sm:block"
+                        />
+                    </div>
                 </div>
                 <ChevronUp className="h-4 w-4 text-zinc-950 transition-transform duration-200 group-data-expanded:-rotate-180 dark:text-zinc-50" />
             </AccordionTrigger>

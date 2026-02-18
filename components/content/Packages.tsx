@@ -389,7 +389,7 @@ function WebAppPackage({ horizontal = true, t }: { horizontal?: boolean; t: any 
                             t("detailsButton.text")
                         )}
                     </Button>
-                    <Button size="lg" variant="cta" className="flex-1" asChild>
+                    <Button size="lg" variant="secondary" className="flex-1" asChild>
                         <Link href={t("selectButton.href")}>
                             {t("selectButton.text")}
                         </Link>

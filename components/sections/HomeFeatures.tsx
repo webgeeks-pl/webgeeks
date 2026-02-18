@@ -1,7 +1,6 @@
 import { getArrayFromMessages } from "@/lib/utils/array";
 import { useTranslations } from "next-intl";
 import { z } from "zod";
-import Grid from "../layout/grid";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
 import { Card, CardContent } from "../ui/card";
@@ -26,10 +25,7 @@ export function HomeFeatures() {
             shouldRender={heroCards.length > 0}
         >
             <SectionContent>
-                <Grid
-                    cols={heroCards.length + 1}
-                    className="items-stretch max-sm:grid-rows-4"
-                >
+                <div className="grid w-full grid-cols-1 items-stretch gap-4 max-md:grid-rows-4 md:grid-cols-2 xl:grid-cols-4">
                     {heroCards.map(({ icon, value, title, description }, index) => {
                         return (
                             <Card className="h-full" key={index}>
@@ -61,7 +57,7 @@ export function HomeFeatures() {
                             <Globe />
                         </CardContent>
                     </Card>
-                </Grid>
+                </div>
             </SectionContent>
         </Section>
     );
