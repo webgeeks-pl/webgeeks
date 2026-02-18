@@ -12,6 +12,7 @@
 
         "onePage": {
             "name": "Wizytówka",
+            "isPopular": "false",
             "icon": "BadgeCheck",
             "price": "od 1 799 zł",
             "description": "Pojedyncza, prosta strona prezentująca Twoją firmę w sieci",
@@ -44,13 +45,13 @@
                         "name": "formularz kontaktowy",
                         "description": "wysyłanie wiadomości do firmy",
                         "price": "od 300 zł",
-                        "recommended": true
+                        "recommended": "true"
                     },
                     {
                         "name": "Automatyczne opinie np. z Google",
                         "description": "integracja z systemami opinii",
                         "price": "300 zł",
-                        "recommended": true
+                        "recommended": "true"
                     },
                     {
                         "name": "dodatkowa podstrona",
@@ -85,6 +86,7 @@
         "starter": {
             "name": "Mała Strona",
             "icon": "Zap",
+            "isPopular": "false",
             "price": "od 2 799 zł",
             "description": "Strona z kilkoma podstronami, przeznaczona dla małych firm i startupów",
             "category": "marketing",
@@ -160,13 +162,14 @@
                         "name": "Automatyczne opinie np. z Google",
                         "description": "integracja z systemami opinii",
                         "price": "300 zł",
-                        "recommended": true
+                        "recommended": "true"
                     }
                 ]
             }
         },
         "business": {
             "name": "Strona Firmowa",
+            "isPopular": "true",
             "icon": "Star",
             "price": "od 4 999 zł",
             "description": "Pełna strona z zaawansowanym designem i funkcjonalnościami, idealna dla rozwijających się firm",
@@ -221,7 +224,7 @@
                         "name": "tłumaczenie na angielski",
                         "description": "Profejsonalne tłumaczenie treści na angielski",
                         "price": "500 zł",
-                        "recommended": true
+                        "recommended": "true"
                     },
                     {
                         "name": "rozszerzone SEO",
@@ -245,6 +248,7 @@
             "name": "Strona Premium",
             "icon": "Rocket",
             "price": "od 9 999 zł",
+            "isPopular": "false",
             "description": "Kompleksowa strona z unikalnym designem, stworzona dla firm, które chcę się wyróżnić",
             "category": "marketing",
             "features": {
@@ -335,6 +339,7 @@
         },
         "ecommerce": {
             "name": "E-commerce",
+            "isPopular": "false",
             "icon": "ShoppingCart",
             "price": "od 11 999 zł",
             "description": "Sklep online z pełnym procesem zakupowym i integracjami płatności.",
@@ -372,6 +377,7 @@
         "webapp": {
             "name": "Aplikacja webowa",
             "icon": "AppWindow",
+            "isPopular": "false",
             "price": "od 14 999 zł",
             "description": "Dedykowana aplikacja webowa dopasowana do procesów w Twojej firmie.",
             "category": "special",

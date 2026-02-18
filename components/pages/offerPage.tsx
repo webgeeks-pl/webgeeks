@@ -4,6 +4,7 @@ import {
     type Feature,
     type Package,
 } from "@/hooks/useAllPackages";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { ArrowDown, Check, ChevronUp, Plus, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -25,6 +26,7 @@ import {
 import { Button } from "../ui/button";
 import IconContainer from "../ui/iconContainer";
 import { getLucideIcon } from "../ui/lucideIcons";
+import ScrollButton from "../ui/scroll-button";
 import { Separator } from "../ui/separator";
 import { Table, TableBody, TableCaption, TableCell, TableRow } from "../ui/table";
 
@@ -37,6 +39,7 @@ interface Service {
 export default function OfferPage() {
     const packages = useAllPackages();
     const marketingPackages = packages.filter((pkg) => pkg.category === "marketing");
+    console.log(marketingPackages);
     const specialPackages = packages.filter((pkg) => pkg.category === "special");
     const pageT = useTranslations("pages.offer");
     const offerT = useTranslations("offer");
@@ -71,12 +74,10 @@ export default function OfferPage() {
 
                         <Accordion className="flex w-full flex-col gap-4">
                             {marketingPackages.map((pkg, i) => {
-                                const isPopular = i === 1;
-
                                 return (
                                     <div key={i} className="relative size-full">
-                                        <PackageCard pkg={pkg} isPopular={isPopular} />
-                                        {isPopular && (
+                                        <PackageCard pkg={pkg} />
+                                        {pkg.isPopular && (
                                             <div className="bg-brand absolute -top-1 right-1/2 z-10 translate-x-1/2 rounded-full px-4 py-1 md:right-8 md:translate-x-0">
                                                 <Text intent="small" color="opposite">
                                                     {pageT("packages.popularBadge")}
@@ -97,14 +98,16 @@ export default function OfferPage() {
                         />
                         <Accordion className="flex w-full flex-col gap-4">
                             {specialPackages.map((pkg, i) => (
-                                <PackageCard pkg={pkg} key={i} isPopular={false} />
+                                <div key={i} className="flex items-center gap-4">
+                                    <PackageCard pkg={pkg} />{" "}
+                                </div>
                             ))}
                         </Accordion>
                     </div>
                 </SectionContent>
             </Section>
             <Separator decorative />
-            <Section className="py-size-xl">
+            <Section className="py-size-xl" id="services">
                 <SectionContent className="gap-size-lg">
                     <SectionHeader>
                         <SectionHeaderContent>
@@ -167,24 +170,25 @@ export default function OfferPage() {
     );
 }
 
-function PackageCard({ pkg, isPopular }: { pkg: Package; isPopular: boolean }) {
+function PackageCard({ pkg }: { pkg: Package }) {
     const pageT = useTranslations("pages.offer");
-
+    console.log(pkg.isPopular);
     return (
         <AccordionItem
             value={pkg.name}
             className={cn(
                 "border-border/70 relative flex w-full flex-col overflow-hidden rounded-lg border-2",
-                isPopular && "border-brand my-2"
+                pkg.isPopular && "border-brand my-2"
             )}
         >
             <AccordionTrigger className="flex w-full items-center gap-2 p-4 text-start">
-                <div className="flex w-full items-center justify-between gap-4">
-                    <div className="flex w-full items-center gap-4">
+                <div className="max-xs:gap-2 flex w-full items-center justify-between gap-4">
+                    <div className="max-xs:gap-2 flex w-full items-center gap-4">
                         <IconContainer
+                            className="max-xs:size-10"
                             Icon={getLucideIcon(pkg.icon)}
-                            variant={isPopular ? "brandSolid" : "default"}
-                            color={isPopular ? "opposite" : "default"}
+                            variant={pkg.isPopular ? "brandSolid" : "default"}
+                            color={pkg.isPopular ? "opposite" : "default"}
                         />
                         <div className="flex w-full flex-col items-start">
                             <div className="flex w-full flex-col items-start justify-between sm:flex-row">
@@ -206,15 +210,15 @@ function PackageCard({ pkg, isPopular }: { pkg: Package; isPopular: boolean }) {
                         />
                     </div>
                 </div>
-                <ChevronUp className="h-4 w-4 text-zinc-950 transition-transform duration-200 group-data-expanded:-rotate-180 dark:text-zinc-50" />
+                <ChevronUp className="h-4 w-4 shrink-0 text-zinc-950 transition-transform duration-200 group-data-expanded:-rotate-180 dark:text-zinc-50" />
             </AccordionTrigger>
             <AccordionContent className="flex w-full flex-col p-0">
-                <div className="p-4">
+                <div className="max-xs:px-2 px-4 py-4">
                     <Text text={pkg.description} className="block px-2 pt-4 sm:hidden" />
                     <ul className="grid w-full gap-4 py-4 sm:grid-cols-2">
                         {pkg.features.main.map((feature: Feature, j: number) => (
                             <li key={j} className="flex items-center gap-2">
-                                <Check />
+                                <Check className="shrink-0" />
                                 <div>
                                     <Text
                                         text={feature.name}
@@ -231,7 +235,7 @@ function PackageCard({ pkg, isPopular }: { pkg: Package; isPopular: boolean }) {
                     </ul>
                 </div>
                 <Separator decorative className="" />
-                <div className="bg-clr-50 flex w-full flex-col items-center p-4">
+                <div className="bg-clr-50 max-xs:px-2 max-xs:py-4 flex w-full flex-col items-center p-4">
                     <Text
                         text={pageT("packages.additionalFeaturesTitle")}
                         intent="h3"
@@ -239,26 +243,26 @@ function PackageCard({ pkg, isPopular }: { pkg: Package; isPopular: boolean }) {
                         className="mb-4 w-full text-center"
                     />
 
-                    <ul className="grid h-fit w-full gap-4 sm:grid-cols-2 md:grid-cols-3">
+                    <ul className="grid h-fit w-full gap-4 sm:grid-cols-2 xl:grid-cols-3">
                         {pkg.features.additional.map(
                             (feature: AdditionalFeature, j: number) => (
                                 <li key={j} className={cn("flex items-center gap-2 p-1")}>
                                     <Plus className="shrink-0" />
                                     <div>
-                                        <div className="flex items-center gap-1">
+                                        <span className="flex flex-col items-center gap-1 max-sm:items-start sm:flex-row">
                                             <Text text={feature.name} />
                                             {feature.recommended && (
                                                 // <CircleStar className="text-brand" />
-                                                <>
+                                                <div className="flex gap-1 max-sm:-order-1">
                                                     <Sparkles className="text-brand size-4" />
                                                     <Text
                                                         text={"polecane"}
                                                         intent="small"
                                                         className="text-brand! font-semibold"
                                                     />
-                                                </>
+                                                </div>
                                             )}
-                                        </div>
+                                        </span>
 
                                         <Text
                                             text={feature.description}
@@ -275,10 +279,23 @@ function PackageCard({ pkg, isPopular }: { pkg: Package; isPopular: boolean }) {
                             )
                         )}
                     </ul>
-
-                    <Button variant="ghost" className="mx-auto mt-4">
-                        {"wszystkie dodatkowe funkcje"} <ArrowDown className="size-4" />
-                    </Button>
+                    <div className="mt-4 flex w-full flex-col items-center justify-center gap-2 sm:flex-row sm:gap-4 md:justify-end">
+                        <Button
+                            variant="ghost"
+                            asChild
+                            className="max-sm:order-1 max-sm:w-full"
+                        >
+                            <ScrollButton target="#services">
+                                {"wszystkie dodatki"} <ArrowDown className="size-4" />
+                            </ScrollButton>
+                        </Button>
+                        <Button
+                            variant={pkg.isPopular ? "cta" : "default"}
+                            className="w-full max-sm:-order-1 sm:w-32"
+                        >
+                            <Link href={"/contact" + `?offer=${pkg.key}`}>{"zamów"}</Link>
+                        </Button>
+                    </div>
                 </div>
             </AccordionContent>
         </AccordionItem>

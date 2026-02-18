@@ -67,7 +67,6 @@ export default function ContactForm({ id }: ContactFormProps) {
         const emailData: EmailData[] = [];
 
         for (const field of inputs) {
-            k;
             const value = data[field._key];
             const question = field.name;
 
