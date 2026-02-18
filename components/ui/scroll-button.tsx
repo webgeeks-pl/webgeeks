@@ -1,6 +1,7 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
+import { Link, redirect } from "@/i18n/navigation";
+import { useLocale } from "next-intl";
 import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 import Tag, { TagProps } from "../base/tag";
 
@@ -29,9 +30,13 @@ export default function ScrollButton({
     text,
     ...props
 }: ScrollButtonProps) {
+    const locale = useLocale();
+
     function onClick(e: MouseEvent) {
         const element = document.querySelector(target ?? "");
-
+        if (as === "link" && href) {
+            redirect({ href, locale });
+        }
         if (element) {
             element.scrollIntoView({ behavior: "smooth" });
         }
