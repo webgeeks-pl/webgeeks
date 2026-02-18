@@ -12,6 +12,7 @@ export interface AdditionalFeature extends Feature {
 
 export interface Package {
     key: string;
+    isPopular?: boolean;
     name: string;
     icon: string;
     price: string;
@@ -30,6 +31,7 @@ export function useAllPackages(): Package[] {
         {
             key: "onePage",
             name: t("onePage.name"),
+            isPopular: t("onePage.isPopular") === "true",
             icon: t("onePage.icon"),
             price: t("onePage.price"),
             description: t("onePage.description"),
@@ -43,6 +45,7 @@ export function useAllPackages(): Package[] {
             key: "starter",
             name: t("starter.name"),
             icon: t("starter.icon"),
+            isPopular: t("starter.isPopular") === "true",
             price: t("starter.price"),
             description: t("starter.description"),
             category: t("starter.category"),
@@ -55,6 +58,7 @@ export function useAllPackages(): Package[] {
             key: "business",
             name: t("business.name"),
             icon: t("business.icon"),
+            isPopular: t("business.isPopular") === "true",
             price: t("business.price"),
             description: t("business.description"),
             category: t("business.category"),
@@ -67,6 +71,7 @@ export function useAllPackages(): Package[] {
             key: "enterprise",
             name: t("enterprise.name"),
             icon: t("enterprise.icon"),
+            isPopular: t("enterprise.isPopular") === "true",
             price: t("enterprise.price"),
             description: t("enterprise.description"),
             category: t("enterprise.category"),
@@ -79,6 +84,7 @@ export function useAllPackages(): Package[] {
             key: "webapp",
             name: t("webapp.name"),
             icon: t("webapp.icon"),
+            isPopular: t("webapp.isPopular") === "true",
             price: t("webapp.price"),
             description: t("webapp.description"),
             category: t("webapp.category"),
@@ -90,6 +96,7 @@ export function useAllPackages(): Package[] {
         {
             key: "ecommerce",
             name: t("ecommerce.name"),
+            isPopular: t("ecommerce.isPopular") === "true",
             icon: t("ecommerce.icon"),
             price: t("ecommerce.price"),
             description: t("ecommerce.description"),

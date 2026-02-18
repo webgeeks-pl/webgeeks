@@ -12,7 +12,6 @@ type PageTextProps = TextProps<keyof HTMLElementTagNameMap> & {
 };
 
 export function PageHeader({ className, children }: BasicComponentProps) {
-    
     return (
         <Section as={"header"} className={cn("py-size-xl", className)}>
             {children}

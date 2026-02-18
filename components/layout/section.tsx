@@ -8,6 +8,7 @@ interface SectionProps extends BasicComponentProps {
     shouldRender?: boolean;
     as?: ElementType;
     asChild?: boolean;
+    id?: string;
 }
 
 type SectionTextProps = TextProps<keyof HTMLElementTagNameMap> & {
@@ -18,6 +19,7 @@ export default function Section({
     children,
     className,
     as,
+    id,
     shouldRender = true,
     ...props
 }: SectionProps) {
@@ -27,6 +29,7 @@ export default function Section({
 
     return (
         <Tag
+            id={id}
             as={as ?? "section"}
             className={cn("flex w-full flex-col items-center", className)}
             {...props}

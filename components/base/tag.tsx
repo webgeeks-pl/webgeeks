@@ -1,6 +1,6 @@
 import { Slot } from "@radix-ui/react-slot";
 
-type TagProps<E extends React.ElementType> = {
+export type TagProps<E extends React.ElementType> = {
     as?: E;
     asChild?: boolean;
     children?: React.ReactNode;

@@ -1,6 +1,7 @@
 import Footer from "@/components/layout/footer";
 import Main from "@/components/layout/main";
 import Navigation from "@/components/navigation/navigation";
+import ScrollToHashOnLoad from "@/components/ui/ScrollToHashOnLoad";
 import AppControls from "@/controls/appControls";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
@@ -41,6 +42,7 @@ export default async function RootLayout({
             <body className={`${inter.variable} ${outfit.variable} antialiased`}>
                 <AppControls>
                     <Navigation />
+                    <ScrollToHashOnLoad />
                     <Main>{children}</Main>
                     <Footer Logo={<div>Logo</div>} />
                 </AppControls>
