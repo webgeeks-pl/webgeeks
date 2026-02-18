@@ -174,6 +174,7 @@ export default function TemplatesPage() {
                             >
                                 <div className="relative aspect-video w-full overflow-hidden">
                                     <Image
+                                        fill
                                         src={template.desktopImage}
                                         alt={template.name}
                                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
