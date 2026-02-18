@@ -4,6 +4,7 @@ import {
     type Feature,
     type Package,
 } from "@/hooks/useAllPackages";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { ArrowDown, Check, ChevronUp, Plus, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -291,14 +292,15 @@ function PackageCard({ pkg }: { pkg: Package }) {
                         <Button
                             variant={pkg.isPopular ? "cta" : "default"}
                             className="w-full max-sm:-order-1 sm:w-32"
+                            asChild
                         >
-                            <a
+                            <Link
                                 href={
                                     "/contact" + `?offer=${pkg.key}#scroll-contact-form`
                                 }
                             >
                                 {"zamów"}
-                            </a>
+                            </Link>
                         </Button>
                     </div>
                 </div>

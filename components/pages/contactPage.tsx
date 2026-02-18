@@ -84,8 +84,8 @@ export default function ContactPage() {
                 </SectionContent>
             </Section>
             <Separator decorative />
-            <Section className="py-size-xl bg-clr-50">
-                <SectionContent className="gap-size-lg" id="contact-form">
+            <Section className="py-size-xl bg-clr-50" id="contact-form">
+                <SectionContent className="gap-size-lg">
                     <SectionHeader>
                         <SectionHeaderContent>
                             <SectionTitle>Pozwól nam poznać twój biznes</SectionTitle>

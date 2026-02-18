@@ -1,10 +1,16 @@
 import { BasicComponentProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import Text, { TextProps } from "../typography/text";
+import ScrollToHashOnLoad from "../ui/ScrollToHashOnLoad";
 import Section, { SectionContent } from "./section";
 
 export default function Page({ children, className }: BasicComponentProps) {
-    return <div className={cn("overflow-x-hidden", className)}>{children}</div>;
+    return (
+        <div className={cn("overflow-x-hidden", className)}>
+            <ScrollToHashOnLoad />
+            {children}
+        </div>
+    );
 }
 
 type PageTextProps = TextProps<keyof HTMLElementTagNameMap> & {
