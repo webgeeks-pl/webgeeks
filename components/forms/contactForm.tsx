@@ -29,6 +29,7 @@ import {
     useForm,
     type ControllerFieldState,
     type ControllerRenderProps,
+    type Resolver,
 } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
 import { z } from "zod";
@@ -44,18 +45,20 @@ interface EmailData {
 }
 
 export default function ContactForm({ id }: ContactFormProps) {
-    const inputs: FormInputs[] = createInputs();
+    const packages = useAllPackages();
+    const pageT = useTranslations("pages.offer");
+    const params = useSearchParams();
+
+    const inputs: FormInputs[] = createInputs(packages, pageT);
     const t = useTranslations("pages.contact.form");
 
-    // console.log(searchParams);
-
     const schema = buildFormSchema(inputs, t);
-    const defaultValues = buildDefaultValues(inputs);
+    const defaultValues = buildDefaultValues(inputs, params.get("offer"));
 
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
     const form = useForm<FormValues>({
-        resolver: zodResolver(schema),
+        resolver: zodResolver(schema) as unknown as Resolver<FormValues, unknown>,
         defaultValues,
         mode: "onChange",
         reValidateMode: "onChange",
@@ -67,7 +70,6 @@ export default function ContactForm({ id }: ContactFormProps) {
         const emailData: EmailData[] = [];
 
         for (const field of inputs) {
-            k;
             const value = data[field._key];
             const question = field.name;
 
@@ -85,8 +87,8 @@ export default function ContactForm({ id }: ContactFormProps) {
             });
         }
 
-        const userName = data["name"] || "Contact Form";
-        const userEmail = data["email"] || "formularz@webgeeks.pl";
+        const userName = String(data["name"]) || "Contact Form";
+        const userEmail = String(data["email"]) || "formularz@webgeeks.pl";
 
         const response = await toast.promise(sendEmail(userName, userEmail, emailData), {
             pending: t("submitting"),
@@ -203,6 +205,7 @@ function QuestionField({ field, fieldProps, fieldState }: QuestionFieldProps) {
             {field.isLong ? (
                 <Textarea
                     {...fieldProps}
+                    value={String(fieldProps.value ?? "")}
                     id={field._key}
                     rows={7}
                     placeholder={field.name + (field.isRequired ? " *" : "")}
@@ -213,6 +216,7 @@ function QuestionField({ field, fieldProps, fieldState }: QuestionFieldProps) {
             ) : (
                 <Input
                     {...fieldProps}
+                    value={String(fieldProps.value ?? "")}
                     id={field._key}
                     placeholder={field.name + (field.isRequired ? " *" : "")}
                     aria-required={field.isRequired}
@@ -234,6 +238,7 @@ function EmailField({ field, fieldProps, fieldState }: EmailFieldProps) {
             <Input
                 type="email"
                 {...fieldProps}
+                value={String(fieldProps.value ?? "")}
                 id={field._key}
                 placeholder={field.name + (field.isRequired ? " *" : "")}
                 aria-required={field.isRequired}
@@ -253,12 +258,6 @@ function SingleChoiceField({ field, fieldProps }: ChoiceFieldProps) {
         (o) => o.key === fieldProps.value
     );
 
-    // const SelectedIcon = getLucideIcon(selectedOption?.icon || "QuestionMark");
-
-    // const SelectedIcon = useMemo(() => {
-    //     return selectedOption ? getLucideIcon(selectedOption.icon) : undefined;
-    // }, [selectedOption]);
-
     const isPopular = selectedOption?.name === "Mała Strona";
 
     return (
@@ -266,7 +265,7 @@ function SingleChoiceField({ field, fieldProps }: ChoiceFieldProps) {
             <Select
                 required={field.isRequired}
                 onValueChange={(value) => fieldProps.onChange(value)}
-                value={fieldProps.value}
+                value={String(fieldProps.value)}
             >
                 <SelectTrigger className="data-placeholder:text-clr-400 relative">
                     <div className="absolute top-1/2 left-[4px] h-fit w-fit -translate-y-1/2">
@@ -396,16 +395,23 @@ function IconFieldWrapper({
     isLong?: boolean;
     children: React.ReactNode;
 }) {
-    const Icon = getLucideIcon(iconName || "QuestionMark");
+    // const Icon = getLucideIcon(iconName || "QuestionMark");
 
     return (
         <Field className="relative">
             <div
-                className={`absolute left-3.5 h-5 w-5! ${
-                    isLong ? "top-4" : "top-1/2 -translate-y-1/2"
+                className={`absolute left-1.5 h-fit! w-fit! ${
+                    isLong ? "top-2" : "top-1/2 -translate-y-1/2"
                 }`}
             >
-                <Icon className="text-muted-foreground h-5 w-5!" />
+                {/* <Icon className="text-muted-foreground h-5 w-5!" /> */}
+
+                <IconContainer
+                    variant={"none"}
+                    Icon={getLucideIcon(iconName || "QuestionMark")}
+                    className="text-muted-foreground"
+                    size={"form"}
+                />
             </div>
             {children}
         </Field>
@@ -413,14 +419,19 @@ function IconFieldWrapper({
 }
 
 function SelectCustomItem({ option }: { option: Package }) {
-    const Icon = getLucideIcon(option.icon || "QuestionMark");
     // TODO: Need a better way to mark popular package without hardcoding name
     const isPopular = option.name === "Mała Strona";
 
     return (
         <SelectItem value={option.key} className="group flex items-center">
             <div className="relative flex w-full items-center">
-                <Icon className="absolute top-1/2 left-0.5 h-5 w-5 -translate-y-1/2" />
+                <IconContainer
+                    variant={"none"}
+                    Icon={getLucideIcon(option.icon || "QuestionMark")}
+                    size={"form"}
+                    className="absolute -ml-2"
+                />
+                {/* <Icon className="absolute top-1/2 left-0.5 h-5 w-5 -translate-y-1/2" /> */}
 
                 <SelectPrimitive.ItemText asChild>
                     <span className="flex items-center gap-2 truncate pl-8">
@@ -449,10 +460,7 @@ function SelectCustomItem({ option }: { option: Package }) {
     );
 }
 
-function buildFormSchema(
-    inputs: FormInputs[],
-    t: (s: string) => string
-): z.ZodObject<any, any> {
+function buildFormSchema(inputs: FormInputs[], t: (s: string) => string) {
     const shape: Record<string, z.ZodTypeAny> = {};
 
     for (const field of inputs) {
@@ -499,7 +507,7 @@ function buildFormSchema(
     return z.object(shape);
 }
 
-function buildDefaultValues(inputs: FormInputs[]) {
+function buildDefaultValues(inputs: FormInputs[], optionDefault: string | null) {
     const defaults: FormValues = {};
 
     for (const field of inputs) {
@@ -509,13 +517,14 @@ function buildDefaultValues(inputs: FormInputs[]) {
                 break;
 
             case "option":
-                const searchParams = useSearchParams();
-                if (searchParams.has("offer")) {
-                    const offerKey = searchParams.get("offer")!;
-                    defaults[field._key] = offerKey;
-                } else {
-                    defaults[field._key] = field.options_1?.[0]?.key ?? "";
-                }
+                defaults[field._key] = optionDefault || field.options_1?.[0]?.key || "";
+                // const searchParams = useSearchParams();
+                // if (searchParams.has("offer")) {
+                //     const offerKey = searchParams.get("offer")!;
+                //     defaults[field._key] = offerKey;
+                // } else {
+                //     defaults[field._key] = field.options_1?.[0]?.key ?? "";
+                // }
                 break;
 
             case "boolean":
@@ -575,7 +584,7 @@ type FormInputs =
     | OptionInput
     | PrivacyPolicyInput;
 
-export type FormValues = Record<string, any>;
+export type FormValues = Record<string, string | boolean>;
 
 function createQuestion(input: Omit<QuestionInput, "_type">): QuestionInput {
     return { ...input, _type: "question" };
@@ -585,9 +594,9 @@ function createEmail(input: Omit<EmailInput, "_type">): EmailInput {
     return { ...input, _type: "email" };
 }
 
-function createBoolean(input: Omit<BooleanInput, "_type">): BooleanInput {
-    return { ...input, _type: "boolean" };
-}
+// function createBoolean(input: Omit<BooleanInput, "_type">): BooleanInput {
+//     return { ...input, _type: "boolean" };
+// }
 
 function createOfferOption(input: Omit<OptionInput, "_type">): OptionInput {
     return { ...input, _type: "option" };
@@ -599,8 +608,8 @@ function createPrivacyPolicy(
     return { ...input, _type: "privacy_policy" };
 }
 
-function createInputs(): FormInputs[] {
-    const pageT = useTranslations("pages.offer");
+function createInputs(packages: Package[], t: (key: string) => string): FormInputs[] {
+    // const pageT = useTranslations("pages.offer");
 
     return [
         createQuestion({
@@ -621,10 +630,10 @@ function createInputs(): FormInputs[] {
             _key: "selected_offer",
             name: "Wybierz pakiet",
             isRequired: true,
-            optionsTitle1: pageT("packages.marketingPackagesTitle"),
-            optionsTitle2: pageT("packages.specialPackagesTitle"),
-            options_1: useAllPackages().filter((pkg) => pkg.category === "marketing"),
-            options_2: useAllPackages().filter((pkg) => pkg.category === "special"),
+            optionsTitle1: t("packages.marketingPackagesTitle"),
+            optionsTitle2: t("packages.specialPackagesTitle"),
+            options_1: packages.filter((pkg) => pkg.category === "marketing"),
+            options_2: packages.filter((pkg) => pkg.category === "special"),
             className: "col-span-2",
         }),
         createQuestion({
