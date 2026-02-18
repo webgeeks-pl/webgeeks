@@ -7,8 +7,9 @@ export const routes: NavigationRoutes = [
     // { link: "/portfolio" },
     // { link: "/process" },
     // { link: "/templates" },
-    { link: "/contact", name: "Kontakt" },
+
     { link: "/templates", name: "Szablony" },
+    { link: "/contact", name: "Kontakt" },
     // { link: "/testimonials" },
     {
         name: "Skontaktuj się z nami",
