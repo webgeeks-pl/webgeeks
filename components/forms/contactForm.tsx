@@ -29,10 +29,9 @@ import {
     useForm,
     type ControllerFieldState,
     type ControllerRenderProps,
-    type Resolver,
 } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
-import { z } from "zod";
+import { z, type ZodBoolean, type ZodString } from "zod";
 import IconContainer from "../ui/iconContainer";
 
 interface ContactFormProps {
@@ -58,7 +57,7 @@ export default function ContactForm({ id }: ContactFormProps) {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
     const form = useForm<FormValues>({
-        resolver: zodResolver(schema) as unknown as Resolver<FormValues, unknown>,
+        resolver: zodResolver(schema),
         defaultValues,
         mode: "onChange",
         reValidateMode: "onChange",
@@ -254,9 +253,11 @@ type ChoiceFieldProps = Omit<FieldRendererProps, "field"> & {
 };
 
 function SingleChoiceField({ field, fieldProps }: ChoiceFieldProps) {
-    const selectedOption = [...field.options_1, ...field.options_2]?.find(
-        (o) => o.key === fieldProps.value
-    );
+    const selectedOption = [
+        ...field.options_0,
+        ...field.options_1,
+        ...field.options_2,
+    ]?.find((o) => o.key === fieldProps.value);
 
     return (
         <Field>
@@ -307,6 +308,9 @@ function SingleChoiceField({ field, fieldProps }: ChoiceFieldProps) {
 
                 <SelectContent position="popper">
                     <SelectGroup>
+                        {field.options_0?.map((opt, i) => (
+                            <SelectCustomItem key={i} option={opt} />
+                        ))}
                         <SelectLabel className="bg-clr-100">
                             {field.optionsTitle1}
                         </SelectLabel>
@@ -393,8 +397,6 @@ function IconFieldWrapper({
     isLong?: boolean;
     children: React.ReactNode;
 }) {
-    // const Icon = getLucideIcon(iconName || "QuestionMark");
-
     return (
         <Field className="relative">
             <div
@@ -402,8 +404,6 @@ function IconFieldWrapper({
                     isLong ? "top-2" : "top-1/2 -translate-y-1/2"
                 }`}
             >
-                {/* <Icon className="text-muted-foreground h-5 w-5!" /> */}
-
                 <IconContainer
                     variant={"none"}
                     Icon={getLucideIcon(iconName || "QuestionMark")}
@@ -456,7 +456,7 @@ function SelectCustomItem({ option }: { option: Package }) {
 }
 
 function buildFormSchema(inputs: FormInputs[], t: (s: string) => string) {
-    const shape: Record<string, z.ZodTypeAny> = {};
+    const shape: Record<string, ZodString | ZodBoolean> = {};
 
     for (const field of inputs) {
         const key = field._key;
@@ -512,7 +512,7 @@ function buildDefaultValues(inputs: FormInputs[], optionDefault: string | null) 
                 break;
 
             case "option":
-                defaults[field._key] = optionDefault || field.options_1?.[0]?.key || "";
+                defaults[field._key] = optionDefault || field.options_0?.[0]?.key || "";
                 // const searchParams = useSearchParams();
                 // if (searchParams.has("offer")) {
                 //     const offerKey = searchParams.get("offer")!;
@@ -568,8 +568,10 @@ type OptionInput = Omit<FormInput, "icon"> & {
     _type: "option";
     optionsTitle1: string;
     optionsTitle2: string;
+    // optionsTitle3: string;
     options_1: Package[];
     options_2: Package[];
+    options_0: Package[];
 };
 
 type FormInputs =
@@ -604,8 +606,6 @@ function createPrivacyPolicy(
 }
 
 function createInputs(packages: Package[], t: (key: string) => string): FormInputs[] {
-    // const pageT = useTranslations("pages.offer");
-
     return [
         createQuestion({
             _key: "name",
@@ -627,8 +627,23 @@ function createInputs(packages: Package[], t: (key: string) => string): FormInpu
             isRequired: true,
             optionsTitle1: t("packages.marketingPackagesTitle"),
             optionsTitle2: t("packages.specialPackagesTitle"),
+            // optionsTitle3: t("packages.otherPackagesTitle"),
             options_1: packages.filter((pkg) => pkg.category === "marketing"),
             options_2: packages.filter((pkg) => pkg.category === "special"),
+            options_0: [
+                {
+                    key: "DIY",
+                    name: "Nie jestem zdecydowany",
+                    icon: "MessageCircleQuestionMark",
+                    price: "do ustalenia",
+                    description: "",
+                    category: "",
+                    features: {
+                        main: [],
+                        additional: [],
+                    },
+                },
+            ],
             className: "col-span-2",
         }),
         createQuestion({

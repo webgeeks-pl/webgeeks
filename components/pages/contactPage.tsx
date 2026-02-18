@@ -98,8 +98,8 @@ export default function ContactPage() {
                                         Porozmawiajmy.
                                     </Text>
                                     <Text intent="large" className="text-clr-400!">
-                                        Opisz swój projekt, a my dobierzemy najlepsze
-                                        rozwiązanie dla Twojego biznesu.
+                                        Opisz swój projekt, a razem dobierzemy rozwiązanie
+                                        dla Twojego biznesu.
                                     </Text>
                                 </div>
                             </div>
