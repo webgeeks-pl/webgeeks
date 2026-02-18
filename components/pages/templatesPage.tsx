@@ -1,6 +1,8 @@
 "use client";
 
+import { Link } from "@/i18n/navigation";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import Page from "../layout/page";
 import Section, { SectionContent, SectionLead, SectionTitle } from "../layout/section";
@@ -171,12 +173,12 @@ export default function TemplatesPage() {
                                 className="group overflow-hidden transition-all hover:shadow-lg"
                             >
                                 <div className="relative aspect-video w-full overflow-hidden">
-                                    <img
+                                    <Image
                                         src={template.desktopImage}
                                         alt={template.name}
                                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                                 </div>
                                 <CardHeader className="space-y-3">
                                     <div className="flex items-start justify-between gap-3">
@@ -247,13 +249,13 @@ export default function TemplatesPage() {
                     </div>
                     <div className="flex flex-wrap justify-center gap-4">
                         <Button size="lg" asChild>
-                            <a href="/contact">
+                            <Link href="/contact">
                                 Rozpocznij Projekt
                                 <ArrowRight className="ml-2 h-4 w-4" />
-                            </a>
+                            </Link>
                         </Button>
                         <Button size="lg" variant="outline" asChild>
-                            <a href="/offer">Zobacz Usługi</a>
+                            <Link href="/offer">Zobacz Usługi</Link>
                         </Button>
                     </div>
                 </SectionContent>

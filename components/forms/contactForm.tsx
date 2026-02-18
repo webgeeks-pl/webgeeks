@@ -258,8 +258,6 @@ function SingleChoiceField({ field, fieldProps }: ChoiceFieldProps) {
         (o) => o.key === fieldProps.value
     );
 
-    const isPopular = selectedOption?.name === "Mała Strona";
-
     return (
         <Field>
             <Select
@@ -285,7 +283,7 @@ function SingleChoiceField({ field, fieldProps }: ChoiceFieldProps) {
                                 {selectedOption?.name ??
                                     field.name + (field.isRequired ? " *" : "")}
                             </SelectValue>
-                            {isPopular && (
+                            {selectedOption?.isPopular && (
                                 <span className="bg-brand text-clr-100 inline-flex items-center rounded-full px-2 py-0.5 text-xs leading-none">
                                     <Text intent="small" color="opposite" as="span">
                                         Polecany
@@ -419,9 +417,6 @@ function IconFieldWrapper({
 }
 
 function SelectCustomItem({ option }: { option: Package }) {
-    // TODO: Need a better way to mark popular package without hardcoding name
-    const isPopular = option.name === "Mała Strona";
-
     return (
         <SelectItem value={option.key} className="group flex items-center">
             <div className="relative flex w-full items-center">
@@ -437,7 +432,7 @@ function SelectCustomItem({ option }: { option: Package }) {
                     <span className="flex items-center gap-2 truncate pl-8">
                         <span className="min-w-0 truncate">{option.name}</span>
 
-                        {isPopular && (
+                        {option.isPopular && (
                             <span className="bg-brand text-clr-100 inline-flex items-center rounded-full px-2 py-0.5 text-xs leading-none">
                                 <Text intent="small" color="opposite" as="span">
                                     Polecany
