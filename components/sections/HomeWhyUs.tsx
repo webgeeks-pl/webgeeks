@@ -11,7 +11,6 @@ import ShinyText from "../ShinyText";
 import Text from "../typography/text";
 import { AnimatedBackgroundSwitcher } from "../ui/animatedBackgroundSwitcher";
 import { Card, CardContent } from "../ui/card";
-import { FlickeringGrid } from "../ui/flickering-grid";
 import { FloatingStats } from "../ui/floating-stats";
 import IconContainer from "../ui/iconContainer";
 import { Iphone } from "../ui/iphone";
@@ -20,6 +19,8 @@ import { Ripple } from "../ui/ripple";
 import RotatingText from "../ui/RotatingText";
 import { Safari } from "../ui/safari";
 import { TypingAnimation } from "../ui/typing-animation";
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
+import { FlickeringGridOGL } from "@/components/ui/flickering-gird2";
 
 export function HomeWhyUs() {
     const t = useTranslations("pages.home.whyUs");
@@ -76,7 +77,8 @@ export function HomeWhyUs() {
             <div className="absolute inset-0 -z-5 [background:linear-gradient(to_bottom,rgba(255,255,255,1)_0%,rgba(255,255,255,.5)_15%,rgba(255,255,255,0)_30%,rgba(255,255,255,0)_70%,rgba(255,255,255,0.5)_85%,rgba(255,255,255,1)_100%)]" />
             <div className="pointer-events-none absolute inset-0 -z-5 [background:radial-gradient(ellipse_at_center,rgba(255,255,255,0)_0%,rgba(255,255,255,0.2)_55%,rgba(255,255,255,1)_100%)]" />
             <div className="absolute inset-0 -z-6">
-                <FlickeringGrid flickerChance={0.1} />
+                {/* <FlickeringGrid flickerChance={0.1} /> */}
+                <FlickeringGridOGL />
             </div>
             <SectionContent>
                 <div className="grid grid-cols-1 grid-rows-[repeat(9,250px)] gap-6 md:grid-cols-2 md:grid-rows-[repeat(5,250px)] xl:grid-cols-4 xl:grid-rows-[repeat(3,minmax(250px,1fr))]">

@@ -134,11 +134,6 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
             if (!isInView) return;
 
             const deltaTime = (time - lastTime) / 1000;
-            if (deltaTime < 0.5) {
-                animationFrameId = requestAnimationFrame(animate);
-                return;
-            }
-            console.log(1 / deltaTime);
             lastTime = time;
 
             updateSquares(gridParams.squares, deltaTime);
