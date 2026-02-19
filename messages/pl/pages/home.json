@@ -196,63 +196,57 @@
         "items": [
             {
                 "icon": "Database",
-                "title": "Headless CMS",
+                "title": "Sanity",
                 "label": "CMS",
-                "description": "Sanity, Contentful lub Strapi - łatwe zarządzanie treścią bez znajomości kodu. Panel administracyjny dostosowany do Twoich potrzeb"
+                "description": "Sanity to nowoczesny CMS, który pozwala w łatwy sposób zarządzać treścią, bez potrzeby znajomości kodu."
             },
             {
                 "icon": "ShoppingCart",
                 "title": "E-commerce",
-                "label": "shop",
-                "description": "Sklepy internetowe z Stripe, Shopify API lub WooCommerce. Szybkie, bezpieczne płatności i pełna kontrola nad produktami"
+                "label": "Sklep",
+                "description": "Sklepy internetowe z Shoper, Stripe lub Shopify API - prosta sprzedaż, bezpieczne płatności i pełna kontrola nad produktami."
             },
             {
                 "icon": "Zap",
-                "title": "API & Integracje",
+                "title": "Integracje",
                 "label": "API",
-                "description": "Połączenia z CRM (HubSpot, Salesforce), narzędziami marketingowymi, systemami płatności i dowolnymi zewnętrznymi serwisami"
+                "description": "Połączenia z systemami CRM, narzędziami marketingowymi oraz dowolnymi zewnętrznymi serwisami."
             },
             {
                 "icon": "Lock",
-                "title": "Autentykacja",
-                "label": "Logowanie",
-                "description": "Bezpieczne logowanie użytkowników z Auth0, NextAuth lub Supabase. Social login (Google, Facebook) i role użytkowników"
+                "title": "Uwierzytelnianie",
+                "label": "Bezpieczeństwo",
+                "description": "Bezpieczne logowanie z OAuth (Google, Facebook) oraz Auth0 i NextAuth, z możliwością zarządzania rolami użytkowników."
             },
             {
                 "icon": "Globe2",
-                "title": "Multi-język",
-                "label": "języki",
-                "description": "Strony wielojęzyczne z automatycznym wykrywaniem lokalizacji. SEO zoptymalizowane dla każdego języka osobno"
+                "title": "Globalny zasięg",
+                "label": "Języki",
+                "description": "Strony w wielu językach z automatycznym wykrywaniem języka i indywidualną optymalizacją SEO."
             },
             {
                 "icon": "Code2",
-                "title": "PWA",
+                "title": "Aplikacja",
                 "label": "PWA",
-                "description": "Progressive Web Apps - strony działające jak natywne aplikacje mobilne. Offline mode, powiadomienia push i instalacja"
-            },
-            {
-                "icon": "Blocks",
-                "title": "Page Builder",
-                "label": "Edycja",
-                "description": "Wizualne edytory stron dla klientów. Twórz i edytuj strony bez developera - drag & drop, komponenty, preview"
+                "description": "Strona działająca jak natywna aplikacja - offline, z powiadomieniami i opcją instalacji."
             },
             {
                 "icon": "BarChart3",
-                "title": "Analytics & Tracking",
+                "title": "Analytika",
                 "label": "Analityka",
-                "description": "Google Analytics 4, Facebook Pixel, hotmaps i A/B testing. Pełna kontrola nad konwersjami i ruchem na stronie"
+                "description": "Śledzenie ruchu i skuteczności strony za pomocą narzędzi Google i Facebook."
             },
             {
                 "icon": "Mail",
-                "title": "Email Marketing",
+                "title": "Marketing",
                 "label": "E-mail",
-                "description": "Integracje z Mailchimp, SendGrid, Klaviyo. Automatyczne kampanie, newslettery i powiadomienia transakcyjne"
+                "description": "Wysyłaj newslettery i powiadomienia automatycznie dzięki integracji z popularnymi narzędziami, takimi jak Mailchimp, SendGrid czy Resend."
             },
             {
                 "icon": "Search",
                 "title": "Wyszukiwanie",
                 "label": "Szukaj",
-                "description": "Zaawansowane wyszukiwarki z Algolia lub ElasticSearch. Błyskawiczne wyniki, filtry i autocomplete"
+                "description": "Błyskawiczne wyszukiwanie z podpowiedziami i filtrami, które ułatwiają znalezienie treści."
             }
         ]
     },
