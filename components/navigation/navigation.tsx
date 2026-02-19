@@ -33,7 +33,7 @@ export default function Navigation({ navigation }: NavigationProps) {
         href === "/" ? pathname === "/" : pathname.startsWith(href);
 
     return (
-        <HeaderContainer className="border-clr-500/30 sticky top-0 z-1000 border-b bg-white/50 backdrop-blur-md">
+        <HeaderContainer className="border-clr-500/30 sticky top-0 z-1000 bg-white/20 backdrop-blur-md">
             <div className="sticky inset-0 bg-black" />
             <nav
                 aria-label={t("navigation")}

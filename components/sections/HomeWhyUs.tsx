@@ -72,12 +72,12 @@ export function HomeWhyUs() {
     console.log("render");
     console.log(benefits.conversions.icon);
     return (
-        <Section className="py-size-xl md:py-size-2xl bg-clr-50 overflow-hidden">
+        <Section className="py-size-xl md:py-size-2xl overflow-hidden">
             <SectionContent>
                 <div className="grid grid-cols-1 grid-rows-[repeat(9,250px)] gap-6 md:grid-cols-2 md:grid-rows-[repeat(5,250px)] xl:grid-cols-4 xl:grid-rows-[repeat(3,minmax(250px,1fr))]">
-                    <Card className="hover:ring-brand h-full">
+                    <Card className="hover:ring-brand h-full bg-white/20">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
-                            <div className="border-clr-brand/50 relative h-full overflow-hidden rounded-lg border">
+                            <div className="relative h-full overflow-hidden rounded-lg">
                                 {/* <WarpBackground
                                     beamDuration={5}
                                     className="absolute inset-0 m-0 h-full p-0"
@@ -106,7 +106,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand h-full">
+                    <Card className="hover:ring-brand h-full bg-white/20">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative h-full">
                                 <FlickeringGrid />
@@ -130,11 +130,11 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand h-full xl:col-span-2">
+                    <Card className="hover:ring-brand h-full bg-white/20 xl:col-span-2">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="text-clr- flex h-full items-center justify-center">
                                 <ShinyText
-                                    color="oklch(0.708 0 0)"
+                                    color="oklch(0.408 0 0)"
                                     shineColor="oklch(0.922 0 0)"
                                     delay={3}
                                     className="font-heading text-3xl font-semibold lg:text-4xl"
@@ -160,7 +160,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand h-full">
+                    <Card className="hover:ring-brand h-full bg-white/20">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative flex h-full w-full items-center justify-center">
                                 <div className="absolute inset-0 z-0 overflow-hidden">
@@ -207,7 +207,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand-darker ring-brand bg-brand/50 -order-1 h-full md:col-span-2 xl:order-0">
+                    <Card className="hover:ring-brand bg-white/20-darker ring-brand -order-1 h-full ring-2 md:col-span-2 xl:order-0">
                         <CardContent className="flex h-full flex-col items-center justify-center gap-2">
                             <SectionHeader>
                                 <SectionHeaderContent>
@@ -221,7 +221,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand h-full">
+                    <Card className="hover:ring-brand h-full bg-white/20">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative flex h-full justify-center gap-3">
                                 <Safari className="max-h-24 max-w-30" />
@@ -245,7 +245,7 @@ export function HomeWhyUs() {
                             </div>
                         </CardContent>
                     </Card>
-                    <Card className="hover:ring-brand h-full xl:col-span-2">
+                    <Card className="hover:ring-brand h-full bg-white/20 xl:col-span-2">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <FloatingStats />
                             <div className="h-fit">
@@ -267,7 +267,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand h-full">
+                    <Card className="hover:ring-brand h-full bg-white/20">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative h-full [mask-image:linear-gradient(to_bottom,transparent,white,white,transparent)]">
                                 <Ripple mainCircleSize={10} numCircles={4} />
@@ -291,7 +291,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand h-full">
+                    <Card className="hover:ring-brand h-full bg-white/20">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="flex h-full max-h-full flex-col items-center justify-center overflow-hidden">
                                 <TypingAnimation startOnView loop words={typingWords} />

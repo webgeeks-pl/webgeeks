@@ -27,14 +27,19 @@ export function HandCrafted() {
         text: string;
         color: string;
     }>;
-    const differences = getArrayFromMessages(
-        t.raw("differences"),
-        DifferenceSchema
-    );
+    const differences = getArrayFromMessages(t.raw("differences"), DifferenceSchema);
 
     return (
-        <Section className="border-clr-100 overflow-hidden border-b bg-white py-20 sm:py-28">
-            <SectionContent>
+        <Section className="border-clr-100 relative overflow-hidden border-b bg-white py-20 sm:py-28">
+            <SectionContent className="relative">
+                <div className="absolute inset-0">
+                    {/* <LetterGlitch
+                        glitchSpeed={50}
+                        centerVignette={true}
+                        outerVignette={false}
+                        smooth={true}
+                    /> */}
+                </div>
                 <SectionHeader className="mb-8">
                     <SectionHeaderContent>
                         <SectionTitle text={t("sectionHeader.title")} />
@@ -113,12 +118,9 @@ export function HandCrafted() {
                     <div className="space-y-6">
                         {differences.map((item, index) => {
                             return (
-                                <div
-                                    key={index}
-                                    className="group relative"
-                                >
+                                <div key={index} className="group relative">
                                     <div className="flex gap-4 rounded-xl border border-transparent bg-white p-5">
-                                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-clr-100 text-clr-700">
+                                        <div className="bg-clr-100 text-clr-700 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg">
                                             <IconContainer
                                                 Icon={getLucideIcon(item.icon)}
                                                 variant="ghost"

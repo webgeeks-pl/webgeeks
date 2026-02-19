@@ -25,16 +25,19 @@ export function HomeFeatures() {
             shouldRender={heroCards.length > 0}
         >
             <SectionContent>
-                <div className="grid w-full grid-cols-1 items-stretch gap-4 max-md:grid-rows-4 md:grid-cols-2 xl:grid-cols-4">
+                <div className="grid w-full grid-cols-1 items-stretch gap-4 gap-x-10 max-md:grid-rows-3 md:grid-cols-2 xl:grid-cols-3">
                     {heroCards.map(({ icon, value, title, description }, index) => {
                         return (
                             <Card
-                                className="h-full bg-white/20 backdrop-blur-lg"
+                                className="bg-brand-200/30 h-full backdrop-blur-sm"
                                 key={index}
                             >
                                 <CardContent className="flex h-full flex-col items-center justify-between text-center">
                                     <div className="flex flex-col items-center gap-2">
-                                        <IconContainer Icon={getLucideIcon(icon)} />
+                                        <IconContainer
+                                            variant={"none"}
+                                            Icon={getLucideIcon(icon)}
+                                        />
                                         <Text
                                             intent="var"
                                             className="text-2xl capitalize"
@@ -43,25 +46,22 @@ export function HomeFeatures() {
                                     </div>
                                     <div>
                                         <Text intent="h3" text={title} />
-                                        <Text intent="small" muted text={description} />
+                                        <Text intent="small" text={description} />
                                     </div>
                                 </CardContent>
                             </Card>
                         );
                     })}
-                    <Card className="h-full bg-white/20 backdrop-blur-lg">
-                        <CardContent className="relative flex h-full flex-col justify-between">
-                            <Text
-                                intent="h3"
-                                className="from-clr-900 to-clr-400 z-10 bg-linear-to-b bg-clip-text text-center font-semibold text-transparent"
-                            >
-                                {t("features.globeTitle")}
-                            </Text>
-                            <Globe />
-                        </CardContent>
-                    </Card>
                 </div>
             </SectionContent>
+            <Card className="hidden h-full bg-white/20 backdrop-blur-lg">
+                <CardContent className="relative flex h-full flex-col justify-between">
+                    <Text intent="h3" className="z-10 pb-1 text-center font-semibold">
+                        {t("features.globeTitle")}
+                    </Text>
+                    <Globe />
+                </CardContent>
+            </Card>
         </Section>
     );
 }

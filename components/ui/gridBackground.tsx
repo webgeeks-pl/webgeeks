@@ -10,8 +10,8 @@ export function GridBackground() {
                 // "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]"
             )}
         >
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white mask-[radial-gradient(ellipse_at_center,black_20%,transparent)]"></div>
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white mask-[radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-transparent mask-[radial-gradient(ellipse_at_center,black_20%,transparent)]"></div>
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-transparent mask-[radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         </div>
     );
 }
