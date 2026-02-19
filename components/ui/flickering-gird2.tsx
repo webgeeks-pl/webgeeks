@@ -26,61 +26,57 @@ export function FlickeringGridOGL() {
         // ---- Shader ----
         const program = new Program(gl, {
             vertex: `
-        attribute vec2 position;
-        attribute vec2 uv;
-        varying vec2 vUv;
-        void main() {
-          vUv = uv;
-          gl_Position = vec4(position, 0.0, 1.0);
-        }
-      `,
+				attribute vec2 position;
+				attribute vec2 uv;
+				varying vec2 vUv;
+				void main() {
+					vUv = uv;
+					gl_Position = vec4(position, 0.0, 1.0);
+				}`,
             fragment: `
-precision mediump float;
+				precision mediump float;
 
-uniform float uTime;
-uniform vec2  uResolution;
+				uniform float uTime;
+				uniform vec2  uResolution;
 
-varying vec2 vUv;
+				varying vec2 vUv;
 
-// fast hash
-float hash(vec2 p) {
-  p = fract(p * vec2(123.34, 456.21));
-  p += dot(p, p + 45.32);
-  return fract(p.x * p.y);
-}
+				// fast hash
+				float hash(vec2 p) {
+					p = fract(p * vec2(123.34, 456.21));
+					p += dot(p, p + 45.32);
+					return fract(p.x * p.y);
+				}
 
-void main() {
-  vec2 pixel = vUv * uResolution;
+				void main() {
+					vec2 pixel = vUv * uResolution;
 
-  float squareSize = 4.0;
-  float gap = 6.0;
-  float maxOpacity = 0.7;
-  float flickerSpeed = 10.0; // speed of fade in/out
+					float squareSize = 4.0;
+					float gap = 6.0;
+					float maxOpacity = 0.7;
+					float flickerSpeed = 10.0; // speed of fade in/out
 
-  float cellSize = squareSize + gap;
-  vec2 grid = floor(pixel / cellSize);
-  vec2 local = mod(pixel, cellSize);
+					float cellSize = squareSize + gap;
+					vec2 grid = floor(pixel / cellSize);
+					vec2 local = mod(pixel, cellSize);
 
-  // mask inside square
-  float mask = step(local.x, squareSize) * step(local.y, squareSize);
+					// mask inside square
+					float mask = step(local.x, squareSize) * step(local.y, squareSize);
 
-  // stable per-cell base opacity
-  float base = hash(grid) * maxOpacity;
+					// stable per-cell base opacity
+					float base = hash(grid) * maxOpacity;
 
-  // unique phase per cell
-  float phase = hash(grid * 12.34) * 6.28318; // 0 → 2π
+					// unique phase per cell
+					float phase = hash(grid * 12.34) * 6.28318; // 0 → 2π
 
-  // smooth flicker, shifted up so opacity is mostly high
-  float alpha = base * 0.7 + base * 0.7 * (0.7 + 0.7 * sin(uTime * flickerSpeed + phase));
+					// smooth flicker, shifted up so opacity is mostly high
+					float alpha = base * 0.7 + base * 0.7 * (0.7 + 0.7 * sin(uTime * flickerSpeed + phase));
 
-  // apply mask
-  alpha *= mask;
+					// apply mask
+					alpha *= mask;
 
-  gl_FragColor = vec4(vec3(0.0), alpha);
-}
-
-
-      `,
+					gl_FragColor = vec4(vec3(0.0), alpha);
+				}`,
             uniforms: {
                 uTime: { value: 0 },
                 uResolution: { value: [1, 1] },
