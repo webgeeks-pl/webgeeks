@@ -575,6 +575,7 @@
             "name": "Dark mode",
             "description": "tryb ciemny strony",
             "price": "do ustalenia"
-        }
+        },
+        {}
     ]
 }

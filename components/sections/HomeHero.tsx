@@ -1,13 +1,11 @@
 import { getArrayFromMessages } from "@/lib/utils/array";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { z } from "zod";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
-import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import { Separator } from "../ui/separator";
 import { TextShimmer } from "../ui/text-shimmer";
 
 export function HomeHero() {
@@ -17,13 +15,13 @@ export function HomeHero() {
 
     return (
         <Section as="header" className="py-size-lg xs:py-size-xl sm:py-size-2xl relative">
-            <SectionContent className="gap-size-sm sm:gap-size-md z-10 text-center">
-                <Badge className="p-3" variant="secondary">
+            <SectionContent className="gap-size-sm sm:gap-size-md z-10 items-start text-start">
+                {/* <Badge className="p-3" variant="secondary">
                     <span className="flex items-center">
                         <Zap className="h-3.5 w-3.5 text-yellow-400" />
                     </span>
                     <span>{t("hero.badges.top")}</span>
-                </Badge>
+                </Badge> */}
                 <Text
                     as="span"
                     intent="h1"
@@ -48,7 +46,7 @@ export function HomeHero() {
                             <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
                     </Button>
-                    <Button asChild variant="secondary">
+                    <Button asChild variant="blur">
                         <Link href={t("hero.buttons.secondary.href")}>
                             <span>{t("hero.buttons.secondary.text")}</span>
                         </Link>
@@ -62,9 +60,8 @@ export function HomeHero() {
                         />
                     </div> */}
                 </div>
-                <Separator className="mt-4 max-w-xl" decorative />
 
-                {heroBadges.length > 0 && (
+                {/* {heroBadges.length > 0 && (
                     <div className="flex flex-col gap-2 md:flex-row">
                         {heroBadges.map((badge, index) => (
                             <Badge className="gap-2" variant="ghost" key={index}>
@@ -73,7 +70,7 @@ export function HomeHero() {
                             </Badge>
                         ))}
                     </div>
-                )}
+                )} */}
             </SectionContent>
         </Section>
     );

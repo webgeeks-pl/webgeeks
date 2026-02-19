@@ -60,11 +60,11 @@ export default function OfferPage() {
                         </SectionHeaderContent>
                     </SectionHeader>
 
-                    <div className="flex w-full flex-col gap-4">
+                    <div className="flex w-full flex-col gap-10">
                         <div className="flex flex-col gap-2">
                             <Text
                                 intent="h3"
-                                as="h4"
+                                as="h2"
                                 text={pageT("packages.marketingPackagesTitle")}
                             />
                             <Text
@@ -91,11 +91,11 @@ export default function OfferPage() {
                         </Accordion>
                     </div>
 
-                    <div className="flex w-full flex-col gap-4">
+                    <div className="flex w-full flex-col gap-10">
                         <div className="flex flex-col gap-2">
                             <Text
                                 intent="h3"
-                                as="h4"
+                                as="h2"
                                 text={pageT("packages.specialPackagesTitle")}
                             />
                             <Text
@@ -131,17 +131,20 @@ export default function OfferPage() {
 
                         <TableBody className="grid gap-x-4 lg:grid-cols-2">
                             {services.map((service) => (
-                                <TableRow key={service.name} className="w-full">
-                                    <TableCell className="w-full font-medium">
-                                        <Text text={service.name} />
+                                <TableRow
+                                    key={service.name}
+                                    className="flex w-full justify-between"
+                                >
+                                    <TableCell className="mr-auto w-full font-medium text-wrap!">
+                                        <div className="flex w-full flex-col justify-between sm:flex-row">
+                                            <Text text={service.name} />
+                                            <Text text={service.price} intent="var" />
+                                        </div>
                                         <Text
                                             text={service.description}
                                             intent="small"
                                             muted
                                         />
-                                    </TableCell>
-                                    <TableCell className="w-full text-right">
-                                        {service.price}
                                     </TableCell>
                                 </TableRow>
                             ))}

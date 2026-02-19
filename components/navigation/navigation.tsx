@@ -34,6 +34,7 @@ export default function Navigation({ navigation }: NavigationProps) {
 
     return (
         <HeaderContainer className="border-clr-500/30 sticky top-0 z-1000 border-b bg-white/50 backdrop-blur-md">
+            <div className="sticky inset-0 bg-black" />
             <nav
                 aria-label={t("navigation")}
                 className="mx-auto flex max-w-7xl items-center justify-between p-2 xl:px-6"

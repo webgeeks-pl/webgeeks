@@ -28,7 +28,10 @@ export function HomeFeatures() {
                 <div className="grid w-full grid-cols-1 items-stretch gap-4 max-md:grid-rows-4 md:grid-cols-2 xl:grid-cols-4">
                     {heroCards.map(({ icon, value, title, description }, index) => {
                         return (
-                            <Card className="h-full" key={index}>
+                            <Card
+                                className="h-full bg-white/20 backdrop-blur-lg"
+                                key={index}
+                            >
                                 <CardContent className="flex h-full flex-col items-center justify-between text-center">
                                     <div className="flex flex-col items-center gap-2">
                                         <IconContainer Icon={getLucideIcon(icon)} />
@@ -46,7 +49,7 @@ export function HomeFeatures() {
                             </Card>
                         );
                     })}
-                    <Card className="h-full">
+                    <Card className="h-full bg-white/20 backdrop-blur-lg">
                         <CardContent className="relative flex h-full flex-col justify-between">
                             <Text
                                 intent="h3"
