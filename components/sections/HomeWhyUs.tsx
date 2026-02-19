@@ -1,3 +1,4 @@
+import { FlickeringGridOGL } from "@/components/ui/flickering-gird2";
 import { useTranslations } from "next-intl";
 import { HoleBackground } from "../animate-ui/components/backgrounds/hole";
 import Section, {
@@ -19,8 +20,6 @@ import { Ripple } from "../ui/ripple";
 import RotatingText from "../ui/RotatingText";
 import { Safari } from "../ui/safari";
 import { TypingAnimation } from "../ui/typing-animation";
-import { FlickeringGrid } from "@/components/ui/flickering-grid";
-import { FlickeringGridOGL } from "@/components/ui/flickering-gird2";
 
 export function HomeWhyUs() {
     const t = useTranslations("pages.home.whyUs");

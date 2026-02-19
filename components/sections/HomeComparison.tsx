@@ -21,7 +21,7 @@ export function HomeComparison() {
         <Section className="bg-clr-50 py-size-xl sm:py-size-2xl">
             <SectionContent className="gap-size-lg text-center">
                 <SectionHeader>
-                    <SectionHeaderContent>
+                    <SectionHeaderContent className="">
                         <SectionTitle text={t("sectionHeader.title")} />
                         <SectionLead text={t("sectionHeader.description")} />
                     </SectionHeaderContent>

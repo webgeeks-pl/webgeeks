@@ -1,6 +1,7 @@
 import { getArrayFromMessages } from "@/lib/utils/array";
 import { useTranslations } from "next-intl";
 import { z } from "zod";
+import Grainient from "../Grainient";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
 
@@ -22,7 +23,31 @@ export function HomeAbout() {
     const paragraphs = t.raw("paragraphs") as string[];
 
     return (
-        <Section className="py-size-xl min-h-screen">
+        <Section className="py-size-xl relative min-h-[50vh]">
+            <Grainient
+                color1="#fbf9fb"
+                color2="#7996ec"
+                color3="#ffffff"
+                timeSpeed={0.25}
+                colorBalance={0}
+                warpStrength={1}
+                warpFrequency={5}
+                warpSpeed={2}
+                warpAmplitude={50}
+                blendAngle={0}
+                blendSoftness={0.05}
+                rotationAmount={500}
+                noiseScale={2}
+                grainAmount={0.1}
+                grainScale={2}
+                grainAnimated={false}
+                contrast={1.5}
+                gamma={1}
+                saturation={1}
+                centerX={0}
+                centerY={0}
+                zoom={0.9}
+            />
             <SectionContent>
                 <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
                     <div>
@@ -31,7 +56,9 @@ export function HomeAbout() {
                                 {t("sectionHeader")}
                             </Text>
                             <div className="font space-y-4">
-                                <Text>{paragraphs[0]}</Text>
+                                <Text variant="lead" className="text-2xl!">
+                                    {paragraphs[0]}
+                                </Text>
                                 {/* <Text className="text-clr-600">{paragraphs[1]}</Text>
                                 <Text className="text-clr-600">{paragraphs[2]}</Text> */}
                             </div>
