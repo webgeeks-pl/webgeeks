@@ -33,7 +33,7 @@
                     },
                     {
                         "name": "Wsparcie techniczne",
-                        "description": "roczne wsparcie i aktualizacje"
+                        "description": "przez pierwszy rok wsparcie i aktualizacje"
                     },
                     {
                         "name": "Nowoczesny design",
@@ -71,7 +71,7 @@
                     {
                         "name": "Częściowy / pełny CMS",
                         "description": "edycja najważniejszych lub wszystkich treści",
-                        "price": "300 zł / 500 zł"
+                        "price": "300 zł / 600 zł"
                     },
 
                     {
@@ -129,7 +129,7 @@
                     },
                     {
                         "name": "Wsparcie techniczne",
-                        "description": "roczne wsparcie i aktualizacje"
+                        "description": "przez pierwszy rok wsparcie i aktualizacje"
                     },
                     {
                         "name": "Nowoczesny design",
@@ -161,7 +161,7 @@
                     {
                         "name": "Pełny CMS",
                         "description": "pełna edycja treści strony",
-                        "price": "100 zł na stronę"
+                        "price": "200 zł + 100 zł na stronę"
                     },
                     {
                         "name": "Tłumaczenie na angielski",
@@ -237,7 +237,7 @@
                     },
                     {
                         "name": "Wsparcie techniczne",
-                        "description": "roczne wsparcie i aktualizacje"
+                        "description": "przez pierwszy rok wsparcie i aktualizacje"
                     },
                     {
                         "name": "Nowoczesny design",
@@ -334,7 +334,7 @@
                     },
                     {
                         "name": "Wsparcie techniczne",
-                        "description": "roczne wsparcie i aktualizacje"
+                        "description": "przez pierwszy rok wsparcie i aktualizacje"
                     },
                     {
                         "name": "Nowoczesny design",
@@ -464,6 +464,23 @@
     },
     "services": [
         {
+            "name": "Lokalizacja",
+            "description": "mapa z lokalizacją firmy",
+            "price": "100 zł",
+            "recommended": "true"
+        },
+        {
+            "name": "Formularz kontaktowy",
+            "description": "wysyłanie wiadomości do firmy",
+            "price": "300 zł",
+            "recommended": "true"
+        },
+        {
+            "name": "Dodatkowa podstrona",
+            "description": "dodatkowa podstrona na stronie",
+            "price": "200 zł"
+        },
+        {
             "name": "Częściowy CMS",
             "description": "edycja najważniejszych treści",
             "price": "300 zł"
@@ -471,7 +488,7 @@
         {
             "name": "Pełny CMS",
             "description": "kompletny system zarządzania treścią",
-            "price": "400 zł + 100 zł za stronę"
+            "price": "500 zł + 100 zł za stronę"
         },
         {
             "name": "Internacjonalizacja",
@@ -494,7 +511,7 @@
             "price": "300 zł"
         },
         {
-            "name": "Miesięczne raporty",
+            "name": "Raporty analityczne",
             "description": "raporty z analizą działania strony",
             "price": "100 zł / raport"
         },
@@ -527,7 +544,7 @@
         {
             "name": "Zaawansowana Analityka",
             "description": "zaawansowe narzędzia analityczne (np. Google Analytics)",
-            "price": "300 zł",
+            "price": "500 zł",
             "recommended": "true"
         },
         {

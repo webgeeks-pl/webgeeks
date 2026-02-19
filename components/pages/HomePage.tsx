@@ -3,7 +3,6 @@
 import Dither from "../Dither";
 import Page from "../layout/page";
 import { HomeAbout } from "../sections/HomeAbout";
-import { HomeComparison } from "../sections/HomeComparison";
 import { HomeCtaFooter } from "../sections/HomeCtaFooter";
 import { HomeFeatures } from "../sections/HomeFeatures";
 import { HomeHero } from "../sections/HomeHero";
@@ -16,7 +15,7 @@ import { Separator } from "../ui/separator";
 export default function HomePage() {
     return (
         <Page>
-            <div className="relative flex min-h-screen w-full flex-col justify-between gap-40">
+            <div className="relative flex min-h-screen w-full flex-col justify-between">
                 <div className="bg-brand absolute inset-0 -z-10">
                     <Dither
                         waveColor={[0.1, 0.9, 1]}
@@ -29,10 +28,10 @@ export default function HomePage() {
                     />
                 </div>
                 {/* Vertical white gradient overlay */}
-                <div className="absolute inset-0 -z-5 [background:linear-gradient(to_bottom,rgba(255,255,255,1)_0%,rgba(255,255,255,.8)_20%,rgba(255,255,255,0.5)_35%,rgba(255,255,255,0.2)_70%,rgba(255,255,255,.2)_85%,rgba(255,255,255,.5)_100%)]" />
+                <div className="absolute inset-0 -z-5 [background:linear-gradient(to_bottom,rgba(255,255,255,1)_0%,rgba(255,255,255,.8)_20%,rgba(255,255,255,0.5)_35%,rgba(255,255,255,0)_70%,rgba(255,255,255,0)_85%,rgba(255,255,255,.5)_100%)]" />
 
                 {/* Elliptical white-to-transparent gradient overlay */}
-                <div className="pointer-events-none absolute inset-0 -z-5 [background:radial-gradient(ellipse_at_center,rgba(255,255,255,0)_0%,rgba(255,255,255,0.5)_55%,rgba(255,255,255,1)_100%)]" />
+                <div className="pointer-events-none absolute inset-0 -z-5 [background:radial-gradient(ellipse_at_center,rgba(255,255,255,0)_0%,rgba(255,255,255,0.2)_55%,rgba(255,255,255,1)_100%)]" />
 
                 <HomeHero />
                 <div className="relative h-full pb-30">
@@ -48,18 +47,13 @@ export default function HomePage() {
 
             {/* <Separator decorative /> */}
             {/* <HandCrafted /> */}
-            <Separator decorative />
             <HomeAbout />
-            <Separator decorative />
             <HomeWhyUs />
-            <Separator decorative />
             <HomeShowcase />
             <Separator decorative />
             <HomeSolutions />
             <Separator decorative />
             <HomePackages />
-            <Separator decorative />
-            <HomeComparison />
             <Separator decorative />
             <HomeCtaFooter />
         </Page>
