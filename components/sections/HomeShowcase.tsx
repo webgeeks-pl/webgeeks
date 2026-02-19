@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import { getArrayFromMessages } from "@/lib/utils/array";
-import { CornerLeftDown } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { z } from "zod";
 import Section, {
@@ -11,7 +10,6 @@ import Section, {
     SectionTitle,
 } from "../layout/section";
 import Text from "../typography/text";
-import { EncryptedText } from "../ui/encrypted-text";
 import { Iphone } from "../ui/iphone";
 import { Safari } from "../ui/safari";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
@@ -30,13 +28,13 @@ export function HomeShowcase() {
     );
 
     return (
-        <Section className="py-size-xl sm:py-size-2xl relative min-h-screen">
+        <Section className="py-size-xl sm:py-size-2xl relative">
             <SectionContent className="gap-size-xl">
                 <Tabs defaultValue="desktop" className="gap-size-md flex w-full flex-col">
                     <TabsList className="relative mx-auto">
                         <TabsTrigger value="desktop">{t("tabs.desktop")}</TabsTrigger>
                         <TabsTrigger value="mobile">{t("tabs.mobile")}</TabsTrigger>
-                        <div className="text-clr-900 absolute bottom-full mb-2 flex gap-2 md:left-3/5">
+                        {/* <div className="text-clr-900 absolute bottom-full mb-2 flex gap-2 md:left-3/5">
                             <CornerLeftDown
                                 size={18}
                                 strokeWidth={3.5}
@@ -47,11 +45,11 @@ export function HomeShowcase() {
                                 text={t("encryptedText")}
                                 className="font-heading font-bold text-nowrap"
                             />
-                        </div>
+                        </div> */}
                     </TabsList>
                     <TabsContent value="desktop" className="gap-size-md flex flex-col">
-                        <SectionHeader>
-                            <SectionHeaderContent>
+                        <SectionHeader className="">
+                            <SectionHeaderContent className="">
                                 <SectionTitle text={t("desktop.title")} />
                                 <SectionLead text={t("desktop.description")} />
                             </SectionHeaderContent>

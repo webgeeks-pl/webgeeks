@@ -2,6 +2,7 @@
 
 import Dither from "../Dither";
 import Page from "../layout/page";
+import Section, { SectionContent } from "../layout/section";
 import { HomeAbout } from "../sections/HomeAbout";
 import { HomeCtaFooter } from "../sections/HomeCtaFooter";
 import { HomeFeatures } from "../sections/HomeFeatures";
@@ -10,7 +11,9 @@ import { HomePackages } from "../sections/HomePackages";
 import { HomeShowcase } from "../sections/HomeShowcase";
 import { HomeSolutions } from "../sections/HomeSolutions";
 import { HomeWhyUs } from "../sections/HomeWhyUs";
+import Text from "../typography/text";
 import { Separator } from "../ui/separator";
+import { TextReveal } from "../ui/text-reveal";
 
 export default function HomePage() {
     return (
@@ -47,9 +50,28 @@ export default function HomePage() {
 
             {/* <Separator decorative /> */}
             {/* <HandCrafted /> */}
-            <HomeAbout />
+
+            <Section className="relative h-screen">
+                <SectionContent>
+                    <TextReveal
+                        revealStart={0.3}
+                        revealEnd={0.6}
+                        header={
+                            <Text intent="sectionHeader" className="mb-size-md text-3xl">
+                                Zwiększ obecność swojej firmy
+                            </Text>
+                        }
+                    >
+                        Zainwestuj w profesjonalną stronę internetową i wyróżnij się w
+                        sieci. Postaw na najnowsze technologie, nowoczesny design i
+                        niezawodność, które przyciągną klientów i zwiększą Twoje zyski.
+                    </TextReveal>
+                </SectionContent>
+            </Section>
+
             <HomeWhyUs />
             <HomeShowcase />
+            <HomeAbout />
             <Separator decorative />
             <HomeSolutions />
             <Separator decorative />

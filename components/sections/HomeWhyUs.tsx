@@ -1,3 +1,4 @@
+import { FlickeringGridOGL } from "@/components/ui/flickering-gird2";
 import { useTranslations } from "next-intl";
 import { HoleBackground } from "../animate-ui/components/backgrounds/hole";
 import Section, {
@@ -19,8 +20,6 @@ import { Ripple } from "../ui/ripple";
 import RotatingText from "../ui/RotatingText";
 import { Safari } from "../ui/safari";
 import { TypingAnimation } from "../ui/typing-animation";
-import { FlickeringGrid } from "@/components/ui/flickering-grid";
-import { FlickeringGridOGL } from "@/components/ui/flickering-gird2";
 
 export function HomeWhyUs() {
     const t = useTranslations("pages.home.whyUs");
@@ -82,7 +81,7 @@ export function HomeWhyUs() {
             </div>
             <SectionContent>
                 <div className="grid grid-cols-1 grid-rows-[repeat(9,250px)] gap-6 md:grid-cols-2 md:grid-rows-[repeat(5,250px)] xl:grid-cols-4 xl:grid-rows-[repeat(3,minmax(250px,1fr))]">
-                    <Card className="hover:ring-brand h-full bg-white/20 backdrop-blur-sm">
+                    <Card className="hover:ring-brand h-full bg-white">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative h-full overflow-hidden rounded-lg">
                                 {/* <WarpBackground
@@ -113,7 +112,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand h-full bg-white/20 backdrop-blur-sm">
+                    <Card className="hover:ring-brand h-full bg-white">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative h-full">
                                 {/* <FlickeringGrid /> */}
@@ -137,7 +136,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand h-full bg-white/20 backdrop-blur-sm xl:col-span-2">
+                    <Card className="hover:ring-brand h-full bg-white xl:col-span-2">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="text-clr- flex h-full items-center justify-center">
                                 <ShinyText
@@ -167,7 +166,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand h-full bg-white/20 backdrop-blur-sm">
+                    <Card className="hover:ring-brand h-full bg-white">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative flex h-full w-full items-center justify-center">
                                 <div className="absolute inset-0 z-0 overflow-hidden">
@@ -214,7 +213,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand ring-brand bg-brand/20 -order-1 h-full ring-2 backdrop-blur-sm md:col-span-2 xl:order-0">
+                    <Card className="hover:ring-brand ring-brand bg-brand-hero -order-1 h-full ring-2 md:col-span-2 xl:order-0">
                         <CardContent className="flex h-full flex-col items-center justify-center gap-2">
                             <SectionHeader>
                                 <SectionHeaderContent>
@@ -228,7 +227,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand h-full bg-white/20 backdrop-blur-sm">
+                    <Card className="hover:ring-brand h-full bg-white">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative flex h-full justify-center gap-3">
                                 <Safari className="max-h-24 max-w-30" />
@@ -252,7 +251,7 @@ export function HomeWhyUs() {
                             </div>
                         </CardContent>
                     </Card>
-                    <Card className="hover:ring-brand h-full bg-white/20 backdrop-blur-sm xl:col-span-2">
+                    <Card className="hover:ring-brand h-full bg-white xl:col-span-2">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <FloatingStats />
                             <div className="h-fit">
@@ -274,7 +273,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand h-full bg-white/20 backdrop-blur-sm">
+                    <Card className="hover:ring-brand h-full bg-white">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative h-full [mask-image:linear-gradient(to_bottom,transparent,white,white,transparent)]">
                                 <Ripple mainCircleSize={10} numCircles={4} />
@@ -298,7 +297,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand h-full bg-white/20 backdrop-blur-sm">
+                    <Card className="hover:ring-brand h-full bg-white">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="flex h-full max-h-full flex-col items-center justify-center overflow-hidden">
                                 <TypingAnimation startOnView loop words={typingWords} />
