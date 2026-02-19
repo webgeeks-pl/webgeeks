@@ -32,8 +32,8 @@ export function HomeAbout() {
                             </Text>
                             <div className="font space-y-4">
                                 <Text>{paragraphs[0]}</Text>
-                                <Text className="text-clr-600">{paragraphs[1]}</Text>
-                                <Text className="text-clr-600">{paragraphs[2]}</Text>
+                                {/* <Text className="text-clr-600">{paragraphs[1]}</Text>
+                                <Text className="text-clr-600">{paragraphs[2]}</Text> */}
                             </div>
                         </div>
                     </div>
