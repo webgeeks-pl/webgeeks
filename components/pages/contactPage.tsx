@@ -52,7 +52,7 @@ export default function ContactPage() {
                                     <CardContent className="flex flex-col gap-2">
                                         <Text intent="h3">{name}</Text>
                                         <Text muted>{description}</Text>
-                                        <div className="flex items-center gap-2">
+                                        <div className="xs:flex-row flex flex-col items-center gap-2">
                                             <IconContainer Icon={Icon} />
                                             <Text>{contact}</Text>
                                         </div>

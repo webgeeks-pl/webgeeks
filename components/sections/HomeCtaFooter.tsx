@@ -16,7 +16,7 @@ export function HomeCtaFooter() {
         <Section className="py-size-2xl bg-brand-darker/50">
             <SectionContent className="gap-size-md">
                 <SectionHeader>
-                    <SectionHeaderContent>
+                    <SectionHeaderContent className="text-center!">
                         <SectionTitle text={t("sectionHeader.title")} />
                         <SectionLead
                             text={t("sectionHeader.description")}

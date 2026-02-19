@@ -116,7 +116,6 @@
     --color-brand-800: oklch(0.45 0.085 224.283);
     --color-brand-900: oklch(0.398 0.07 227.392);
     --color-brand-950: oklch(0.302 0.056 229.695);
-    --color-brand-hero: oklch(0.85 0.25 240);
 
     --spacing-size-2xs: calc(var(--spacing) * 1);
     --spacing-size-xs: calc(var(--spacing) * 2);

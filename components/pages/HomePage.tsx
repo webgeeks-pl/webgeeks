@@ -51,11 +51,12 @@ export default function HomePage() {
             {/* <Separator decorative /> */}
             {/* <HandCrafted /> */}
 
-            <Section className="relative h-screen">
-                <SectionContent>
+            <Section className="max-md:pb-size-2xl relative md:h-[80vh]">
+                <SectionContent className="h-full">
                     <TextReveal
                         revealStart={0.3}
                         revealEnd={0.6}
+                        textClassName="text-lg! sm:text-xl! md:text-2xl! lg:text-3xl! xl:text-4xl! 2xl:text-5xl!"
                         header={
                             <Text intent="sectionHeader" className="mb-size-md text-3xl">
                                 Zwiększ obecność swojej firmy

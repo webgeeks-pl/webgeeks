@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils/index";
 export interface TextRevealProps extends ComponentPropsWithoutRef<"div"> {
     children: string;
     header?: ReactNode;
+    textClassName?: string;
     revealStart?: number;
     revealEnd?: number;
 }
@@ -16,6 +17,7 @@ export const TextReveal: FC<TextRevealProps> = ({
     children,
     header,
     className,
+    textClassName,
     revealStart = 0.3,
     revealEnd = 0.7,
 }) => {
@@ -34,15 +36,14 @@ export const TextReveal: FC<TextRevealProps> = ({
     return (
         <div ref={targetRef} className={cn("relative z-0 h-full", className)}>
             <motion.div
-                className={
-                    "flex h-screen flex-col justify-center bg-transparent px-[1rem]"
-                }
+                className={"flex h-full flex-col justify-center bg-transparent px-[1rem]"}
             >
                 {header}
                 <span
-                    className={
-                        "flex flex-wrap text-2xl font-bold text-black/20 md:text-3xl lg:text-4xl xl:text-5xl dark:text-white/20"
-                    }
+                    className={cn(
+                        "flex flex-wrap text-2xl font-bold text-black/20 md:text-3xl lg:text-4xl xl:text-5xl dark:text-white/20",
+                        textClassName
+                    )}
                 >
                     {words.map((word, i) => {
                         const start =

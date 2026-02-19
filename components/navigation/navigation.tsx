@@ -37,7 +37,7 @@ export default function Navigation({ navigation }: NavigationProps) {
             <div className="sticky inset-0 bg-black" />
             <nav
                 aria-label={t("navigation")}
-                className="mx-auto flex max-w-7xl items-center justify-between p-2 xl:px-6"
+                className="mx-auto flex max-w-[1536px] items-center justify-between p-2 xl:px-6"
             >
                 <div className="flex xl:flex-1">
                     <span>Logo</span>
@@ -128,7 +128,10 @@ export default function Navigation({ navigation }: NavigationProps) {
                             <div className="mx-auto py-6">
                                 {ctaRoute && (
                                     <Button variant="cta" asChild size="sm" className="">
-                                        <Link href={ctaRoute?.link || "#"}>
+                                        <Link
+                                            href={ctaRoute?.link || "#"}
+                                            onClick={() => setMobileMenuOpen(false)}
+                                        >
                                             {tRoutes("cta")}
                                         </Link>
                                     </Button>

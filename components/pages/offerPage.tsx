@@ -17,15 +17,11 @@ import Section, {
     SectionTitle,
 } from "../layout/section";
 import Text from "../typography/text";
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "../ui/accordion";
+import { AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
 import { Button } from "../ui/button";
 import IconContainer from "../ui/iconContainer";
 import { getLucideIcon } from "../ui/lucideIcons";
+import OfferAccordion from "../ui/offer-accordion";
 import ScrollButton from "../ui/scroll-button";
 import { Separator } from "../ui/separator";
 import { Table, TableBody, TableCaption, TableCell, TableRow } from "../ui/table";
@@ -73,7 +69,7 @@ export default function OfferPage() {
                             />
                         </div>
 
-                        <Accordion className="flex w-full flex-col gap-4">
+                        <OfferAccordion className="flex w-full flex-col gap-4">
                             {marketingPackages.map((pkg, i) => {
                                 return (
                                     <div key={i} className="relative size-full">
@@ -88,7 +84,7 @@ export default function OfferPage() {
                                     </div>
                                 );
                             })}
-                        </Accordion>
+                        </OfferAccordion>
                     </div>
 
                     <div className="flex w-full flex-col gap-10">
@@ -103,13 +99,19 @@ export default function OfferPage() {
                                 text={pageT("packages.specialPackagesDescription")}
                             />
                         </div>
-                        <Accordion className="flex w-full flex-col gap-4">
+                        <OfferAccordion className="flex w-full flex-col gap-4">
                             {specialPackages.map((pkg, i) => (
-                                <div key={i} className="flex items-center gap-4">
-                                    <PackageCard pkg={pkg} />{" "}
-                                </div>
+                                <PackageCard key={pkg.key} pkg={pkg} />
                             ))}
-                        </Accordion>
+                        </OfferAccordion>
+                        {/* <Accordion
+                            expandedValue={"business"}
+                            className="flex w-full flex-col gap-4"
+                        >
+                            {specialPackages.map((pkg, i) => (
+                                <PackageCard key={pkg.key} pkg={pkg} />
+                            ))}
+                        </Accordion> */}
                     </div>
                 </SectionContent>
             </Section>
@@ -130,11 +132,8 @@ export default function OfferPage() {
                         <TableCaption>{pageT("services.tableCaption")}</TableCaption>
 
                         <TableBody className="grid gap-x-4 lg:grid-cols-2">
-                            {services.map((service) => (
-                                <TableRow
-                                    key={service.name}
-                                    className="flex w-full justify-between"
-                                >
+                            {services.map((service, i) => (
+                                <TableRow key={i} className="flex w-full justify-between">
                                     <TableCell className="mr-auto w-full font-medium text-wrap!">
                                         <div className="flex w-full flex-col justify-between sm:flex-row">
                                             <Text text={service.name} />
@@ -182,10 +181,10 @@ export default function OfferPage() {
 
 function PackageCard({ pkg }: { pkg: Package }) {
     const pageT = useTranslations("pages.offer");
-    console.log(pkg.isPopular);
     return (
         <AccordionItem
-            value={pkg.name}
+            value={pkg.key}
+            id={pkg.key}
             className={cn(
                 "border-border/70 relative flex w-full flex-col overflow-hidden rounded-lg border-2",
                 pkg.isPopular && "border-brand my-2"

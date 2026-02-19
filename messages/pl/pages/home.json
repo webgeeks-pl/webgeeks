@@ -50,7 +50,7 @@
     "about": {
         "sectionHeader": "O Mnie",
         "paragraphs": [
-            "Nazywam się Jakub Pniewski i w ramach Webgeeks tworzę strony internetowe. Mam kilkuletnie doświadczenie w programowaniu, a obecnie rozwijam się jako freelancer. Stawiam na prostotę, wydajność i solidny, przemyślany kod",
+            "Nazywam się Jakub Pniewski, jestem z Krakowa i obecnie działam jako freelancer w ramach Webgeeks. Mam kilkuletnie doświadczenie w tworzeniu stron internetowych. W realizowanych projektach stawiam na wydajność, bezpieczeństwo i profesjonalny design, który wyróżnia się na tle konkurencji",
             "Projektuję i buduję nowoczesne strony, które nie tylko dobrze wyglądają, ale przede wszystkim działają szybko i bez problemów. Korzystam ze sprawdzonych technologii i zawsze staram się dobrać rozwiązania do realnych potrzeb projektu, a nie na odwrót",
             "Poza kodowaniem interesuję się historią i grami komputerowymi. Mieszkam w Krakowie i aktualnie skupiam się na rozwijaniu własnego freelancingu oraz podejmowaniu nowych, ciekawych wyzwań"
         ],
@@ -257,6 +257,11 @@
             "description": "Wybierz pakiet dopasowany do potrzeb Twojego biznesu. Każdy projekt realizujemy indywidualnie"
         },
         "popularBadge": "Najpopularniejszy",
+        "andMore": "+ {count} innych funkcji",
+        "detailsButton": {
+            "text": "Zobacz szczegóły",
+            "href": "/offer"
+        },
         "selectButton": {
             "text": "Wybierz pakiet",
             "href": "/contact"

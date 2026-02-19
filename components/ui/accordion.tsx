@@ -106,9 +106,10 @@ export type AccordionItemProps = {
     value: React.Key;
     children: ReactElement | ReactElement[];
     className?: string;
+    id?: string;
 };
 
-function AccordionItem({ value, children, className }: AccordionItemProps) {
+function AccordionItem({ value, children, className, id }: AccordionItemProps) {
     const { expandedValue } = useAccordion();
     const isExpanded = value === expandedValue;
 
@@ -116,6 +117,7 @@ function AccordionItem({ value, children, className }: AccordionItemProps) {
         <div
             className={cn("overflow-hidden", className)}
             {...(isExpanded ? { "data-expanded": "" } : { "data-closed": "" })}
+            id={id}
         >
             {React.Children.map(children, (child) => {
                 if (React.isValidElement(child)) {
@@ -165,6 +167,8 @@ function AccordionContent({ children, className, ...props }: AccordionContentPro
     const { expandedValue, variants } = useAccordion();
     const value = (props as { value?: React.Key }).value;
     const isExpanded = value === expandedValue;
+
+    console.log(isExpanded, value, expandedValue);
 
     const BASE_VARIANTS: Variants = {
         expanded: { height: "auto", opacity: 1 },
