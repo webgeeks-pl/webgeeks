@@ -28,7 +28,7 @@ export function HomeShowcase() {
     );
 
     return (
-        <Section className="py-size-xl sm:py-size-2xl relative min-h-screen">
+        <Section className="py-size-xl sm:py-size-2xl relative">
             <SectionContent className="gap-size-xl">
                 <Tabs defaultValue="desktop" className="gap-size-md flex w-full flex-col">
                     <TabsList className="relative mx-auto">

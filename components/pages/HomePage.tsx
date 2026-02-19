@@ -62,10 +62,9 @@ export default function HomePage() {
                             </Text>
                         }
                     >
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi
-                        iste molestiae culpa illum placeat quibusdam ad, ut velit,
-                        similique odio blanditiis fugit a vitae consequuntur distinctio
-                        adipisci autem provident. Consequatur!
+                        Zainwestuj w profesjonalną stronę internetową i wyróżnij się w
+                        sieci. Postaw na najnowsze technologie, nowoczesny design i
+                        niezawodność, które przyciągną klientów i zwiększą Twoje zyski.
                     </TextReveal>
                 </SectionContent>
             </Section>
