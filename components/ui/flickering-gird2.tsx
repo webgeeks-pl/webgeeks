@@ -7,7 +7,8 @@ export function FlickeringGridOGL() {
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (!ref.current) return;
+        const container = ref.current;
+        if (!container) return;
 
         // ---- Renderer ----
         const renderer = new Renderer({
@@ -18,7 +19,11 @@ export function FlickeringGridOGL() {
 
         const gl = renderer.gl;
         gl.clearColor(0, 0, 0, 0);
-        ref.current.appendChild(gl.canvas);
+        if (container.firstChild) {
+            container.replaceChildren(gl.canvas);
+        } else {
+            container.appendChild(gl.canvas);
+        }
 
         // ---- Fullscreen triangle ----
         const geometry = new Triangle(gl);
@@ -90,14 +95,17 @@ export function FlickeringGridOGL() {
 
         // ---- Resize ----
         const resize = () => {
-            const w = ref.current!.clientWidth;
-            const h = ref.current!.clientHeight;
+            const w = container.clientWidth;
+            const h = container.clientHeight;
+            if (w === 0 || h === 0) return;
             renderer.setSize(w, h);
             program.uniforms.uResolution.value = [w, h];
         };
 
         resize();
         window.addEventListener("resize", resize);
+        const resizeObserver = new ResizeObserver(() => resize());
+        resizeObserver.observe(container);
 
         // ---- Render loop ----
         let frame: number;
@@ -112,7 +120,8 @@ export function FlickeringGridOGL() {
         return () => {
             cancelAnimationFrame(frame);
             window.removeEventListener("resize", resize);
-            ref.current?.removeChild(gl.canvas);
+            resizeObserver.disconnect();
+            container.removeChild(gl.canvas);
             gl.getExtension("WEBGL_lose_context")?.loseContext();
         };
     }, []);
