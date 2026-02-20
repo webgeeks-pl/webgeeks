@@ -9,6 +9,7 @@ export interface ResizableDeviceProps {
     className?: string;
     startWidth?: number;
     startHeight?: number;
+    onLoad?: () => void;
 }
 
 export function ResizableDevice({
@@ -16,6 +17,7 @@ export function ResizableDevice({
     className,
     startWidth = 400,
     startHeight = 800,
+    onLoad,
 }: ResizableDeviceProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const [dimensions, setDimensions] = useState({
@@ -215,10 +217,12 @@ export function ResizableDevice({
                             }}
                         >
                             <iframe
+                                key={iframeSrc}
                                 src={iframeSrc}
                                 title="Device Preview"
                                 className="size-full border-0"
                                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation-by-user-activation"
+                                onLoad={onLoad}
                             />
                         </div>
                     </div>

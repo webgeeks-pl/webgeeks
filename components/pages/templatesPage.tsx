@@ -179,19 +179,20 @@ export default function TemplatesPage() {
                         {filteredTemplates.map((template) => (
                             <Card
                                 key={template.id}
-                                className="group overflow-hidden transition-all hover:shadow-lg"
+                                size="sm"
+                                className="overflow-hidden pt-0!"
                             >
                                 <div className="relative aspect-video w-full overflow-hidden">
                                     <Image
                                         fill
                                         src={template.desktopImage}
                                         alt={template.name}
-                                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        className="h-full w-full object-cover"
                                     />
-                                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                                    {/* <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-black/0" /> */}
                                 </div>
                                 <CardHeader className="space-y-3">
-                                    <div className="flex items-start justify-between gap-3">
+                                    <div className="flex items-center justify-between gap-3">
                                         <CardTitle className="text-xl">
                                             {template.name}
                                         </CardTitle>
@@ -203,7 +204,7 @@ export default function TemplatesPage() {
                                         {template.description}
                                     </CardDescription>
                                 </CardHeader>
-                                <CardContent className="space-y-4">
+                                <CardContent className="space-y-2">
                                     <div className="flex flex-wrap gap-1.5">
                                         {template.tags.map((tag) => (
                                             <Badge

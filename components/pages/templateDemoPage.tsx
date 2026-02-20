@@ -5,7 +5,16 @@ import { useNavigation } from "@/context/navigationContext";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
-import { ExternalLink, Fullscreen, Monitor, Smartphone } from "lucide-react";
+import {
+    ArrowRight,
+    ExternalLink,
+    Fullscreen,
+    Loader2,
+    Monitor,
+    Smartphone,
+} from "lucide-react";
+import { AnimatePresence, LayoutGroup } from "motion/react";
+import * as motion from "motion/react-client";
 import { useLocale } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useEffectEvent, useRef, useState } from "react";
@@ -18,7 +27,6 @@ import Section, {
     SectionTitle,
 } from "../layout/section";
 import { Button } from "../ui/button";
-import { Item, ItemActions, ItemContent, ItemTitle } from "../ui/item";
 import { ScrollArea } from "../ui/scroll-area";
 import { Separator } from "../ui/separator";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
@@ -54,12 +62,22 @@ function TemplateDemoContent() {
     const [selectedTemplateId, setSelectedTemplateId] =
         useState<string>(initialTemplateId);
     const [deviceType, setDeviceType] = useState<DeviceType>("desktop");
+    const [isLoading, setIsLoading] = useState(true);
     const isMobile = useIsMobile();
 
     const [isLargeScreen, setIsLargeScreen] = useState(true);
 
     const selectedTemplate = templates.find((t) => t.id === selectedTemplateId);
     const currentDemoUrl = selectedTemplate?.demoUrl || "";
+
+    const selectTemplate = (id: string) => {
+        if (id !== selectedTemplateId) {
+            setIsLoading(true);
+            setSelectedTemplateId(id);
+        }
+    };
+
+    const handleIframeLoad = () => setIsLoading(false);
 
     // Check screen size for lg breakpoint (1024px)
     useEffect(() => {
@@ -218,71 +236,144 @@ function TemplateDemoContent() {
                             className="h-full min-h-0 flex-1"
                             ref={asideScrollRef}
                         >
-                            <div className="flex flex-col gap-2">
-                                {templates.map((template) => {
-                                    const isActive = selectedTemplateId === template.id;
+                            <LayoutGroup>
+                                <div className="flex flex-col gap-1">
+                                    {templates.map((template) => {
+                                        const isActive =
+                                            selectedTemplateId === template.id;
+                                        const hasDemo = !!template.demoUrl;
 
-                                    return (
-                                        <Item
-                                            size={"xs"}
-                                            key={template.id}
-                                            variant={"outline"}
-                                            className={cn(
-                                                "flex cursor-pointer bg-white transition-all",
-                                                !template.demoUrl && "opacity-50",
-                                                isActive &&
-                                                    "border-foreground/20 bg-brand-300"
-                                            )}
-                                            onClick={() =>
-                                                setSelectedTemplateId(template.id)
-                                            }
-                                        >
-                                            <ItemContent>
-                                                <ItemTitle
-                                                    className={cn("", isActive && "")}
-                                                >
-                                                    {template.name}
-                                                </ItemTitle>
-                                            </ItemContent>
-                                            <ItemActions className="flex w-full justify-end">
-                                                <Button
-                                                    size="sm"
-                                                    variant={"ghost"}
-                                                    disabled={!template.demoUrl}
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        if (template.demoUrl) {
-                                                            window.open(
-                                                                template.demoUrl,
-                                                                "_blank"
-                                                            );
-                                                        }
-                                                    }}
-                                                >
-                                                    <span>Link</span>
-                                                    <ExternalLink />
-                                                </Button>
-                                                {/* <Button
-                                                    variant={
-                                                        template.demoUrl
-                                                            ? "default"
-                                                            : "secondary"
-                                                    }
-                                                    disabled={!template.demoUrl}
-                                                >
-                                                    <span>Demo</span>
-                                                </Button> */}
-                                            </ItemActions>
-                                        </Item>
-                                    );
-                                })}
-                            </div>
+                                        return (
+                                            <motion.button
+                                                key={template.id}
+                                                type="button"
+                                                layout
+                                                initial={false}
+                                                animate={{
+                                                    opacity: hasDemo ? 1 : 0.45,
+                                                }}
+                                                transition={{
+                                                    layout: {
+                                                        duration: 0.3,
+                                                        ease: [0.25, 0.1, 0.25, 1],
+                                                    },
+                                                    opacity: { duration: 0.2 },
+                                                }}
+                                                className={cn(
+                                                    "group/item relative flex w-full cursor-pointer items-center gap-2.5 rounded-xl px-3 py-2.5 text-left transition-colors duration-150",
+                                                    isActive
+                                                        ? "bg-clr-950 text-clr-50"
+                                                        : hasDemo
+                                                          ? "text-clr-700 hover:bg-clr-100"
+                                                          : "text-clr-400 cursor-default"
+                                                )}
+                                                onClick={() => {
+                                                    if (hasDemo)
+                                                        selectTemplate(template.id);
+                                                }}
+                                                disabled={!hasDemo}
+                                            >
+                                                {/* Active indicator bar */}
+                                                {isActive && (
+                                                    <motion.span
+                                                        layoutId="active-bar"
+                                                        className="bg-clr-50 absolute top-1/2 left-1 h-8 w-0.75 -translate-y-1/2 rounded-full"
+                                                        style={{ y: "-50%" }}
+                                                        transition={{
+                                                            layout: {
+                                                                duration: 0.3,
+                                                                ease: [
+                                                                    0.25, 0.1, 0.25, 1,
+                                                                ],
+                                                            },
+                                                        }}
+                                                    />
+                                                )}
+
+                                                {/* Content */}
+                                                <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                                                    <span
+                                                        className={cn(
+                                                            "font-heading truncate text-sm font-medium",
+                                                            isActive
+                                                                ? "text-clr-50"
+                                                                : "text-clr-800"
+                                                        )}
+                                                    >
+                                                        {template.name}
+                                                    </span>
+                                                    <span
+                                                        className={cn(
+                                                            "truncate text-xs",
+                                                            isActive
+                                                                ? "text-clr-400"
+                                                                : "text-clr-500"
+                                                        )}
+                                                    >
+                                                        {hasDemo
+                                                            ? template.category
+                                                            : "Brak demo"}
+                                                    </span>
+                                                </div>
+
+                                                {/* Link & arrow */}
+                                                {hasDemo && (
+                                                    <div className="flex shrink-0 items-center gap-1">
+                                                        {isActive && template.demoUrl && (
+                                                            <a
+                                                                href={template.demoUrl}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="text-clr-400 hover:text-clr-200 flex items-center rounded-md p-1 transition-colors"
+                                                                onClick={(e) =>
+                                                                    e.stopPropagation()
+                                                                }
+                                                            >
+                                                                <ExternalLink className="size-3.5" />
+                                                            </a>
+                                                        )}
+                                                        <ArrowRight
+                                                            className={cn(
+                                                                "size-4 transition-opacity duration-150",
+                                                                isActive
+                                                                    ? "text-clr-400"
+                                                                    : "text-clr-300 opacity-0 group-hover/item:opacity-100"
+                                                            )}
+                                                        />
+                                                    </div>
+                                                )}
+                                            </motion.button>
+                                        );
+                                    })}
+                                </div>
+                            </LayoutGroup>
                         </ScrollArea>
                     </aside>
 
                     {/* Main Content - Iframe */}
 
-                    <div className="w-[calc(100%-256px)] flex-1 p-0">
+                    <div className="relative w-[calc(100%-256px)] flex-1 p-0">
+                        {/* Loading overlay */}
+                        <AnimatePresence>
+                            {isLoading && currentDemoUrl && (
+                                <motion.div
+                                    key="loading"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="absolute inset-0 z-10 flex items-center justify-center bg-white/80 backdrop-blur-sm"
+                                >
+                                    <div className="flex flex-col items-center gap-3">
+                                        <Loader2 className="text-clr-400 size-8 animate-spin" />
+                                        <span className="text-clr-500 text-sm">
+                                            Ładowanie szablonu...
+                                        </span>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
                         <div className="flex h-full items-center justify-center">
                             {currentDemoUrl ? (
                                 deviceType === "fullscreen" ? (
@@ -291,6 +382,7 @@ function TemplateDemoContent() {
                                         title="Device Preview"
                                         className="size-full border-0"
                                         sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation-by-user-activation"
+                                        onLoad={handleIframeLoad}
                                     />
                                 ) : (
                                     <div className="flex h-[calc(100%-1rem)] w-[calc(100%-1rem)] items-center justify-center p-4">
@@ -302,6 +394,7 @@ function TemplateDemoContent() {
                                             startHeight={
                                                 deviceDimensions[deviceType].height
                                             }
+                                            onLoad={handleIframeLoad}
                                         />
                                     </div>
                                 )
