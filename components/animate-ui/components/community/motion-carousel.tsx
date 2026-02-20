@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { EmblaCarouselType, EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
@@ -139,12 +140,8 @@ function MotionCarousel<T = React.ReactNode>(props: PropType<T>) {
                 </div>
             </div>
 
-            <div className="flex justify-between">
-                <Button size="icon" onClick={onPrev} disabled={prevDisabled}>
-                    <ChevronLeft className="size-5" />
-                </Button>
-
-                <div className="flex flex-wrap items-center justify-end gap-2">
+            <div className="flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="order-1 flex flex-wrap items-center justify-center sm:order-2 sm:justify-center sm:gap-2">
                     {scrollSnaps.map((_, index) => (
                         <DotButton
                             shouldBlur={shouldBlur}
@@ -160,9 +157,27 @@ function MotionCarousel<T = React.ReactNode>(props: PropType<T>) {
                     ))}
                 </div>
 
-                <Button size="icon" onClick={onNext} disabled={nextDisabled}>
-                    <ChevronRight className="size-5" />
-                </Button>
+                <div className="order-2 flex items-center gap-3 sm:order-1 sm:contents">
+                    <Button
+                        size="icon"
+                        onClick={onPrev}
+                        disabled={prevDisabled}
+                        variant={"secondary"}
+                        className="sm:order-1"
+                    >
+                        <ChevronLeft className="size-5" />
+                    </Button>
+
+                    <Button
+                        size="icon"
+                        onClick={onNext}
+                        disabled={nextDisabled}
+                        variant={"secondary"}
+                        className="sm:order-3"
+                    >
+                        <ChevronRight className="size-5" />
+                    </Button>
+                </div>
             </div>
         </div>
     );
@@ -174,7 +189,23 @@ function DotButton({
     onClick,
     shouldBlur = true,
 }: DotButtonProps & { shouldBlur?: boolean }) {
+    const isMobile = useIsMobile();
     const labelWidth = Math.max(12, label.length * 8 + 24);
+
+    if (isMobile) {
+        return (
+            <button
+                type="button"
+                onClick={onClick}
+                aria-label={label}
+                className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full"
+            >
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-black">
+                    {selected ? <span className="size-2 rounded-full bg-white" /> : null}
+                </span>
+            </button>
+        );
+    }
 
     return (
         <motion.button

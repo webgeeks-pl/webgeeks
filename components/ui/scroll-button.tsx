@@ -62,7 +62,10 @@ export default function ScrollButton({
         : true;
 
     function onClick(e: MouseEvent) {
-        const element = document.querySelector(target ?? "");
+        if (!target) return;
+
+        const element = document.querySelector(target);
+
         if (as === "link" && href) {
             redirect({ href, locale });
         }
