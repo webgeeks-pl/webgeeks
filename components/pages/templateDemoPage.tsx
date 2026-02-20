@@ -301,7 +301,7 @@ function TemplateDemoContent() {
                                                 <div className="flex min-w-0 flex-1 flex-col gap-0.5">
                                                     <span
                                                         className={cn(
-                                                            "font-heading truncate text-sm font-medium",
+                                                            "font-heading text-sm font-medium",
                                                             isActive
                                                                 ? "text-clr-50"
                                                                 : "text-clr-800"
