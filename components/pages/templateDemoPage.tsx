@@ -35,12 +35,13 @@ import { templates } from "./templatesPage";
 type DeviceType = "desktop" | "mobile" | "fullscreen";
 
 export default function TemplateDemoPage() {
+    const tDemo = useTranslations("pages.demo");
     return (
         <Suspense
             fallback={
                 <Page>
                     <div className="flex min-h-screen items-center justify-center">
-                        Ładowanie...
+                        {tDemo("loading")}
                     </div>
                 </Page>
             }
@@ -143,17 +144,16 @@ function TemplateDemoContent() {
             <Page>
                 <div className="flex min-h-screen items-center justify-center">
                     <div className="space-y-4 text-center">
-                        <p className="text-lg">
-                            Widok demo niedostępny na urządzeniach mobilnych
-                        </p>
+                        <p className="text-lg">{tDemo("mobileView.notAvailable")}</p>
                         <p className="text-muted-foreground text-sm">
-                            Otwórz demo na komputerze, aby zobaczyć podgląd szablonu. Lub
-                            wejdź na ten link z telefonu, aby otworzyć demo bezpośrednio:{" "}
+                            {tDemo("mobileView.description")}
                             {currentDemoUrl}
                         </p>
                         <div className="xs:flex-row flex flex-col items-center justify-center gap-2">
                             <Button asChild variant="secondary">
-                                <Link href="/templates">Wróć do listy szablonów</Link>
+                                <Link href="/templates">
+                                    {tDemo("mobileView.buttons.back")}
+                                </Link>
                             </Button>
                             <Button asChild className="">
                                 <a
@@ -161,7 +161,7 @@ function TemplateDemoContent() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Otwórz demo{" "}
+                                    {tDemo("mobileView.buttons.openDemo")}{" "}
                                     <ExternalLink className="inline-block h-4 w-4" />
                                 </a>
                             </Button>
@@ -186,7 +186,9 @@ function TemplateDemoContent() {
                             className="mb-4 flex items-center justify-between"
                             ref={asideHeaderRef}
                         >
-                            <h1 className="text-lg font-semibold">Szablony</h1>
+                            <h1 className="text-lg font-semibold">
+                                {tDemo("sidebar.title")}
+                            </h1>
 
                             <Tabs
                                 value={deviceType}
@@ -319,7 +321,7 @@ function TemplateDemoContent() {
                                                     >
                                                         {hasDemo
                                                             ? template.category
-                                                            : "Brak demo"}
+                                                            : tDemo("noDemoAvailable")}
                                                     </span>
                                                 </div>
 
@@ -374,7 +376,7 @@ function TemplateDemoContent() {
                                     <div className="flex flex-col items-center gap-3">
                                         <Loader2 className="text-clr-400 size-8 animate-spin" />
                                         <span className="text-clr-500 text-sm">
-                                            Ładowanie szablonu...
+                                            {tDemo("loading")}
                                         </span>
                                     </div>
                                 </motion.div>

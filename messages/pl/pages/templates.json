@@ -10,7 +10,12 @@
             "description": "Elegancka i profesjonalna strona biznesowa z nowoczesnymi wzorcami projektowania",
             "category": "Biznes",
             "tags": ["Profesjonalny", "Nowoczesny", "Korporacyjny"],
-            "features": ["Responsywny Design", "Optymalizacja SEO", "Szybkie Ładowanie", "Formularze Kontaktowe"]
+            "features": [
+                "Responsywny Design",
+                "Optymalizacja SEO",
+                "Szybkie Ładowanie",
+                "Formularze Kontaktowe"
+            ]
         },
         {
             "id": "e-commerce",
@@ -18,7 +23,12 @@
             "description": "W pełni funkcjonalny sklep internetowy z koszykiem i systemem płatności",
             "category": "E-Commerce",
             "tags": ["Sklep", "Produkty", "Płatności"],
-            "features": ["Katalog Produktów", "Koszyk", "Bezpieczne Płatności", "Panel Administracyjny"]
+            "features": [
+                "Katalog Produktów",
+                "Koszyk",
+                "Bezpieczne Płatności",
+                "Panel Administracyjny"
+            ]
         },
         {
             "id": "portfolio",
@@ -26,7 +36,12 @@
             "description": "Zaprezentuj swoją pracę dzięki temu wspaniałemu szablonowi portfolio",
             "category": "Portfolio",
             "tags": ["Kreatywny", "Galeria", "Prezentacja"],
-            "features": ["Galeria Zdjęć", "Szczegóły Projektów", "Formularz Kontaktowy", "Animacje"]
+            "features": [
+                "Galeria Zdjęć",
+                "Szczegóły Projektów",
+                "Formularz Kontaktowy",
+                "Animacje"
+            ]
         },
         {
             "id": "restaurant",
@@ -34,7 +49,12 @@
             "description": "Piękny szablon dla restauracji z menu i systemem rezerwacji",
             "category": "Biznes",
             "tags": ["Jedzenie", "Menu", "Rezerwacje"],
-            "features": ["Wyświetlanie Menu", "Rezerwacje Online", "Galeria", "Mapa Lokalizacji"]
+            "features": [
+                "Wyświetlanie Menu",
+                "Rezerwacje Online",
+                "Galeria",
+                "Mapa Lokalizacji"
+            ]
         },
         {
             "id": "landing-page",
@@ -42,7 +62,12 @@
             "description": "Wysoko konwertująca strona docelowa dla produktów SaaS",
             "category": "Marketing",
             "tags": ["SaaS", "Konwersja", "Marketing"],
-            "features": ["Sekcja Hero", "Prezentacja Funkcji", "Tabele Cenowe", "Opinie Klientów"]
+            "features": [
+                "Sekcja Hero",
+                "Prezentacja Funkcji",
+                "Tabele Cenowe",
+                "Opinie Klientów"
+            ]
         },
         {
             "id": "blog",

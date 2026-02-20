@@ -1,0 +1,24 @@
+{
+    "sidebar": {
+        "title": "Vorlagen"
+    },
+    "mobileView": {
+        "notAvailable": "Die Demo-Ansicht ist auf Mobilgeräten nicht verfügbar",
+        "description": "Öffnen Sie die Demo auf einem Computer, um eine Vorschau der Vorlage anzuzeigen. Oder öffnen Sie diesen Link auf Ihrem Telefon, um die Demo direkt zu starten: ",
+        "buttons": {
+            "back": "Zurück zur Vorlagenliste",
+            "openDemo": "Demo öffnen"
+        }
+    },
+    "loading": "Vorlage wird geladen...",
+    "noDemo": "Demo für diese Vorlage nicht verfügbar",
+    "noDemoAvailable": "Keine Demo",
+    "cta": {
+        "title": "Projekt starten",
+        "description": "Nutzen Sie unsere Vorlagen, um schnell mit Ihrem Projekt zu beginnen. Jede Vorlage ist vollständig anpassbar und erweiterbar.",
+        "buttons": {
+            "primary": "mehr erfahren",
+            "secondary": "jetzt beginnen"
+        }
+    }
+}

@@ -3,6 +3,7 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useState } from "react";
 import Page from "../layout/page";
@@ -131,23 +132,32 @@ export const templates: Template[] = [
     },
 ];
 
-const categories = [
-    "Wszystkie",
-    "Biznes",
-    "E-Commerce",
-    "Portfolio",
-    "Marketing",
-    "Blog",
-];
-
 export default function TemplatesPage() {
+    const t = useTranslations("pages.templates");
+    const categories = t.raw("categories") as string[];
+    const templatesFromMessages = t.raw("templates") as Omit<
+        Template,
+        "desktopImage" | "mobileImage" | "demoUrl"
+    >[];
+
+    // Merge templates with demo URLs from hardcoded templates
+    const templatesWithDemoUrls: Template[] = templatesFromMessages.map((template) => {
+        const hardcodedTemplate = templates.find((t) => t.id === template.id);
+        return {
+            ...template,
+            desktopImage: hardcodedTemplate?.desktopImage || "/template-hero.webp",
+            mobileImage: hardcodedTemplate?.mobileImage || "/strona.jpeg",
+            demoUrl: hardcodedTemplate?.demoUrl,
+        };
+    });
+
     const [selectedCategory, setSelectedCategory] = useState("Wszystkie");
     const isMobile = useIsMobile();
 
     const filteredTemplates =
         selectedCategory === "Wszystkie"
-            ? templates
-            : templates.filter((t) => t.category === selectedCategory);
+            ? templatesWithDemoUrls
+            : templatesWithDemoUrls.filter((t) => t.category === selectedCategory);
 
     return (
         <Page>
@@ -155,10 +165,9 @@ export default function TemplatesPage() {
             <Section className="py-size-xl">
                 <SectionContent className="gap-size-xl">
                     <div className="space-y-3 text-center">
-                        <SectionTitle>Nasze Szablony</SectionTitle>
+                        <SectionTitle>{t("pageTitle")}</SectionTitle>
                         <SectionLead className="mx-auto max-w-2xl">
-                            Gotowe rozwiązania dostosowane do Twoich potrzeb - od
-                            wizytówek po sklepy internetowe
+                            {t("pageLead")}
                         </SectionLead>
                     </div>
 
@@ -166,12 +175,12 @@ export default function TemplatesPage() {
                     <div className="flex flex-wrap justify-center gap-2">
                         {categories.map((category) => (
                             <Button
-                                key={category}
+                                key={String(category)}
                                 variant={
                                     selectedCategory === category ? "default" : "outline"
                                 }
                                 size="sm"
-                                onClick={() => setSelectedCategory(category)}
+                                onClick={() => setSelectedCategory(String(category))}
                             >
                                 {category}
                             </Button>
@@ -260,7 +269,7 @@ export default function TemplatesPage() {
 
                     {filteredTemplates.length === 0 && (
                         <div className="text-muted-foreground py-12 text-center">
-                            Nie znaleziono szablonów w tej kategorii.
+                            {t("notFound")}
                         </div>
                     )}
                 </SectionContent>
@@ -273,23 +282,21 @@ export default function TemplatesPage() {
                 <SectionContent className="gap-size-lg text-center">
                     <div className="mx-auto max-w-3xl space-y-4">
                         <SectionTitle className="text-3xl sm:text-4xl">
-                            Potrzebujesz Czegoś Wyjątkowego?
+                            {t("cta.title")}
                         </SectionTitle>
                         <SectionLead className="text-lg">
-                            Tworzymy w pełni niestandardowe strony internetowe dostosowane
-                            do Twoich specyficznych potrzeb, identyfikacji marki i celów
-                            biznesowych.
+                            {t("cta.description")}
                         </SectionLead>
                     </div>
                     <div className="flex flex-wrap justify-center gap-4">
                         <Button size="lg" asChild>
                             <Link href="/contact">
-                                Rozpocznij Projekt
+                                {t("cta.buttons.primary")}
                                 <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>
                         </Button>
                         <Button size="lg" variant="outline" asChild>
-                            <Link href="/offer">Zobacz Usługi</Link>
+                            <Link href="/offer">{t("cta.buttons.secondary")}</Link>
                         </Button>
                     </div>
                 </SectionContent>
