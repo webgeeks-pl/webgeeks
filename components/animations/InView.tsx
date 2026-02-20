@@ -45,6 +45,21 @@ export function InView({
     const animationContext = useAnimationContext();
     const pathname = usePathname();
 
+    // Track if window has loaded
+    const [windowLoaded, setWindowLoaded] = useState(
+        () => typeof window !== "undefined" && document.readyState === "complete"
+    );
+
+    useEffect(() => {
+        // If already loaded, nothing to do
+        if (windowLoaded) return;
+
+        // Listen for load event
+        const handleLoad = () => setWindowLoaded(true);
+        window.addEventListener("load", handleLoad);
+        return () => window.removeEventListener("load", handleLoad);
+    }, [windowLoaded]);
+
     // For global once to work properly, an ID must be provided
     const id = providedId;
 
@@ -94,9 +109,10 @@ export function InView({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const MotionComponent = motion[as as keyof typeof motion] as any;
 
-    // Determine if should be visible
+    // Determine if should be visible - only start animation after window loads
     const shouldBeVisible =
-        isInView || hasStartedAnimation || forceVisible || hasAnimatedGlobally;
+        windowLoaded &&
+        (isInView || hasStartedAnimation || forceVisible || hasAnimatedGlobally);
 
     // If animation already happened globally, start as visible to prevent re-animation
     const initialState = hasAnimatedGlobally ? "visible" : "hidden";

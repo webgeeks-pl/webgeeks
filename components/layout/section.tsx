@@ -43,7 +43,7 @@ export function SectionContent({ children, className, ...props }: BasicComponent
     return (
         <Tag
             className={cn(
-                "xs:container flex w-full max-w-[1536px]! flex-col items-center px-3",
+                "xs:container flex w-full max-w-[1536px]! flex-col items-center px-3 sm:px-5",
                 className
             )}
             {...props}

@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { z } from "zod";
-import Animate from "../animations/Animate";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
 import { Button } from "../ui/button";
@@ -28,6 +27,7 @@ export function HomeHero() {
                     </span>
                     <span>{t("hero.badges.top")}</span>
                 </Badge> */}
+
                 <Text
                     as="span"
                     intent="h1"
@@ -39,24 +39,18 @@ export function HomeHero() {
                         className=""
                     />
                 </Text>
-                <Animate
-                    variant="fromBottom"
-                    duration={0.5}
-                    delay={0.2}
-                    once
-                    id="home-hero-lead"
-                >
-                    <Text intent="lead" className="max-w-2xl">
-                        {t("hero.leadStart")}
-                        <TextShimmer
-                            as="span"
-                            className="font-bold [--base-color:var(--color-sky-500)] [--base-gradient-color:var(--color-sky-300)]"
-                        >
-                            {t("hero.leadHighlight")}
-                        </TextShimmer>
-                        {t("hero.leadEnd")}
-                    </Text>
-                </Animate>
+
+                <Text intent="lead" className="max-w-2xl">
+                    {t("hero.leadStart")}
+                    <TextShimmer
+                        as="span"
+                        className="font-bold [--base-color:var(--color-sky-500)] [--base-gradient-color:var(--color-sky-300)]"
+                    >
+                        {t("hero.leadHighlight")}
+                    </TextShimmer>
+                    {t("hero.leadEnd")}
+                </Text>
+
                 <div className="relative flex gap-4">
                     <Button asChild variant="default">
                         <Link href={t("hero.buttons.primary.href")}>

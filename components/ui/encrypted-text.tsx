@@ -57,6 +57,21 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
     const ref = useRef<HTMLSpanElement>(null);
     const isInView = useInView(ref, { once: true });
 
+    // Track if window has loaded
+    const [windowLoaded, setWindowLoaded] = useState(
+        () => typeof window !== "undefined" && document.readyState === "complete"
+    );
+
+    useEffect(() => {
+        // If already loaded, nothing to do
+        if (windowLoaded) return;
+
+        // Listen for load event
+        const handleLoad = () => setWindowLoaded(true);
+        window.addEventListener("load", handleLoad);
+        return () => window.removeEventListener("load", handleLoad);
+    }, [windowLoaded]);
+
     const [revealCount, setRevealCount] = useState<number>(0);
     const animationFrameRef = useRef<number | null>(null);
     const startTimeoutRef = useRef<number | null>(null);
@@ -67,7 +82,8 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
     const [scrambleChars, setScrambleChars] = useState<string[]>(initialScrambleChars);
 
     useEffect(() => {
-        if (!isInView) return;
+        // Only start animation when window is loaded and element is in view
+        if (!isInView || !windowLoaded) return;
 
         // Reset state for a fresh animation whenever dependencies change
         const initial = text ? generateGibberishPreservingSpaces(text, charset) : "";
@@ -135,7 +151,7 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
                 cancelAnimationFrame(animationFrameRef.current);
             }
         };
-    }, [isInView, text, revealDelayMs, charset, flipDelayMs, startDelayMs]);
+    }, [isInView, windowLoaded, text, revealDelayMs, charset, flipDelayMs, startDelayMs]);
 
     if (!text) return null;
 
