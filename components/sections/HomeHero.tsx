@@ -6,6 +6,7 @@ import { z } from "zod";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
 import { Button } from "../ui/button";
+import { EncryptedText } from "../ui/encrypted-text";
 import { TextShimmer } from "../ui/text-shimmer";
 
 export function HomeHero() {
@@ -30,7 +31,11 @@ export function HomeHero() {
                     intent="h1"
                     className="font-heading xs:text-4xl! max-w-5xl text-3xl! font-normal tracking-wide md:text-7xl!"
                 >
-                    {t("hero.title")}
+                    <EncryptedText
+                        startDelayMs={1000}
+                        text={t("hero.title")}
+                        className=""
+                    />
                 </Text>
                 <Text intent="lead" className="max-w-2xl">
                     {t("hero.leadStart")}

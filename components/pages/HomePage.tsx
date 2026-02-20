@@ -19,7 +19,7 @@ export default function HomePage() {
     return (
         <Page>
             <div className="relative flex min-h-screen w-full flex-col justify-between">
-                <div className="bg-brand absolute inset-0 -z-10">
+                <div className="bg-brand/20 absolute inset-0 -z-10">
                     <Dither
                         waveColor={[0.1, 0.9, 1]}
                         disableAnimation={false}
@@ -73,10 +73,9 @@ export default function HomePage() {
             <HomeWhyUs />
             <HomeShowcase />
             <HomeAbout />
+            <HomePackages />
             <Separator decorative />
             <HomeSolutions />
-            <Separator decorative />
-            <HomePackages />
             <Separator decorative />
             <HomeCtaFooter />
         </Page>

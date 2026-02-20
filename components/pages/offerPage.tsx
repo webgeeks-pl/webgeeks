@@ -152,7 +152,7 @@ export default function OfferPage() {
                 </SectionContent>
             </Section>
 
-            <Section className="py-size-2xl bg-brand-darker/50">
+            <Section className="py-size-2xl bg-brand">
                 <SectionContent className="gap-size-md">
                     <SectionHeader>
                         <SectionHeaderContent>

@@ -213,7 +213,7 @@ export function HomeWhyUs() {
                         </CardContent>
                     </Card>
 
-                    <Card className="hover:ring-brand ring-brand bg-brand-hero -order-1 h-full ring-2 md:col-span-2 xl:order-0">
+                    <Card className="hover:ring-brand ring-brand bg-brand -order-1 h-full ring-2 md:col-span-2 xl:order-0">
                         <CardContent className="flex h-full flex-col items-center justify-center gap-2">
                             <SectionHeader>
                                 <SectionHeaderContent>

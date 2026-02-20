@@ -100,7 +100,7 @@ export function HomeShowcase() {
                                 }}
                                 className="group relative h-full w-full max-w-md rounded-lg max-md:mx-auto max-sm:max-w-xs! md:col-start-2 md:row-span-3"
                             > */}
-                            <div className="group relative h-full w-full max-w-md rounded-lg max-md:mx-auto max-sm:max-w-xs! md:col-start-2 md:row-span-3">
+                            <div className="group relative h-full w-full max-w-md rounded-lg max-md:mx-auto max-sm:max-w-xs! md:col-start-2 md:row-span-3 md:mx-auto">
                                 <Iphone src="/strona.jpeg" />
                             </div>
                             {/* </Tilt> */}

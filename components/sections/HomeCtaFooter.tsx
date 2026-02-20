@@ -13,7 +13,7 @@ export function HomeCtaFooter() {
     const t = useTranslations("pages.home.ctaFooter");
 
     return (
-        <Section className="py-size-2xl bg-brand-darker/50">
+        <Section className="py-size-2xl bg-brand">
             <SectionContent className="gap-size-md">
                 <SectionHeader>
                     <SectionHeaderContent className="text-center!">
