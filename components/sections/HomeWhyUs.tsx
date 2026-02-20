@@ -23,6 +23,9 @@ import { TypingAnimation } from "../ui/typing-animation";
 
 export function HomeWhyUs() {
     const t = useTranslations("pages.home.whyUs");
+
+    const tCommon = useTranslations("common");
+
     const benefits = {
         speed: {
             icon: t("benefits.speed.icon"),
@@ -217,7 +220,12 @@ export function HomeWhyUs() {
                         <CardContent className="flex h-full flex-col items-center justify-center gap-2">
                             <SectionHeader>
                                 <SectionHeaderContent>
-                                    <SectionTitle text={t("sectionHeader.title")} />
+                                    <SectionTitle>
+                                        {t("sectionHeader.title")}{" "}
+                                        <span className="font-silkscreen -tracking-widest">
+                                            {tCommon("logo")}
+                                        </span>
+                                    </SectionTitle>
                                     <SectionLead
                                         text={t("sectionHeader.description")}
                                         muted={false}

@@ -17,7 +17,7 @@ import { TextReveal } from "../ui/text-reveal";
 
 export default function HomePage() {
     return (
-        <Page>
+        <Page id="home-start">
             <div className="relative flex min-h-screen w-full flex-col justify-between">
                 <div className="bg-brand/20 absolute inset-0 -z-10">
                     <Dither
@@ -58,7 +58,10 @@ export default function HomePage() {
                         revealEnd={0.6}
                         textClassName="text-lg! sm:text-xl! md:text-2xl! lg:text-3xl! xl:text-4xl! 2xl:text-5xl!"
                         header={
-                            <Text intent="sectionHeader" className="mb-size-md text-3xl">
+                            <Text
+                                intent="sectionHeader"
+                                className="mb-size-xs sm:mb-size-md text-2xl sm:text-3xl"
+                            >
                                 Zwiększ obecność swojej firmy
                             </Text>
                         }

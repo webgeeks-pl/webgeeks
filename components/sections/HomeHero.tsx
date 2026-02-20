@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { z } from "zod";
+import Animate from "../animations/Animate";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
 import { Button } from "../ui/button";
@@ -17,6 +18,7 @@ export function HomeHero() {
     return (
         <Section
             as="header"
+            id="hero"
             className="py-size-lg xs:py-size-xl sm:py-size-2xl relative mt-20"
         >
             <SectionContent className="gap-size-sm sm:gap-size-md z-10 items-start text-start">
@@ -37,16 +39,24 @@ export function HomeHero() {
                         className=""
                     />
                 </Text>
-                <Text intent="lead" className="max-w-2xl">
-                    {t("hero.leadStart")}
-                    <TextShimmer
-                        as="span"
-                        className="font-bold [--base-color:var(--color-sky-500)] [--base-gradient-color:var(--color-sky-300)]"
-                    >
-                        {t("hero.leadHighlight")}
-                    </TextShimmer>
-                    {t("hero.leadEnd")}
-                </Text>
+                <Animate
+                    variant="fromBottom"
+                    duration={0.5}
+                    delay={0.2}
+                    once
+                    id="home-hero-lead"
+                >
+                    <Text intent="lead" className="max-w-2xl">
+                        {t("hero.leadStart")}
+                        <TextShimmer
+                            as="span"
+                            className="font-bold [--base-color:var(--color-sky-500)] [--base-gradient-color:var(--color-sky-300)]"
+                        >
+                            {t("hero.leadHighlight")}
+                        </TextShimmer>
+                        {t("hero.leadEnd")}
+                    </Text>
+                </Animate>
                 <div className="relative flex gap-4">
                     <Button asChild variant="default">
                         <Link href={t("hero.buttons.primary.href")}>

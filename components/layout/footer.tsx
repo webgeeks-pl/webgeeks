@@ -9,6 +9,7 @@ import type { NavigationRoutes } from "@/lib/types";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { ReactNode } from "react";
+import ScrollButton from "../ui/scroll-button";
 import { Separator } from "../ui/separator";
 
 interface FooterProps {
@@ -41,7 +42,11 @@ export default function Footer({ Logo }: FooterProps) {
                 )}
             >
                 <div className="relative z-10 flex flex-col gap-2 sm:col-span-2 md:col-span-3 xl:col-span-2">
-                    {Logo && <Link href="/">{Logo}</Link>}
+                    {Logo && (
+                        <ScrollButton target="#navigation-top" onRoute="/" className="w-fit">
+                            <Link href="/">{Logo}</Link>
+                        </ScrollButton>
+                    )}
                     <div className="flex flex-col">
                         <Text
                             semantic="h6"

@@ -4,9 +4,9 @@ import Text, { TextProps } from "../typography/text";
 import ScrollToHashOnLoad from "../ui/ScrollToHashOnLoad";
 import Section, { SectionContent } from "./section";
 
-export default function Page({ children, className }: BasicComponentProps) {
+export default function Page({ children, className, id }: BasicComponentProps) {
     return (
-        <div className={cn("overflow-x-hidden", className)}>
+        <div id={id} className={cn("overflow-x-hidden", className)}>
             <ScrollToHashOnLoad />
             {children}
         </div>

@@ -32,20 +32,24 @@ export function HomeFeatures() {
                                 className="bg-brand-200/30 h-full backdrop-blur-sm"
                                 key={index}
                             >
-                                <CardContent className="flex h-full flex-col items-center justify-between text-center">
-                                    <div className="flex flex-col items-center gap-2">
+                                <CardContent className="flex h-full flex-row-reverse items-center justify-between sm:flex-col sm:text-center">
+                                    <div className="flex flex-col items-end sm:items-center sm:gap-2">
                                         <IconContainer
                                             variant={"none"}
                                             Icon={getLucideIcon(icon)}
                                         />
                                         <Text
                                             intent="var"
-                                            className="text-2xl capitalize"
+                                            className="capitalize sm:text-2xl"
                                             text={value}
                                         />
                                     </div>
                                     <div>
-                                        <Text intent="h3" text={title} />
+                                        <Text
+                                            intent="h3"
+                                            text={title}
+                                            className="max-xs:text-base"
+                                        />
                                         <Text intent="small" text={description} />
                                     </div>
                                 </CardContent>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Link, redirect } from "@/i18n/navigation";
+import { Link, redirect, usePathname } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 import Tag, { TagProps } from "../base/tag";
@@ -19,26 +19,55 @@ export type ScrollButtonProps = (ScrollAsButton | ScrollAsLink) & {
     children?: ReactNode;
     className?: string;
     text?: string;
+    options?: ScrollIntoViewOptions;
+    onRoute?: string;
+    routeMatchMode?: "exact" | "pathname" | "full";
 } & Partial<TagProps<any>>;
 
 export default function ScrollButton({
     as = "button",
+    options,
     href,
     target,
     children,
     className,
+    onRoute,
     text,
+    routeMatchMode = "pathname",
     ...props
 }: ScrollButtonProps) {
     const locale = useLocale();
+    const pathname = usePathname();
+
+    // Determine if on the same route based on mode
+    const isSameRoute = onRoute
+        ? (() => {
+              if (routeMatchMode === "exact") {
+                  // Exact pathname match only
+                  return pathname === onRoute;
+              } else if (routeMatchMode === "full") {
+                  // Full URL including query and hash
+                  const fullUrl =
+                      typeof window !== "undefined"
+                          ? window.location.pathname +
+                            window.location.search +
+                            window.location.hash
+                          : pathname;
+                  return fullUrl === onRoute;
+              } else {
+                  // pathname mode (default) - pathname match, ignoring query and hash
+                  return pathname === onRoute;
+              }
+          })()
+        : true;
 
     function onClick(e: MouseEvent) {
         const element = document.querySelector(target ?? "");
         if (as === "link" && href) {
             redirect({ href, locale });
         }
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
+        if (element && isSameRoute) {
+            element.scrollIntoView(options ?? { behavior: "smooth" });
         }
     }
 

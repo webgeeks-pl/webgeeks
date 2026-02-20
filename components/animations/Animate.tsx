@@ -89,9 +89,11 @@ export type AnimateConfigProps = {
     duration?: number;
     ease?: Easing[] | Easing;
     once?: boolean;
+    onceOnMount?: boolean;
     className?: string;
     viewOptions?: Parameters<typeof InView>[0]["viewOptions"];
     as?: keyof HTMLElementTagNameMap;
+    id?: string;
 };
 
 interface AnimateProps extends BasicComponentProps, AnimateConfigProps {
@@ -105,9 +107,11 @@ export default function Animate({
     duration = 0.3,
     variant = "fromBottom",
     ease = "linear",
-    once = true,
+    once = false,
+    onceOnMount = true,
     viewOptions,
     as,
+    id,
 }: AnimateProps) {
     return (
         <>
@@ -116,8 +120,10 @@ export default function Animate({
                 transition={{ duration, ease, delay }}
                 className={className}
                 once={once}
+                onceOnMount={onceOnMount}
                 viewOptions={viewOptions}
                 variants={variants[variant]}
+                id={id}
             >
                 {children}
             </InView>

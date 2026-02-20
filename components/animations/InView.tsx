@@ -1,14 +1,10 @@
 "use client";
+/* eslint-disable react-compiler/react-compiler */
 import useOnMount from "@/hooks/useOnMount";
 import { usePathname } from "@/i18n/navigation";
-import {
-    motion,
-    Transition,
-    useInView,
-    UseInViewOptions,
-    Variant,
-} from "motion/react";
+import { motion, Transition, useInView, UseInViewOptions, Variant } from "motion/react";
 
+import { useAnimationContext } from "@/context/AnimationContext";
 import { ReactNode, useEffect, useRef, useState } from "react";
 
 export type InViewProps = {
@@ -21,8 +17,10 @@ export type InViewProps = {
     viewOptions?: UseInViewOptions;
     as?: React.ElementType;
     once?: boolean;
+    onceOnMount?: boolean;
     onLoad?: () => void;
     className?: string;
+    id?: string;
 };
 
 const defaultVariants = {
@@ -38,13 +36,30 @@ export function InView({
     as = "div",
     className,
     onLoad,
-    once = true,
+    once = false,
+    onceOnMount = true,
+    id: providedId,
 }: InViewProps) {
     const ref = useRef(null);
     const isInView = useInView(ref, viewOptions);
+    const animationContext = useAnimationContext();
+    const pathname = usePathname();
+
+    // For global once to work properly, an ID must be provided
+    const id = providedId;
+
+    // Warn in development if once is true but no id provided
+    useEffect(() => {
+        if (process.env.NODE_ENV === "development" && once && !id) {
+            console.warn(
+                "InView: 'once' is enabled but no 'id' provided. " +
+                    "Global animation tracking requires a unique 'id' prop. " +
+                    "Without it, the animation will replay on every mount."
+            );
+        }
+    }, [once, id]);
 
     const [hasStartedAnimation, setHasStartedAnimation] = useState(false);
-    const pathname = usePathname();
 
     const [forceVisible, setForceVisible] = useState(false);
     useEffect(() => {
@@ -55,30 +70,43 @@ export function InView({
         return () => window.clearTimeout(t);
     }, [pathname]);
 
-    // Mark as started when element enters view for the first time
+    // Mark as started when element enters view for the first time (onceOnMount)
     useEffect(() => {
-        if (once && isInView && !hasStartedAnimation) {
+        if (onceOnMount && isInView && !hasStartedAnimation) {
             // eslint-disable-next-line
             setHasStartedAnimation(true);
         }
-    }, [isInView, once, hasStartedAnimation]);
+    }, [isInView, onceOnMount, hasStartedAnimation]);
+
+    // Handle global once with AnimationContext
+    const hasAnimatedGlobally = once && id ? animationContext.hasAnimated(id) : false;
+
+    useEffect(() => {
+        if (once && id && isInView && !hasAnimatedGlobally) {
+            animationContext.markAsAnimated(id);
+        }
+    }, [isInView, once, id, hasAnimatedGlobally, animationContext]);
 
     useOnMount(() => {
         onLoad?.();
     });
 
-    const MotionComponent = motion[as as keyof typeof motion] as typeof as;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const MotionComponent = motion[as as keyof typeof motion] as any;
+
+    // Determine if should be visible
+    const shouldBeVisible =
+        isInView || hasStartedAnimation || forceVisible || hasAnimatedGlobally;
+
+    // If animation already happened globally, start as visible to prevent re-animation
+    const initialState = hasAnimatedGlobally ? "visible" : "hidden";
 
     return (
         <MotionComponent
             className={className}
             ref={ref}
-            initial="hidden"
-            animate={
-                isInView || hasStartedAnimation || forceVisible
-                    ? "visible"
-                    : "hidden"
-            }
+            initial={initialState}
+            animate={shouldBeVisible ? "visible" : "hidden"}
             variants={variants}
             transition={transition}
         >
