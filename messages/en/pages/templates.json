@@ -1,0 +1,68 @@
+{
+    "pageTitle": "Our Templates",
+    "pageLead": "Ready-made solutions tailored to your needs - from business cards to e-commerce stores",
+    "categories": ["All", "Business", "E-Commerce", "Portfolio", "Marketing", "Blog"],
+    "notFound": "No templates found in this category.",
+    "templates": [
+        {
+            "id": "modern-business",
+            "name": "Modern Business",
+            "description": "An elegant and professional business website with modern design patterns",
+            "category": "Business",
+            "tags": ["Professional", "Modern", "Corporate"],
+            "features": ["Responsive Design", "SEO Optimization", "Fast Loading", "Contact Forms"]
+        },
+        {
+            "id": "e-commerce",
+            "name": "E-Commerce Store",
+            "description": "A fully functional online store with cart and payment system",
+            "category": "E-Commerce",
+            "tags": ["Store", "Products", "Payments"],
+            "features": ["Product Catalog", "Shopping Cart", "Secure Payments", "Admin Panel"]
+        },
+        {
+            "id": "portfolio",
+            "name": "Creative Portfolio",
+            "description": "Showcase your work with this amazing portfolio template",
+            "category": "Portfolio",
+            "tags": ["Creative", "Gallery", "Presentation"],
+            "features": ["Photo Gallery", "Project Details", "Contact Form", "Animations"]
+        },
+        {
+            "id": "restaurant",
+            "name": "Restaurant & Cafe",
+            "description": "A beautiful template for restaurants with menu and reservation system",
+            "category": "Business",
+            "tags": ["Food", "Menu", "Reservations"],
+            "features": ["Menu Display", "Online Reservations", "Gallery", "Location Map"]
+        },
+        {
+            "id": "landing-page",
+            "name": "SaaS Landing Page",
+            "description": "A high-converting landing page for SaaS products",
+            "category": "Marketing",
+            "tags": ["SaaS", "Conversion", "Marketing"],
+            "features": ["Hero Section", "Feature Showcase", "Pricing Tables", "Customer Testimonials"]
+        },
+        {
+            "id": "blog",
+            "name": "Modern Blog",
+            "description": "A clean and minimalist blog template with excellent reading experience",
+            "category": "Blog",
+            "tags": ["Content", "Articles", "Writing"],
+            "features": ["Article Layouts", "Categories", "Search", "Comments"]
+        }
+    ],
+    "cta": {
+        "title": "Need Something Unique?",
+        "description": "We create fully custom websites tailored to your specific needs, brand identity, and business goals.",
+        "buttons": {
+            "primary": "Start a Project",
+            "secondary": "View Services"
+        }
+    },
+    "buttons": {
+        "openDemo": "Demo",
+        "openLink": "Link"
+    }
+}

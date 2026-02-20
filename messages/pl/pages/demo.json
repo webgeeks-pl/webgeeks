@@ -1,0 +1,24 @@
+{
+    "sidebar": {
+        "title": "Szablony"
+    },
+    "mobileView": {
+        "notAvailable": "Widok demo niedostępny na urządzeniach mobilnych",
+        "description": "Otwórz demo na komputerze, aby zobaczyć podgląd szablonu. Lub wejdź na ten link z telefonu, aby otworzyć demo bezpośrednio: ",
+        "buttons": {
+            "back": "Wróć do listy szablonów",
+            "openDemo": "Otwórz demo"
+        }
+    },
+    "loading": "Ładowanie szablonu...",
+    "noDemo": "Brak dostępnego demo dla tego szablonu",
+    "noDemoAvailable": "Brak demo",
+    "cta": {
+        "title": "Rozpocznij projekt",
+        "description": "Skorzystaj z naszych szablonów, aby szybko wystartować z projektem. Każdy szablon jest w pełni konfigurowalny i gotowy do rozbudowy.",
+        "buttons": {
+            "primary": "learn more",
+            "secondary": "get started"
+        }
+    }
+}

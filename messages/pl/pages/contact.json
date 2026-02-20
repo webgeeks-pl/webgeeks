@@ -1,4 +1,41 @@
 {
+    "pageTitle": "Kontakt",
+    "pageLead": "Skontaktuj się z nami i stwórzmy coś wyjątkowego razem.",
+    "contactMethods": [
+        {
+            "name": "Email",
+            "description": "Napisz do nas maila, a odpowiemy najszybciej jak to możliwe.",
+            "contact": "webgeeks@proton.me",
+            "info": ""
+        },
+        {
+            "name": "Formularz kontaktowy",
+            "description": "Wypełnij formularz, a my skontaktujemy się z Tobą.",
+            "contact": "Zjedz nizej",
+            "info": "Tutaj najszybciej odpowiadamy"
+        }
+    ],
+    "responseGuarantee": "Gwarantujemy odpowiedź w ciągu 24 godzin w dni robocze.",
+    "formSection": {
+        "title": "Pozwól nam poznać twój biznes",
+        "subtitle": "Uzupełnij formularz, a my dostosujemy ofertę do Twoich potrzeb tak aby strona spełniała Twoje oczekiwania.",
+        "sidebarBadge": "Skontaktuj się",
+        "sidebarTitle": "Masz pomysł?",
+        "sidebarTitleContinued": "Porozmawiajmy.",
+        "sidebarDescription": "Opisz swój projekt, a razem dobierzemy rozwiązanie dla Twojego biznesu.",
+        "stats": [
+            {
+                "value": "200+",
+                "label": "Zrealizowanych projektów"
+            },
+            {
+                "value": "98%",
+                "label": "Zadowolonych klientów"
+            }
+        ],
+        "responseNote": "Odpowiadamy zazwyczaj w ciągu 24h.",
+        "noSpam": "Żadnego spamu, obiecujemy."
+    },
     "form": {
         "required": "To pole jest wymagane",
         "invalidEmail": "Proszę wprowadzić prawidłowy adres e-mail",

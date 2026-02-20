@@ -175,12 +175,12 @@ export default function TemplatesPage() {
                     </div>
 
                     {/* Templates Grid */}
-                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid w-full gap-8 sm:grid-cols-2 lg:grid-cols-3">
                         {filteredTemplates.map((template) => (
                             <Card
                                 key={template.id}
                                 size="sm"
-                                className="overflow-hidden pt-0!"
+                                className="w-full overflow-hidden pt-0!"
                             >
                                 <div className="relative aspect-video w-full overflow-hidden">
                                     <Image
@@ -204,7 +204,7 @@ export default function TemplatesPage() {
                                         {template.description}
                                     </CardDescription>
                                 </CardHeader>
-                                <CardContent className="space-y-2">
+                                <CardContent className="w-full space-y-2">
                                     <div className="flex flex-wrap gap-1.5">
                                         {template.tags.map((tag) => (
                                             <Badge

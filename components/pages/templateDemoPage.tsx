@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, LayoutGroup } from "motion/react";
 import * as motion from "motion/react-client";
-import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useEffectEvent, useRef, useState } from "react";
 import Page from "../layout/page";
@@ -51,7 +51,7 @@ export default function TemplateDemoPage() {
 }
 
 function TemplateDemoContent() {
-    const locale = useLocale();
+    const tDemo = useTranslations("pages.demo");
     const searchParams = useSearchParams();
     const initialTemplateId = searchParams.get("template") || templates[0]?.id;
     const demoContainerRef = useRef<HTMLDivElement>(null);
@@ -408,7 +408,7 @@ function TemplateDemoContent() {
                             ) : (
                                 <div className="flex h-full items-center justify-center">
                                     <p className="text-muted-foreground">
-                                        Brak dostępnego demo dla tego szablonu
+                                        {tDemo("noDemo")}
                                     </p>
                                 </div>
                             )}
@@ -423,11 +423,9 @@ function TemplateDemoContent() {
                 <SectionContent className="gap-size-md">
                     <SectionHeader>
                         <SectionHeaderContent>
-                            <SectionTitle text={"Rozpocznij projekt"} />
+                            <SectionTitle text={tDemo("cta.title")} />
                             <SectionLead
-                                text={
-                                    "Skorzystaj z naszych szablonów, aby szybko wystartować z projektem. Każdy szablon jest w pełni konfigurowalny i gotowy do rozbudowy."
-                                }
+                                text={tDemo("cta.description")}
                                 muted={false}
                                 className="text-black"
                             />
@@ -436,10 +434,10 @@ function TemplateDemoContent() {
 
                     <div className="flex gap-4">
                         <Button variant="secondary" className="flex-1">
-                            {"learn more"}
+                            {tDemo("cta.buttons.secondary")}
                         </Button>
                         <Button variant="default" className="flex-1">
-                            {"get started"}
+                            {tDemo("cta.buttons.primary")}
                         </Button>
                     </div>
                 </SectionContent>

@@ -5,6 +5,7 @@ export const messagesDirStructure = {
         home: "pages/home.json",
         offer: "pages/offer.json",
         contact: "pages/contact.json",
+        demo: "pages/demo.json",
     },
 } as const;
 

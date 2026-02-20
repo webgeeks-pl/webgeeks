@@ -1,0 +1,68 @@
+{
+    "pageTitle": "Nasze Szablony",
+    "pageLead": "Gotowe rozwiązania dostosowane do Twoich potrzeb - od wizytówek po sklepy internetowe",
+    "categories": ["Wszystkie", "Biznes", "E-Commerce", "Portfolio", "Marketing", "Blog"],
+    "notFound": "Nie znaleziono szablonów w tej kategorii.",
+    "templates": [
+        {
+            "id": "modern-business",
+            "name": "Nowoczesny Biznes",
+            "description": "Elegancka i profesjonalna strona biznesowa z nowoczesnymi wzorcami projektowania",
+            "category": "Biznes",
+            "tags": ["Profesjonalny", "Nowoczesny", "Korporacyjny"],
+            "features": ["Responsywny Design", "Optymalizacja SEO", "Szybkie Ładowanie", "Formularze Kontaktowe"]
+        },
+        {
+            "id": "e-commerce",
+            "name": "Sklep E-Commerce",
+            "description": "W pełni funkcjonalny sklep internetowy z koszykiem i systemem płatności",
+            "category": "E-Commerce",
+            "tags": ["Sklep", "Produkty", "Płatności"],
+            "features": ["Katalog Produktów", "Koszyk", "Bezpieczne Płatności", "Panel Administracyjny"]
+        },
+        {
+            "id": "portfolio",
+            "name": "Portfolio Kreatywne",
+            "description": "Zaprezentuj swoją pracę dzięki temu wspaniałemu szablonowi portfolio",
+            "category": "Portfolio",
+            "tags": ["Kreatywny", "Galeria", "Prezentacja"],
+            "features": ["Galeria Zdjęć", "Szczegóły Projektów", "Formularz Kontaktowy", "Animacje"]
+        },
+        {
+            "id": "restaurant",
+            "name": "Restauracja i Kawiarnia",
+            "description": "Piękny szablon dla restauracji z menu i systemem rezerwacji",
+            "category": "Biznes",
+            "tags": ["Jedzenie", "Menu", "Rezerwacje"],
+            "features": ["Wyświetlanie Menu", "Rezerwacje Online", "Galeria", "Mapa Lokalizacji"]
+        },
+        {
+            "id": "landing-page",
+            "name": "Landing Page SaaS",
+            "description": "Wysoko konwertująca strona docelowa dla produktów SaaS",
+            "category": "Marketing",
+            "tags": ["SaaS", "Konwersja", "Marketing"],
+            "features": ["Sekcja Hero", "Prezentacja Funkcji", "Tabele Cenowe", "Opinie Klientów"]
+        },
+        {
+            "id": "blog",
+            "name": "Nowoczesny Blog",
+            "description": "Czysty i minimalistyczny szablon bloga z doskonałym doświadczeniem czytania",
+            "category": "Blog",
+            "tags": ["Treść", "Artykuły", "Pisanie"],
+            "features": ["Układy Artykułów", "Kategorie", "Wyszukiwarka", "Komentarze"]
+        }
+    ],
+    "cta": {
+        "title": "Potrzebujesz Czegoś Wyjątkowego?",
+        "description": "Tworzymy w pełni niestandardowe strony internetowe dostosowane do Twoich specyficznych potrzeb, identyfikacji marki i celów biznesowych.",
+        "buttons": {
+            "primary": "Rozpocznij Projekt",
+            "secondary": "Zobacz Usługi"
+        }
+    },
+    "buttons": {
+        "openDemo": "Demo",
+        "openLink": "Link"
+    }
+}

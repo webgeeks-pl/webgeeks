@@ -1,4 +1,41 @@
 {
+    "pageTitle": "Contact",
+    "pageLead": "Get in touch with us and let's create something amazing together.",
+    "contactMethods": [
+        {
+            "name": "Email",
+            "description": "Send us an email and we'll respond as quickly as possible.",
+            "contact": "webgeeks@proton.me",
+            "info": ""
+        },
+        {
+            "name": "Contact Form",
+            "description": "Fill out the form and we'll get back to you.",
+            "contact": "See below",
+            "info": "We respond fastest this way"
+        }
+    ],
+    "responseGuarantee": "We guarantee a response within 24 hours on business days.",
+    "formSection": {
+        "title": "Tell us about your business",
+        "subtitle": "Fill out the form and we'll customize an offer that meets your needs and exceeds your expectations.",
+        "sidebarBadge": "Get in touch",
+        "sidebarTitle": "Got an idea?",
+        "sidebarTitleContinued": "Let's talk.",
+        "sidebarDescription": "Describe your project and together we'll find the perfect solution for your business.",
+        "stats": [
+            {
+                "value": "200+",
+                "label": "Projects completed"
+            },
+            {
+                "value": "98%",
+                "label": "Happy customers"
+            }
+        ],
+        "responseNote": "We usually respond within 24 hours.",
+        "noSpam": "No spam, we promise."
+    },
     "form": {
         "required": "This field is required",
         "invalidEmail": "Please enter a valid email address",
