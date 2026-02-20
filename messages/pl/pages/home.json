@@ -253,7 +253,7 @@
 
     "packages": {
         "sectionHeader": {
-            "title": "Nasza Oferta",
+            "title": "Oferta",
             "description": "Wybierz pakiet dopasowany do potrzeb Twojego biznesu. Każdy projekt realizujemy indywidualnie"
         },
         "popularBadge": "Najpopularniejszy",
@@ -384,7 +384,7 @@
     "ctaFooter": {
         "sectionHeader": {
             "title": "Gotowy na nową stronę?",
-            "description": "Skontaktuj się z nami i otrzymaj bezpłatną wycenę swojego projektu"
+            "description": "Skontaktuj się ze mną i otrzymaj bezpłatną wycenę swojego projektu"
         },
         "badges": [
             "Gwarancja odpowiedzi",

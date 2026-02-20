@@ -195,7 +195,10 @@ function TemplateDemoContent() {
                                 }
                                 className=""
                             >
-                                <TabsList className="bg-sidebar-accent border-border relative mx-auto gap-1 rounded-2xl border p-1 ring-0">
+                                <TabsList
+                                    suppressHydrationWarning
+                                    className="bg-sidebar-accent border-border relative mx-auto gap-1 rounded-2xl border p-1 ring-0"
+                                >
                                     <TabsTrigger value="fullscreen" asChild>
                                         <Button
                                             size="icon"
@@ -235,9 +238,13 @@ function TemplateDemoContent() {
                             type="always"
                             className="h-full min-h-0 flex-1"
                             ref={asideScrollRef}
+                            suppressHydrationWarning
                         >
                             <LayoutGroup>
-                                <div className="flex flex-col gap-1">
+                                <div
+                                    suppressHydrationWarning
+                                    className="flex flex-col gap-1"
+                                >
                                     {templates.map((template) => {
                                         const isActive =
                                             selectedTemplateId === template.id;
@@ -248,6 +255,7 @@ function TemplateDemoContent() {
                                                 key={template.id}
                                                 type="button"
                                                 layout
+                                                layoutDependency={[selectedTemplateId]}
                                                 initial={false}
                                                 animate={{
                                                     opacity: hasDemo ? 1 : 0.45,
@@ -278,7 +286,6 @@ function TemplateDemoContent() {
                                                     <motion.span
                                                         layoutId="active-bar"
                                                         className="bg-clr-50 absolute top-1/2 left-1 h-8 w-0.75 -translate-y-1/2 rounded-full"
-                                                        style={{ y: "-50%" }}
                                                         transition={{
                                                             layout: {
                                                                 duration: 0.3,
