@@ -5,6 +5,7 @@ import { useNavigation } from "@/context/navigationContext";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
+import { Template } from "@/messages/pl/pages/templates";
 import {
     ArrowRight,
     ExternalLink,
@@ -30,7 +31,6 @@ import { Button } from "../ui/button";
 import { ScrollArea } from "../ui/scroll-area";
 import { Separator } from "../ui/separator";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
-import { templates } from "./templatesPage";
 
 type DeviceType = "desktop" | "mobile" | "fullscreen";
 
@@ -53,6 +53,8 @@ export default function TemplateDemoPage() {
 
 function TemplateDemoContent() {
     const tDemo = useTranslations("pages.demo");
+    const t = useTranslations("pages.templates");
+    const templates = t.raw("templates") as Template[];
     const searchParams = useSearchParams();
     const initialTemplateId = searchParams.get("template") || templates[0]?.id;
     const demoContainerRef = useRef<HTMLDivElement>(null);

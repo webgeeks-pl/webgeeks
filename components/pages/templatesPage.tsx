@@ -1,9 +1,9 @@
 "use client";
 
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useTrans } from "@/hooks/useTrans";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useState } from "react";
 import Page from "../layout/page";
@@ -21,143 +21,23 @@ import {
 import { Separator } from "../ui/separator";
 
 // Template data structure
-interface Template {
-    id: string;
-    name: string;
-    description: string;
-    category: string;
-    tags: string[];
-    desktopImage: string;
-    mobileImage?: string;
-    demoUrl?: string;
-    features: string[];
-}
 
 // Sample templates - you can move this to a constants file later
-export const templates: Template[] = [
-    {
-        id: "cafe-luna",
-        name: "Café Luna",
-        description:
-            "Nowoczesna i przytulna strona internetowa kawiarni prezentująca ofertę, godziny otwarcia oraz lokalizację w eleganckim stylu.",
-        category: "Gastronomia",
-        tags: ["Kawiarnia", "Nowoczesny", "Elegancki", "Lokalny Biznes"],
-        desktopImage: "/cafe-luna.png",
-        mobileImage: "/cafe-luna.png",
-        demoUrl: "https://cafe-luna-template.vercel.app/",
-        features: [
-            "Responsywny Design",
-            "Sekcja Menu",
-            "Opinie Klientów",
-            "Formularz Kontaktowy",
-            "Informacje o Godzinach Otwarcia",
-            "Integracja Mapy i Lokalizacji",
-            "Wersja Wielojęzyczna (PL/EN)",
-            "Galeria Zdjęć",
-        ],
-    },
-    {
-        id: "bikehub-service",
-        name: "BikeHub - Serwis Rowerowy",
-        description:
-            "Profesjonalny serwis rowerowy w Krakowie. Naprawiamy, regulujemy i doradzamy – zawsze tak, jakby to był nasz rower.",
-        category: "Usługi",
-        tags: ["Serwis Rowerowy", "Naprawa", "Regulacja", "Doradztwo"],
-        desktopImage: "/template-bike.png",
-        mobileImage: "/template-bike.png",        
-        demoUrl: "https://bike-hub-template.vercel.app",
-        features: [
-            "Profesjonalna Naprawa Rowerów",
-            "Regulacja i Serwis",
-            "Doradztwo Techniczne",
-            "Bezpieczne Oddanie Roweru w Dobre Ręce"
-        ],
-    },
-    {
-        id: "portfolio",
-        name: "Portfolio Kreatywne",
-        description:
-            "Zaprezentuj swoją pracę dzięki temu wspaniałemu szablonowi portfolio",
-        category: "Portfolio",
-        tags: ["Kreatywny", "Galeria", "Prezentacja"],
-        desktopImage: "/template-hero.webp",
-        mobileImage: "/strona.jpeg",
-        features: [
-            "Galeria Zdjęć",
-            "Szczegóły Projektów",
-            "Formularz Kontaktowy",
-            "Animacje",
-        ],
-    },
-    {
-        id: "restaurant",
-        name: "Restauracja i Kawiarnia",
-        description: "Piękny szablon dla restauracji z menu i systemem rezerwacji",
-        category: "Biznes",
-        tags: ["Jedzenie", "Menu", "Rezerwacje"],
-        desktopImage: "/template-hero.webp",
-        mobileImage: "/strona.jpeg",
-        features: [
-            "Wyświetlanie Menu",
-            "Rezerwacje Online",
-            "Galeria",
-            "Mapa Lokalizacji",
-        ],
-    },
-    {
-        id: "landing-page",
-        name: "Landing Page SaaS",
-        description: "Wysoko konwertująca strona docelowa dla produktów SaaS",
-        category: "Marketing",
-        tags: ["SaaS", "Konwersja", "Marketing"],
-        desktopImage: "/template-hero.webp",
-        mobileImage: "/strona.jpeg",
-        features: [
-            "Sekcja Hero",
-            "Prezentacja Funkcji",
-            "Tabele Cenowe",
-            "Opinie Klientów",
-        ],
-    },
-    {
-        id: "blog",
-        name: "Nowoczesny Blog",
-        description:
-            "Czysty i minimalistyczny szablon bloga z doskonałym doświadczeniem czytania",
-        category: "Blog",
-        tags: ["Treść", "Artykuły", "Pisanie"],
-        desktopImage: "/template-hero.webp",
-        mobileImage: "/strona.jpeg",
-        features: ["Układy Artykułów", "Kategorie", "Wyszukiwarka", "Komentarze"],
-    },
-];
 
 export default function TemplatesPage() {
-    const t = useTranslations("pages.templates");
-    const categories = t.raw("categories") as string[];
-    const templatesFromMessages = t.raw("templates") as Omit<
-        Template,
-        "desktopImage" | "mobileImage" | "demoUrl"
-    >[];
-
-    // Merge templates with demo URLs from hardcoded templates
-    const templatesWithDemoUrls: Template[] = templatesFromMessages.map((template) => {
-        const hardcodedTemplate = templates.find((t) => t.id === template.id);
-        return {
-            ...template,
-            desktopImage: hardcodedTemplate?.desktopImage || "/template-hero.webp",
-            mobileImage: hardcodedTemplate?.mobileImage || "/strona.jpeg",
-            demoUrl: hardcodedTemplate?.demoUrl,
-        };
-    });
+    const t = useTrans("pages.templates");
+    const templates = t.obj("templates");
+    const categories = t.obj("categories");
+    const tCommon = useTrans("common");
+    tCommon("button.submit");
 
     const [selectedCategory, setSelectedCategory] = useState("Wszystkie");
     const isMobile = useIsMobile();
 
     const filteredTemplates =
         selectedCategory === "Wszystkie"
-            ? templatesWithDemoUrls
-            : templatesWithDemoUrls.filter((t) => t.category === selectedCategory);
+            ? templates
+            : templates.filter((t) => t.category === selectedCategory);
 
     return (
         <Page>

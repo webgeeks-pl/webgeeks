@@ -5,77 +5,40 @@
     "notFound": "Nie znaleziono szablonów w tej kategorii.",
     "templates": [
         {
-            "id": "modern-business",
-            "name": "Nowoczesny Biznes",
-            "description": "Elegancka i profesjonalna strona biznesowa z nowoczesnymi wzorcami projektowania",
-            "category": "Biznes",
-            "tags": ["Profesjonalny", "Nowoczesny", "Korporacyjny"],
+            "id": "cafe-luna",
+            "name": "Café Luna",
+            "description": "Nowoczesna i przytulna strona internetowa kawiarni prezentująca ofertę, godziny otwarcia oraz lokalizację w eleganckim stylu.",
+            "category": "Gastronomia",
+            "tags": ["Kawiarnia", "Nowoczesny", "Elegancki", "Lokalny Biznes"],
+            "desktopImage": "/cafe-luna.png",
+            "mobileImage": "/cafe-luna.png",
+            "demoUrl": "https://cafe-luna-template.vercel.app/",
             "features": [
                 "Responsywny Design",
-                "Optymalizacja SEO",
-                "Szybkie Ładowanie",
-                "Formularze Kontaktowe"
-            ]
-        },
-        {
-            "id": "e-commerce",
-            "name": "Sklep E-Commerce",
-            "description": "W pełni funkcjonalny sklep internetowy z koszykiem i systemem płatności",
-            "category": "E-Commerce",
-            "tags": ["Sklep", "Produkty", "Płatności"],
-            "features": [
-                "Katalog Produktów",
-                "Koszyk",
-                "Bezpieczne Płatności",
-                "Panel Administracyjny"
-            ]
-        },
-        {
-            "id": "portfolio",
-            "name": "Portfolio Kreatywne",
-            "description": "Zaprezentuj swoją pracę dzięki temu wspaniałemu szablonowi portfolio",
-            "category": "Portfolio",
-            "tags": ["Kreatywny", "Galeria", "Prezentacja"],
-            "features": [
-                "Galeria Zdjęć",
-                "Szczegóły Projektów",
+                "Sekcja Menu",
+                "Opinie Klientów",
                 "Formularz Kontaktowy",
-                "Animacje"
+                "Informacje o Godzinach Otwarcia",
+                "Integracja Mapy i Lokalizacji",
+                "Wersja Wielojęzyczna (PL/EN)",
+                "Galeria Zdjęć"
             ]
         },
         {
-            "id": "restaurant",
-            "name": "Restauracja i Kawiarnia",
-            "description": "Piękny szablon dla restauracji z menu i systemem rezerwacji",
-            "category": "Biznes",
-            "tags": ["Jedzenie", "Menu", "Rezerwacje"],
+            "id": "bikehub-service",
+            "name": "BikeHub - Serwis Rowerowy",
+            "description": "Profesjonalny serwis rowerowy w Krakowie. Naprawiamy, regulujemy i doradzamy – zawsze tak, jakby to był nasz rower.",
+            "category": "Usługi",
+            "tags": ["Serwis Rowerowy", "Naprawa", "Regulacja", "Doradztwo"],
+            "desktopImage": "/template-bike.png",
+            "mobileImage": "/template-bike.png",
+            "demoUrl": "https://bike-hub-template.vercel.app",
             "features": [
-                "Wyświetlanie Menu",
-                "Rezerwacje Online",
-                "Galeria",
-                "Mapa Lokalizacji"
+                "Profesjonalna Naprawa Rowerów",
+                "Regulacja i Serwis",
+                "Doradztwo Techniczne",
+                "Bezpieczne Oddanie Roweru w Dobre Ręce"
             ]
-        },
-        {
-            "id": "landing-page",
-            "name": "Landing Page SaaS",
-            "description": "Wysoko konwertująca strona docelowa dla produktów SaaS",
-            "category": "Marketing",
-            "tags": ["SaaS", "Konwersja", "Marketing"],
-            "features": [
-                "Sekcja Hero",
-                "Prezentacja Funkcji",
-                "Tabele Cenowe",
-                "Opinie Klientów"
-            ]
-        },
-        {
-            "id": "blog",
-            "name": "Nowoczesny Blog",
-            "description": "Czysty i minimalistyczny szablon bloga z doskonałym doświadczeniem czytania",
-            "category": "Blog",
-            "tags": ["Treść", "Artykuły", "Pisanie"],
-            "features": ["Układy Artykułów", "Kategorie", "Wyszukiwarka", "Komentarze"]
         }
     ],
     "cta": {
