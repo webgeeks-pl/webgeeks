@@ -1,0 +1,93 @@
+{
+    "pageTitle": "Unsere Vorlagen",
+    "pageLead": "Vorkonfigurierte Lösungen, die auf Ihre Bedürfnisse zugeschnitten sind - von Visitenkarten bis zu E-Commerce-Shops",
+    "categories": ["Alle", "Geschäft", "E-Commerce", "Portfolio", "Marketing", "Blog"],
+    "notFound": "Keine Vorlagen in dieser Kategorie gefunden.",
+    "templates": [
+        {
+            "id": "modern-business",
+            "name": "Modernes Geschäft",
+            "description": "Eine elegante und professionelle Geschäftswebsite mit modernen Design-Mustern",
+            "category": "Geschäft",
+            "tags": ["Professionell", "Modern", "Unternehmens"],
+            "features": [
+                "Reaktives Design",
+                "SEO-Optimierung",
+                "Schnelles Laden",
+                "Kontaktformulare"
+            ]
+        },
+        {
+            "id": "e-commerce",
+            "name": "E-Commerce-Shop",
+            "description": "Ein vollständig funktionsfähiger Online-Shop mit Warenkorb- und Zahlungssystem",
+            "category": "E-Commerce",
+            "tags": ["Shop", "Produkte", "Zahlungen"],
+            "features": [
+                "Produktkatalog",
+                "Einkaufswagen",
+                "Sichere Zahlungen",
+                "Admin-Panel"
+            ]
+        },
+        {
+            "id": "portfolio",
+            "name": "Kreatives Portfolio",
+            "description": "Präsentieren Sie Ihre Arbeiten mit dieser großartigen Portfolio-Vorlage",
+            "category": "Portfolio",
+            "tags": ["Kreativ", "Galerie", "Präsentation"],
+            "features": [
+                "Fotogalerie",
+                "Projektdetails",
+                "Kontaktformular",
+                "Animationen"
+            ]
+        },
+        {
+            "id": "restaurant",
+            "name": "Restaurant & Café",
+            "description": "Eine schöne Vorlage für Restaurants mit Menü- und Reservierungssystem",
+            "category": "Geschäft",
+            "tags": ["Lebensmittel", "Menü", "Reservierungen"],
+            "features": [
+                "Menüanzeige",
+                "Online-Reservierungen",
+                "Galerie",
+                "Standortkarte"
+            ]
+        },
+        {
+            "id": "landing-page",
+            "name": "SaaS Landing Page",
+            "description": "Eine hochkonvertierende Landingpage für SaaS-Produkte",
+            "category": "Marketing",
+            "tags": ["SaaS", "Konvertierung", "Marketing"],
+            "features": [
+                "Hero-Abschnitt",
+                "Funktionsdarstellung",
+                "Preistabellen",
+                "Kundenbewertungen"
+            ]
+        },
+        {
+            "id": "blog",
+            "name": "Moderner Blog",
+            "description": "Eine saubere und minimalistisch gestaltete Blog-Vorlage mit hervorragendem Leseerlebnis",
+            "category": "Blog",
+            "tags": ["Inhalte", "Artikel", "Schreiben"],
+            "features": ["Artikel-Layouts", "Kategorien", "Suche", "Kommentare"]
+        }
+    ],
+    "cta": {
+        "title": "Brauchen Sie etwas Einzigartiges?",
+        "description": "Wir erstellen vollständig benutzerdefinierte Websites, die auf Ihre spezifischen Anforderungen, Ihre Markenidentität und Geschäftsziele zugeschnitten sind.",
+        "buttons": {
+            "primary": "Projekt starten",
+            "secondary": "Dienstleistungen ansehen"
+        }
+    },
+    "buttons": {
+        "openDemo": "Demo",
+        "openLink": "Link"
+    }
+}

@@ -10,7 +10,12 @@
             "description": "An elegant and professional business website with modern design patterns",
             "category": "Business",
             "tags": ["Professional", "Modern", "Corporate"],
-            "features": ["Responsive Design", "SEO Optimization", "Fast Loading", "Contact Forms"]
+            "features": [
+                "Responsive Design",
+                "SEO Optimization",
+                "Fast Loading",
+                "Contact Forms"
+            ]
         },
         {
             "id": "e-commerce",
@@ -18,7 +23,12 @@
             "description": "A fully functional online store with cart and payment system",
             "category": "E-Commerce",
             "tags": ["Store", "Products", "Payments"],
-            "features": ["Product Catalog", "Shopping Cart", "Secure Payments", "Admin Panel"]
+            "features": [
+                "Product Catalog",
+                "Shopping Cart",
+                "Secure Payments",
+                "Admin Panel"
+            ]
         },
         {
             "id": "portfolio",
@@ -42,7 +52,12 @@
             "description": "A high-converting landing page for SaaS products",
             "category": "Marketing",
             "tags": ["SaaS", "Conversion", "Marketing"],
-            "features": ["Hero Section", "Feature Showcase", "Pricing Tables", "Customer Testimonials"]
+            "features": [
+                "Hero Section",
+                "Feature Showcase",
+                "Pricing Tables",
+                "Customer Testimonials"
+            ]
         },
         {
             "id": "blog",

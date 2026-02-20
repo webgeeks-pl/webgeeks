@@ -9,45 +9,40 @@ import Section, {
 
 import ContactForm from "@/components/forms/contactForm";
 import { FileText, Mail, Send } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Text from "../typography/text";
 import { Card, CardContent } from "../ui/card";
 import IconContainer from "../ui/iconContainer";
 import { Separator } from "../ui/separator";
 
-const contactMethods = [
-    {
-        name: "Email",
-        description: "Napisz do nas maila, a odpowiemy najszybciej jak to możliwe.",
-        Icon: Mail,
-        contact: "webgeeks@proton.me",
-        info: "",
-    },
-    {
-        name: "Formularz kontaktowy",
-        description: "Wypełnij formularz, a my skontaktujemy się z Tobą.",
-        Icon: FileText,
-        contact: "Zjedz nizej",
-        info: "Tutaj najszybciej odpowiadamy",
-    },
-];
-
 export default function ContactPage() {
+    const t = useTranslations("pages.contact");
+    const contactMethodsData = t.raw("contactMethods");
+
+    // Map icons to contact methods
+    const iconMap: { [key: string]: typeof Mail } = {
+        Email: Mail,
+        "Formularz kontaktowy": FileText,
+    };
+
+    const contactMethods = contactMethodsData.map((method: any) => ({
+        ...method,
+        Icon: iconMap[method.name] || Mail,
+    }));
+
     return (
         <Page>
             <PageHeader>
                 <PageHeaderContent>
-                    <PageTitle>Kontakt</PageTitle>
-                    <PageLead>
-                        {" "}
-                        Skontaktuj się z nami i stwórzmy coś wyjątkowego razem.
-                    </PageLead>
+                    <PageTitle>{t("pageTitle")}</PageTitle>
+                    <PageLead> {t("pageLead")}</PageLead>
                 </PageHeaderContent>
             </PageHeader>
             <Section className="pb-size-xl">
                 <SectionContent className="gap-size-lg">
                     <div className="gap-size-sm grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2">
                         {contactMethods.map(
-                            ({ name, description, Icon, contact, info }) => (
+                            ({ name, description, Icon, contact, info }: any) => (
                                 <Card key={name}>
                                     <CardContent className="flex flex-col gap-2">
                                         <Text intent="h3">{name}</Text>
@@ -66,7 +61,7 @@ export default function ContactPage() {
                     </div>
 
                     <Text intent="small" className="text-center" muted>
-                        Gwarantujemy odpowiedź w ciągu 24 godzin w dni robocze.
+                        {t("responseGuarantee")}
                     </Text>
                 </SectionContent>
             </Section>
@@ -75,11 +70,8 @@ export default function ContactPage() {
                 <SectionContent className="gap-size-lg">
                     <SectionHeader>
                         <SectionHeaderContent>
-                            <SectionTitle>Pozwól nam poznać twój biznes</SectionTitle>
-                            <SectionLead>
-                                Uzupełnij formularz, a my dostosujemy ofertę do Twoich
-                                potrzeb tak aby strona spełniała Twoje oczekiwania.
-                            </SectionLead>
+                            <SectionTitle>{t("formSection.title")}</SectionTitle>
+                            <SectionLead>{t("formSection.subtitle")}</SectionLead>
                         </SectionHeaderContent>
                     </SectionHeader>
                     <div className="flex w-full max-w-5xl flex-col md:flex-row">
@@ -89,46 +81,42 @@ export default function ContactPage() {
                                     <span className="bg-clr-800 text-clr-50 mb-6 inline-flex items-center gap-1.5 rounded-full px-3 py-1">
                                         <Send className="h-3.5 w-3.5" />
                                         <Text intent="small" className="text-clr-50!">
-                                            Skontaktuj się
+                                            {t("formSection.sidebarBadge")}
                                         </Text>
                                     </span>
                                     <Text intent="h1" className="text-clr-50! pb-4">
-                                        Masz pomysł?
+                                        {t("formSection.sidebarTitle")}
                                         <br />
-                                        Porozmawiajmy.
+                                        {t("formSection.sidebarTitleContinued")}
                                     </Text>
                                     <Text intent="large" className="text-clr-400!">
-                                        Opisz swój projekt, a razem dobierzemy rozwiązanie
-                                        dla Twojego biznesu.
+                                        {t("formSection.sidebarDescription")}
                                     </Text>
                                 </div>
                             </div>
                             <div className="">
                                 <Separator className="bg-clr-600" />
                                 <div className="grid grid-cols-2 gap-4 pt-6">
-                                    <div>
-                                        <Text className="text-clr-50!" intent="h2">
-                                            200+
-                                        </Text>
-                                        <Text intent="small" className="text-clr-400!">
-                                            Zrealizowanych projektów
-                                        </Text>
-                                    </div>
-                                    <div>
-                                        <Text className="text-clr-50!" intent="h2">
-                                            98%
-                                        </Text>
-                                        <Text intent="small" className="text-clr-400!">
-                                            Zadowolonych klientów
-                                        </Text>
-                                    </div>
+                                    {t.raw("formSection.stats").map((stat: any) => (
+                                        <div key={stat.value}>
+                                            <Text className="text-clr-50!" intent="h2">
+                                                {stat.value}
+                                            </Text>
+                                            <Text
+                                                intent="small"
+                                                className="text-clr-400!"
+                                            >
+                                                {stat.label}
+                                            </Text>
+                                        </div>
+                                    ))}
                                 </div>
                                 <Separator className="bg-clr-600 mt-6" />
 
                                 <Text intent="small" className="text-clr-400! mt-6">
-                                    Odpowiadamy zazwyczaj w ciągu 24h.
+                                    {t("formSection.responseNote")}
                                     <br />
-                                    Żadnego spamu, obiecujemy.
+                                    {t("formSection.noSpam")}
                                 </Text>
                             </div>
                         </div>
