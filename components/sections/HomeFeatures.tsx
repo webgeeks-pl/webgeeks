@@ -25,22 +25,22 @@ export function HomeFeatures() {
             shouldRender={heroCards.length > 0}
         >
             <SectionContent>
-                <div className="grid w-full grid-cols-1 items-stretch gap-4 gap-x-10 max-md:grid-rows-3 md:grid-cols-2 xl:grid-cols-3">
+                <div className="grid w-full grid-cols-1 items-stretch gap-4 max-md:grid-rows-3 md:grid-cols-3 lg:gap-x-10 xl:grid-cols-3">
                     {heroCards.map(({ icon, value, title, description }, index) => {
                         return (
                             <Card
                                 className="bg-brand-200/30 h-full backdrop-blur-sm"
                                 key={index}
                             >
-                                <CardContent className="flex h-full flex-row-reverse items-center justify-between sm:flex-col sm:text-center">
-                                    <div className="flex flex-col items-end sm:items-center sm:gap-2">
+                                <CardContent className="flex h-full flex-row-reverse items-center justify-between md:flex-col md:text-center">
+                                    <div className="flex flex-col items-end md:items-center md:gap-2">
                                         <IconContainer
                                             variant={"none"}
                                             Icon={getLucideIcon(icon)}
                                         />
                                         <Text
                                             intent="var"
-                                            className="capitalize sm:text-2xl"
+                                            className="capitalize lg:text-2xl"
                                             text={value}
                                         />
                                     </div>
@@ -48,7 +48,7 @@ export function HomeFeatures() {
                                         <Text
                                             intent="h3"
                                             text={title}
-                                            className="max-xs:text-base"
+                                            className="xs:text-lg text-base lg:text-lg"
                                         />
                                         <Text intent="small" text={description} />
                                     </div>

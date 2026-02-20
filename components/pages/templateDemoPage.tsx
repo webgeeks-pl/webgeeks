@@ -2,6 +2,8 @@
 
 import { ResizableDevice } from "@/components/ui/resizable-device";
 import { useNavigation } from "@/context/navigationContext";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { ExternalLink, Fullscreen, Monitor, Smartphone } from "lucide-react";
 import { useLocale } from "next-intl";
@@ -18,6 +20,7 @@ import Section, {
 import { Button } from "../ui/button";
 import { Item, ItemActions, ItemContent, ItemTitle } from "../ui/item";
 import { ScrollArea } from "../ui/scroll-area";
+import { Separator } from "../ui/separator";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 import { templates } from "./templatesPage";
 
@@ -51,15 +54,7 @@ function TemplateDemoContent() {
     const [selectedTemplateId, setSelectedTemplateId] =
         useState<string>(initialTemplateId);
     const [deviceType, setDeviceType] = useState<DeviceType>("desktop");
-    const [isMobile] = useState(() => {
-        // Check only once on initial mount
-        if (typeof window !== "undefined") {
-            return window.innerWidth < 768;
-        }
-        return false;
-    });
-
-    const [isMobileScreen, setIsMobileScreen] = useState(false);
+    const isMobile = useIsMobile();
 
     const [isLargeScreen, setIsLargeScreen] = useState(true);
 
@@ -69,8 +64,9 @@ function TemplateDemoContent() {
     // Check screen size for lg breakpoint (1024px)
     useEffect(() => {
         const checkScreenSize = () => {
-            setIsLargeScreen(window.innerWidth >= 1024);
-            setIsMobileScreen(window.innerWidth < 768);
+            const width = window.document.body.getBoundingClientRect().width;
+
+            setIsLargeScreen(width >= 1024);
         };
 
         checkScreenSize();
@@ -118,43 +114,54 @@ function TemplateDemoContent() {
     }, []);
 
     // Redirect to demo URL on mobile
-    useEffect(() => {
-        if (isMobile && currentDemoUrl) {
-            window.location.href = currentDemoUrl;
-        }
-    }, [isMobile, currentDemoUrl]);
 
     const deviceDimensions = {
         desktop: { width: 1200, height: 800 },
         mobile: { width: 400, height: 800 }, // iPhone 8 dimensions as an example
     };
 
-    // Show loading on mobile while redirecting
     if (isMobile) {
         return (
             <Page>
                 <div className="flex min-h-screen items-center justify-center">
                     <div className="space-y-4 text-center">
-                        <p className="text-lg">Przekierowanie do demo...</p>
-                        <p className="text-muted-foreground text-sm">{currentDemoUrl}</p>
+                        <p className="text-lg">
+                            Widok demo niedostępny na urządzeniach mobilnych
+                        </p>
+                        <p className="text-muted-foreground text-sm">
+                            Otwórz demo na komputerze, aby zobaczyć podgląd szablonu. Lub
+                            wejdź na ten link z telefonu, aby otworzyć demo bezpośrednio:{" "}
+                            {currentDemoUrl}
+                        </p>
+                        <div className="xs:flex-row flex flex-col items-center justify-center gap-2">
+                            <Button asChild variant="secondary">
+                                <Link href="/templates">Wróć do listy szablonów</Link>
+                            </Button>
+                            <Button asChild className="">
+                                <a
+                                    href={currentDemoUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Otwórz demo{" "}
+                                    <ExternalLink className="inline-block h-4 w-4" />
+                                </a>
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </Page>
         );
     }
 
-    // if (isMobileScreen) {
-    //     redirect({ href: "/templates", locale });
-    // }
-
     return (
         <Page>
-            <div className="relative flex flex-col" ref={demoContainerRef}>
+            <div className="relative flex flex-col border-y" ref={demoContainerRef}>
                 {/* Main Content */}
                 <div className="flex h-full min-h-0 flex-1">
                     {/* Left Sidebar - Domain List */}
                     <aside
-                        className="bg-muted/30 flex min-h-0 w-64 flex-col border-r p-4"
+                        className="bg-muted/30 flex min-h-0 w-64 flex-col border-r border-b border-b-transparent p-4"
                         ref={asideRef}
                     >
                         <div
@@ -275,7 +282,7 @@ function TemplateDemoContent() {
 
                     {/* Main Content - Iframe */}
 
-                    <div className="from-muted/30 to-muted/10 w-[calc(100%-256px)] flex-1 bg-linear-to-br p-0">
+                    <div className="w-[calc(100%-256px)] flex-1 p-0">
                         <div className="flex h-full items-center justify-center">
                             {currentDemoUrl ? (
                                 deviceType === "fullscreen" ? (
@@ -310,7 +317,9 @@ function TemplateDemoContent() {
                 </div>
             </div>
 
-            <Section className="py-size-2xl bg-brand-darker/50">
+            <Separator decorative />
+
+            <Section className="py-size-2xl bg-brand">
                 <SectionContent className="gap-size-md">
                     <SectionHeader>
                         <SectionHeaderContent>

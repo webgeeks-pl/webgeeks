@@ -1,5 +1,6 @@
 "use client";
 
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import Image from "next/image";
@@ -8,7 +9,14 @@ import Page from "../layout/page";
 import Section, { SectionContent, SectionLead, SectionTitle } from "../layout/section";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "../ui/card";
 import { Separator } from "../ui/separator";
 
 // Template data structure
@@ -130,6 +138,7 @@ const categories = [
 
 export default function TemplatesPage() {
     const [selectedCategory, setSelectedCategory] = useState("Wszystkie");
+    const isMobile = useIsMobile();
 
     const filteredTemplates =
         selectedCategory === "Wszystkie"
@@ -206,21 +215,40 @@ export default function TemplatesPage() {
                                             </Badge>
                                         ))}
                                     </div>
-                                    {template.demoUrl && (
-                                        <Button
-                                            size="sm"
-                                            className="group w-full"
-                                            asChild
-                                        >
-                                            <a
-                                                href={`/templates/demo?template=${template.id}`}
-                                            >
-                                                Zobacz Demo
-                                                <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                                            </a>
-                                        </Button>
-                                    )}
                                 </CardContent>
+                                {template.demoUrl && (
+                                    <CardFooter className="w-full">
+                                        <div className="xs:flex-row flex w-full flex-col gap-2">
+                                            <Button
+                                                asChild
+                                                variant="secondary"
+                                                className="xs:flex-1"
+                                            >
+                                                <Link
+                                                    href={template.demoUrl}
+                                                    target="_blank"
+                                                >
+                                                    Link{" "}
+                                                    <ExternalLink className="h-4 w-4" />
+                                                </Link>
+                                            </Button>
+
+                                            {!isMobile && (
+                                                <Button
+                                                    className="xs:flex-1 w-full"
+                                                    asChild
+                                                >
+                                                    <a
+                                                        href={`/templates/demo?template=${template.id}`}
+                                                    >
+                                                        Demo
+                                                        <ArrowRight className="h-4 w-4" />
+                                                    </a>
+                                                </Button>
+                                            )}
+                                        </div>
+                                    </CardFooter>
+                                )}
                             </Card>
                         ))}
                     </div>
