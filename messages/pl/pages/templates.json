@@ -1,8 +1,8 @@
 {
-    "pageTitle": "Nasze Szablony",
-    "pageLead": "Gotowe rozwiązania dostosowane do Twoich potrzeb - od wizytówek po sklepy internetowe",
+    "pageTitle": "Strony demonstracyjne",
+    "pageLead": "Zobacz jak może wyglądać Twoja strona internetowa jeśli zdecydujesz się na Weebgeeks.",
     "categories": ["Wszystkie", "Biznes", "E-Commerce", "Portfolio", "Marketing", "Blog"],
-    "notFound": "Nie znaleziono szablonów w tej kategorii.",
+    "notFound": "Nie znaleziono demonstracyjnych stron w tej kategorii.",
     "templates": [
         {
             "id": "cafe-luna",
@@ -43,7 +43,7 @@
     ],
     "cta": {
         "title": "Potrzebujesz Czegoś Wyjątkowego?",
-        "description": "Tworzymy w pełni niestandardowe strony internetowe dostosowane do Twoich specyficznych potrzeb, identyfikacji marki i celów biznesowych.",
+        "description": "Tworzę w pełni niestandardowe strony internetowe dostosowane do Twoich specyficznych potrzeb, identyfikacji marki i celów biznesowych.",
         "buttons": {
             "primary": "Rozpocznij Projekt",
             "secondary": "Zobacz Usługi"

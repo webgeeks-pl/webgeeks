@@ -158,7 +158,7 @@ export default function TemplatesPage() {
             <Separator decorative />
 
             {/* CTA Section */}
-            <Section className="py-size-2xl">
+            <Section className="py-size-2xl bg-brand">
                 <SectionContent className="gap-size-lg text-center">
                     <div className="mx-auto max-w-3xl space-y-4">
                         <SectionTitle className="text-3xl sm:text-4xl">

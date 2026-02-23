@@ -57,7 +57,7 @@ export function HomeShowcase() {
                         <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
                             <Safari
                                 url="https:\\"
-                                imageSrc="/template-hero.webp"
+                                imageSrc="/desktop.png"
                                 className="max-w-7xl"
                             />
                             <div className="flex flex-col gap-4">
@@ -98,11 +98,12 @@ export function HomeShowcase() {
                                     damping: 4.1,
                                     mass: 0.2,
                                 }}
-                                className="group relative h-full w-full max-w-md rounded-lg max-md:mx-auto max-sm:max-w-xs! md:col-start-2 md:row-span-3"
+                                className="group relative h-full w-full max-w-md rounded-lg max-md:mx-auto max-sm:max-w-xs! md:col-start-2 md:row-span-3
                             > */}
                             <div className="group relative h-full w-full max-w-md rounded-lg max-md:mx-auto max-sm:max-w-xs! md:col-start-2 md:row-span-3 md:mx-auto">
-                                <Iphone src="/strona.jpeg" />
+                                <Iphone src="/mobile.jpeg" />
                             </div>
+                            300
                             {/* </Tilt> */}
                             {mobileFriendlyItems.map((item, index) => (
                                 <div

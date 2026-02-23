@@ -31,13 +31,13 @@
                 "description": "od stron z builderów"
             },
             {
-                "icon": "TrendingUp",
+                "icon": "Search",
                 "value": "znacznie",
                 "title": "Lepsze SEO",
                 "description": "dla Twojej strony"
             },
             {
-                "icon": "Gauge",
+                "icon": "TrendingUp",
                 "value": "zauważalnie",
                 "title": "Większa konwersja",
                 "description": "na Twojej stronie"
@@ -95,18 +95,18 @@
             "items": [
                 {
                     "number": "1",
-                    "title": "Intuicyjna nawigacja",
-                    "description": "Prosty i przejrzysty układ, który pozwala Twoim klientom szybko znaleźć to, czego szukają"
+                    "title": " Strona, która robi wrażenie",
+                    "description": "Twoja firma będzie wyglądać profesjonalnie i nowocześnie — pierwsze wrażenie zostaje na długo i buduje zaufanie klientów"
                 },
                 {
                     "number": "2",
-                    "title": "Czytelna struktura treści",
-                    "description": "Dobrze zaprojektowane sekcje, nagłówki i odstępy sprawiają, że użytkownik łatwo skanuje stronę i szybciej podejmuje decyzję"
+                    "title": "Łatwość zarządzania treścią",
+                    "description": "Bez stresu dodasz nowe zdjęcia, aktualności czy promocje — nawet jeśli nie masz doświadczenia w programowaniu"
                 },
                 {
                     "number": "3",
-                    "title": "Maksymalne wykorzystanie przestrzeni",
-                    "description": "Przemyślany layout na dużych ekranach pozwala lepiej zaprezentować ofertę, portfolio i kluczowe informacje bez chaosu"
+                    "title": "Bezpieczeństwo i spokój",
+                    "description": "Twoja strona jest chroniona przed atakami i problemami technicznymi, więc możesz skupić się na rozwijaniu biznesu, a nie na naprawianiu strony"
                 }
             ]
         },
