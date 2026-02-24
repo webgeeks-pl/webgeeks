@@ -10,19 +10,19 @@ export interface AdditionalFeature extends Feature {
     recommended?: string;
 }
 
-export interface Package {
-    key: string;
-    isPopular?: string;
-    name: string;
-    icon: string;
-    price: string;
-    description: string;
-    category: string;
-    features: {
-        main: Feature[];
-        additional: AdditionalFeature[];
-    };
-}
+// export interface Package {
+//     key: string;
+//     isPopular?: string;
+//     name: string;
+//     icon: string;
+//     price: string;
+//     description: string;
+//     category: string;
+//     features: {
+//         main: Feature[];
+//         additional: AdditionalFeature[];
+//     };
+// }
 
 export function useAllPackages() {
     const t = useTrans("offer");

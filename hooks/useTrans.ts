@@ -1,21 +1,32 @@
 import type { MessagesMap } from "@/config/i18n";
 import { useTranslations } from "next-intl";
 
-type NestedKeyOf<T> = T extends object
+export type NestedKeyOf<T> = T extends object
     ? {
           [K in keyof T]: T[K] extends object
               ? `${K & string}` | `${K & string}.${NestedKeyOf<T[K]>}`
               : `${K & string}`;
       }[keyof T]
     : never;
-
-type GetNestedValue<T, K extends string> = K extends `${infer Head}.${infer Tail}`
+export type GetNestedValue<T, K extends string> = K extends `${infer Head}.${infer Tail}`
     ? Head extends keyof T
         ? GetNestedValue<T[Head], Tail>
         : never
     : K extends keyof T
       ? T[K]
       : never;
+
+/**
+ * The return type of `useTrans(namespace)` for a specific namespace `N`.
+ * Example: `TransFor<"pages.contact.form">`.
+ */
+export type TransFor<N extends NestedKeyOf<MessagesMap>> = (
+    (key: NestedKeyOf<GetNestedValue<MessagesMap, N>>) => string
+) & {
+    obj: <TKey extends NestedKeyOf<GetNestedValue<MessagesMap, N>>>(
+        key: TKey
+    ) => GetNestedValue<GetNestedValue<MessagesMap, N>, TKey>;
+};
 
 /**
  * useTrans hook with proper typing
