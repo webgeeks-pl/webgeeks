@@ -34,7 +34,6 @@ const iconContainerVariants = cva(
             size: "lg",
             variant: "default",
         },
-        compoundVariants: [{ variant: "none", className: "size-3!" }],
     }
 );
 
