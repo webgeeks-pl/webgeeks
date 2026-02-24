@@ -1,0 +1,35 @@
+{
+    "pageHeader": {
+        "title": "Oferta",
+        "description": "Kompleksowe rozwiązania dla Twojego biznesu. Sprawdź pakiety i usługi, które pomogą Ci osiągnąć sukces w sieci."
+    },
+
+    "packages": {
+        "sectionHeader": {
+            "title": "Warianty stron",
+            "description": "Wybierz pakiet dopasowany do potrzeb Twojego biznesu. Każdy projekt jest realizowany indywidualnie."
+        },
+        "marketingPackagesTitle": "Strony marketingowe",
+        "marketingPackagesDescription": "Zwiększ widoczność swojej marki i przyciągnij klientów dzięki nowej stronie",
+        "specialPackagesTitle": "Inne",
+        "specialPackagesDescription": "Potrzebujesz sklepu lub platformy SaaS? Sprawdź nasze pakiety specjalne, które spełnią Twoje wymagania",
+        "popularBadge": "Najpopularniejszy",
+        "additionalFeaturesTitle": "Dodatkowe funkcje"
+    },
+    "services": {
+        "sectionHeader": {
+            "title": "Usługi",
+            "description": "Szeroki zakres usług, które pomogą Twojej firmie osiągnąć sukces w sieci."
+        },
+
+        "tableCaption": "Cennik usług dodatkowych"
+    },
+    "cta": {
+        "title": "Gotowy na sukces online?",
+        "description": "Skontaktuj się ze mną już dziś i zacznij budować swoją obecność w sieci z WebGeeks!",
+        "buttons": {
+            "primary": "Skontaktuj się",
+            "secondary": "Zobacz demo"
+        }
+    }
+}

@@ -1,6 +1,73 @@
 import { BasicComponentProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import Text, { TextProps } from "../typography/text";
+import ScrollToHashOnLoad from "../ui/ScrollToHashOnLoad";
+import Section, { SectionContent } from "./section";
 
-export function Page({ children, className }: BasicComponentProps) {
-    return <div className={cn("overflow-x-hidden", className)}>{children}</div>;
+export default function Page({ children, className, id }: BasicComponentProps) {
+    return (
+        <div id={id} className={cn("overflow-x-hidden", className)}>
+            <ScrollToHashOnLoad />
+            {children}
+        </div>
+    );
+}
+
+type PageTextProps = TextProps<keyof HTMLElementTagNameMap> & {
+    text?: React.ReactNode;
+};
+
+export function PageHeader({ className, children }: BasicComponentProps) {
+    return (
+        <Section as={"header"} className={cn("py-size-xl", className)}>
+            {children}
+        </Section>
+    );
+}
+
+export function PageHeaderContent({ className, children }: BasicComponentProps) {
+    return (
+        <SectionContent className={cn("gap-size-xs text-center", className)}>
+            {children}
+        </SectionContent>
+    );
+}
+
+export function PageTitle({
+    className,
+    children,
+    text,
+    as = "p",
+    ...props
+}: PageTextProps) {
+    return (
+        <Text
+            intent="pageHeader"
+            as={as}
+            className={cn("font-heading text-3xl", className)}
+            {...props}
+        >
+            {text ?? children}
+        </Text>
+    );
+}
+
+export function PageLead({
+    className,
+    children,
+    text,
+    as = "h1",
+    ...props
+}: PageTextProps) {
+    return (
+        <Text
+            intent="lead"
+            as={as}
+            muted
+            className={cn("max-w-2xl", className)}
+            {...props}
+        >
+            {text ?? children}
+        </Text>
+    );
 }

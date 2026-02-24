@@ -1,4 +1,4 @@
-import { useNavigation } from "@/context/NavigationProvider";
+import { useNavigation } from "@/context/navigationContext";
 import { useRef } from "react";
 import useOnMount from "./useOnMount";
 import useOnResize from "./useOnResize";

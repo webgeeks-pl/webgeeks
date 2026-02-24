@@ -1,0 +1,56 @@
+{
+    "pageTitle": "Strony demonstracyjne",
+    "pageLead": "Zobacz jak może wyglądać Twoja strona internetowa jeśli zdecydujesz się na Weebgeeks.",
+    "categories": ["Wszystkie", "Biznes", "E-Commerce", "Portfolio", "Marketing", "Blog"],
+    "notFound": "Nie znaleziono demonstracyjnych stron w tej kategorii.",
+    "templates": [
+        {
+            "id": "cafe-luna",
+            "name": "Café Luna",
+            "description": "Nowoczesna i przytulna strona internetowa kawiarni prezentująca ofertę, godziny otwarcia oraz lokalizację w eleganckim stylu.",
+            "category": "Gastronomia",
+            "tags": ["Kawiarnia", "Nowoczesny", "Elegancki", "Lokalny Biznes"],
+            "desktopImage": "/cafe-luna.png",
+            "mobileImage": "/cafe-luna.png",
+            "demoUrl": "https://cafe-luna-template.vercel.app/",
+            "features": [
+                "Responsywny Design",
+                "Sekcja Menu",
+                "Opinie Klientów",
+                "Formularz Kontaktowy",
+                "Informacje o Godzinach Otwarcia",
+                "Integracja Mapy i Lokalizacji",
+                "Wersja Wielojęzyczna (PL/EN)",
+                "Galeria Zdjęć"
+            ]
+        },
+        {
+            "id": "bikehub-service",
+            "name": "BikeHub - Serwis Rowerowy",
+            "description": "Profesjonalny serwis rowerowy w Krakowie. Naprawiamy, regulujemy i doradzamy – zawsze tak, jakby to był nasz rower.",
+            "category": "Usługi",
+            "tags": ["Serwis Rowerowy", "Naprawa", "Regulacja", "Doradztwo"],
+            "desktopImage": "/template-bike.png",
+            "mobileImage": "/template-bike.png",
+            "demoUrl": "https://bike-hub-template.vercel.app",
+            "features": [
+                "Profesjonalna Naprawa Rowerów",
+                "Regulacja i Serwis",
+                "Doradztwo Techniczne",
+                "Bezpieczne Oddanie Roweru w Dobre Ręce"
+            ]
+        }
+    ],
+    "cta": {
+        "title": "Potrzebujesz Czegoś Wyjątkowego?",
+        "description": "Tworzę w pełni niestandardowe strony internetowe dostosowane do Twoich specyficznych potrzeb, identyfikacji marki i celów biznesowych.",
+        "buttons": {
+            "primary": "Rozpocznij Projekt",
+            "secondary": "Zobacz Usługi"
+        }
+    },
+    "buttons": {
+        "openDemo": "Demo",
+        "openLink": "Link"
+    }
+}

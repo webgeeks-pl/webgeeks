@@ -7,16 +7,20 @@ import Tag from "../base/tag";
 const textCva = cva("", {
     variants: {
         intent: {
-            h1: "text-4xl scroll-m-20 font-extrald tracking-tight text-balance",
-            h2: "scroll-m-20  text-3xl font-semild tracking-tight ",
-            h3: "text-2xl scroll-m-20 font-semild tracking-tight",
-            h4: "text-xl scroll-m-20 font-semild tracking-tight",
-            p: "leading-7",
+            h1: "text-4xl scroll-m-20 font-extrabold tracking-tight text-balance font-heading",
+            h2: "scroll-m-20 text-3xl font-semibold tracking-tight",
+            sectionHeader:
+                "scroll-m-20 text-3xl sm:text-4xl  tracking-normal md:text-5xl font-heading",
+            pageHeader:
+                "scroll-m-20 text-3xl sm:text-4xl font-medium tracking-normal md:text-6xl font-heading",
+            h3: "text-2xl scroll-m-20 font-medium tracking-tight",
+            h4: "text-xl scroll-m-20 font-medium tracking-tight",
+            p: "text-base",
             blockquote: "mt-6 rder-l-2 rder-clr-brand-red/20 pl-6 italic",
-            lead: "text-xl",
-            large: "text-lg font-semild",
+            lead: "text-lg sm:text-xl",
+            large: "text-lg font-medium",
             small: "text-sm leading-5 font-medium",
-            var: "font-monospace font-medium",
+            var: "font-monospace font-medium font-heading",
         },
 
         color: {
@@ -94,6 +98,8 @@ const defaultTags: Record<TextIntent, keyof HTMLElementTagNameMap> = {
     lead: "p",
     large: "p",
     small: "p",
+    sectionHeader: "h2",
+    pageHeader: "h1",
     var: "span",
 };
 
@@ -106,7 +112,7 @@ interface BaseTextProps
     text?: ReactNode;
 }
 
-type TextProps<E extends keyof HTMLElementTagNameMap> = BaseTextProps & {
+export type TextProps<E extends keyof HTMLElementTagNameMap> = BaseTextProps & {
     as?: E;
     shouldAddHardBreaks?: boolean;
 } & React.ComponentPropsWithoutRef<E> &
@@ -126,6 +132,7 @@ export default function Text<E extends keyof HTMLElementTagNameMap = "p">({
 }: TextProps<E>) {
     const asTag = as ?? (intent && defaultTags[intent]) ?? "p";
     const output = text || children;
+
     const processedOutput =
         shouldAddHardBreaks && typeof output === "string"
             ? applyHardSpaceBreaks(output)

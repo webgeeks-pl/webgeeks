@@ -1,0 +1,291 @@
+{
+    "selectButton": {
+        "text": "Wybierz",
+        "href": "/contact"
+    },
+    "detailsButton": {
+        "text": "Szczegóły",
+        "href": ""
+    },
+    "popularBadge": "Najpopularniejszy",
+
+    "packages": [
+        {
+            "key": "subscription",
+            "name": "Miesięcznie",
+            "subtitle": "0 zł za stronę",
+            "isPopular": "true",
+            "icon": "BadgeCheck",
+            "price": "475 zł",
+            "priceDetails": "netto miesięcznie",
+            "description": "Wybierz pakiet miesięczny, a ja zajmę się wszystkim, od projektu po hosting i aktualizacje. Idealne rozwiązanie gdy nie chcesz tracić czasu na zarządzanie stroną.",
+            "category": "marketing",
+            "features": {
+                "main": [
+                    {
+                        "name": "Projekt i wykonanie strony",
+                        "description": "cała treść na jednej stronie",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Hosting w cenie",
+                        "description": "optymalizacja pod wyszukiwarki",
+                        "check": "true"
+                    },
+                    {
+                        "name": "+200zł za podstronę powyżej 5",
+                        "description": "strona będzie dobrze wyglądać na wszystkich urządzeniach",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Nielimitowane edycje treści",
+                        "description": "przez pierwszy rok wsparcie i aktualizacje",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Wsparcie techniczne 24/7",
+                        "description": "estetyczny i profesjonalny wygląd",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Miesięcznie aktualizacje",
+                        "description": "krótka instrukcja o stronie i jej funkcjach",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Raporty analityczne",
+                        "description": "raporty z analizą działania strony",
+                        "check": "true"
+                    }
+                ]
+            }
+        },
+
+        {
+            "key": "oneMarketing",
+            "name": "Jednorazowo",
+            "isPopular": "false",
+            "icon": "Star",
+            "price": "6 800 zł",
+            "subtitle": "",
+            "priceDetails": "netto +50zł/miesiąc hosting",
+            "description": "Zapłać raz, a stworzę dla Ciebie stronę internetową. Idealne rozwiązanie dla firm, które chcą mieć profesjonalną stronę",
+            "category": "marketing",
+            "features": {
+                "main": [
+                    {
+                        "name": "Projekt i wykonanie strony",
+                        "description": "cała treść na jednej stronie",
+                        "check": "true"
+                    },
+                    {
+                        "name": "50zł/miesiąc za hosting",
+                        "description": "optymalizacja pod wyszukiwarki",
+                        "check": "true"
+                    },
+                    {
+                        "name": "+200zł za podstronę powyżej 5",
+                        "description": "strona będzie dobrze wyglądać na wszystkich urządzeniach",
+                        "check": "true"
+                    },
+                    {
+                        "name": "+100zł/miesiąc nielimitowane edycje treści",
+                        "description": "przez pierwszy rok wsparcie i aktualizacje",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Wsparcie techniczne 24/7",
+                        "description": "estetyczny i profesjonalny wygląd",
+                        "check": "false"
+                    },
+                    {
+                        "name": "Miesięcznie aktualizacje",
+                        "description": "krótka instrukcja o stronie i jej funkcjach",
+                        "check": "false"
+                    },
+                    {
+                        "name": "Raporty analityczne",
+                        "description": "raporty z analizą działania strony",
+                        "check": "false"
+                    }
+                ]
+            }
+        },
+
+        {
+            "key": "ecommerce",
+            "name": "E-commerce",
+            "isPopular": "false",
+            "icon": "ShoppingCart",
+            "price": "od 9 999 zł",
+            "subtitle": "",
+            "priceDetails": "netto",
+            "description": "Sklep online z pełnym procesem zakupowym i integracjami płatności.",
+            "category": "special",
+            "features": {
+                "main": [
+                    {
+                        "name": "Katalog produktów",
+                        "description": "zarządzanie asortymentem",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Płatności online",
+                        "description": "integracja z systemami płatności",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Koszyk i zamówienia",
+                        "description": "pełny proces zakupowy",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Panel administracyjny",
+                        "description": "zarządzanie sklepem",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Automatyczne maile",
+                        "description": "potwierdzenia i statusy zamówień",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Optymalizacja pod SEO",
+                        "description": "widoczność produktów w wyszukiwarkach",
+                        "check": "true"
+                    }
+                ]
+            }
+        },
+        {
+            "key": "webapp",
+            "name": "Aplikacja webowa",
+            "icon": "AppWindow",
+            "isPopular": "false",
+            "price": "od 9 999 zł",
+            "subtitle": "",
+            "priceDetails": "netto",
+            "description": "Dedykowana aplikacja webowa dopasowana do procesów w Twojej firmie.",
+            "category": "special",
+            "features": {
+                "main": [
+                    {
+                        "name": "Indywidualny projekt UX/UI",
+                        "description": "dopasowany do użytkowników",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Role i uprawnienia",
+                        "description": "zarządzanie dostępem",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Integracje z systemami",
+                        "description": "połączenie z istniejącą infrastrukturą",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Panel administracyjny",
+                        "description": "pełna kontrola nad aplikacją",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Analityka i raporty",
+                        "description": "wgląd w dane biznesowe",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Wysoka wydajność",
+                        "description": "optymalizacja pod dużą liczbę użytkowników",
+                        "check": "true"
+                    }
+                ]
+            }
+        }
+    ],
+    "services": [
+        {
+            "name": "Edycja treści",
+            "description": "edycja treści strony (np. aktualizacja treści, zmiana zdjęć)",
+            "price": "50 zł / godzina"
+        },
+        {
+            "name": "CMS",
+            "description": "system zarządzania treścią do samodzielnej edycji treści strony",
+            "price": "1000 zł"
+        },
+        {
+            "name": "Dodatkowa podstrona",
+            "description": "dodatkowa podstrona na stronie",
+            "price": "200 zł"
+        },
+        {
+            "name": "Tłumaczenie strony",
+            "description": "tłumaczenie treści strony na różne języki",
+            "price": "400 zł + 100 zł za dodatkowy język"
+        },
+        {
+            "name": "Raporty analityczne",
+            "description": "raporty z analizą działania strony",
+            "price": "50 zł / miesiąc"
+        },
+        {
+            "name": "Aktualizacje i wsparcie",
+            "description": "aktualizacje kodu i wsparcie techniczne",
+            "price": "50 zł / miesiąc"
+        },
+        {
+            "name": "Blog + podstrona",
+            "description": "możliwość prowadzenia bloga na stronie (lepsza widoczność w wyszukiwarkach)",
+            "price": "800 zł"
+        },
+        {
+            "name": "Newsletter",
+            "description": "newsletter z możliwością zapisu i wysyłki wiadomości do subskrybentów",
+            "price": "500 zł"
+        },
+        {
+            "name": "Zaawansowana Analityka",
+            "description": "zaawansowe narzędzia analityczne (np. Google Analytics)",
+            "price": "500 zł",
+            "recommended": "true"
+        },
+        {
+            "name": "Premium design + animacje",
+            "description": "unikalne doświadczenie użytkownika",
+            "price": "od 1000 zł"
+        },
+        {
+            "name": "Strona z projektu",
+            "description": "zbudowanie strony na podstawie projektu dostarczonego przez klienta",
+            "price": "do ustalenia"
+        },
+        {
+            "name": "System rezerwacji",
+            "description": "system rezerwacji z kalendarzem",
+            "price": "do ustalenia"
+        },
+        {
+            "name": "Integracje",
+            "description": "integracja z innymi narzędziami i platformami (np. CRM, E-commerce, ERP)",
+            "price": "do ustalenia"
+        },
+
+        {
+            "name": "Wyszukiwarka",
+            "description": "wyszukiwarka treści na stronie",
+            "price": "do ustalenia"
+        },
+        {
+            "name": "Filtrowanie i sortowanie",
+            "description": "możliwość filtrowania i sortowania treści na stronie",
+            "price": "do ustalenia"
+        },
+        {
+            "name": "Dark mode",
+            "description": "tryb ciemny strony",
+            "price": "do ustalenia"
+        },
+        {}
+    ]
+}

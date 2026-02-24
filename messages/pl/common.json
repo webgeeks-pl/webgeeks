@@ -18,6 +18,7 @@
             "/services": "Usługi",
             "/contact": "Kontakt",
             "/blog": "Blog",
+            "/migration": "Migracja",
             "/process": "Proces",
             "/portfolio": "Portfolio",
             "/templates": "Szablony",
@@ -25,10 +26,27 @@
             "/testimonials": "Referencje",
             "/privacy-policy": "Polityka prywatności",
             "/terms-of-service": "Regulamin",
-            "cta": "Rozpocznij projekt"
+            "cta": "Zapytaj o wycenę"
         },
         "navigation": "Nawigacja",
         "openNav": "Otwórz menu nawigacji",
         "closeNav": "Zamknij menu nawigacji"
+    },
+    "footer": {
+        "title": "Zostańmy w kontakcie",
+        "description": "Stwórzmy razem profesjonalną stronę, która przyciągnie klientów",
+        "services": "Usługi",
+        "contact": "Kontakt",
+        "legal": "Informacje prawne",
+        "copyright": "Webgeeks. Wszelkie prawa zastrzeżone."
+    },
+
+    "logo": "Webgeeks",
+
+    "error": {
+        "notFound": "Nie znaleziono strony",
+        "serverError": "Wystąpił błąd serwera",
+        "forbidden": "Brak dostępu",
+        "badRequest": "Nieprawidłowe żądanie"
     }
 }

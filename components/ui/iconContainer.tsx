@@ -1,32 +1,58 @@
 import { BasicComponentProps } from "@/lib/types";
 import { cva, VariantProps } from "class-variance-authority";
 
-const iconContainerVariants = cva("", {
-    variants: {
-        size: {
-            sm: "size-8",
-            md: "size-10",
-            lg: "size-14",
+const iconContainerVariants = cva(
+    " aspect-square p-2 flex items-center justify-center rounded-lg",
+    {
+        variants: {
+            size: {
+                sm: "size-8",
+                md: "size-10",
+                lg: "size-14",
+                form: "",
+            },
+            variant: {
+                brand: "border bg-brand/15 border-brand/30",
+                brandSolid: "bg-brand border border-brand",
+                default: "border bg-accent",
+                opposite: " border bg-clr-950",
+                success: " border text-success bg-success/15 border-success/30",
+                destructive:
+                    "border text-destructive bg-destructive/15 border-destructive/30",
+                ghost: "bg-transparent",
+                outline: "border bg-transparent border border-border",
+                none: "",
+            },
+            color: {
+                brand: "",
+                default: "",
+                muted: "",
+                opposite: "",
+            },
         },
-        variant: {
-            default:
-                "text-brand bg-accent p-2 flex items-center justify-center rounded-lg",
+        defaultVariants: {
+            size: "lg",
+            variant: "default",
         },
-    },
-    defaultVariants: {
-        size: "lg",
-        variant: "default",
-    },
-});
+    }
+);
 
 const iconVariants = cva("", {
     variants: {
         size: {
             sm: "size-4",
+            form: "size-[20px]",
             md: "size-6",
             lg: "size-8",
         },
+        color: {
+            brand: "text-brand",
+            default: "",
+            muted: "text-muted-foreground",
+            opposite: "text-clr-100",
+        },
     },
+
     defaultVariants: {
         size: "lg",
     },
@@ -45,16 +71,24 @@ export default function IconContainer({
     className,
     size,
     variant,
+    color,
 }: IconContainerProps) {
     const output = Icon ? (
-        <Icon className={iconVariants({ size })} />
+        <Icon className={iconVariants({ size, color })} />
     ) : IconComp ? (
         IconComp
     ) : (
         children
     );
+
     return (
-        <div className={iconContainerVariants({ className, size, variant })}>
+        <div
+            className={iconContainerVariants({
+                className,
+                size,
+                variant,
+            })}
+        >
             {output}
         </div>
     );

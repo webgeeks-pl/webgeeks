@@ -1,9 +1,10 @@
 import { defineRouting } from "next-intl/routing";
+import { routingConfig } from "../config/i18n";
 
-export const routing = defineRouting({
-    // A list of all locales that are supported
-    locales: ["en", "pl"],
-    localePrefix: "as-needed",
-    // Used when no locale matches
-    defaultLocale: "pl",
-});
+if (!routingConfig) {
+    throw new Error(
+        "Routing configuration not found. Please define 'routingConfig' in config/i18n.ts"
+    );
+}
+
+export const routing = defineRouting(routingConfig);

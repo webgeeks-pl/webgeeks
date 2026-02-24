@@ -1,12 +1,19 @@
+import { AnimationProvider } from "@/context/AnimationContext";
+import NavigationProvider from "@/context/navigationContext";
 import { BasicComponentProps } from "@types";
 import { NextIntlClientProvider } from "next-intl";
 
-interface AppControlsProps extends BasicComponentProps {}
-
-export default function AppControls({ children }: AppControlsProps) {
+export default function AppControls({ children }: BasicComponentProps) {
     return (
-        <NextIntlClientProvider>
-            <>{children}</>
-        </NextIntlClientProvider>
+        <>
+            <AnimationProvider>
+                <NavigationProvider>
+                    <NextIntlClientProvider>
+                        <>{children}</>
+                    </NextIntlClientProvider>
+                </NavigationProvider>
+            </AnimationProvider>
+            {/* <LenisControls /> */}
+        </>
     );
 }

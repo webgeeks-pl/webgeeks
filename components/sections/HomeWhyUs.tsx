@@ -1,0 +1,341 @@
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
+import { useTrans } from "@/hooks/useTrans";
+import { useTranslations } from "next-intl";
+import { HoleBackground } from "../animate-ui/components/backgrounds/hole";
+import Section, {
+    SectionContent,
+    SectionHeader,
+    SectionHeaderContent,
+    SectionLead,
+    SectionTitle,
+} from "../layout/section";
+import ShinyText from "../ShinyText";
+import Text from "../typography/text";
+import { AnimatedBackgroundSwitcher } from "../ui/animatedBackgroundSwitcher";
+import { Card, CardContent } from "../ui/card";
+import { FloatingStats } from "../ui/floating-stats";
+import IconContainer from "../ui/iconContainer";
+import { Iphone } from "../ui/iphone";
+import { getLucideIcon } from "../ui/lucideIcons";
+import { Ripple } from "../ui/ripple";
+import RotatingText from "../ui/RotatingText";
+import { Safari } from "../ui/safari";
+import { TypingAnimation } from "../ui/typing-animation";
+
+export function HomeWhyUs() {
+    const t = useTranslations("pages.home.whyUs");
+    const tObj = useTrans("pages.home.whyUs");
+    const tCommon = useTranslations("common");
+
+    const benefits = {
+        speed: {
+            icon: t("benefits.speed.icon"),
+            title: t("benefits.speed.title"),
+            description: t("benefits.speed.description"),
+        },
+        seo: {
+            icon: t("benefits.seo.icon"),
+            title: t("benefits.seo.title"),
+            description: t("benefits.seo.description"),
+        },
+        costs: {
+            icon: t("benefits.costs.icon"),
+            title: t("benefits.costs.title"),
+            description: t("benefits.costs.description"),
+            cta: tObj.obj("benefits.costs.cta"),
+        },
+        security: {
+            icon: t("benefits.security.icon"),
+            title: t("benefits.security.title"),
+            description: t("benefits.security.description"),
+        },
+        mobile: {
+            icon: t("benefits.mobile.icon"),
+            title: t("benefits.mobile.title"),
+            description: t("benefits.mobile.description"),
+        },
+        scalability: {
+            icon: t("benefits.scalability.icon"),
+            title: t("benefits.scalability.title"),
+            description: t("benefits.scalability.description"),
+        },
+        easy: {
+            icon: t("benefits.easy.icon"),
+            title: t("benefits.easy.title"),
+            description: t("benefits.easy.description"),
+        },
+        conversions: {
+            icon: t("benefits.conversions.icon"),
+            title: t("benefits.conversions.title"),
+            description: t("benefits.conversions.description"),
+        },
+    };
+
+    const rotatingTexts = t.raw("rotatingTexts") as string[];
+    const typingWords = t.raw("typingWords") as string[];
+    console.log("render");
+    console.log(benefits.conversions.icon);
+    return (
+        <Section className="py-size-xl md:py-size-2xl relative flex min-h-screen items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 -z-5 [background:linear-gradient(to_bottom,rgba(255,255,255,1)_0%,rgba(255,255,255,.5)_15%,rgba(255,255,255,0)_30%,rgba(255,255,255,0)_70%,rgba(255,255,255,0.5)_85%,rgba(255,255,255,1)_100%)]" />
+            <div className="pointer-events-none absolute inset-0 -z-5 [background:radial-gradient(ellipse_at_center,rgba(255,255,255,0)_0%,rgba(255,255,255,0.2)_55%,rgba(255,255,255,1)_100%)]" />
+            <div className="absolute inset-0 -z-6">
+                <FlickeringGrid />
+                {/* <FlickeringGridOGL /> */}
+            </div>
+            <SectionContent>
+                <div className="grid grid-cols-1 grid-rows-[repeat(9,250px)] gap-6 md:grid-cols-2 md:grid-rows-[repeat(5,250px)] xl:grid-cols-4 xl:grid-rows-[repeat(3,minmax(250px,1fr))]">
+                    <Card className="hover:ring-brand h-full bg-white">
+                        <CardContent className="flex h-full flex-col justify-between gap-2">
+                            <div className="relative h-full overflow-hidden rounded-lg">
+                                {/* <WarpBackground
+                                    beamDuration={5}
+                                    className="absolute inset-0 m-0 h-full p-0"
+                                >
+                                    <></>
+                                </WarpBackground> */}
+
+                                <HoleBackground />
+                            </div>
+                            <div className="h-fit">
+                                <div className="mb-0.5 flex items-center gap-1">
+                                    <IconContainer
+                                        variant={"ghost"}
+                                        size={"md"}
+                                        Icon={getLucideIcon(benefits.speed.icon)}
+                                    />
+                                    <Text
+                                        intent="h4"
+                                        as="h3"
+                                        className="font-heading"
+                                        text={benefits.speed.title}
+                                    />
+                                </div>
+                                <Text muted text={benefits.speed.description} />
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="hover:ring-brand h-full bg-white">
+                        <CardContent className="flex h-full flex-col justify-between gap-2">
+                            <div className="relative flex-1">
+                                <FlickeringGrid />
+                            </div>
+                            <div className="h-fit shrink-0">
+                                <div className="mb-0.5 flex items-center gap-1">
+                                    <IconContainer
+                                        variant={"ghost"}
+                                        size={"md"}
+                                        Icon={getLucideIcon(benefits.security.icon)}
+                                    />
+                                    <Text
+                                        intent="h4"
+                                        as="h3"
+                                        className="font-heading"
+                                        text={benefits.security.title}
+                                    />
+                                </div>
+                                <Text muted text={benefits.security.description} />
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="hover:ring-brand h-full bg-white xl:col-span-2">
+                        <CardContent className="flex h-full flex-col justify-between gap-2">
+                            <div className="flex h-full flex-col items-center justify-center">
+                                {benefits.costs.cta.map((t) => {
+                                    return (
+                                        <ShinyText
+                                            key={t}
+                                            color="oklch(0.408 0 0)"
+                                            shineColor="oklch(0.922 0 0)"
+                                            delay={3}
+                                            className="font-heading text-2xl font-semibold lg:text-4xl"
+                                            text={t}
+                                        />
+                                    );
+                                })}
+                            </div>
+                            <div className="h-fit">
+                                <div className="mb-0.5 flex items-center gap-1">
+                                    <IconContainer
+                                        variant={"ghost"}
+                                        size={"md"}
+                                        Icon={getLucideIcon(benefits.costs.icon)}
+                                    />
+                                    <Text
+                                        intent="h4"
+                                        as="h3"
+                                        className="font-heading"
+                                        text={benefits.costs.title}
+                                    />
+                                </div>
+                                <Text muted text={benefits.costs.description} />
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="hover:ring-brand h-full bg-white">
+                        <CardContent className="flex h-full flex-col justify-between gap-2">
+                            <div className="relative flex h-full w-full items-center justify-center">
+                                <div className="absolute inset-0 z-0 overflow-hidden">
+                                    <AnimatedBackgroundSwitcher />
+                                </div>
+                                <div className="relative z-10 overflow-hidden">
+                                    <div className="h-9 w-fit">
+                                        <RotatingText
+                                            mainClassName="flex items-center justify-center px-2 md:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 md:py-1 md:py-2 rounded-lg whitespace-nowrap h-full w-full "
+                                            staggerFrom={"last"}
+                                            initial={{ y: "100%" }}
+                                            animate={{ y: 0 }}
+                                            exit={{ y: "-120%" }}
+                                            staggerDuration={0.025}
+                                            splitLevelClassName="overflow-hidden pb-0.5 md:pb-1 md:pb-1 "
+                                            elementLevelClassName="font-heading"
+                                            transition={{
+                                                type: "spring",
+                                                damping: 30,
+                                                stiffness: 400,
+                                            }}
+                                            rotationInterval={4000}
+                                            texts={rotatingTexts}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="h-fit">
+                                <div className="mb-0.5 flex items-center gap-1">
+                                    <IconContainer
+                                        variant={"ghost"}
+                                        size={"md"}
+                                        Icon={getLucideIcon(benefits.easy.icon)}
+                                    />
+                                    <Text
+                                        intent="h4"
+                                        as="h3"
+                                        className="font-heading"
+                                        text={benefits.easy.title}
+                                    />
+                                </div>
+                                <Text muted text={benefits.easy.description} />
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="hover:ring-brand ring-brand bg-brand -order-1 h-full ring-2 md:col-span-2 xl:order-0">
+                        <CardContent className="flex h-full flex-col items-center justify-center gap-2">
+                            <SectionHeader>
+                                <SectionHeaderContent>
+                                    <SectionTitle>
+                                        {t("sectionHeader.title")}{" "}
+                                        <span className="font-silkscreen -tracking-widest">
+                                            {tCommon("logo")}
+                                        </span>
+                                    </SectionTitle>
+                                    <SectionLead
+                                        text={t("sectionHeader.description")}
+                                        muted={false}
+                                    />
+                                </SectionHeaderContent>
+                            </SectionHeader>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="hover:ring-brand h-full bg-white">
+                        <CardContent className="flex h-full flex-col justify-between gap-2">
+                            <div className="relative flex h-full justify-center gap-3">
+                                <Safari className="max-h-24 max-w-30" />
+                                <Iphone className="max-h-24 max-w-10" />
+                            </div>
+                            <div className="h-fit">
+                                <div className="mb-0.5 flex items-center gap-1">
+                                    <IconContainer
+                                        variant={"ghost"}
+                                        size={"md"}
+                                        Icon={getLucideIcon(benefits.mobile.icon)}
+                                    />
+                                    <Text
+                                        intent="h4"
+                                        as="h3"
+                                        className="font-heading"
+                                        text={benefits.mobile.title}
+                                    />
+                                </div>
+                                <Text muted text={benefits.mobile.description} />
+                            </div>
+                        </CardContent>
+                    </Card>
+                    <Card className="hover:ring-brand h-full bg-white xl:col-span-2">
+                        <CardContent className="flex h-full flex-col justify-between gap-2">
+                            <FloatingStats />
+                            <div className="h-fit">
+                                <div className="mb-0.5 flex items-center gap-1">
+                                    <IconContainer
+                                        variant={"ghost"}
+                                        size={"md"}
+                                        Icon={getLucideIcon(benefits.conversions.icon)}
+                                    />
+                                    <Text
+                                        intent="h4"
+                                        as="h3"
+                                        className="font-heading"
+                                        text={benefits.conversions.title}
+                                    />
+                                </div>
+                                <Text muted text={benefits.conversions.description} />
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="hover:ring-brand h-full bg-white">
+                        <CardContent className="flex h-full flex-col justify-between gap-2">
+                            <div className="relative h-full [mask-image:linear-gradient(to_bottom,transparent,white,white,transparent)]">
+                                <Ripple mainCircleSize={10} numCircles={4} />
+                            </div>
+                            <div className="h-fit">
+                                <div className="mb-0.5 flex items-center gap-1">
+                                    <IconContainer
+                                        variant={"ghost"}
+                                        size={"md"}
+                                        Icon={getLucideIcon(benefits.scalability.icon)}
+                                    />
+                                    <Text
+                                        intent="h4"
+                                        as="h3"
+                                        className="font-heading"
+                                        text={benefits.scalability.title}
+                                    />
+                                </div>
+                                <Text muted text={benefits.scalability.description} />
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="hover:ring-brand h-full bg-white">
+                        <CardContent className="flex h-full flex-col justify-between gap-2">
+                            <div className="flex h-full max-h-full flex-col items-center justify-center overflow-hidden">
+                                <TypingAnimation startOnView loop words={typingWords} />
+                            </div>
+                            <div className="h-fit">
+                                <div className="mb-0.5 flex items-center gap-1">
+                                    <IconContainer
+                                        variant={"ghost"}
+                                        size={"md"}
+                                        Icon={getLucideIcon(benefits.seo.icon)}
+                                    />
+                                    <Text
+                                        intent="h4"
+                                        as="h3"
+                                        className="font-heading"
+                                        text={benefits.seo.title}
+                                    />
+                                </div>
+                                <Text muted text={benefits.seo.description} />
+                            </div>
+                        </CardContent>
+                    </Card>
+                </div>
+            </SectionContent>
+        </Section>
+    );
+}

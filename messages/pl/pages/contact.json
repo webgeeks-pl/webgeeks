@@ -1,0 +1,34 @@
+{
+    "pageTitle": "Kontakt",
+    "pageLead": "Skontaktuj się z mną i stwórzmy coś wyjątkowego razem.",
+    "contactMethods": [
+        {
+            "name": "Email",
+            "description": "Napisz do mnie maila, a odpowiem najszybciej jak to możliwe.",
+            "contact": "webgeeks@proton.me",
+            "info": ""
+        },
+        {
+            "name": "Formularz kontaktowy",
+            "description": "Wypełnij poniższy formularz, a ja skontaktuję się z Tobą",
+            "contact": "Skontaktuj się poniżej"
+        }
+    ],
+    "responseGuarantee": "Odpowiadam w ciągu 24 godzin w dni robocze.",
+    "formSection": {
+        "title": "Pozwól mi poznać twój biznes",
+        "subtitle": "Uzupełnij formularz, a ja dostosuję ofertę do Twoich potrzeb tak aby strona spełniała Twoje oczekiwania",
+        "sidebarBadge": "Skontaktuj się",
+        "sidebarTitle": "Masz pomysł?",
+        "sidebarTitleContinued": "Porozmawiajmy.",
+        "sidebarDescription": "Opisz swój projekt, a razem dobierzemy rozwiązanie dla Twojego biznesu."
+    },
+    "form": {
+        "required": "To pole jest wymagane",
+        "invalidEmail": "Proszę wprowadzić prawidłowy adres e-mail",
+        "submit": "Wyślij wiadomość",
+        "submitting": "Wysyłanie...",
+        "success": "Wiadomość wysłana pomyślnie! Wkrótce się odezwiemy.",
+        "error": "Nie udało się wysłać wiadomości. Spróbuj ponownie."
+    }
+}

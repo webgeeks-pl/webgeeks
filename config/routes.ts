@@ -1,23 +1,33 @@
 import { NavigationRoutes } from "@/lib/types";
 
 export const routes: NavigationRoutes = [
-    { link: "/" },
-    { link: "/about" },
-    { link: "/offer" },
-    { link: "/portfolio" },
-    { link: "/process" },
-    { link: "/templates" },
-    { link: "/contact" },
-    { link: "/testimonials" },
+    { link: "/", name: "Strona główna" },
+    // { link: "/about" },
+    { link: "/offer", name: "Oferta" },
+    // { link: "/portfolio" },
+    // { link: "/process" },
+    // { link: "/templates" },
+
+    { link: "/templates", name: "Szablony" },
+    { link: "/contact", name: "Kontakt" },
+    // { link: "/testimonials" },
     {
+        name: "Skontaktuj się z nami",
         link: "/contact",
         cta: true,
     },
 ];
 
+export const footerRoutes = {
+    links: [],
+    contacts: [],
+    legal: [],
+};
+
 export const legalRoutes: NavigationRoutes = [
-    { link: "/privacy-policy" },
+    { link: "/privacy-policy", name: "Polityka prywatności" },
     {
         link: "/terms-of-service",
+        name: "Warunki korzystania z usługi",
     },
 ];

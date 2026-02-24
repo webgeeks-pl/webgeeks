@@ -1,22 +1,23 @@
+import Footer from "@/components/layout/footer";
 import Main from "@/components/layout/main";
 import Navigation from "@/components/navigation/navigation";
+import Logo from "@/components/ui/logo";
+import ScrollToHashOnLoad from "@/components/ui/ScrollToHashOnLoad";
 import AppControls from "@/controls/appControls";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/dist/client/components/navigation";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Outfit, Silkscreen } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
+const silkscreen = Silkscreen({
     subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
+    weight: "400",
+    variable: "--font-silkscreen",
 });
 
 export const metadata: Metadata = {
@@ -39,17 +40,19 @@ export default async function RootLayout({
     if (!hasLocale(routing.locales, locale)) {
         notFound();
     }
-    // Enable static renderin   g
+    // Enable static rendering
     setRequestLocale(locale);
 
     return (
         <html lang={locale}>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+                className={`${inter.variable} ${outfit.variable} ${silkscreen.variable} antialiased`}
             >
                 <AppControls>
                     <Navigation />
+                    <ScrollToHashOnLoad />
                     <Main>{children}</Main>
+                    <Footer Logo={<Logo />} />
                 </AppControls>
             </body>
         </html>
