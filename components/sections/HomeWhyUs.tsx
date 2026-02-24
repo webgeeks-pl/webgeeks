@@ -118,7 +118,7 @@ export function HomeWhyUs() {
                     <Card className="hover:ring-brand h-full bg-white">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative h-full">
-                                {/* <FlickeringGrid /> */}
+                                <FlickeringGrid />
                             </div>
                             <div className="h-fit shrink-0">
                                 <div className="mb-0.5 flex items-center gap-1">
