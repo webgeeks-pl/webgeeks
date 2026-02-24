@@ -168,8 +168,6 @@ function AccordionContent({ children, className, ...props }: AccordionContentPro
     const value = (props as { value?: React.Key }).value;
     const isExpanded = value === expandedValue;
 
-    console.log(isExpanded, value, expandedValue);
-
     const BASE_VARIANTS: Variants = {
         expanded: { height: "auto", opacity: 1 },
         collapsed: { height: 0, opacity: 0 },

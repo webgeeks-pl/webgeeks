@@ -23,7 +23,6 @@ interface Service {
 export default function OfferPage() {
     const packages = useAllPackages();
     const marketingPackages = packages.filter((pkg) => pkg.category === "marketing");
-    console.log(marketingPackages);
     const specialPackages = packages.filter((pkg) => pkg.category === "special");
     const pageT = useTranslations("pages.offer");
     const offerT = useTranslations("offer");
