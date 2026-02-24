@@ -25,7 +25,7 @@ export function HomeFeatures() {
             shouldRender={heroCards.length > 0}
         >
             <SectionContent>
-                <div className="grid w-full grid-cols-1 items-stretch gap-4 max-md:grid-rows-3 md:grid-cols-3 lg:gap-x-10 xl:grid-cols-3">
+                <div className="grid w-full grid-cols-1 items-stretch gap-4 max-md:grid-rows-4 md:grid-cols-2 lg:gap-x-10 xl:grid-cols-4">
                     {heroCards.map(({ icon, value, title, description }, index) => {
                         return (
                             <Card
