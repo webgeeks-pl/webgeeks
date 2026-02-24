@@ -1,11 +1,5 @@
 import Page, { PageHeader, PageHeaderContent, PageLead, PageTitle } from "../layout/page";
-import Section, {
-    SectionContent,
-    SectionHeader,
-    SectionHeaderContent,
-    SectionLead,
-    SectionTitle,
-} from "../layout/section";
+import Section, { SectionContent } from "../layout/section";
 
 import { FileText, Mail, Send } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -67,12 +61,12 @@ export default function ContactPage() {
             <Separator decorative />
             <Section className="py-size-xl bg-clr-50" id="contact-form">
                 <SectionContent className="gap-size-lg">
-                    <SectionHeader>
+                    {/* <SectionHeader>
                         <SectionHeaderContent>
                             <SectionTitle>{t("formSection.title")}</SectionTitle>
                             <SectionLead>{t("formSection.subtitle")}</SectionLead>
                         </SectionHeaderContent>
-                    </SectionHeader>
+                    </SectionHeader> */}
                     <div className="flex w-full max-w-5xl flex-col md:flex-row">
                         <div className="bg-clr-950 flex flex-col justify-between p-8 max-md:rounded-t-2xl md:col-span-2 md:rounded-l-2xl md:p-10">
                             <div className="">
@@ -83,7 +77,11 @@ export default function ContactPage() {
                                             {t("formSection.sidebarBadge")}
                                         </Text>
                                     </span>
-                                    <Text intent="h1" className="text-clr-50! pb-4">
+                                    <Text
+                                        intent="h1"
+                                        as="h2"
+                                        className="text-clr-50! pb-4"
+                                    >
                                         {t("formSection.sidebarTitle")}
                                         <br />
                                         {t("formSection.sidebarTitleContinued")}
@@ -94,29 +92,9 @@ export default function ContactPage() {
                                 </div>
                             </div>
                             <div className="">
-                                <Separator className="bg-clr-600" />
-                                <div className="grid grid-cols-2 gap-4 pt-6">
-                                    {t.raw("formSection.stats").map((stat: any) => (
-                                        <div key={stat.value}>
-                                            <Text className="text-clr-50!" intent="h2">
-                                                {stat.value}
-                                            </Text>
-                                            <Text
-                                                intent="small"
-                                                className="text-clr-400!"
-                                            >
-                                                {stat.label}
-                                            </Text>
-                                        </div>
-                                    ))}
-                                </div>
-                                <Separator className="bg-clr-600 mt-6" />
-
-                                <Text intent="small" className="text-clr-400! mt-6">
+                                {/* <Text intent="small" className="text-clr-400! mt-6">
                                     {t("formSection.responseNote")}
-                                    <br />
-                                    {t("formSection.noSpam")}
-                                </Text>
+                                </Text> */}
                             </div>
                         </div>
                         <div className="rounded-b-2xl bg-white p-8 md:w-[120%] md:rounded-r-2xl md:p-10">

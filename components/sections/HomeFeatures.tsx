@@ -40,7 +40,7 @@ export function HomeFeatures() {
                                         />
                                         <Text
                                             intent="var"
-                                            className="capitalize lg:text-2xl"
+                                            className="xs:text-lg text-base lg:text-lg"
                                             text={value}
                                         />
                                     </div>
@@ -48,9 +48,13 @@ export function HomeFeatures() {
                                         <Text
                                             intent="h3"
                                             text={title}
-                                            className="xs:text-lg text-base lg:text-lg"
+                                            className="font-heading font-semibold capitalize lg:text-2xl"
                                         />
-                                        <Text intent="small" text={description} />
+                                        <Text
+                                            intent="small"
+                                            className="font-heading"
+                                            text={description}
+                                        />
                                     </div>
                                 </CardContent>
                             </Card>

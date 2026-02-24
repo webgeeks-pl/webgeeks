@@ -43,10 +43,10 @@
                 "description": "na Twojej stronie"
             },
             {
-                "icon": "TrendingUp",
-                "value": "zauważalnie",
-                "title": "Większa konwersja",
-                "description": "na Twojej stronie"
+                "icon": "Shield",
+                "value": "w pełni",
+                "title": "Bezpieczna strona",
+                "description": "bez obaw"
             }
         ]
     },

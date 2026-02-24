@@ -65,7 +65,7 @@ function FloatingStat({
                 <IconContainer
                     variant={"none"}
                     Icon={getLucideIcon(Icon)}
-                    className="p-0!"
+                    className="size-3! p-0!"
                 />
                 <span className="text-xs font-medium tabular-nums">{value}</span>
             </motion.div>

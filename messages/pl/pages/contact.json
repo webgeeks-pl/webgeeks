@@ -1,40 +1,27 @@
 {
     "pageTitle": "Kontakt",
-    "pageLead": "Skontaktuj się z nami i stwórzmy coś wyjątkowego razem.",
+    "pageLead": "Skontaktuj się z mną i stwórzmy coś wyjątkowego razem.",
     "contactMethods": [
         {
             "name": "Email",
-            "description": "Napisz do nas maila, a odpowiemy najszybciej jak to możliwe.",
+            "description": "Napisz do mnie maila, a odpowiem najszybciej jak to możliwe.",
             "contact": "webgeeks@proton.me",
             "info": ""
         },
         {
             "name": "Formularz kontaktowy",
-            "description": "Wypełnij formularz, a my skontaktujemy się z Tobą.",
-            "contact": "Zjedz nizej",
-            "info": "Tutaj najszybciej odpowiadamy"
+            "description": "Wypełnij poniższy formularz, a ja skontaktuję się z Tobą",
+            "contact": "Skontaktuj się poniżej"
         }
     ],
-    "responseGuarantee": "Gwarantujemy odpowiedź w ciągu 24 godzin w dni robocze.",
+    "responseGuarantee": "Odpowiadam w ciągu 24 godzin w dni robocze.",
     "formSection": {
-        "title": "Pozwól nam poznać twój biznes",
-        "subtitle": "Uzupełnij formularz, a my dostosujemy ofertę do Twoich potrzeb tak aby strona spełniała Twoje oczekiwania.",
+        "title": "Pozwól mi poznać twój biznes",
+        "subtitle": "Uzupełnij formularz, a ja dostosuję ofertę do Twoich potrzeb tak aby strona spełniała Twoje oczekiwania",
         "sidebarBadge": "Skontaktuj się",
         "sidebarTitle": "Masz pomysł?",
         "sidebarTitleContinued": "Porozmawiajmy.",
-        "sidebarDescription": "Opisz swój projekt, a razem dobierzemy rozwiązanie dla Twojego biznesu.",
-        "stats": [
-            {
-                "value": "200+",
-                "label": "Zrealizowanych projektów"
-            },
-            {
-                "value": "98%",
-                "label": "Zadowolonych klientów"
-            }
-        ],
-        "responseNote": "Odpowiadamy zazwyczaj w ciągu 24h.",
-        "noSpam": "Żadnego spamu, obiecujemy."
+        "sidebarDescription": "Opisz swój projekt, a razem dobierzemy rozwiązanie dla Twojego biznesu."
     },
     "form": {
         "required": "To pole jest wymagane",
