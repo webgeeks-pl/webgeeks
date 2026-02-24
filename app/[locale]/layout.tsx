@@ -17,6 +17,7 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 const silkscreen = Silkscreen({
     subsets: ["latin"],
     weight: "400",
+    display: "swap",
     variable: "--font-silkscreen",
 });
 
