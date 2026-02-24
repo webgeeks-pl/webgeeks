@@ -4,6 +4,7 @@ import Section, { SectionContent } from "../layout/section";
 import ContactForm from "@/components/forms/contactForm";
 import { FileText, Mail, Send } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Suspense } from "react";
 import Text from "../typography/text";
 import { Card, CardContent } from "../ui/card";
 import IconContainer from "../ui/iconContainer";
@@ -99,7 +100,9 @@ export default function ContactPage() {
                             </div>
                         </div>
                         <div className="rounded-b-2xl bg-white p-8 md:w-[120%] md:rounded-r-2xl md:p-10">
-                            <ContactForm />
+                            <Suspense fallback={<div aria-hidden /> }>
+                                <ContactForm />
+                            </Suspense>
                         </div>
                     </div>
                 </SectionContent>
