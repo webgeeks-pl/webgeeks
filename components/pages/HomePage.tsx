@@ -1,3 +1,4 @@
+import { HomeShowcase } from "@/components/sections/HomeShowcase";
 import Dither from "../Dither";
 import Page from "../layout/page";
 import Section, { SectionContent } from "../layout/section";
