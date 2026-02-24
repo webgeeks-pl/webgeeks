@@ -6,7 +6,6 @@ import { HomeCtaFooter } from "../sections/HomeCtaFooter";
 import { HomeFeatures } from "../sections/HomeFeatures";
 import { HomeHero } from "../sections/HomeHero";
 import { HomePackages } from "../sections/HomePackages";
-import { HomeShowcase } from "../sections/HomeShowcase";
 import { HomeSolutions } from "../sections/HomeSolutions";
 import { HomeWhyUs } from "../sections/HomeWhyUs";
 import Text from "../typography/text";
@@ -77,7 +76,7 @@ export default function HomePage() {
             </Section>
 
             <HomeWhyUs />
-            <HomeShowcase />
+            {/* <HomeShowcase /> */}
             <HomeAbout />
             <HomePackages />
             <Separator decorative />
