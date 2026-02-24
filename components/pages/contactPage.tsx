@@ -27,6 +27,7 @@ export default function ContactPage() {
 
     return (
         <Page>
+            
             <PageHeader>
                 <PageHeaderContent>
                     <PageTitle>{t("pageTitle")}</PageTitle>
@@ -69,42 +70,44 @@ export default function ContactPage() {
                             <SectionLead>{t("formSection.subtitle")}</SectionLead>
                         </SectionHeaderContent>
                     </SectionHeader> */}
-                    <div className="flex w-full max-w-5xl flex-col md:flex-row">
-                        <div className="bg-clr-950 flex flex-col justify-between p-8 max-md:rounded-t-2xl md:col-span-2 md:rounded-l-2xl md:p-10">
-                            <div className="">
-                                <div>
-                                    <span className="bg-clr-800 text-clr-50 mb-6 inline-flex items-center gap-1.5 rounded-full px-3 py-1">
-                                        <Send className="h-3.5 w-3.5" />
-                                        <Text intent="small" className="text-clr-50!">
-                                            {t("formSection.sidebarBadge")}
+                    <Suspense fallback={<div aria-hidden /> }>
+                        <div className="flex w-full max-w-5xl flex-col md:flex-row">
+                            <div className="bg-clr-950 flex flex-col justify-between p-8 max-md:rounded-t-2xl md:col-span-2 md:rounded-l-2xl md:p-10">
+                                <div className="">
+                                    <div>
+                                        <span className="bg-clr-800 text-clr-50 mb-6 inline-flex items-center gap-1.5 rounded-full px-3 py-1">
+                                            <Send className="h-3.5 w-3.5" />
+                                            <Text intent="small" className="text-clr-50!">
+                                                {t("formSection.sidebarBadge")}
+                                            </Text>
+                                        </span>
+                                        <Text
+                                            intent="h1"
+                                            as="h2"
+                                            className="text-clr-50! pb-4"
+                                        >
+                                            {t("formSection.sidebarTitle")}
+                                            <br />
+                                            {t("formSection.sidebarTitleContinued")}
                                         </Text>
-                                    </span>
-                                    <Text
-                                        intent="h1"
-                                        as="h2"
-                                        className="text-clr-50! pb-4"
-                                    >
-                                        {t("formSection.sidebarTitle")}
-                                        <br />
-                                        {t("formSection.sidebarTitleContinued")}
-                                    </Text>
-                                    <Text intent="large" className="text-clr-400!">
-                                        {t("formSection.sidebarDescription")}
-                                    </Text>
+                                        <Text intent="large" className="text-clr-400!">
+                                            {t("formSection.sidebarDescription")}
+                                        </Text>
+                                    </div>
+                                </div>
+                                <div className="">
+                                    {/* <Text intent="small" className="text-clr-400! mt-6">
+                                        {t("formSection.responseNote")}
+                                    </Text> */}
                                 </div>
                             </div>
-                            <div className="">
-                                {/* <Text intent="small" className="text-clr-400! mt-6">
-                                    {t("formSection.responseNote")}
-                                </Text> */}
+                            <div className="rounded-b-2xl bg-white p-8 md:w-[120%] md:rounded-r-2xl md:p-10">
+                                {/* <Suspense fallback={<div aria-hidden /> }> */}
+                                    <ContactForm />
+                                {/* </Suspense> */}
                             </div>
                         </div>
-                        <div className="rounded-b-2xl bg-white p-8 md:w-[120%] md:rounded-r-2xl md:p-10">
-                            <Suspense fallback={<div aria-hidden /> }>
-                                <ContactForm />
-                            </Suspense>
-                        </div>
-                    </div>
+                    </Suspense>
                 </SectionContent>
             </Section>
         </Page>
