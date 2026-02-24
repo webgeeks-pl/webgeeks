@@ -62,7 +62,11 @@ function FloatingStat({
                 onAnimationComplete={() => setCycle((c) => c + 1)}
                 key={`${id}-${cycle}`}
             >
-                <IconContainer Icon={getLucideIcon(Icon)} className="size-3" />
+                <IconContainer
+                    variant={"none"}
+                    Icon={getLucideIcon(Icon)}
+                    className="p-0!"
+                />
                 <span className="text-xs font-medium tabular-nums">{value}</span>
             </motion.div>
         </div>

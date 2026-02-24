@@ -52,23 +52,25 @@ export default function OfferPage() {
                                 text={pageT("packages.marketingPackagesTitle")}
                             />
                             <Text
+                                className="max-w-prose"
                                 muted
                                 text={pageT("packages.marketingPackagesDescription")}
                             />
                         </div>
 
-                        <div className="grid w-full gap-6 lg:grid-cols-2">
+                        <div className="grid w-full gap-6 md:grid-cols-2">
                             {marketingPackages.map((pkg, index) => {
                                 return <PackageCard key={pkg.key} pkg={pkg} />;
                             })}
                         </div>
 
                         <div className="flex flex-col gap-2">
-                            <Text intent="h3" as="h2" text={"Usługi dodatkowe"} />
+                            <Text intent="h3" as="h2" text={"Dodatki do strony"} />
                             <Text
+                                className="max-w-prose"
                                 muted
                                 text={
-                                    "lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                                    "Wybierz dodatkowe usługi, które uzupełnią Twoją stronę i zapewnią jej jeszcze lepszą funkcjonalność."
                                 }
                             />
                         </div>
@@ -107,12 +109,13 @@ export default function OfferPage() {
                                 text={pageT("packages.specialPackagesTitle")}
                             />
                             <Text
+                                className="max-w-prose"
                                 muted
                                 text={pageT("packages.specialPackagesDescription")}
                             />
                         </div>
 
-                        <div className="grid w-full gap-6 lg:grid-cols-2">
+                        <div className="grid w-full gap-6 md:grid-cols-2">
                             {specialPackages.map((pkg, index) => {
                                 return <PackageCard key={pkg.key} pkg={pkg} />;
                             })}

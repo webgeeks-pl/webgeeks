@@ -16,12 +16,12 @@ const resend = getResendObject();
 const RESEND_TO = process.env.RESEND_TO_EMAIL || "webgeeks_pl@proton.me";
 
 export async function sendEmail(userName: string, userEmail: string, data: EmailField[]) {
-    const t = await getTranslations("pages.contact.form");
+    const t = await getTranslations("pages.contact");
 
     if (!resend) {
         return {
             success: false,
-            message: t("error"),
+            message: t("form.error"),
         };
     }
 
@@ -38,15 +38,15 @@ export async function sendEmail(userName: string, userEmail: string, data: Email
 
         if (error) {
             console.error("(Resend) Form message sending error:", error);
-            return { success: false, message: t("error") };
+            return { success: false, message: t("form.error") };
         }
 
-        return { success: true, message: t("success") };
+        return { success: true, message: t("form.success") };
     } catch (error) {
         console.error("Form message sending error:", error);
         return {
             success: false,
-            message: t("error"),
+            message: t("form.error"),
         };
     }
 }

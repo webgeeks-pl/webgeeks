@@ -44,7 +44,7 @@ export function HomePackages() {
                     className="font-heading uppercase"
                 />
 
-                <div className="grid w-full gap-6 lg:grid-cols-2">
+                <div className="grid w-full gap-6 md:grid-cols-2">
                     {marketingPackages.map((pkg, index) => {
                         return <PackageCard key={pkg.key} pkg={pkg} />;
                     })}
@@ -56,7 +56,7 @@ export function HomePackages() {
                     className="font-heading uppercase"
                 />
 
-                <div className="grid w-full gap-6 lg:grid-cols-2">
+                <div className="grid w-full gap-6 md:grid-cols-2">
                     {otherPackages.map((pkg, index) => {
                         return <PackageCard key={pkg.key} pkg={pkg} />;
                     })}
@@ -105,16 +105,17 @@ export function PackageCard({ pkg }: { pkg: ReturnType<typeof useAllPackages>[nu
                                         color={isPopular ? "opposite" : "default"}
                                         variant={isPopular ? "oppoosite" : "outline"}
                                     /> */}
-
-                <Text
-                    intent="h3"
-                    className={cn(
-                        "font-heading mb-2 uppercase",
-                        isPopular && "text-white"
-                    )}
-                    text={pkg.name}
-                />
-
+                <div className="flex items-baseline gap-2">
+                    <Text
+                        intent="h3"
+                        className={cn(
+                            "font-heading mb-2 uppercase",
+                            isPopular && "text-white"
+                        )}
+                        text={pkg.name}
+                    />
+                    <Text intent="small" muted={!isPopular} text={pkg.subtitle} />
+                </div>
                 <Text muted={!isPopular} text={pkg.description} />
             </CardHeader>
 

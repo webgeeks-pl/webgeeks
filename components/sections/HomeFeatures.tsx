@@ -35,7 +35,7 @@ export function HomeFeatures() {
                                 <CardContent className="flex h-full flex-row-reverse items-center justify-between md:flex-col md:text-center">
                                     <div className="flex flex-col items-end md:items-center md:gap-2">
                                         <IconContainer
-                                            variant={"none"}
+                                            variant={"ghost"}
                                             Icon={getLucideIcon(icon)}
                                         />
                                         <Text
