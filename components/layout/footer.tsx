@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import Section, { SectionContent } from "@/components/layout/section";
 import Text from "@/components/typography/text";
 import { legalRoutes, routes } from "@/config/routes";
-import type { NavigationRoutes } from "@/lib/types";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -26,10 +25,11 @@ export default function Footer({ Logo }: FooterProps) {
     );
     const contactRoutes = routes.filter((r) => !r.cta && ["/contact"].includes(r.link));
     contactRoutes[0].name = "Napisz do nas";
-    contactRoutes.push({
-        link: "mailto:kontakt@webgeeks.pl",
-        name: "kontakt@webgeeks.pl",
-    });
+
+    const contactLinks: { link: string; name: string }[] = [
+        ...contactRoutes,
+        { link: "mailto:kontakt@webgeeks.pl", name: "kontakt@webgeeks.pl" },
+    ];
 
     const t = useTranslations("common.footer");
 
@@ -43,7 +43,11 @@ export default function Footer({ Logo }: FooterProps) {
             >
                 <div className="relative z-10 flex flex-col gap-2 sm:col-span-2 md:col-span-3 xl:col-span-2">
                     {Logo && (
-                        <ScrollButton target="#navigation-top" onRoute="/" className="w-fit">
+                        <ScrollButton
+                            target="#navigation-top"
+                            onRoute="/"
+                            className="w-fit"
+                        >
                             <Link href="/">{Logo}</Link>
                         </ScrollButton>
                     )}
@@ -73,7 +77,7 @@ export default function Footer({ Logo }: FooterProps) {
                 </div>
                 <div className={cn("flex w-fit flex-col gap-3")}>
                     <Text semantic="h6" text={t("contact")} />
-                    <FooterNavigation routes={contactRoutes} />
+                    <FooterNavigation routes={contactLinks} />
                 </div>
                 <div className={cn("flex w-fit flex-col gap-3")}>
                     <Text semantic="h6" text={t("legal")} />
@@ -111,7 +115,7 @@ function FooterSocial({ link }: SocialProps) {
     );
 }
 
-function FooterNavigation({ routes }: { routes: NavigationRoutes }) {
+function FooterNavigation({ routes }: { routes: { link: string; name: string }[] }) {
     return (
         <ul className="flex flex-col gap-2">
             {routes.map((route) => (

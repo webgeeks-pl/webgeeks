@@ -8,7 +8,6 @@ import type { BasicComponentProps, ScreenBreakpoint } from "@/lib/types";
 import { cn } from "@/lib/utils/cn";
 import { useNavigation } from "@context/navigationContext";
 import Hamburger from "hamburger-react";
-import { useTranslations } from "next-intl";
 import Link from "next/dist/client/link";
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -112,12 +111,7 @@ export function NavigationContainer({
     });
 
     return (
-        <nav
-            className={cn(
-                className,
-                isNavOpen ? classNameOnOpen : classNameOnClose
-            )}
-        >
+        <nav className={cn(className, isNavOpen ? classNameOnOpen : classNameOnClose)}>
             {isNavOpen &&
                 createPortal(
                     <Overlay
@@ -165,17 +159,14 @@ interface NavigationToggleButton {
     size?: number;
 }
 
-export function NavigationToggleButton({
-    className,
-    size = 24,
-}: NavigationToggleButton) {
+export function NavigationToggleButton({ className, size = 24 }: NavigationToggleButton) {
     const { isNavOpen, toggleNav } = useNavigation();
-    const t = useTranslations("aria");
+    // const t = useTranslations("aria");
     return (
         <button
             type="button"
             className={cn("", className)}
-            aria-label={isNavOpen ? t("closeMenu") : t("openMenu")}
+            // aria-label={isNavOpen ? t("closeMenu") : t("openMenu")}
         >
             <Hamburger
                 size={size}

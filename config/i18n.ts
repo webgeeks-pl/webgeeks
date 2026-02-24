@@ -29,6 +29,8 @@ export type MessagesMap = {
     };
 };
 
+export type RouteKey = keyof MessagesMap["common"]["navigation"]["routes"];
+
 export const routingConfig = {
     locales: ["pl"],
     localePrefix: "as-needed",

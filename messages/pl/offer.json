@@ -1,519 +1,223 @@
 {
-    "packages": {
-        "selectButton": {
-            "text": "Wybierz",
-            "href": "/contact"
-        },
-        "detailsButton": {
-            "text": "Szczegóły",
-            "href": ""
-        },
-        "popularBadge": "Najpopularniejszy",
+    "selectButton": {
+        "text": "Wybierz",
+        "href": "/contact"
+    },
+    "detailsButton": {
+        "text": "Szczegóły",
+        "href": ""
+    },
+    "popularBadge": "Najpopularniejszy",
 
-        "onePage": {
-            "name": "Wizytówka",
-            "isPopular": "false",
-            "icon": "BadgeCheck",
-            "price": "od 1 799 zł",
-            "description": "Pojedyncza, prosta strona prezentująca Twoją firmę w sieci",
-            "category": "marketing",
-            "features": {
-                "main": [
-                    {
-                        "name": "Strona Główna",
-                        "description": "cała treść na jednej stronie"
-                    },
-                    {
-                        "name": "Podstawowe SEO",
-                        "description": "optymalizacja pod wyszukiwarki"
-                    },
-                    {
-                        "name": "Responsywność",
-                        "description": "strona będzie dobrze wyglądać na wszystkich urządzeniach"
-                    },
-                    {
-                        "name": "Wsparcie techniczne",
-                        "description": "przez pierwszy rok wsparcie i aktualizacje"
-                    },
-                    {
-                        "name": "Nowoczesny design",
-                        "description": "estetyczny i profesjonalny wygląd"
-                    },
-                    {
-                        "name": "Instrukcja obsługi strony",
-                        "description": "krótka instrukcja o stronie i jej funkcjach"
-                    }
-                ],
-                "additional": [
-                    {
-                        "name": "Formularz kontaktowy",
-                        "description": "wysyłanie wiadomości do firmy",
-                        "price": "300 zł",
-                        "recommended": "true"
-                    },
-                    {
-                        "name": "Lokalizacja",
-                        "description": "mapa z lokalizacją firmy",
-                        "price": "100 zł",
-                        "recommended": "true"
-                    },
-                    {
-                        "name": "Automatyczne opinie",
-                        "description": "integracja z systemami opinii (np. Google)",
-                        "price": "300 zł",
-                        "recommended": "true"
-                    },
-                    {
-                        "name": "Dodatkowa podstrona",
-                        "description": "dodatkowa podstrona na stronie",
-                        "price": "200 zł"
-                    },
-                    {
-                        "name": "Częściowy / pełny CMS",
-                        "description": "edycja najważniejszych lub wszystkich treści",
-                        "price": "300 zł / 600 zł"
-                    },
-
-                    {
-                        "name": "Tłumaczenie na angielski",
-                        "description": "Profejsonalne tłumaczenie treści na angielski",
-                        "price": "100 zł na stronę"
-                    },
-                    {
-                        "name": "Rozszerzone SEO",
-                        "description": "ulepszona optymalizacja pod wyszukiwarki",
-                        "price": "300 zł"
-                    },
-                    {
-                        "name": "Premium design + animacje",
-                        "description": "unikalne doświadczenie użytkownika",
-                        "price": "od 1000 zł"
-                    },
-                    {
-                        "name": "Podstawowa Analityka",
-                        "description": "monitorowanie ruchu na stronie",
-                        "price": "200 zł"
-                    }
-                ]
-            }
-        },
-
-        "starter": {
-            "name": "Strona Podstawowa",
-            "icon": "Zap",
-            "isPopular": "false",
-            "price": "od 2 799 zł",
-            "description": "Strona z kilkoma podstronami, przeznaczona dla małych firm i startupów",
-            "category": "marketing",
-            "features": {
-                "main": [
-                    {
-                        "name": "Strona Główna + 2 podstrony",
-                        "description": "np. Usługi, Kontakt"
-                    },
-                    {
-                        "name": "Formularz kontaktowy",
-                        "description": "kontakt z klientami"
-                    },
-                    {
-                        "name": "Częściowy CMS",
-                        "description": "edycja najważniejszych treści"
-                    },
-                    {
-                        "name": "Podstawowe SEO",
-                        "description": "optymalizacja pod wyszukiwarki"
-                    },
-                    {
-                        "name": "Responsywność",
-                        "description": "strona będzie dobrze wyglądać na wszystkich urządzeniach"
-                    },
-                    {
-                        "name": "Wsparcie techniczne",
-                        "description": "przez pierwszy rok wsparcie i aktualizacje"
-                    },
-                    {
-                        "name": "Nowoczesny design",
-                        "description": "estetyczny i profesjonalny wygląd"
-                    },
-                    {
-                        "name": "Instrukcja obsługi strony",
-                        "description": "krótka instrukcja o stronie i jej funkcjach"
-                    }
-                ],
-                "additional": [
-                    {
-                        "name": "Lokalizacja",
-                        "description": "mapa z lokalizacją firmy",
-                        "price": "100 zł",
-                        "recommended": "true"
-                    },
-                    {
-                        "name": "Automatyczne opinie",
-                        "description": "integracja z systemami opinii (np. Google)",
-                        "price": "300 zł",
-                        "recommended": "true"
-                    },
-                    {
-                        "name": "Dodatkowa podstrona",
-                        "description": "dodatkowa podstrona na stronie",
-                        "price": "200 zł"
-                    },
-                    {
-                        "name": "Pełny CMS",
-                        "description": "pełna edycja treści strony",
-                        "price": "200 zł + 100 zł na stronę"
-                    },
-                    {
-                        "name": "Tłumaczenie na angielski",
-                        "description": "Profejsonalne tłumaczenie treści na angielski",
-                        "price": "100 zł na stronę"
-                    },
-                    {
-                        "name": "Rozszerzone SEO",
-                        "description": "ulepszona optymalizacja pod wyszukiwarki",
-                        "price": "300 zł"
-                    },
-                    {
-                        "name": "Premium design + animacje",
-                        "description": "unikalne doświadczenie użytkownika",
-                        "price": "od 1000 zł"
-                    },
-                    {
-                        "name": "Blog + podstrona",
-                        "description": "możliwość prowadzenia bloga na stronie (lepsza widoczność w wyszukiwarkach)",
-                        "price": "800 zł"
-                    },
-                    {
-                        "name": "Podstawowa Analityka",
-                        "description": "monitorowanie ruchu na stronie",
-                        "price": "200 zł"
-                    }
-                ]
-            }
-        },
-        "business": {
-            "name": "Strona Profesjonalna",
+    "packages": [
+        {
+            "key": "subscription",
+            "name": "Miesięcznie",
+            "subtitle": "płać miesięcznie, bez długoterminowych zobowiązań",
             "isPopular": "true",
-            "icon": "Star",
-            "price": "od 4 899 zł",
-            "description": "Strona z zaawansowanymi funkcjonalnościami, idealna dla większości firm",
+            "icon": "BadgeCheck",
+            "price": "450 zł",
+            "priceDetails": "netto miesięcznie",
+            "description": "Wybierz pakiet miesięczny, a ja zajmę się wszystkim, od projektu po hosting i aktualizacje. Idealne rozwiązanie gdy nie chcesz tracić czasu na zarządzanie stroną.",
             "category": "marketing",
             "features": {
                 "main": [
                     {
-                        "name": "Strona Główna + 5 podstrony",
-                        "description": "np. O nas, Usługi, Proces, Zespół, Kontakt"
+                        "name": "Projekt i wykonanie strony",
+                        "description": "cała treść na jednej stronie",
+                        "check": "true"
                     },
                     {
-                        "name": "Zaawansowany formularz kontaktowy",
-                        "description": "Formularz z dodatkowymi polami"
+                        "name": "Hosting w cenie",
+                        "description": "optymalizacja pod wyszukiwarki",
+                        "check": "true"
                     },
                     {
-                        "name": "Automatyczne opinie",
-                        "description": "integracja z systemami opinii (np. Google)"
+                        "name": "+200zł za podstronę powyżej 5",
+                        "description": "strona będzie dobrze wyglądać na wszystkich urządzeniach",
+                        "check": "true"
                     },
                     {
-                        "name": "Podstawowa Analityka",
-                        "description": "monitorowanie ruchu na stronie",
-                        "price": "200 zł"
+                        "name": "Nielimitowane edycje treści",
+                        "description": "przez pierwszy rok wsparcie i aktualizacje",
+                        "check": "true"
                     },
                     {
-                        "name": "Lokalizacja",
-                        "description": "mapa z lokalizacją firmy",
-                        "price": "100 zł",
-                        "recommended": "true"
+                        "name": "Wsparcie techniczne 24/7",
+                        "description": "estetyczny i profesjonalny wygląd",
+                        "check": "true"
                     },
                     {
-                        "name": "Pełny CMS",
-                        "description": "edycja wszystkich treści na stronie"
+                        "name": "Miesięcznie aktualizacje",
+                        "description": "krótka instrukcja o stronie i jej funkcjach",
+                        "check": "true"
                     },
-                    {
-                        "name": "Rozszerzone SEO",
-                        "description": "optymalizacja widoczności w wyszukiwarkach"
-                    },
-                    {
-                        "name": "Responsywność",
-                        "description": "strona będzie dobrze wyglądać na wszystkich urządzeniach"
-                    },
-                    {
-                        "name": "Wsparcie techniczne",
-                        "description": "przez pierwszy rok wsparcie i aktualizacje"
-                    },
-                    {
-                        "name": "Nowoczesny design",
-                        "description": "estetyczny i profesjonalny wygląd"
-                    },
-                    {
-                        "name": "Instrukcja obsługi strony",
-                        "description": "krótka instrukcja o stronie i jej funkcjach"
-                    }
-                ],
-                "additional": [
-                    {
-                        "name": "Zaawansowana Analityka",
-                        "description": "zaawansowe narzędzia analityczne (np. Google Analytics)",
-                        "price": "300 zł",
-                        "recommended": "true"
-                    },
-
-                    {
-                        "name": "Tłumaczenie na angielski",
-                        "description": "Profejsonalne tłumaczenie treści na angielski",
-                        "price": "100 zł na stronę",
-                        "recommended": "true"
-                    },
-
-                    {
-                        "name": "Dodatkowa podstrona",
-                        "description": "dodatkowa podstrona na stronie",
-                        "price": "200 zł"
-                    },
-
-                    {
-                        "name": "Premium design + animacje",
-                        "description": "unikalne doświadczenie użytkownika",
-                        "price": "od 1000 zł"
-                    },
-                    {
-                        "name": "Blog + podstrona",
-                        "description": "możliwość prowadzenia bloga na stronie (lepsza widoczność w wyszukiwarkach)",
-                        "price": "800 zł"
-                    },
-
                     {
                         "name": "Raporty analityczne",
-                        "description": "monitorowanie pozycji i ruchu",
-                        "price": "100 zł / raport"
+                        "description": "raporty z analizą działania strony",
+                        "check": "true"
                     }
                 ]
             }
         },
-        "enterprise": {
-            "name": "Strona Premium",
-            "icon": "Rocket",
-            "price": "od 8 999 zł",
+
+        {
+            "key": "oneMarketing",
+            "name": "Jednorazowo",
             "isPopular": "false",
-            "description": "Kompleksowa strona z unikalnym designem, stworzona dla firm, które chcę się wyróżnić",
+            "icon": "Star",
+            "price": "6 800 zł",
+            "subtitle": "",
+            "priceDetails": "netto +50zł/miesiąc hosting",
+            "description": "Zapłać raz, a stworzę dla Ciebie stronę internetową. Idealne rozwiązanie dla firm, które chcą mieć profesjonalną stronę",
             "category": "marketing",
             "features": {
                 "main": [
                     {
-                        "name": "Strona Główna + nielimitowane podstrony",
-                        "description": "strona z dowolną ilością podstron, dopasowana do potrzeb firmy"
+                        "name": "Projekt i wykonanie strony",
+                        "description": "cała treść na jednej stronie",
+                        "check": "true"
                     },
                     {
-                        "name": "Dynamiczne podstrony",
-                        "description": "np. dla każdego projektu lub usługi. Korzystny wpływ na SEO"
+                        "name": "50zł/miesiąc za hosting",
+                        "description": "optymalizacja pod wyszukiwarki",
+                        "check": "true"
                     },
                     {
-                        "name": "Zaawansowany formularz kontaktowy",
-                        "description": "automatyczne odpowiedzi i powiadomienia"
+                        "name": "+200zł za podstronę powyżej 5",
+                        "description": "strona będzie dobrze wyglądać na wszystkich urządzeniach",
+                        "check": "true"
                     },
                     {
-                        "name": "Automatyczne opinie",
-                        "description": "integracja z systemami opinii (np. Google)"
+                        "name": "System edycji treści (CMS)",
+                        "description": "przez pierwszy rok wsparcie i aktualizacje",
+                        "check": "true"
                     },
                     {
-                        "name": "Lokalizacja",
-                        "description": "mapa z lokalizacją firmy",
-                        "price": "100 zł",
-                        "recommended": "true"
-                    },
-
-                    {
-                        "name": "Zaawansowany CMS",
-                        "description": "dodawanie podstron i edycja wszystkich treści"
+                        "name": "Wsparcie techniczne 24/7",
+                        "description": "estetyczny i profesjonalny wygląd",
+                        "check": "false"
                     },
                     {
-                        "name": "Rozszerzone SEO",
-                        "description": "optymalizacja widoczności w wyszukiwarkach"
-                    },
-                    {
-                        "name": "Responsywność",
-                        "description": "strona będzie dobrze wyglądać na wszystkich urządzeniach"
-                    },
-                    {
-                        "name": "Wsparcie techniczne",
-                        "description": "przez pierwszy rok wsparcie i aktualizacje"
-                    },
-                    {
-                        "name": "Nowoczesny design",
-                        "description": "estetyczny i profesjonalny wygląd"
-                    },
-                    {
-                        "name": "Instrukcja obsługi strony",
-                        "description": "krótka instrukcja o stronie i jej funkcjach"
-                    },
-                    {
-                        "name": "Zaawansowana analityka",
-                        "description": "zaawansowe narzędzia analityczne (np. Google Analytics)"
-                    },
-                    {
-                        "name": "Podstawowe animacje",
-                        "description": "animacje w kluczowych miejscach strony"
-                    }
-                ],
-                "additional": [
-                    {
-                        "name": "Dodatkowa podstrona",
-                        "description": "dodatkowa podstrona na stronie",
-                        "price": "200 zł"
+                        "name": "Miesięcznie aktualizacje",
+                        "description": "krótka instrukcja o stronie i jej funkcjach",
+                        "check": "false"
                     },
                     {
                         "name": "Raporty analityczne",
-                        "description": "monitorowanie pozycji i ruchu",
-                        "price": "100 zł / raport"
-                    },
-                    {
-                        "name": "Premium design + animacje",
-                        "description": "unikalne doświadczenie użytkownika",
-                        "price": "od 1000 zł"
-                    },
-                    {
-                        "name": "Integracje z systemami",
-                        "description": "połączenie z innymi narzędziami i platformami",
-                        "price": "do ustalenia"
-                    },
-                    {
-                        "name": "Blog + podstrona",
-                        "description": "możliwość prowadzenia bloga na stronie (lepsza widoczność w wyszukiwarkach)",
-                        "price": "800 zł"
-                    },
-                    {
-                        "name": "Tłumaczenie na angielski",
-                        "description": "Profejsonalne tłumaczenie treści na angielski",
-                        "price": "100 zł na stronę"
+                        "description": "raporty z analizą działania strony",
+                        "check": "false"
                     }
                 ]
             }
         },
-        "ecommerce": {
+
+        {
+            "key": "ecommerce",
             "name": "E-commerce",
             "isPopular": "false",
             "icon": "ShoppingCart",
             "price": "od 9 999 zł",
+            "subtitle": "",
+            "priceDetails": "netto",
             "description": "Sklep online z pełnym procesem zakupowym i integracjami płatności.",
             "category": "special",
             "features": {
                 "main": [
                     {
                         "name": "Katalog produktów",
-                        "description": "zarządzanie asortymentem"
+                        "description": "zarządzanie asortymentem",
+                        "check": "true"
                     },
                     {
                         "name": "Płatności online",
-                        "description": "integracja z systemami płatności"
+                        "description": "integracja z systemami płatności",
+                        "check": "true"
                     },
                     {
                         "name": "Koszyk i zamówienia",
-                        "description": "pełny proces zakupowy"
+                        "description": "pełny proces zakupowy",
+                        "check": "true"
                     },
                     {
                         "name": "Panel administracyjny",
-                        "description": "zarządzanie sklepem"
+                        "description": "zarządzanie sklepem",
+                        "check": "true"
                     },
                     {
                         "name": "Automatyczne maile",
-                        "description": "potwierdzenia i statusy zamówień"
+                        "description": "potwierdzenia i statusy zamówień",
+                        "check": "true"
                     },
                     {
                         "name": "Optymalizacja pod SEO",
-                        "description": "widoczność produktów w wyszukiwarkach"
+                        "description": "widoczność produktów w wyszukiwarkach",
+                        "check": "true"
                     }
-                ],
-                "additional": []
+                ]
             }
         },
-        "webapp": {
+        {
+            "key": "webapp",
             "name": "Aplikacja webowa",
             "icon": "AppWindow",
             "isPopular": "false",
             "price": "od 9 999 zł",
+            "subtitle": "",
+            "priceDetails": "netto",
             "description": "Dedykowana aplikacja webowa dopasowana do procesów w Twojej firmie.",
             "category": "special",
             "features": {
                 "main": [
                     {
                         "name": "Indywidualny projekt UX/UI",
-                        "description": "dopasowany do użytkowników"
+                        "description": "dopasowany do użytkowników",
+                        "check": "true"
                     },
                     {
                         "name": "Role i uprawnienia",
-                        "description": "zarządzanie dostępem"
+                        "description": "zarządzanie dostępem",
+                        "check": "true"
                     },
                     {
                         "name": "Integracje z systemami",
-                        "description": "połączenie z istniejącą infrastrukturą"
+                        "description": "połączenie z istniejącą infrastrukturą",
+                        "check": "true"
                     },
                     {
                         "name": "Panel administracyjny",
-                        "description": "pełna kontrola nad aplikacją"
+                        "description": "pełna kontrola nad aplikacją",
+                        "check": "true"
                     },
                     {
                         "name": "Analityka i raporty",
-                        "description": "wgląd w dane biznesowe"
+                        "description": "wgląd w dane biznesowe",
+                        "check": "true"
                     },
                     {
                         "name": "Wysoka wydajność",
-                        "description": "optymalizacja pod dużą liczbę użytkowników"
+                        "description": "optymalizacja pod dużą liczbę użytkowników",
+                        "check": "true"
                     }
-                ],
-                "additional": []
+                ]
             }
         }
-    },
+    ],
     "services": [
-        {
-            "name": "Lokalizacja",
-            "description": "mapa z lokalizacją firmy",
-            "price": "100 zł",
-            "recommended": "true"
-        },
-        {
-            "name": "Formularz kontaktowy",
-            "description": "wysyłanie wiadomości do firmy",
-            "price": "300 zł",
-            "recommended": "true"
-        },
         {
             "name": "Dodatkowa podstrona",
             "description": "dodatkowa podstrona na stronie",
             "price": "200 zł"
         },
         {
-            "name": "Częściowy CMS",
-            "description": "edycja najważniejszych treści",
-            "price": "300 zł"
-        },
-        {
-            "name": "Pełny CMS",
-            "description": "kompletny system zarządzania treścią",
-            "price": "500 zł + 100 zł za stronę"
-        },
-        {
-            "name": "Internacjonalizacja",
-            "description": "",
-            "price": "od 300 zł"
-        },
-        {
-            "name": "Tłumaczenie na angielski",
-            "description": "tłumaczenie treści strony na język angielski",
-            "price": "100 zł na stronę"
-        },
-        {
-            "name": "Tłumaczenie tekstów AI",
-            "description": "automatyczne tłumaczenie tekstów z wykorzystaniem AI",
-            "price": "50 zł na stronę"
-        },
-        {
-            "name": "Rozszerzone SEO",
-            "description": "ulepszona optymalizacja pod wyszukiwarki",
-            "price": "300 zł"
+            "name": "Tłumaczenie strony",
+            "description": "tłumaczenie treści strony na różne języki",
+            "price": "400 zł + 100 zł za dodatkowy język"
         },
         {
             "name": "Raporty analityczne",
             "description": "raporty z analizą działania strony",
-            "price": "100 zł / raport"
+            "price": "100 zł / miesiąc"
         },
         {
             "name": "Aktualizacje i wsparcie",
@@ -521,25 +225,14 @@
             "price": "50 zł / miesiąc"
         },
         {
-            "name": "Automatyczne opinie",
-            "description": "integracja z systemami opinii (np. Google)",
-            "price": "300 zł",
-            "recommended": "true"
-        },
-        {
             "name": "Blog + podstrona",
             "description": "możliwość prowadzenia bloga na stronie (lepsza widoczność w wyszukiwarkach)",
             "price": "800 zł"
         },
         {
-            "name": "Newsletter + szablon",
-            "description": "newsletter z gotowym szablonem do wysyłki",
+            "name": "Newsletter",
+            "description": "newsletter z możliwością zapisu i wysyłki wiadomości do subskrybentów",
             "price": "500 zł"
-        },
-        {
-            "name": "Podstawowa Analityka",
-            "description": "monitorowanie ruchu na stronie",
-            "price": "200 zł"
         },
         {
             "name": "Zaawansowana Analityka",

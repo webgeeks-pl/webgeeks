@@ -61,7 +61,7 @@ export default function ScrollButton({
           })()
         : true;
 
-    function onClick(e: MouseEvent) {
+    function onClick() {
         if (!target) return;
 
         const element = document.querySelector(target);
@@ -81,7 +81,7 @@ export default function ScrollButton({
                 href={href}
                 className={["scroll-smooth", className].filter(Boolean).join(" ")}
                 onClick={(e) => {
-                    onClick(e);
+                    onClick();
                     if (typeof anchorProps.onClick === "function")
                         anchorProps.onClick(e as any);
                 }}

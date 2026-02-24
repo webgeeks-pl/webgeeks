@@ -25,13 +25,7 @@ export function useTrans<N extends NestedKeyOf<MessagesMap>>(namespace: N) {
     const baseT = useTranslations(namespace as Parameters<typeof useTranslations>[0]);
 
     // Map namespace to MessagesMap type
-    type NamespaceMessages = N extends keyof MessagesMap
-        ? MessagesMap[N]
-        : N extends `pages.${infer PageName}`
-          ? PageName extends keyof MessagesMap["pages"]
-              ? MessagesMap["pages"][PageName & keyof MessagesMap["pages"]]
-              : never
-          : never;
+    type NamespaceMessages = GetNestedValue<MessagesMap, N>;
 
     type Keys = NestedKeyOf<NamespaceMessages>;
 

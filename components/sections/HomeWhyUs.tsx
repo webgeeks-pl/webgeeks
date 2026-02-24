@@ -1,4 +1,3 @@
-import { FlickeringGridOGL } from "@/components/ui/flickering-gird2";
 import { useTranslations } from "next-intl";
 import { HoleBackground } from "../animate-ui/components/backgrounds/hole";
 import Section, {
@@ -80,7 +79,7 @@ export function HomeWhyUs() {
             <div className="pointer-events-none absolute inset-0 -z-5 [background:radial-gradient(ellipse_at_center,rgba(255,255,255,0)_0%,rgba(255,255,255,0.2)_55%,rgba(255,255,255,1)_100%)]" />
             <div className="absolute inset-0 -z-6">
                 {/* <FlickeringGrid flickerChance={0.1} /> */}
-                <FlickeringGridOGL />
+                {/* <FlickeringGridOGL /> */}
             </div>
             <SectionContent>
                 <div className="grid grid-cols-1 grid-rows-[repeat(9,250px)] gap-6 md:grid-cols-2 md:grid-rows-[repeat(5,250px)] xl:grid-cols-4 xl:grid-rows-[repeat(3,minmax(250px,1fr))]">

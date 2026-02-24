@@ -3,9 +3,9 @@
 import { ResizableDevice } from "@/components/ui/resizable-device";
 import { useNavigation } from "@/context/navigationContext";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useTrans } from "@/hooks/useTrans";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
-import { Template } from "@/messages/pl/pages/templates";
 import {
     ArrowRight,
     ExternalLink,
@@ -53,8 +53,8 @@ export default function TemplateDemoPage() {
 
 function TemplateDemoContent() {
     const tDemo = useTranslations("pages.demo");
-    const t = useTranslations("pages.templates");
-    const templates = t.raw("templates") as Template[];
+    const t = useTrans("pages.templates");
+    const templates = t.obj("templates");
     const searchParams = useSearchParams();
     const initialTemplateId = searchParams.get("template") || templates[0]?.id;
     const demoContainerRef = useRef<HTMLDivElement>(null);
@@ -98,6 +98,7 @@ function TemplateDemoContent() {
     // Force mobile view on smaller screens
     useEffect(() => {
         if (!isLargeScreen && deviceType === "desktop") {
+            // eslint-disable-next-line
             setDeviceType("mobile");
         }
     }, [isLargeScreen, deviceType]);

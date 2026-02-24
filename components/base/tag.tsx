@@ -1,4 +1,5 @@
 import { Slot } from "@radix-ui/react-slot";
+import * as React from "react";
 
 export type TagProps<E extends React.ElementType> = {
     as?: E;
@@ -14,5 +15,9 @@ export default function Tag<E extends React.ElementType = "div">({
 }: TagProps<E>) {
     const Comp = as ?? (asChild ? Slot : "div");
 
-    return <Comp {...props}>{children}</Comp>;
+    return React.createElement(
+        Comp,
+        props as React.ComponentPropsWithoutRef<typeof Comp>,
+        children
+    );
 }

@@ -1,13 +1,14 @@
 "use client";
-import { DollarSign, Eye, Share, ShoppingCart, ThumbsUp, User } from "lucide-react";
 import { motion } from "motion/react";
 import { useCallback, useState } from "react";
+import IconContainer from "./iconContainer";
+import { getLucideIcon } from "./lucideIcons";
 
-const icons = [User, ThumbsUp, Eye, DollarSign, Share, ShoppingCart];
+const icons = ["User", "ThumbsUp", "Eye", "DollarSign", "Share", "ShoppingCart"];
 
 interface FloatingStatProps {
     id: string;
-    icon: React.ElementType;
+    icon: string;
     initialDelay: number;
     duration: number;
     value: number;
@@ -61,7 +62,7 @@ function FloatingStat({
                 onAnimationComplete={() => setCycle((c) => c + 1)}
                 key={`${id}-${cycle}`}
             >
-                <Icon size={14} />
+                <IconContainer Icon={getLucideIcon(Icon)} className="size-3" />
                 <span className="text-xs font-medium tabular-nums">{value}</span>
             </motion.div>
         </div>

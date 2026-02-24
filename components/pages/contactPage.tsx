@@ -7,7 +7,6 @@ import Section, {
     SectionTitle,
 } from "../layout/section";
 
-import ContactForm from "@/components/forms/contactForm";
 import { FileText, Mail, Send } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Text from "../typography/text";
@@ -121,7 +120,7 @@ export default function ContactPage() {
                             </div>
                         </div>
                         <div className="rounded-b-2xl bg-white p-8 md:w-[120%] md:rounded-r-2xl md:p-10">
-                            <ContactForm />
+                            {/* <ContactForm /> */}
                         </div>
                     </div>
                 </SectionContent>

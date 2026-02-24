@@ -1,6 +1,7 @@
 "use client";
 
 import { routes as mainRoutes } from "@/config/routes";
+import { useTrans } from "@/hooks/useTrans";
 import { usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogPanel, PopoverGroup } from "@headlessui/react";
@@ -23,7 +24,7 @@ export default function Navigation({ navigation }: NavigationProps) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const t = useTranslations("common.navigation");
-    const tRoutes = useTranslations("common.navigation.routes");
+    const tRoutes = useTrans("common.navigation").obj("routes");
 
     const routes = navigation ?? mainRoutes;
     const defaultRoutes = routes.filter((route) => !route.cta);
@@ -81,7 +82,7 @@ export default function Navigation({ navigation }: NavigationProps) {
                                             : ""
                                     }
                                 >
-                                    <Link href={route.link}>{tRoutes(route.link)}</Link>
+                                    <Link href={route.link}>{tRoutes[route.link]}</Link>
                                 </Button>
                             );
                         })}
@@ -89,7 +90,7 @@ export default function Navigation({ navigation }: NavigationProps) {
                     <div className="hidden items-center gap-2 xl:flex xl:flex-1 xl:justify-end">
                         {ctaRoute && (
                             <Button variant="cta" asChild>
-                                <Link href={ctaRoute?.link || "#"}>{tRoutes("cta")}</Link>
+                                <Link href={ctaRoute?.link || "#"}>{tRoutes["cta"]}</Link>
                             </Button>
                         )}
                     </div>
@@ -139,7 +140,7 @@ export default function Navigation({ navigation }: NavigationProps) {
                                                 )}
                                             >
                                                 <Link href={route.link}>
-                                                    {tRoutes(route.link)}
+                                                    {tRoutes[route.link]}
                                                 </Link>
                                             </Button>
                                         );
@@ -153,7 +154,7 @@ export default function Navigation({ navigation }: NavigationProps) {
                                                 href={ctaRoute?.link || "#"}
                                                 onClick={() => setMobileMenuOpen(false)}
                                             >
-                                                {tRoutes("cta")}
+                                                {tRoutes["cta"]}
                                             </Link>
                                         </Button>
                                     )}
