@@ -476,7 +476,6 @@ function IconFieldWrapper({
 }
 
 function SelectCustomItem({ option }: { option: Package }) {
-    console.log(option)
     return (
         <SelectItem value={option.key} className="group flex items-center">
             <div className="relative flex w-full items-center">

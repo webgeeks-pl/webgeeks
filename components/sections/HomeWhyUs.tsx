@@ -73,8 +73,6 @@ export function HomeWhyUs() {
 
     const rotatingTexts = t.raw("rotatingTexts") as string[];
     const typingWords = t.raw("typingWords") as string[];
-    console.log("render");
-    console.log(benefits.conversions.icon);
     return (
         <Section className="py-size-xl md:py-size-2xl relative flex min-h-screen items-center justify-center overflow-hidden">
             <div className="absolute inset-0 -z-5 [background:linear-gradient(to_bottom,rgba(255,255,255,1)_0%,rgba(255,255,255,.5)_15%,rgba(255,255,255,0)_30%,rgba(255,255,255,0)_70%,rgba(255,255,255,0.5)_85%,rgba(255,255,255,1)_100%)]" />
