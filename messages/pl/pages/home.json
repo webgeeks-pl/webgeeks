@@ -41,6 +41,12 @@
                 "value": "zauważalnie",
                 "title": "Większa konwersja",
                 "description": "na Twojej stronie"
+            },
+            {
+                "icon": "Shield",
+                "value": "w pełni",
+                "title": "Bezpieczna strona",
+                "description": "bez obaw"
             }
         ]
     },
@@ -152,9 +158,9 @@
             },
             "costs": {
                 "icon": "DollarSign",
-                "title": "Niższe koszty utrzymania",
-                "description": "Zapomnij o corocznych opłatach za pluginy i drogi hosting",
-                "cta": "od 0 zł miesięcznie"
+                "title": "Zacznij bez ryzyka",
+                "description": "Kompleksowa opieka, nielimitowane zmiany, hosting, a w tym 0zł za stronę na start",
+                "cta": ["475 zł / miesiąc"]
             },
             "security": {
                 "icon": "Lock",

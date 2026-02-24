@@ -25,7 +25,7 @@ export function HomeFeatures() {
             shouldRender={heroCards.length > 0}
         >
             <SectionContent>
-                <div className="grid w-full grid-cols-1 items-stretch gap-4 max-md:grid-rows-3 md:grid-cols-3 lg:gap-x-10 xl:grid-cols-3">
+                <div className="grid w-full grid-cols-1 items-stretch gap-4 max-md:grid-rows-4 md:grid-cols-2 lg:gap-x-10 xl:grid-cols-4">
                     {heroCards.map(({ icon, value, title, description }, index) => {
                         return (
                             <Card
@@ -40,7 +40,7 @@ export function HomeFeatures() {
                                         />
                                         <Text
                                             intent="var"
-                                            className="capitalize lg:text-2xl"
+                                            className="xs:text-lg text-base lg:text-lg"
                                             text={value}
                                         />
                                     </div>
@@ -48,9 +48,13 @@ export function HomeFeatures() {
                                         <Text
                                             intent="h3"
                                             text={title}
-                                            className="xs:text-lg text-base lg:text-lg"
+                                            className="font-heading font-semibold capitalize lg:text-2xl"
                                         />
-                                        <Text intent="small" text={description} />
+                                        <Text
+                                            intent="small"
+                                            className="font-heading"
+                                            text={description}
+                                        />
                                     </div>
                                 </CardContent>
                             </Card>

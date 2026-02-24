@@ -1,4 +1,5 @@
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
+import { useTrans } from "@/hooks/useTrans";
 import { useTranslations } from "next-intl";
 import { HoleBackground } from "../animate-ui/components/backgrounds/hole";
 import Section, {
@@ -23,7 +24,7 @@ import { TypingAnimation } from "../ui/typing-animation";
 
 export function HomeWhyUs() {
     const t = useTranslations("pages.home.whyUs");
-
+    const tObj = useTrans("pages.home.whyUs");
     const tCommon = useTranslations("common");
 
     const benefits = {
@@ -41,7 +42,7 @@ export function HomeWhyUs() {
             icon: t("benefits.costs.icon"),
             title: t("benefits.costs.title"),
             description: t("benefits.costs.description"),
-            cta: t("benefits.costs.cta"),
+            cta: tObj.obj("benefits.costs.cta"),
         },
         security: {
             icon: t("benefits.security.icon"),
@@ -79,7 +80,7 @@ export function HomeWhyUs() {
             <div className="absolute inset-0 -z-5 [background:linear-gradient(to_bottom,rgba(255,255,255,1)_0%,rgba(255,255,255,.5)_15%,rgba(255,255,255,0)_30%,rgba(255,255,255,0)_70%,rgba(255,255,255,0.5)_85%,rgba(255,255,255,1)_100%)]" />
             <div className="pointer-events-none absolute inset-0 -z-5 [background:radial-gradient(ellipse_at_center,rgba(255,255,255,0)_0%,rgba(255,255,255,0.2)_55%,rgba(255,255,255,1)_100%)]" />
             <div className="absolute inset-0 -z-6">
-                <FlickeringGrid  />
+                <FlickeringGrid />
                 {/* <FlickeringGridOGL /> */}
             </div>
             <SectionContent>
@@ -117,7 +118,7 @@ export function HomeWhyUs() {
 
                     <Card className="hover:ring-brand h-full bg-white">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
-                            <div className="relative h-full">
+                            <div className="relative flex-1">
                                 <FlickeringGrid />
                             </div>
                             <div className="h-fit shrink-0">
@@ -141,14 +142,19 @@ export function HomeWhyUs() {
 
                     <Card className="hover:ring-brand h-full bg-white xl:col-span-2">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
-                            <div className="text-clr- flex h-full items-center justify-center">
-                                <ShinyText
-                                    color="oklch(0.408 0 0)"
-                                    shineColor="oklch(0.922 0 0)"
-                                    delay={3}
-                                    className="font-heading text-3xl font-semibold lg:text-4xl"
-                                    text={benefits.costs.cta}
-                                />
+                            <div className="flex h-full flex-col items-center justify-center">
+                                {benefits.costs.cta.map((t) => {
+                                    return (
+                                        <ShinyText
+                                            key={t}
+                                            color="oklch(0.408 0 0)"
+                                            shineColor="oklch(0.922 0 0)"
+                                            delay={3}
+                                            className="font-heading text-2xl font-semibold lg:text-4xl"
+                                            text={t}
+                                        />
+                                    );
+                                })}
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
