@@ -1,15 +1,9 @@
 import Dither from "../Dither";
 import Page from "../layout/page";
 import Section, { SectionContent } from "../layout/section";
-import { HomeAbout } from "../sections/HomeAbout";
-import { HomeCtaFooter } from "../sections/HomeCtaFooter";
 import { HomeFeatures } from "../sections/HomeFeatures";
 import { HomeHero } from "../sections/HomeHero";
-import { HomePackages } from "../sections/HomePackages";
-import { HomeSolutions } from "../sections/HomeSolutions";
-import { HomeWhyUs } from "../sections/HomeWhyUs";
 import Text from "../typography/text";
-import { Separator } from "../ui/separator";
 import { TextReveal } from "../ui/text-reveal";
 
 export default function HomePage() {
@@ -75,14 +69,14 @@ export default function HomePage() {
                 </SectionContent>
             </Section>
 
-            <HomeWhyUs />
-            {/* <HomeShowcase /> */}
+            {/* <HomeWhyUs />
+            <HomeShowcase />
             <HomeAbout />
             <HomePackages />
             <Separator decorative />
             <HomeSolutions />
             <Separator decorative />
-            <HomeCtaFooter />
+            <HomeCtaFooter /> */}
         </Page>
     );
 }

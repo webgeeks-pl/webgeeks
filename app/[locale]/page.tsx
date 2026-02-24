@@ -2,6 +2,8 @@ import { routing } from "@/i18n/routing";
 import HomePage from "@components/pages/HomePage";
 import { setRequestLocale } from "next-intl/server";
 
+export const dynamic = "force-static"
+
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({ locale }));
 }
