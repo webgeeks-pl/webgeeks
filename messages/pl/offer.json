@@ -16,7 +16,7 @@
             "subtitle": "0 zł za stronę",
             "isPopular": "true",
             "icon": "BadgeCheck",
-            "price": "500 zł",
+            "price": "475 zł",
             "priceDetails": "netto miesięcznie",
             "description": "Wybierz pakiet miesięczny, a ja zajmę się wszystkim, od projektu po hosting i aktualizacje. Idealne rozwiązanie gdy nie chcesz tracić czasu na zarządzanie stroną.",
             "category": "marketing",
@@ -66,7 +66,7 @@
             "name": "Jednorazowo",
             "isPopular": "false",
             "icon": "Star",
-            "price": "7 800 zł",
+            "price": "6 800 zł",
             "subtitle": "",
             "priceDetails": "netto +50zł/miesiąc hosting",
             "description": "Zapłać raz, a stworzę dla Ciebie stronę internetową. Idealne rozwiązanie dla firm, które chcą mieć profesjonalną stronę",
@@ -89,7 +89,7 @@
                         "check": "true"
                     },
                     {
-                        "name": "System edycji treści (CMS)",
+                        "name": "+100zł/miesiąc nielimitowane edycje treści",
                         "description": "przez pierwszy rok wsparcie i aktualizacje",
                         "check": "true"
                     },
@@ -205,6 +205,16 @@
     ],
     "services": [
         {
+            "name": "Edycja treści",
+            "description": "edycja treści strony (np. aktualizacja treści, zmiana zdjęć)",
+            "price": "50 zł / godzina"
+        },
+        {
+            "name": "CMS",
+            "description": "system zarządzania treścią do samodzielnej edycji treści strony",
+            "price": "1000 zł"
+        },
+        {
             "name": "Dodatkowa podstrona",
             "description": "dodatkowa podstrona na stronie",
             "price": "200 zł"
@@ -217,7 +227,7 @@
         {
             "name": "Raporty analityczne",
             "description": "raporty z analizą działania strony",
-            "price": "100 zł / miesiąc"
+            "price": "50 zł / miesiąc"
         },
         {
             "name": "Aktualizacje i wsparcie",
@@ -246,18 +256,8 @@
             "price": "od 1000 zł"
         },
         {
-            "name": "Reklamy",
-            "description": "reklamy na stronie (np. Google Ads)",
-            "price": "do ustalenia"
-        },
-        {
             "name": "Strona z projektu",
             "description": "zbudowanie strony na podstawie projektu dostarczonego przez klienta",
-            "price": "do ustalenia"
-        },
-        {
-            "name": "Kalendarz",
-            "description": "kalendarz z możliwością dodawania wydarzeń i synchronizacji z Google Calendar",
             "price": "do ustalenia"
         },
         {
