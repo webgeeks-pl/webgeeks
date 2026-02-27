@@ -1,6 +1,6 @@
 import { useAllPackages } from "@/hooks/useAllPackages";
 import { useTranslations } from "next-intl";
-import Page, { PageTitle } from "../layout/page";
+import Page, { PageHeader, PageHeaderContent, PageLead, PageTitle } from "../layout/page";
 import Section, {
     SectionContent,
     SectionHeader,
@@ -30,19 +30,14 @@ export default function OfferPage() {
 
     return (
         <Page>
-            <Separator decorative />
+            <PageHeader>
+                <PageHeaderContent>
+                    <PageTitle>{pageT("pageHeader.title")}</PageTitle>
+                    <PageLead>{pageT("pageHeader.description")}</PageLead>
+                </PageHeaderContent>
+            </PageHeader>
             <Section className="py-size-xl">
                 <SectionContent className="gap-size-xl">
-                    <SectionHeader>
-                        <SectionHeaderContent>
-                            <PageTitle text={pageT("packages.sectionHeader.title")} />
-                            <SectionLead
-                                as="h1"
-                                text={pageT("packages.sectionHeader.description")}
-                            />
-                        </SectionHeaderContent>
-                    </SectionHeader>
-
                     <div className="flex w-full flex-col gap-10">
                         <div className="flex flex-col gap-2">
                             <Text

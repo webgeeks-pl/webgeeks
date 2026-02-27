@@ -20,16 +20,13 @@ export function HomeFeatures() {
     const tHero = useTranslations("pages.home.hero");
     const heroCards = getArrayFromMessages(tHero.raw("cards"), CardSchema);
     return (
-        <Section
-            className="pb-size-xl sm:pb-size-2xl pt-0.5"
-            shouldRender={heroCards.length > 0}
-        >
+        <Section className="pb-size-md pt-size-xl" shouldRender={heroCards.length > 0}>
             <SectionContent>
-                <div className="grid w-full grid-cols-1 items-stretch gap-4 max-md:grid-rows-4 md:grid-cols-2 lg:gap-x-10 xl:grid-cols-4">
+                <div className="lg:gap-x-size-sm grid w-full grid-cols-1 items-stretch gap-x-8 gap-y-4 max-md:grid-rows-4 md:grid-cols-2 xl:grid-cols-4">
                     {heroCards.map(({ icon, value, title, description }, index) => {
                         return (
                             <Card
-                                className="bg-brand-200/30 h-full backdrop-blur-sm"
+                                className="bg-brand h-full backdrop-blur-sm"
                                 key={index}
                             >
                                 <CardContent className="flex h-full flex-row-reverse items-center justify-between md:flex-col md:text-center">
@@ -38,17 +35,12 @@ export function HomeFeatures() {
                                             variant={"ghost"}
                                             Icon={getLucideIcon(icon)}
                                         />
-                                        <Text
-                                            intent="var"
-                                            className="xs:text-lg text-base lg:text-lg"
-                                            text={value}
-                                        />
                                     </div>
                                     <div>
                                         <Text
                                             intent="h3"
                                             text={title}
-                                            className="font-heading font-semibold capitalize lg:text-2xl"
+                                            className="font-heading lg:text-2xl"
                                         />
                                         <Text
                                             intent="small"

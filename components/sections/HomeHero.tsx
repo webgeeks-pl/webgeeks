@@ -18,7 +18,7 @@ export function HomeHero() {
         <Section
             as="header"
             id="hero"
-            className="py-size-lg xs:py-size-xl sm:py-size-2xl relative mt-20"
+            className="py-size-lg xs:pt-size-xl xs:pb-size-lg relative mt-20"
         >
             <SectionContent className="gap-size-sm sm:gap-size-md z-10 items-start text-start">
                 {/* <Badge className="p-3" variant="secondary">
@@ -44,7 +44,7 @@ export function HomeHero() {
                     {t("hero.leadStart")}
                     <TextShimmer
                         as="span"
-                        className="font-bold [--base-color:var(--color-sky-500)] [--base-gradient-color:var(--color-sky-300)]"
+                        className="font-bold [--base-color:var(--color-sky-800)] [--base-gradient-color:var(--color-sky-300)]"
                     >
                         {t("hero.leadHighlight")}
                     </TextShimmer>
@@ -52,37 +52,18 @@ export function HomeHero() {
                 </Text>
 
                 <div className="relative flex gap-4">
+                    <Button asChild variant="secondary">
+                        <Link href={t("hero.buttons.secondary.href")}>
+                            <span>{t("hero.buttons.secondary.text")}</span>
+                        </Link>
+                    </Button>
                     <Button asChild variant="default">
                         <Link href={t("hero.buttons.primary.href")}>
                             <span>{t("hero.buttons.primary.text")}</span>
                             <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
                     </Button>
-                    <Button asChild variant="blur">
-                        <Link href={t("hero.buttons.secondary.href")}>
-                            <span>{t("hero.buttons.secondary.text")}</span>
-                        </Link>
-                    </Button>
-                    {/* <div className="absolute top-full mt-3 flex gap-2 md:left-1/5">
-                        <CornerLeftUp size={18} strokeWidth={3.5} />
-                        <EncryptedText
-                            startDelayMs={1000}
-                            text={t("hero.encryptedText")}
-                            className="font-heading font-bold text-nowrap"
-                        />
-                    </div> */}
                 </div>
-
-                {/* {heroBadges.length > 0 && (
-                    <div className="flex flex-col gap-2 md:flex-row">
-                        {heroBadges.map((badge, index) => (
-                            <Badge className="gap-2" variant="ghost" key={index}>
-                                <div className="bg-success h-1.5 w-1.5 rounded-full" />
-                                <Text intent="small" muted text={badge} />
-                            </Badge>
-                        ))}
-                    </div>
-                )} */}
             </SectionContent>
         </Section>
     );

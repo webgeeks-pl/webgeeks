@@ -93,8 +93,7 @@ export function PackageCard({ pkg }: { pkg: ReturnType<typeof useAllPackages>[nu
             className={cn(
                 "relative flex h-full flex-col overflow-visible transition-all duration-300",
                 "gap-0 xl:grid xl:grid-cols-2",
-                isPopular &&
-                    "bg-brand-darker border-brand-darker **:text-clr-50 border-2",
+                isPopular && "bg-brand border-brand border-2",
                 isOther && "bg-clr-50"
             )}
         >

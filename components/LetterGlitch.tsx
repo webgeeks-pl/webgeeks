@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 
 const LetterGlitch = ({
@@ -219,13 +221,13 @@ const LetterGlitch = ({
     }, [glitchSpeed, smooth]);
 
     return (
-        <div className="relative h-full w-full overflow-hidden bg-black">
+        <div className="relative h-full w-full overflow-hidden bg-white">
             <canvas ref={canvasRef} className="block h-full w-full" />
             {outerVignette && (
-                <div className="pointer-events-none absolute top-0 left-0 h-full w-full bg-[radial-gradient(circle,_rgba(0,0,0,0)_60%,_rgba(0,0,0,1)_100%)]"></div>
+                <div className="pointer-events-none absolute top-0 left-0 h-full w-full"></div>
             )}
             {centerVignette && (
-                <div className="pointer-events-none absolute top-0 left-0 h-full w-full bg-[radial-gradient(circle,_rgba(0,0,0,0.8)_0%,_rgba(0,0,0,0)_60%)]"></div>
+                <div className="pointer-events-none absolute top-0 left-0 h-full w-full"></div>
             )}
         </div>
     );

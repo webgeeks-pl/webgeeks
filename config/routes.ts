@@ -2,7 +2,7 @@ import { NavigationRoutes } from "@/lib/types";
 
 export const routes: NavigationRoutes = [
     { link: "/", name: "Strona główna" },
-    // { link: "/about" },
+    { link: "/services", name: "Usługi" },
     { link: "/offer", name: "Oferta" },
     // { link: "/portfolio" },
     // { link: "/process" },

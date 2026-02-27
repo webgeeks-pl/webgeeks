@@ -27,26 +27,26 @@
             {
                 "icon": "Gauge",
                 "value": "kilkukrotnie",
-                "title": "Szybsze ładowanie",
-                "description": "od stron z builderów"
+                "title": "Szybkie ładowanie",
+                "description": "Twoja strona otwiera się natychmiast"
             },
             {
                 "icon": "Search",
                 "value": "znacznie",
-                "title": "Lepsze SEO",
-                "description": "dla Twojej strony"
+                "title": "świetne SEO",
+                "description": "Twoja strona pojawi się wysoko w Google"
             },
             {
                 "icon": "TrendingUp",
                 "value": "zauważalnie",
                 "title": "Większa konwersja",
-                "description": "na Twojej stronie"
+                "description": "Twoja strona przynosi więcej zysków"
             },
             {
                 "icon": "Shield",
                 "value": "w pełni",
                 "title": "Bezpieczna strona",
-                "description": "bez obaw"
+                "description": "Nie martwisz się o ataki"
             }
         ]
     },

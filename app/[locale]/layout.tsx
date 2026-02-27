@@ -9,11 +9,14 @@ import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/dist/client/components/navigation";
-import { Inter, Outfit, Silkscreen } from "next/font/google";
+import { Outfit, Silkscreen } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
+const outfit = Outfit({
+    subsets: ["latin"],
+    weight: ["300", "400", "500", "700"],
+    variable: "--font-outfit",
+});
 const silkscreen = Silkscreen({
     subsets: ["latin"],
     weight: "400",
@@ -46,9 +49,7 @@ export default async function RootLayout({
 
     return (
         <html lang={locale}>
-            <body
-                className={`${inter.variable} ${outfit.variable} ${silkscreen.variable} antialiased`}
-            >
+            <body className={` ${outfit.variable} ${silkscreen.variable} antialiased`}>
                 <AppControls>
                     <Navigation />
                     <ScrollToHashOnLoad />
