@@ -6,9 +6,7 @@
     "scripts": {
         "dev": "next dev -p 1234",
         "windev": "next dev -H 0.0.0.0 -p 3000",
-        "prebuild": "node ./scripts/generate-lucide-icons.mjs",
         "build": "next build",
-        "generate:icons": "node ./scripts/generate-lucide-icons.mjs",
         "start": "next start",
         "lint": "eslint",
         "validate:messages": "tsx scripts/validateMessages.ts",

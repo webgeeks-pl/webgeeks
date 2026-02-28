@@ -3,9 +3,7 @@ import Text from "@/components/typography/text";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
-import SendIcon from "@/components/ui/icons/SendIcon";
 import { Input } from "@/components/ui/input";
-import { getLucideIcon } from "@/components/ui/lucideIcons";
 import {
     Select,
     SelectContent,
@@ -21,6 +19,7 @@ import type { TransFor } from "@/hooks/useTrans";
 import { useTrans } from "@/hooks/useTrans";
 import { Link } from "@/i18n/navigation";
 import { sendEmail } from "@/services/email/action";
+import { DynamicIcon, type IconName } from 'lucide-react/dynamic';
 import { useSearchParams } from "next/navigation";
 import { Select as SelectPrimitive } from "radix-ui";
 import { useState } from "react";
@@ -34,7 +33,6 @@ import {
 import { toast, ToastContainer } from "react-toastify";
 // import { z, type ZodBoolean, type ZodString } from "zod";
 import * as z from "zod/v4-mini";
-import IconContainer from "../ui/iconContainer";
 
 interface ContactFormProps {
     id?: string;
@@ -56,14 +54,14 @@ export default function ContactForm({ id }: ContactFormProps) {
             name: "Imię",
             isRequired: true,
             className: "max-lg:col-span-2",
-            icon: "User",
+            icon: "user",
         }),
         createEmail({
             _key: "email",
             name: "Email",
             isRequired: true,
             className: "max-lg:col-span-2",
-            icon: "Mail",
+            icon: "mail",
         }),
         createOfferOption({
             _key: "selected_offer",
@@ -72,13 +70,13 @@ export default function ContactForm({ id }: ContactFormProps) {
             optionsTitle1: pageT("packages.marketingPackagesTitle"),
             optionsTitle2: pageT("packages.specialPackagesTitle"),
             // optionsTitle3: t("packages.otherPackagesTitle"),
-            options_1: packages.filter((pkg) => pkg.category === "marketing"),
-            options_2: packages.filter((pkg) => pkg.category === "special"),
+            options_1: packages.filter((pkg) => pkg.category === "marketing").map((pkg) => ({ ...pkg, icon: (pkg.icon as IconName) || "" })),
+            options_2: packages.filter((pkg) => pkg.category === "special").map((pkg) => ({ ...pkg, icon: (pkg.icon as IconName) || "" })),
             options_0: [
                 {
                     key: "DIY",
                     name: "Nie jestem zdecydowany",
-                    icon: "MessageCircleQuestionMark",
+                    icon: "message-circle-question-mark",
                     price: "do ustalenia",
                     subtitle: "",
                     isPopular: "false",
@@ -98,7 +96,7 @@ export default function ContactForm({ id }: ContactFormProps) {
             isRequired: true,
             isLong: true,
             className: "col-span-2",
-            icon: "MessageSquare",
+            icon: "message-square",
         }),
         createPrivacyPolicy({
             _key: "privacy_policy",
@@ -190,7 +188,8 @@ export default function ContactForm({ id }: ContactFormProps) {
                         variant="cta"
                         className="disabled:bg-clr-400! h-13 w-full cursor-pointer! gap-3 rounded-xl"
                     >
-                        <SendIcon className="h-3.5 w-3.5" />
+                        <DynamicIcon name="send" color="red" size={48} />
+                        {/* <SendIcon className="h-3.5 w-3.5" /> */}
                         {isSubmitting ? t("submitting") : t("submit")}
                     </Button>
                 </Field>
@@ -353,7 +352,8 @@ function SingleChoiceField({ field, fieldProps }: ChoiceFieldProps) {
             >
                 <SelectTrigger className="data-placeholder:text-clr-400 relative">
                     <div className="absolute top-1/2 left-3 h-fit w-fit -translate-y-1/2">
-                        {(() => {
+                    <DynamicIcon name={selectedOption?.icon || "delete"} color="currentColor" size={24} />
+                        {/* {(() => {
                             const SelectedIcon = getLucideIcon(
                                 selectedOption?.icon || "QuestionMark"
                             );
@@ -365,7 +365,7 @@ function SingleChoiceField({ field, fieldProps }: ChoiceFieldProps) {
                                     className="w-5 h-5 p-0!"
                                 />
                             );
-                        })()}
+                        })()} */}
                     </div>
 
                     <div className="flex w-full items-center">
@@ -486,7 +486,7 @@ function IconFieldWrapper({
     isLong,
     children,
 }: {
-    iconName?: string;
+    iconName?: IconName;
     isLong?: boolean;
     children: React.ReactNode;
 }) {
@@ -497,7 +497,8 @@ function IconFieldWrapper({
                     isLong ? "top-2" : "top-1/2 -translate-y-1/2"
                 }`}
             >
-                {(() => {
+                <DynamicIcon name={iconName || "delete"} color="currentColor" size={24} />
+                {/* {(() => {
                     const FieldIcon = getLucideIcon(iconName || "QuestionMark");
                     return (
                         <IconContainer
@@ -507,18 +508,19 @@ function IconFieldWrapper({
                             size={"form"}
                         />
                     );
-                })()}
+                })()} */}
             </div>
             {children}
         </Field>
     );
 }
 
-function SelectCustomItem({ option }: { option: Package }) {
+function SelectCustomItem({ option }: { option: ActualPackage }) {
     return (
         <SelectItem value={option.key} className="group flex items-center">
             <div className="relative flex w-full items-center">
-                {(() => {
+                <DynamicIcon name={option.icon || "delete"} color="currentColor" size={24} className="absolute left-3" />
+                {/* {(() => {
                     const OptIcon = getLucideIcon(option.icon || "QuestionMark");
                     return (
                         <IconContainer
@@ -528,7 +530,7 @@ function SelectCustomItem({ option }: { option: Package }) {
                             className="absolute -ml-2"
                         />
                     );
-                })()}
+                })()} */}
                 {/* <Icon className="absolute top-1/2 left-0.5 h-5 w-5 -translate-y-1/2" /> */}
 
                 <SelectPrimitive.ItemText asChild>
@@ -642,7 +644,7 @@ type FormInput = {
     isRequired: boolean;
     placeholder?: string;
     className?: string;
-    icon?: string;
+    icon?: IconName;
 };
 
 export type Package = MessagesMap["offer"] extends { packages: (infer U)[] }
@@ -667,14 +669,18 @@ type PrivacyPolicyInput = {
     link: string;
 } & FormInput;
 
+type ActualPackage = Omit<Package, "icon"> & {
+    icon: IconName;
+};
+
 type OptionInput = Omit<FormInput, "icon"> & {
     _type: "option";
     optionsTitle1: string;
     optionsTitle2: string;
     // optionsTitle3: string;
-    options_1: Package[];
-    options_2: Package[];
-    options_0: Package[];
+    options_1: ActualPackage[];
+    options_2: ActualPackage[];
+    options_0: ActualPackage[];
 };
 
 type FormInputs =
