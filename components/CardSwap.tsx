@@ -1,6 +1,6 @@
 "use client";
 
-import gsap from "gsap";
+import { gsap } from "gsap/gsap-core";
 import React, {
     Children,
     cloneElement,

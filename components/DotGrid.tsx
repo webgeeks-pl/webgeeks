@@ -1,5 +1,5 @@
 "use client";
-import { gsap } from "gsap";
+import { gsap } from "gsap/gsap-core";
 import { InertiaPlugin } from "gsap/InertiaPlugin";
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
 
