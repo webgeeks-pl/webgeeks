@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 // @ts-ignore - ogl types may be missing in this workspace
-import { Renderer, Camera, Geometry, Program, Mesh, Texture, RenderTarget } from "ogl";
+import { Camera, Geometry, Mesh, Program, Renderer, RenderTarget } from "ogl";
 import { useIsMobile } from "../hooks/use-mobile";
 
 interface DitherOGLProps {
@@ -220,7 +220,7 @@ export default function DitherOGL({
       mainProgram.uniforms.waveAmplitude.value = waveAmplitude;
 
       // render main pass to target then postprocess to screen
-      renderer.render({ scene: mainMesh, camera }, { target });
+      renderer.render({ scene: mainMesh, camera, target });
       renderer.render({ scene: postMesh, camera });
 
       rafId = requestAnimationFrame(update);
@@ -233,11 +233,11 @@ export default function DitherOGL({
       gl.canvas.removeEventListener("pointermove", handlePointer);
       window.removeEventListener("resize", onResize);
       renderer.gl.canvas && containerRef.current && containerRef.current.removeChild(renderer.gl.canvas);
-      target.dispose && target.dispose();
-      mainProgram.dispose && mainProgram.dispose();
-      postProgram.dispose && postProgram.dispose();
-      geometry.dispose && geometry.dispose();
-      renderer.dispose && renderer.dispose();
+      (target as any).dispose && (target as any).dispose();
+      (mainProgram as any).dispose && (mainProgram as any).dispose();
+      (postProgram as any).dispose && (postProgram as any).dispose();
+      (geometry as any).dispose && (geometry as any).dispose();
+      (renderer as any).dispose && (renderer as any).dispose();
     };
   }, [isMobile, waveSpeed, waveFrequency, waveAmplitude, waveColor, colorNum, pixelSize, disableAnimation, enableMouseInteraction]);
 
