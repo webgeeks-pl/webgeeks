@@ -42,3 +42,6 @@ next-env.d.ts
 
 
 paste.txt
+
+# generated
+/components/ui/icons/

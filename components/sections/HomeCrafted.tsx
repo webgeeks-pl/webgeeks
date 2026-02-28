@@ -1,7 +1,7 @@
 import { getArrayFromMessages } from "@/lib/utils/array";
 import { Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { z } from "zod";
+import * as z from "zod/v4-mini";
 import Section, {
     SectionContent,
     SectionHeader,

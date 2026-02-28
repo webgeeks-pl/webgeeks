@@ -1,6 +1,6 @@
-import z from "zod";
+import * as z from "zod/v4-mini";
 
-export function getArrayFromMessages<S extends z.ZodTypeAny>(
+export function getArrayFromMessages<S extends z.ZodMiniObject | z.ZodMiniString>(
     input: unknown,
     schema: S
 ): z.infer<S>[] {

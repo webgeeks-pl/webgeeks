@@ -3,6 +3,7 @@ import Text from "@/components/typography/text";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import SendIcon from "@/components/ui/icons/SendIcon";
 import { Input } from "@/components/ui/input";
 import { getLucideIcon } from "@/components/ui/lucideIcons";
 import {
@@ -20,8 +21,6 @@ import type { TransFor } from "@/hooks/useTrans";
 import { useTrans } from "@/hooks/useTrans";
 import { Link } from "@/i18n/navigation";
 import { sendEmail } from "@/services/email/action";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Send } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { Select as SelectPrimitive } from "radix-ui";
 import { useState } from "react";
@@ -30,9 +29,11 @@ import {
     useForm,
     type ControllerFieldState,
     type ControllerRenderProps,
+    type FieldValues, type Resolver
 } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
-import { z, type ZodBoolean, type ZodString } from "zod";
+// import { z, type ZodBoolean, type ZodString } from "zod";
+import * as z from "zod/v4-mini";
 import IconContainer from "../ui/iconContainer";
 
 interface ContactFormProps {
@@ -115,7 +116,7 @@ export default function ContactForm({ id }: ContactFormProps) {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
     const form = useForm<FormValues>({
-        resolver: zodResolver(schema),
+        resolver: standardResolver(schema),
         defaultValues,
         mode: "onChange",
         reValidateMode: "onChange",
@@ -189,13 +190,39 @@ export default function ContactForm({ id }: ContactFormProps) {
                         variant="cta"
                         className="disabled:bg-clr-400! h-13 w-full cursor-pointer! gap-3 rounded-xl"
                     >
-                        <Send className="h-3.5 w-3.5" />
+                        <SendIcon className="h-3.5 w-3.5" />
                         {isSubmitting ? t("submitting") : t("submit")}
                     </Button>
                 </Field>
             </form>
         </>
     );
+}
+
+function standardResolver<T extends FieldValues>(
+  schema: z.ZodMiniType<T>,
+): Resolver<T> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- RHF Resolver type is overly strict
+  return (async (values: any) => {
+    const result = schema.safeParse(values);
+
+    if (result.success) {
+      return { values: result.data, errors: {} };
+    }
+
+    const fieldErrors: Record<string, { type: string; message: string }> = {};
+    for (const issue of result.error.issues) {
+      const path = issue.path.join(".");
+      if (!fieldErrors[path]) {
+        fieldErrors[path] = {
+          type: issue.code,
+          message: issue.message,
+        };
+      }
+    }
+
+    return { values: {} as T, errors: fieldErrors };
+  }) as unknown as Resolver<T>;
 }
 
 interface FieldRendererProps {
@@ -326,12 +353,19 @@ function SingleChoiceField({ field, fieldProps }: ChoiceFieldProps) {
             >
                 <SelectTrigger className="data-placeholder:text-clr-400 relative">
                     <div className="absolute top-1/2 left-3 h-fit w-fit -translate-y-1/2">
-                        <IconContainer
-                            variant={"none"}
-                            Icon={getLucideIcon(selectedOption?.icon || "QuestionMark")}
-                            size={"form"}
-                            className="w-5 h-5 p-0!"
-                        />
+                        {(() => {
+                            const SelectedIcon = getLucideIcon(
+                                selectedOption?.icon || "QuestionMark"
+                            );
+                            return (
+                                <IconContainer
+                                    variant={"none"}
+                                    IconComp={<SelectedIcon className="w-5 h-5 p-0!" />}
+                                    size={"form"}
+                                    className="w-5 h-5 p-0!"
+                                />
+                            );
+                        })()}
                     </div>
 
                     <div className="flex w-full items-center">
@@ -463,12 +497,17 @@ function IconFieldWrapper({
                     isLong ? "top-2" : "top-1/2 -translate-y-1/2"
                 }`}
             >
-                <IconContainer
-                    variant={"none"}
-                    Icon={getLucideIcon(iconName || "QuestionMark")}
-                    className="text-muted-foreground"
-                    size={"form"}
-                />
+                {(() => {
+                    const FieldIcon = getLucideIcon(iconName || "QuestionMark");
+                    return (
+                        <IconContainer
+                            variant={"none"}
+                            IconComp={<FieldIcon className="text-muted-foreground" />}
+                            className="text-muted-foreground"
+                            size={"form"}
+                        />
+                    );
+                })()}
             </div>
             {children}
         </Field>
@@ -479,12 +518,17 @@ function SelectCustomItem({ option }: { option: Package }) {
     return (
         <SelectItem value={option.key} className="group flex items-center">
             <div className="relative flex w-full items-center">
-                <IconContainer
-                    variant={"none"}
-                    Icon={getLucideIcon(option.icon || "QuestionMark")}
-                    size={"form"}
-                    className="absolute -ml-2"
-                />
+                {(() => {
+                    const OptIcon = getLucideIcon(option.icon || "QuestionMark");
+                    return (
+                        <IconContainer
+                            variant={"none"}
+                            IconComp={<OptIcon className="absolute -ml-2" />}
+                            size={"form"}
+                            className="absolute -ml-2"
+                        />
+                    );
+                })()}
                 {/* <Icon className="absolute top-1/2 left-0.5 h-5 w-5 -translate-y-1/2" /> */}
 
                 <SelectPrimitive.ItemText asChild>
@@ -515,7 +559,7 @@ function SelectCustomItem({ option }: { option: Package }) {
 }
 
 function buildFormSchema(inputs: FormInputs[], t: TransFor<"pages.contact.form">) {
-    const shape: Record<string, ZodString | ZodBoolean> = {};
+    const shape: Record<string, z.ZodMiniString | z.ZodMiniBoolean> = {};
 
     for (const field of inputs) {
         const key = field._key;
@@ -523,21 +567,19 @@ function buildFormSchema(inputs: FormInputs[], t: TransFor<"pages.contact.form">
         switch (field._type) {
             case "question":
                 shape[key] = field.isRequired
-                    ? z.string().min(1, { message: t("required") })
+                    ? z.string().check(z.minLength(1, { message: t("required") }))
                     : z.string();
                 break;
             case "option":
                 shape[key] = field.isRequired
-                    ? z.string().min(1, { message: t("required") })
+                    ? z.string().check(z.minLength(1, { message: t("required") }))
                     : z.string();
                 break;
 
             case "boolean":
             case "privacy_policy":
                 shape[key] = field.isRequired
-                    ? z.boolean().refine((v) => v === true, {
-                          message: t("required"),
-                      })
+                    ? z.boolean().check(z.refine((val) => val === true, { message: t("required") }))
                     : z.boolean();
                 break;
 
@@ -546,13 +588,11 @@ function buildFormSchema(inputs: FormInputs[], t: TransFor<"pages.contact.form">
                 let emailSchema = z.string();
 
                 if (field.isRequired) {
-                    emailSchema = emailSchema.min(1, { message: t("required") });
+                     shape[key] = emailSchema.check(z.minLength(1, { message: t("required") }), z.refine((val) => emailRegex.test(val), { message: t("invalidEmail") }) );
+                } else {
+                    shape[key] = emailSchema.check(z.refine((val) => emailRegex.test(val), { message: t("invalidEmail") }) );
                 }
 
-                shape[key] = emailSchema.refine(
-                    (value) => !value || emailRegex.test(value),
-                    { message: t("invalidEmail") }
-                );
                 break;
             }
         }

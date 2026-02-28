@@ -1,6 +1,6 @@
 import { getArrayFromMessages } from "@/lib/utils/array";
 import { useTranslations } from "next-intl";
-import { z } from "zod";
+import * as z from "zod/v4-mini";
 import { MotionCarousel } from "../animate-ui/components/community/motion-carousel";
 import Section, {
     SectionContent,
