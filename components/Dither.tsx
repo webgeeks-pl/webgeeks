@@ -5,6 +5,7 @@ import { EffectComposer, wrapEffect } from "@react-three/postprocessing";
 import { Effect } from "postprocessing";
 import { forwardRef, useEffect, useRef } from "react";
 import * as THREE from "three";
+import { useIsMobile } from "../hooks/use-mobile";
 
 const waveVertexShader = `
 precision highp float;
@@ -190,6 +191,7 @@ interface DitheredWavesProps {
     disableAnimation: boolean;
     enableMouseInteraction: boolean;
     mouseRadius: number;
+    enableEffects?: boolean;
 }
 
 function DitheredWaves({
@@ -202,6 +204,7 @@ function DitheredWaves({
     disableAnimation,
     enableMouseInteraction,
     mouseRadius,
+    enableEffects = true,
 }: DitheredWavesProps) {
     const mesh = useRef<THREE.Mesh>(null);
     const mouseRef = useRef(new THREE.Vector2());
@@ -274,9 +277,11 @@ function DitheredWaves({
                 />
             </mesh>
 
-            <EffectComposer>
-                <RetroEffect colorNum={colorNum} pixelSize={pixelSize} />
-            </EffectComposer>
+            {enableEffects && (
+                <EffectComposer>
+                    <RetroEffect colorNum={colorNum} pixelSize={pixelSize} />
+                </EffectComposer>
+            )}
 
             <mesh
                 onPointerMove={handlePointerMove}
@@ -314,22 +319,31 @@ export default function Dither({
     enableMouseInteraction = true,
     mouseRadius = 1,
 }: DitherProps) {
+    const isMobile = useIsMobile();
+
+    // On mobile, force-disable animations and mouse interaction, lower DPR,
+    // and increase pixel size to reduce fragment workload.
+    const disableOnMobile = disableAnimation || isMobile;
+    const enableMouse = enableMouseInteraction && !isMobile;
+    const canvasDpr = isMobile ? 0.75 : 1;
+    const mobilePixelSize = isMobile ? Math.max(2, pixelSize * 2) : pixelSize;
+
     return (
         <Canvas
             className="relative h-full w-full"
             camera={{ position: [0, 0, 6] }}
-            dpr={1}
-            gl={{ antialias: true, preserveDrawingBuffer: true }}
+            dpr={canvasDpr}
+            gl={{ antialias: !isMobile, preserveDrawingBuffer: false }}
         >
             <DitheredWaves
                 waveSpeed={waveSpeed}
                 waveFrequency={waveFrequency}
                 waveAmplitude={waveAmplitude}
                 waveColor={waveColor}
-                colorNum={colorNum}
-                pixelSize={pixelSize}
-                disableAnimation={disableAnimation}
-                enableMouseInteraction={enableMouseInteraction}
+                colorNum={isMobile ? Math.max(2, colorNum) : colorNum}
+                pixelSize={mobilePixelSize}
+                disableAnimation={disableOnMobile}
+                enableMouseInteraction={enableMouse}
                 mouseRadius={mouseRadius}
             />
         </Canvas>

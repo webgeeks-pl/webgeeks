@@ -1,3 +1,4 @@
+import Dither from "@/components/Dither";
 import { HomeShowcase } from "@/components/sections/HomeShowcase";
 import Page from "../layout/page";
 import Section, { SectionContent } from "../layout/section";
@@ -17,7 +18,7 @@ export default function HomePage() {
         <Page id="home-start">
             <div className="relative flex min-h-screen w-full flex-col justify-between">
                 <div className="bg-brand/20 absolute inset-0 -z-10">
-                    {/* <Dither
+                    <Dither
                         waveColor={[0.1, 0.9, 1]}
                         disableAnimation={false}
                         mouseRadius={0.3}
@@ -25,7 +26,7 @@ export default function HomePage() {
                         waveAmplitude={0.3}
                         waveFrequency={3}
                         waveSpeed={0.05}
-                    /> */}
+                    />
                 </div>
                 {/* Vertical white gradient overlay */}
                 <div className="absolute inset-0 -z-5 [background:linear-gradient(to_bottom,rgba(255,255,255,1)_0%,rgba(255,255,255,.2)_20%,rgba(255,255,255,0)_35%,rgba(255,255,255,0)_70%,rgba(255,255,255,0)_85%,rgba(255,255,255,0)_100%)]" />

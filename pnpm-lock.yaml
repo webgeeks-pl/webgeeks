@@ -92,9 +92,6 @@ importers:
       resend:
         specifier: ^6.9.2
         version: 6.9.2(@react-email/render@2.0.4(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
-      tailwind-merge:
-        specifier: ^3.4.0
-        version: 3.4.0
       three:
         specifier: ^0.167.1
         version: 0.167.1
@@ -132,6 +129,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.7.2
         version: 0.7.2(prettier@3.8.1)
+      tailwind-merge:
+        specifier: ^3.4.0
+        version: 3.4.0
       tailwindcss:
         specifier: ^4
         version: 4.1.18

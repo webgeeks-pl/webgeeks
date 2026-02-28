@@ -28,7 +28,7 @@ export function HomeFeatures() {
                     {heroCards.map(({ icon, value, title, description }, index) => {
                         return (
                             <Card
-                                className="bg-brand-200/30 h-full backdrop-blur-sm"
+                                className="bg-brand-200/30 h-full"
                                 key={index}
                             >
                                 <CardContent className="flex h-full flex-row-reverse items-center justify-between md:flex-col md:text-center">

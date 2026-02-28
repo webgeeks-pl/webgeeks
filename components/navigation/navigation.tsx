@@ -40,7 +40,7 @@ export default function Navigation({ navigation }: NavigationProps) {
     return (
         <>
             <div id="navigation-top" className="h-0" />
-            <HeaderContainer className="sticky top-0 z-1000 bg-white/20 backdrop-blur-md">
+            <HeaderContainer className="sticky top-0 z-1000 bg-white/20 ">
                 <div className="sticky inset-0 bg-black" />
                 <nav
                     id="navigation"
@@ -101,7 +101,7 @@ export default function Navigation({ navigation }: NavigationProps) {
                     className="xl:hidden"
                 >
                     <div className="fixed inset-0 z-5000" />
-                    <DialogPanel className="fixed inset-y-0 right-0 z-5000 w-full overflow-y-auto bg-white/90 p-2 backdrop-blur-md sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                    <DialogPanel className="fixed inset-y-0 right-0 z-5000 w-full overflow-y-auto bg-white/90 p-2 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                         <div className="flex items-center justify-between">
                             <Link
                                 href="/#"
