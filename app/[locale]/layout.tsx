@@ -14,7 +14,8 @@ import "./globals.css";
 
 const outfit = Outfit({
     subsets: ["latin"],
-    weight: ["300", "400", "500", "700"],
+    weight: ["400", "500", "700"],
+    display: "swap",
     variable: "--font-outfit",
 });
 const silkscreen = Silkscreen({

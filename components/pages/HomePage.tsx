@@ -4,7 +4,6 @@ import Page from "../layout/page";
 import { HomeAbout } from "../sections/HomeAbout";
 import { HomeCtaFooter } from "../sections/HomeCtaFooter";
 import HomeExample from "../sections/HomeExample";
-import { HomeFeatures } from "../sections/HomeFeatures";
 import { HomeHero } from "../sections/HomeHero";
 import { HomePackages } from "../sections/HomePackages";
 import { HomeSolutions } from "../sections/HomeSolutions";
@@ -52,7 +51,7 @@ export default function HomePage() {
 
             {/* <Separator decorative /> */}
             {/* <HandCrafted /> */}
-            <HomeFeatures />
+            {/* <HomeFeatures /> */}
             <HomeAbout />
             <HomeStart />
             <HomeWhyUs />

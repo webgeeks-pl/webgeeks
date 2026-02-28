@@ -1,7 +1,7 @@
 import { useAllPackages } from "@/hooks/useAllPackages";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
-import { Check, X } from "lucide-react";
+import { Check, Plus, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Section, {
     SectionContent,
@@ -120,22 +120,58 @@ export function PackageCard({ pkg }: { pkg: ReturnType<typeof useAllPackages>[nu
 
             <CardContent className={cn("flex flex-1 flex-col", "xl:pl-0")}>
                 <ul className="mb-6 flex-1 space-y-3">
-                    {pkg.features.main.map((feature, idx) => (
-                        <li key={idx} className="flex items-center justify-between gap-3">
-                            <Text>{feature.name}</Text>
-                            {feature.check === "true" ? (
-                                <Check
-                                    className={cn(
-                                        "mt-0.5 size-5 shrink-0 text-green-500",
-                                        isPopular && "text-black"
-                                    )}
-                                />
-                            ) : (
-                                <X className="mt-0.5 size-5 shrink-0 text-red-500" />
-                            )}
-                        </li>
-                    ))}
+                    {pkg.features.main
+                        .filter((feature) => feature.check === "true")
+                        .map((feature, idx) => (
+                            <li
+                                key={idx}
+                                className="flex items-center justify-between gap-3"
+                            >
+                                <Text>{feature.name}</Text>
+                                {feature.check === "true" ? (
+                                    <Check
+                                        className={cn(
+                                            "mt-0.5 size-5 shrink-0 text-green-500",
+                                            isPopular && "text-black"
+                                        )}
+                                    />
+                                ) : (
+                                    <X className="mt-0.5 size-5 shrink-0 text-red-500" />
+                                )}
+                            </li>
+                        ))}
                 </ul>
+                {pkg.features.main.filter((feature) => feature.check === "false").length >
+                    0 && (
+                    <>
+                        <div className="mb-1 flex items-baseline justify-between">
+                            <Text intent="h4" text={"Pakiet opieka"} />
+                            <Text intent="small" text={"200 zł / miesiąc"} />
+                        </div>
+                        <ul className="bg-clr-50 mb-6 flex-1 space-y-1 rounded-sm px-4 py-2">
+                            {pkg.features.main
+                                .filter((feature) => feature.check === "false")
+                                .map((feature, idx) => (
+                                    <li
+                                        key={idx}
+                                        className="flex items-center justify-between gap-3"
+                                    >
+                                        <Text>{feature.name}</Text>
+                                        {feature.check === "true" ? (
+                                            <Check
+                                                className={cn(
+                                                    "mt-0.5 size-5 shrink-0 text-green-500",
+                                                    isPopular && "text-black"
+                                                )}
+                                            />
+                                        ) : (
+                                            <Plus className="mt-0.5 size-5 shrink-0 text-red-500" />
+                                        )}
+                                    </li>
+                                ))}
+                        </ul>
+                    </>
+                )}
             </CardContent>
             <CardFooter
                 className={

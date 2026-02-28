@@ -4,7 +4,6 @@ import { z } from "zod";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
 import { Card, CardContent } from "../ui/card";
-import { Globe } from "../ui/globe";
 import IconContainer from "../ui/iconContainer";
 import { getLucideIcon } from "../ui/lucideIcons";
 
@@ -16,7 +15,6 @@ const CardSchema = z.object({
 });
 
 export function HomeFeatures() {
-    const t = useTranslations("pages.home");
     const tHero = useTranslations("pages.home.hero");
     const heroCards = getArrayFromMessages(tHero.raw("cards"), CardSchema);
     return (
@@ -54,14 +52,6 @@ export function HomeFeatures() {
                     })}
                 </div>
             </SectionContent>
-            <Card className="hidden h-full bg-white/20 backdrop-blur-lg">
-                <CardContent className="relative flex h-full flex-col justify-between">
-                    <Text intent="h3" className="z-10 pb-1 text-center font-semibold">
-                        {t("features.globeTitle")}
-                    </Text>
-                    <Globe />
-                </CardContent>
-            </Card>
         </Section>
     );
 }

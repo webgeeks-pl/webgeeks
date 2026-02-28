@@ -13,7 +13,7 @@
         {
             "key": "subscription",
             "name": "Miesięcznie",
-            "subtitle": "0 zł za stronę",
+            "subtitle": "+ strona w cenie",
             "isPopular": "true",
             "icon": "BadgeCheck",
             "price": "475 zł",
@@ -33,7 +33,7 @@
                         "check": "true"
                     },
                     {
-                        "name": "+200zł za podstronę powyżej 5",
+                        "name": "+ 200 zł za podstronę powyżej 5",
                         "description": "strona będzie dobrze wyglądać na wszystkich urządzeniach",
                         "check": "true"
                     },
@@ -48,13 +48,18 @@
                         "check": "true"
                     },
                     {
-                        "name": "Miesięcznie aktualizacje",
+                        "name": "Aktualizacje",
                         "description": "krótka instrukcja o stronie i jej funkcjach",
                         "check": "true"
                     },
                     {
                         "name": "Raporty analityczne",
                         "description": "raporty z analizą działania strony",
+                        "check": "true"
+                    },
+                    {
+                        "name": "Monitoring strony",
+                        "description": "monitoring dostępności i wydajności strony",
                         "check": "true"
                     }
                 ]
@@ -68,7 +73,7 @@
             "icon": "Star",
             "price": "6 800 zł",
             "subtitle": "",
-            "priceDetails": "netto +50zł/miesiąc hosting",
+            "priceDetails": "netto + 50 zł miesięcznie",
             "description": "Zapłać raz, a stworzę dla Ciebie stronę internetową. Idealne rozwiązanie dla firm, które chcą mieć profesjonalną stronę",
             "category": "marketing",
             "features": {
@@ -79,19 +84,19 @@
                         "check": "true"
                     },
                     {
-                        "name": "50zł/miesiąc za hosting",
+                        "name": "50 zł miesięcznie za hosting",
                         "description": "optymalizacja pod wyszukiwarki",
                         "check": "true"
                     },
                     {
-                        "name": "+200zł za podstronę powyżej 5",
+                        "name": "+ 200 zł za podstronę powyżej 5",
                         "description": "strona będzie dobrze wyglądać na wszystkich urządzeniach",
                         "check": "true"
                     },
                     {
-                        "name": "+100zł/miesiąc nielimitowane edycje treści",
+                        "name": "nielimitowane edycje treści",
                         "description": "przez pierwszy rok wsparcie i aktualizacje",
-                        "check": "true"
+                        "check": "false"
                     },
                     {
                         "name": "Wsparcie techniczne 24/7",
@@ -99,13 +104,18 @@
                         "check": "false"
                     },
                     {
-                        "name": "Miesięcznie aktualizacje",
+                        "name": "Aktualizacje",
                         "description": "krótka instrukcja o stronie i jej funkcjach",
                         "check": "false"
                     },
                     {
                         "name": "Raporty analityczne",
                         "description": "raporty z analizą działania strony",
+                        "check": "false"
+                    },
+                    {
+                        "name": "Monitoring strony",
+                        "description": "monitoring dostępności i wydajności strony",
                         "check": "false"
                     }
                 ]
@@ -205,9 +215,9 @@
     ],
     "services": [
         {
-            "name": "Edycja treści",
-            "description": "edycja treści strony (np. aktualizacja treści, zmiana zdjęć)",
-            "price": "50 zł / godzina"
+            "name": "Edycja strony",
+            "description": "np. aktualizacja treści, zmiana układu, dodanie nowych funkcji",
+            "price": "od 50 zł / godzina"
         },
         {
             "name": "CMS",
@@ -223,16 +233,6 @@
             "name": "Tłumaczenie strony",
             "description": "tłumaczenie treści strony na różne języki",
             "price": "400 zł + 100 zł za dodatkowy język"
-        },
-        {
-            "name": "Raporty analityczne",
-            "description": "raporty z analizą działania strony",
-            "price": "50 zł / miesiąc"
-        },
-        {
-            "name": "Aktualizacje i wsparcie",
-            "description": "aktualizacje kodu i wsparcie techniczne",
-            "price": "50 zł / miesiąc"
         },
         {
             "name": "Blog + podstrona",

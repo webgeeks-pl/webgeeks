@@ -1,4 +1,3 @@
-import { getArrayFromMessages } from "@/lib/utils/array";
 import { useTranslations } from "next-intl";
 import { z } from "zod";
 import Grainient from "../Grainient";
@@ -18,8 +17,6 @@ const StatSchema = z.object({
 
 export function HomeAbout() {
     const t = useTranslations("pages.home.about");
-    const values = getArrayFromMessages(t.raw("values"), ValueSchema);
-    const stats = getArrayFromMessages(t.raw("stats"), StatSchema);
     const paragraphs = t.raw("paragraphs") as string[];
 
     return (
