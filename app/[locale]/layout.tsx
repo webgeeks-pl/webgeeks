@@ -49,6 +49,9 @@ export default async function RootLayout({
 
     return (
         <html lang={locale}>
+            <head>   
+                <link rel="preconnect" href="https://vercel.live" crossOrigin="anonymous" />
+            </head>
             <body className={` ${outfit.variable} ${silkscreen.variable} antialiased`}>
                 <AppControls>
                     <Navigation />
