@@ -1,11 +1,9 @@
 import { useTrans } from "@/hooks/useTrans";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import Grainient from "../Grainient";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
 import { Button } from "../ui/button";
-import { TextShimmer } from "../ui/text-shimmer";
 
 export function HomeHero() {
     const t = useTrans("pages.home");
@@ -21,7 +19,7 @@ export function HomeHero() {
             <div className="absolute inset-0 -z-5 [background:linear-gradient(to_bottom,rgba(255,255,255,1)_0%,rgba(255,255,255,.3)_15%,rgba(255,255,255,0)_30%,rgba(255,255,255,0)_70%,rgba(255,255,255,0.3)_85%,rgba(255,255,255,1)_100%)]" />
             {/* <div className="pointer-events-none absolute inset-0 -z-5 [background:radial-gradient(ellipse_at_center,rgba(255,255,255,0)_0%,rgba(255,255,255,0.2)_55%,rgba(255,255,255,1)_100%)]" /> */}
             <div className="absolute inset-0 -z-10">
-                <Grainient
+                {/* <Grainient
                     color1="#ffffff"
                     color2="#8ad7ff"
                     color3="#ffffff"
@@ -44,7 +42,7 @@ export function HomeHero() {
                     centerX={0}
                     centerY={0}
                     zoom={0.9}
-                />
+                /> */}
             </div>
             <SectionContent className="gap-size-sm sm:gap-size-md mt-size-lg z-10 items-start text-start">
                 {/* <Badge className="p-3" variant="secondary">
@@ -70,12 +68,12 @@ export function HomeHero() {
 
                 <Text intent="lead" className="max-w-2xl">
                     {t("hero.leadStart")}
-                    <TextShimmer
+                    {/* <TextShimmer
                         as="span"
                         className="font-bold [--base-color:var(--color-sky-800)] [--base-gradient-color:var(--color-sky-300)]"
-                    >
-                        {t("hero.leadHighlight")}
-                    </TextShimmer>
+                    > */}
+                    {t("hero.leadHighlight")}
+                    {/* </TextShimmer> */}
                     {t("hero.leadEnd")}
                 </Text>
 
