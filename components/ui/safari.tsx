@@ -86,6 +86,7 @@ export function Safari({
                         className="block size-full object-cover object-top"
                         fill
                         sizes={"(max-width: 768px) 100vw, 80vw"}
+                        loading="eager"
                     />
                 </div>
             )}
