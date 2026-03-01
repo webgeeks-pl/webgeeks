@@ -1,7 +1,5 @@
+import { useTrans } from "@/hooks/useTrans";
 import { cn } from "@/lib/utils";
-import { getArrayFromMessages } from "@/lib/utils/array";
-import { useTranslations } from "next-intl";
-import { z } from "zod";
 import Section, {
     SectionContent,
     SectionHeader,
@@ -12,18 +10,9 @@ import Section, {
 import Text from "../typography/text";
 import { Iphone } from "../ui/iphone";
 
-const MobileItemSchema = z.object({
-    number: z.string(),
-    title: z.string(),
-    description: z.string(),
-});
-
 export function HomeShowcase() {
-    const t = useTranslations("pages.home.showcase");
-    const mobileFriendlyItems = getArrayFromMessages(
-        t.raw("mobile.items"),
-        MobileItemSchema
-    );
+    const t = useTrans("pages.home.showcase");
+    const mobileFriendlyItems = t.obj("mobile.items");
 
     return (
         <Section className="py-size-xl sm:py-size-2xl relative">

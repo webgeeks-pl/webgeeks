@@ -1,3 +1,4 @@
+import LucideIcon from "@/components/ui/lucideIcons";
 import { useAllPackages } from "@/hooks/useAllPackages";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -99,11 +100,15 @@ export function PackageCard({ pkg }: { pkg: ReturnType<typeof useAllPackages>[nu
         >
             {/* <div className="lg:grid lg:grid-cols-2"> */}
             <CardHeader className={cn("flex-1 overflow-auto pb-4", "text-start")}>
-                {/* <IconContainer
-                                        Icon={getLucideIcon(pkg.icon)}
-                                        color={isPopular ? "opposite" : "default"}
-                                        variant={isPopular ? "oppoosite" : "outline"}
-                                    /> */}
+                <LucideIcon
+                    name={pkg.icon}
+                    className={cn(
+                        "size-10 bg-transparent",
+                        isPopular && "",
+                        !isPopular && "bg-transparent"
+                    )}
+                />
+
                 <div className="flex items-baseline gap-2">
                     <Text
                         intent="h3"

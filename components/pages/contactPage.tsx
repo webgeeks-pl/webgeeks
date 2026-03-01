@@ -1,13 +1,14 @@
 import Page, { PageHeader, PageHeaderContent, PageLead, PageTitle } from "../layout/page";
 import Section, { SectionContent } from "../layout/section";
 
-import ContactForm from "@/components/forms/contactForm";
-import { FileText, Mail, Send } from "lucide-react";
+import ContactForm2 from "@/components/forms/contactForm2";
+import LucideIcon from "@/components/ui/lucideIcons";
+import CreateInputs from "@/lib/utils/form";
+import { Send } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Suspense } from "react";
 import Text from "../typography/text";
 import { Card, CardContent } from "../ui/card";
-import IconContainer from "../ui/iconContainer";
 import { Separator } from "../ui/separator";
 
 export default function ContactPage() {
@@ -15,19 +16,20 @@ export default function ContactPage() {
     const contactMethodsData = t.raw("contactMethods");
 
     // Map icons to contact methods
-    const iconMap: { [key: string]: typeof Mail } = {
-        Email: Mail,
-        "Formularz kontaktowy": FileText,
+    const iconMap: { [key: string]: string } = {
+        Email: "mail",
+        "Formularz kontaktowy": "file-text",
     };
 
     const contactMethods = contactMethodsData.map((method: any) => ({
         ...method,
-        Icon: iconMap[method.name] || Mail,
+        icon: iconMap[method.name] || "Mail",
     }));
+
+    const inputs = CreateInputs();
 
     return (
         <Page>
-            
             <PageHeader>
                 <PageHeaderContent>
                     <PageTitle>{t("pageTitle")}</PageTitle>
@@ -38,13 +40,13 @@ export default function ContactPage() {
                 <SectionContent className="gap-size-lg">
                     <div className="gap-size-sm grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2">
                         {contactMethods.map(
-                            ({ name, description, Icon, contact, info }: any) => (
+                            ({ name, description, icon, contact, info }: any) => (
                                 <Card key={name}>
                                     <CardContent className="flex flex-col gap-2">
                                         <Text intent="h3">{name}</Text>
                                         <Text muted>{description}</Text>
                                         <div className="xs:flex-row flex flex-col items-center gap-2">
-                                            <IconContainer Icon={Icon} />
+                                            <LucideIcon name={icon} />
                                             <Text>{contact}</Text>
                                         </div>
                                         <Text muted intent="small">
@@ -70,7 +72,7 @@ export default function ContactPage() {
                             <SectionLead>{t("formSection.subtitle")}</SectionLead>
                         </SectionHeaderContent>
                     </SectionHeader> */}
-                    <Suspense fallback={<div aria-hidden /> }>
+                    <Suspense fallback={<div aria-hidden />}>
                         <div className="flex w-full max-w-5xl flex-col md:flex-row">
                             <div className="bg-clr-950 flex flex-col justify-between p-8 max-md:rounded-t-2xl md:col-span-2 md:rounded-l-2xl md:p-10">
                                 <div className="">
@@ -103,7 +105,8 @@ export default function ContactPage() {
                             </div>
                             <div className="rounded-b-2xl bg-white p-8 md:w-[120%] md:rounded-r-2xl md:p-10">
                                 {/* <Suspense fallback={<div aria-hidden /> }> */}
-                                    <ContactForm />
+
+                                <ContactForm2 inputs={inputs} id={"contact-form"} />
                                 {/* </Suspense> */}
                             </div>
                         </div>

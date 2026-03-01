@@ -1,23 +1,22 @@
-import { Code2, Shield, Zap } from "lucide-react";
+import LucideIcon from "@/components/ui/lucideIcons";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
 import { Card, CardContent } from "../ui/card";
-import IconContainer from "../ui/iconContainer";
 
 export function ServicesCustomCode() {
     const benefits = [
         {
-            icon: Zap,
+            icon: "zap",
             title: "Błyskawiczna Wydajność",
             description: "Serwisy wczytują się natychmiast",
         },
         {
-            icon: Code2,
+            icon: "code-2",
             title: "Kod na Miarę",
             description: "Całkowicie dostosowany bez żadnych zbędnych bibliotek",
         },
         {
-            icon: Shield,
+            icon: "shield",
             title: "Maksymalna Bezpieczeństwo",
             description: "Nie ma szans na włamania",
         },
@@ -38,13 +37,14 @@ export function ServicesCustomCode() {
                         Kod na Miarę – BEZ Konstruktorów Stron i Wordpress
                     </Text>
                     <Text className="max-w-3xl text-base leading-relaxed md:text-lg">
-                        W WebGeeks robimy rzeczy inaczej. Zamiast używać konstruktorów stron
-                        czy Wordpressa, ręcznie piszemy cały kod dla naszych witryn od góry
-                        do dołu. Dzięki temu możemy tworzyć niezwykle spersonalizowane projekty,
-                        mieć ZERO zbędnego kodu, wczytują się błyskawicznie, osiągają idealne
-                        wyniki w Google PageSpeed Insights, są bezpieczniejsze i praktycznie
-                        niemożliwe do włamania, a my nie musimy ciągle aktualizować wtyczek czy
-                        wersji Wordpressa, aby zapobiec hakowaniu.
+                        W WebGeeks robimy rzeczy inaczej. Zamiast używać konstruktorów
+                        stron czy Wordpressa, ręcznie piszemy cały kod dla naszych witryn
+                        od góry do dołu. Dzięki temu możemy tworzyć niezwykle
+                        spersonalizowane projekty, mieć ZERO zbędnego kodu, wczytują się
+                        błyskawicznie, osiągają idealne wyniki w Google PageSpeed
+                        Insights, są bezpieczniejsze i praktycznie niemożliwe do włamania,
+                        a my nie musimy ciągle aktualizować wtyczek czy wersji Wordpressa,
+                        aby zapobiec hakowaniu.
                     </Text>
                 </div>
 
@@ -52,10 +52,9 @@ export function ServicesCustomCode() {
                     {benefits.map((benefit, index) => (
                         <Card key={index} className="bg-brand/50 backdrop-blur-sm">
                             <CardContent className="flex flex-col items-center gap-3 text-center">
-                                <IconContainer
-                                    variant="ghost"
-                                    Icon={benefit.icon}
-                                    className="bg-brand"
+                                <LucideIcon
+                                    name={benefit.icon}
+                                    className="bg-brand bg-transparent"
                                 />
                                 <div>
                                     <Text

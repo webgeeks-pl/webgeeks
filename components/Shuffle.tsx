@@ -1,12 +1,14 @@
 "use client";
 
 import { useGSAP } from "@gsap/react";
-import { gsap } from "gsap/gsap-core";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText as GSAPSplitText } from "gsap/SplitText";
+// import { gsap } from "gsap/gsap-core";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { SplitText as GSAPSplitText } from "gsap/SplitText";
 import React, { JSX, useEffect, useMemo, useRef, useState } from "react";
 
-gsap.registerPlugin(ScrollTrigger, GSAPSplitText);
+import { gsap, GSAPSplitText, ScrollTrigger } from "@/lib/utils/gsap";
+
+// gsap.registerPlugin(ScrollTrigger, GSAPSplitText);
 
 export interface ShuffleProps {
     text: string;

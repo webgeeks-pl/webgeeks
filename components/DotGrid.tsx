@@ -1,9 +1,10 @@
 "use client";
-import { gsap } from "gsap/gsap-core";
-import { InertiaPlugin } from "gsap/InertiaPlugin";
+import { gsap } from "@/lib/utils/gsap";
+// import { gsap } from "gsap/gsap-core";
+// import { InertiaPlugin } from "gsap/InertiaPlugin";
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
 
-gsap.registerPlugin(InertiaPlugin);
+// gsap.registerPlugin(InertiaPlugin);
 
 const throttle = (func: (...args: any[]) => void, limit: number) => {
     let lastCall = 0;

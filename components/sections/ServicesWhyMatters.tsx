@@ -1,4 +1,4 @@
-import { Lock, MapPin, MessageSquare, Search, TrendingUp, Zap } from "lucide-react";
+import LucideIcon from "@/components/ui/lucideIcons";
 import Section, {
     SectionContent,
     SectionHeader,
@@ -8,42 +8,41 @@ import Section, {
 } from "../layout/section";
 import Text from "../typography/text";
 import { Card, CardContent } from "../ui/card";
-import IconContainer from "../ui/iconContainer";
 
 export function ServicesWhyMatters() {
     const reasons = [
         {
-            icon: Zap,
+            icon: "zap",
             title: "Szybsze Ładowanie",
             description:
                 "Jeśli strona wczytuje się dłużej niż 3 sekundy, możesz stracić aż 50% ruchu. Nasze strony ładują się tak szybko, że użytkownicy nie mają szans opuścić Twoją stronę zanim się załaduje.",
         },
         {
-            icon: TrendingUp,
+            icon: "trending-up",
             title: "Lepsza Konwersja",
             description:
                 "Szybciej ładujące się strony konwertują lepiej. Szybsze strony również mają niższy koszt za klik w Google Ads, co może zaoszczędzić Ci setki złotych miesięcznie.",
         },
         {
-            icon: Lock,
+            icon: "lock",
             title: "Większe Bezpieczeństwo",
             description:
                 "WordPress i konstruktory mają wiele luk w zabezpieczeniach. Nasz kod to statyczne pliki HTML i CSS – nie ma bazy danych ani żadnych punktów wejścia dla hakerów.",
         },
         {
-            icon: Search,
+            icon: "search",
             title: "Lepsza Pozycja w Google",
             description:
                 "Google preferuje strony, które wczytują się szybko. Lepsze wyniki PageSpeed i Core Vitals mogą poprawić Twoją pozycję w wyszukiwarce.",
         },
         {
-            icon: MapPin,
+            icon: "map-pin",
             title: "Wzmocnienie Google Business",
             description:
                 "Szybko ładująca się strona wraz z pełnym profilem i 5-gwiazdkowymi opiniami może znacznie zwiększyć widoczność w Google Maps.",
         },
         {
-            icon: MessageSquare,
+            icon: "message-square",
             title: "Więcej Potencjalnych Klientów",
             description:
                 "Gdy strona ładuje się szybciej, więcej osób ją osiąga. Wyższy ruch i lepszy czas spędzony na stronie to więcej okazji do konwersji.",
@@ -68,11 +67,11 @@ export function ServicesWhyMatters() {
                         >
                             <CardContent className="flex flex-col gap-4">
                                 <div className="flex items-start gap-4">
-                                    <IconContainer
-                                        variant="ghost"
-                                        Icon={reason.icon}
-                                        className="bg-brand/10 flex-shrink-0"
+                                    <LucideIcon
+                                        name={reason.icon}
+                                        className="bg-brand/10 flex-shrink-0 bg-transparent"
                                     />
+
                                     <div className="flex-1">
                                         <Text
                                             intent="h4"

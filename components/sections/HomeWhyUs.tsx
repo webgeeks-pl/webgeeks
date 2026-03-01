@@ -1,5 +1,8 @@
+// UNDER NO CIRCUMSTANCE SHOULD THIS FILE BE A CLIENT COMPONENT.
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
+import LucideIcon from "@/components/ui/lucideIcons";
 import { useTrans } from "@/hooks/useTrans";
+import { DollarSign, Eye, Share, ShoppingCart, ThumbsUp, User } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { HoleBackground } from "../animate-ui/components/backgrounds/hole";
 import Section, {
@@ -14,13 +17,20 @@ import Text from "../typography/text";
 import { AnimatedBackgroundSwitcher } from "../ui/animatedBackgroundSwitcher";
 import { Card, CardContent } from "../ui/card";
 import { FloatingStats } from "../ui/floating-stats";
-import IconContainer from "../ui/iconContainer";
 import { Iphone } from "../ui/iphone";
-import { getLucideIcon } from "../ui/lucideIcons";
 import { Ripple } from "../ui/ripple";
 import RotatingText from "../ui/RotatingText";
 import { Safari } from "../ui/safari";
 import { TypingAnimation } from "../ui/typing-animation";
+
+const icons = [
+    <User className="size-3 p-0!" key={0} />,
+    <ThumbsUp className="size-3 p-0!" key={1} />,
+    <Eye className="size-3 p-0!" key={2} />,
+    <DollarSign className="size-3 p-0!" key={3} />,
+    <Share className="size-3 p-0!" key={4} />,
+    <ShoppingCart className="size-3 p-0!" key={5} />,
+];
 
 export function HomeWhyUs() {
     const t = useTranslations("pages.home.whyUs");
@@ -97,10 +107,9 @@ export function HomeWhyUs() {
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.speed.icon)}
+                                    <LucideIcon
+                                        name={benefits.conversions.icon}
+                                        className="size-10 bg-transparent"
                                     />
                                     <Text
                                         intent="h4"
@@ -121,10 +130,9 @@ export function HomeWhyUs() {
                             </div>
                             <div className="h-fit shrink-0">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.security.icon)}
+                                    <LucideIcon
+                                        name={benefits.security.icon}
+                                        className="size-10 bg-transparent"
                                     />
                                     <Text
                                         intent="h4"
@@ -156,10 +164,9 @@ export function HomeWhyUs() {
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.costs.icon)}
+                                    <LucideIcon
+                                        name={benefits.costs.icon}
+                                        className="size-10 bg-transparent"
                                     />
                                     <Text
                                         intent="h4"
@@ -203,11 +210,11 @@ export function HomeWhyUs() {
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.easy.icon)}
+                                    <LucideIcon
+                                        name={benefits.conversions.icon}
+                                        className="size-10 bg-transparent"
                                     />
+
                                     <Text
                                         intent="h4"
                                         as="h3"
@@ -247,11 +254,11 @@ export function HomeWhyUs() {
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.mobile.icon)}
+                                    <LucideIcon
+                                        name={benefits.mobile.icon}
+                                        className="size-10 bg-transparent"
                                     />
+
                                     <Text
                                         intent="h4"
                                         as="h3"
@@ -265,14 +272,14 @@ export function HomeWhyUs() {
                     </Card>
                     <Card className="hover:ring-brand h-full bg-white xl:col-span-2">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
-                            <FloatingStats />
+                            <FloatingStats icons={icons} />
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.conversions.icon)}
+                                    <LucideIcon
+                                        name={benefits.seo.icon}
+                                        className="size-10 bg-transparent"
                                     />
+
                                     <Text
                                         intent="h4"
                                         as="h3"
@@ -292,11 +299,11 @@ export function HomeWhyUs() {
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.scalability.icon)}
+                                    <LucideIcon
+                                        name={benefits.seo.icon}
+                                        className="size-10 bg-transparent"
                                     />
+
                                     <Text
                                         intent="h4"
                                         as="h3"
@@ -316,11 +323,11 @@ export function HomeWhyUs() {
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.seo.icon)}
+                                    <LucideIcon
+                                        name={benefits.seo.icon}
+                                        className="size-10 bg-transparent"
                                     />
+
                                     <Text
                                         intent="h4"
                                         as="h3"

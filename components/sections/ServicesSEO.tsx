@@ -1,4 +1,4 @@
-import { FileText, BarChart3, Link2, Activity, Users } from "lucide-react";
+import LucideIcon from "@/components/ui/lucideIcons";
 import Section, {
     SectionContent,
     SectionHeader,
@@ -8,30 +8,29 @@ import Section, {
 } from "../layout/section";
 import Text from "../typography/text";
 import { Card, CardContent } from "../ui/card";
-import IconContainer from "../ui/iconContainer";
 
 export function ServicesSEO() {
     const seoServices = [
         {
-            icon: FileText,
+            icon: "file-text",
             title: "Tworzenie Treści",
             description:
                 "Starannie napisane artykuły i treści, które pokazują Google, że jesteś ekspertem w Twojej branży.",
         },
         {
-            icon: Link2,
+            icon: "link-2",
             title: "Budowanie Odnośników",
             description:
                 "Strategiczne linkowanie z wysokowartościowych źródeł, aby wzmocnić autorytet Twojej domeny.",
         },
         {
-            icon: BarChart3,
+            icon: "bar-chart-3",
             title: "Monitoring i Raporty",
             description:
                 "Regularne śledzenie wyników, rankingów i metryk, aby wiedzieć co działa.",
         },
         {
-            icon: Activity,
+            icon: "activity",
             title: "Optymalizacja Core Vitals",
             description:
                 "Zapewniamy, że Twoja strona spełnia wszystkie kryteria Core Web Vitals Google.",
@@ -39,7 +38,7 @@ export function ServicesSEO() {
     ];
 
     return (
-        <Section className="py-size-xl md:py-size-2xl bg-gradient-to-b from-transparent via-brand/5 to-transparent">
+        <Section className="py-size-xl md:py-size-2xl via-brand/5 bg-gradient-to-b from-transparent to-transparent">
             <SectionContent>
                 <SectionHeader className="mb-size-lg">
                     <SectionHeaderContent>
@@ -57,14 +56,14 @@ export function ServicesSEO() {
                         >
                             Zapomnij o Modnych Słowach
                         </Text>
-                        <Text className="text-base leading-relaxed md:text-lg max-w-3xl">
+                        <Text className="max-w-3xl text-base leading-relaxed md:text-lg">
                             "Optymalizuj doświadczenie użytkownika, prześlij mapę witryny,
                             optymalizuj metaznaczniki i opisy" – to wszystko powinno robić
                             każdy deweloper standardowo. To nie są usługi SEO.
                         </Text>
-                        <Text className="text-base leading-relaxed md:text-lg max-w-3xl font-semibold text-brand">
-                            SEO to aktywny i zaangażowany proces tworzenia treści, budowania
-                            odnośników, blogowania i monitorowania.
+                        <Text className="text-brand max-w-3xl text-base leading-relaxed font-semibold md:text-lg">
+                            SEO to aktywny i zaangażowany proces tworzenia treści,
+                            budowania odnośników, blogowania i monitorowania.
                         </Text>
                     </div>
 
@@ -72,19 +71,18 @@ export function ServicesSEO() {
                         {seoServices.map((service, index) => (
                             <Card
                                 key={index}
-                                className="bg-white hover:shadow-lg transition-shadow border-brand/20"
+                                className="border-brand/20 bg-white transition-shadow hover:shadow-lg"
                             >
-                                <CardContent className="gap-4 flex flex-col">
+                                <CardContent className="flex flex-col gap-4">
                                     <div className="flex items-start gap-4">
-                                        <IconContainer
-                                            variant="ghost"
-                                            Icon={service.icon}
-                                            className="flex-shrink-0 bg-brand/10"
+                                        <LucideIcon
+                                            name={service.icon}
+                                            className="bg-brand/10 flex-shrink-0 bg-transparent"
                                         />
                                         <div className="flex-1">
                                             <Text
                                                 intent="h4"
-                                                className="font-heading font-semibold mb-2"
+                                                className="font-heading mb-2 font-semibold"
                                                 text={service.title}
                                             />
                                             <Text
@@ -107,10 +105,11 @@ export function ServicesSEO() {
                                 text="Chcesz Wiedzieć Więcej?"
                             />
                             <Text className="text-base">
-                                Chętnie umawiamy się na rozmowę, aby wyjaśnić szczegółowo każdy
-                                element naszej strategii SEO i jak to wszystko działa. Skontaktuj
-                                się z nami, aby dowiedzieć się, jak możemy pomóc w zwiększeniu
-                                widoczności Twojego biznesu w sieci.
+                                Chętnie umawiamy się na rozmowę, aby wyjaśnić szczegółowo
+                                każdy element naszej strategii SEO i jak to wszystko
+                                działa. Skontaktuj się z nami, aby dowiedzieć się, jak
+                                możemy pomóc w zwiększeniu widoczności Twojego biznesu w
+                                sieci.
                             </Text>
                         </CardContent>
                     </Card>

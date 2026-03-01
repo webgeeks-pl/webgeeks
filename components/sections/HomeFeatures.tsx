@@ -1,23 +1,14 @@
-import { getArrayFromMessages } from "@/lib/utils/array";
-import { useTranslations } from "next-intl";
-import { z } from "zod";
+import LucideIcon from "@/components/ui/lucideIcons";
+import { useTrans } from "@/hooks/useTrans";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
 import { Card, CardContent } from "../ui/card";
-import IconContainer from "../ui/iconContainer";
-import { getLucideIcon } from "../ui/lucideIcons";
-
-const CardSchema = z.object({
-    icon: z.string(),
-    value: z.string(),
-    title: z.string(),
-    description: z.string(),
-});
 
 export function HomeFeatures() {
-    const t = useTranslations("pages.home");
-    const tHero = useTranslations("pages.home.hero");
-    const heroCards = getArrayFromMessages(tHero.raw("cards"), CardSchema);
+    const t = useTrans("pages.home");
+    const tHero = useTrans("pages.home.hero");
+    const heroCards = tHero.obj("cards");
+
     return (
         <Section className="pb-size-md pt-size-xl" shouldRender={heroCards.length > 0}>
             <SectionContent>
@@ -30,9 +21,9 @@ export function HomeFeatures() {
                             >
                                 <CardContent className="flex h-full flex-row-reverse items-center justify-between md:flex-col md:text-center">
                                     <div className="flex flex-col items-end md:items-center md:gap-2">
-                                        <IconContainer
-                                            variant={"ghost"}
-                                            Icon={getLucideIcon(icon)}
+                                        <LucideIcon
+                                            name={icon}
+                                            className="bg-transparent"
                                         />
                                     </div>
                                     <div>

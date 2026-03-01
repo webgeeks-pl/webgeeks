@@ -1,54 +1,62 @@
-import { FileQuestionMarkIcon, type LucideProps } from "lucide-react";
-import dynamic from "next/dynamic";
-import {
-    memo,
-    type ComponentType,
-    type ForwardRefExoticComponent,
-    type RefAttributes,
-} from "react";
+import { FileQuestionMarkIcon } from "lucide-react";
+import { DynamicIcon } from "lucide-react/dynamic";
+import type { ComponentProps } from "react";
 
-type LucideIcon = ForwardRefExoticComponent<
-    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
->;
+type DynamicIconProps = ComponentProps<typeof DynamicIcon>;
 
-// Cache dla dynamicznych ikon - zapobiega ponownemu tworzeniu przy każdym renderze
-const iconCache = new Map<string, ComponentType<LucideProps>>();
+type LucideIconProps = Omit<DynamicIconProps, "name"> & {
+    name: string;
+};
 
-function getCachedIcon(name: string): ComponentType<LucideProps> {
-    if (iconCache.has(name)) {
-        return iconCache.get(name)!;
+export default function LucideIcon(props: LucideIconProps) {
+    // `DynamicIcon` expects a narrow union for `name` (literal icon names).
+    // We accept `string` here (to allow runtime values) and cast when
+    // forwarding to avoid the incompatible assignment error.
+    try {
+        return <DynamicIcon {...(props as DynamicIconProps)} />;
+    } catch (error) {
+        console.error(`Error rendering icon '${props.name}':`, error);
+        return <FileQuestionMarkIcon color={"red"} />;
     }
-
-    const Icon = dynamic<LucideProps>(() =>
-        import("lucide-react").then((mod) => {
-            const IconComponent = mod[name as keyof typeof mod] as LucideIcon;
-            if (!IconComponent) {
-                console.error(`LucideIcon '${name}' not found`);
-                return mod.FileQuestionMarkIcon;
-            }
-            return IconComponent;
-        })
-    );
-
-    iconCache.set(name, Icon);
-    return Icon;
 }
 
-interface IconProps extends LucideProps {
-    name: keyof typeof import("lucide-react") | string;
-}
+// import { FileQuestionMarkIcon } from "lucide-react";
+// import { DynamicIcon } from "lucide-react/dynamic";
+// import type { ComponentProps } from "react";
 
-export const LucideIcon = memo(function LucideIcon({ name, ...props }: IconProps) {
-    const Icon = getCachedIcon(name);
-    // eslint-disable-next-line react-hooks/static-components
-    return <Icon {...props} />;
-});
+// let dynamicIconImports: Record<string, unknown> | undefined;
 
-export function getLucideIcon(name: string | null): ComponentType<LucideProps> {
-    if (!name) {
-        console.error("LucideIcon name is null");
-        return FileQuestionMarkIcon;
-    }
+// if (process.env.NODE_ENV === "development") {
+//     dynamicIconImports = require("lucide-react/dynamicIconImports").default;
+// }
 
-    return getCachedIcon(name);
-}
+// type DynamicIconProps = ComponentProps<typeof DynamicIcon>;
+
+// type LucideIconProps = Omit<DynamicIconProps, "name"> & {
+//     name: string;
+// };
+
+// export default function LucideIcon(props: LucideIconProps) {
+//     const name = props.name;
+
+//     if (!name) {
+//         console.error("LucideIcon: invalid name", name);
+//         return <FileQuestionMarkIcon color={"red"} />;
+//     }
+
+//     if (process.env.NODE_ENV === "development") {
+//         const imports = dynamicIconImports as Record<string, unknown>;
+
+//         if (!(name in imports)) {
+//             console.warn(`Lucide icon '${name}' not found, rendering fallback.`);
+//             return <FileQuestionMarkIcon color={"red"} />;
+//         }
+//     }
+
+//     try {
+//         return <DynamicIcon {...({ ...props, name } as DynamicIconProps)} />;
+//     } catch (error) {
+//         console.error(`Error rendering icon '${props.name}':`, error);
+//         return <FileQuestionMarkIcon color={"red"} />;
+//     }
+// }
