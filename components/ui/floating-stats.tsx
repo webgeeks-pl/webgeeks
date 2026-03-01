@@ -35,13 +35,14 @@ function FloatingStat({ id, icon, initialDelay, duration, value }: FloatingStatP
         >
             <motion.div
                 className="text-muted-foreground flex items-center gap-1 text-xs"
-                initial={{ y: 0, x: 0, scale: 0.6, opacity: 0, filter: "blur(3px)" }}
+                // filter: "blur(3px)
+                initial={{ y: 0, x: 0, scale: 0.6, opacity: 0 }}
                 animate={{
                     y: [0, "-50%", "-100%"],
                     x: [0, driftX, 0],
                     scale: [0.6, 1.2, 0.6],
                     opacity: [0, 1, 0],
-                    filter: ["blur(3px)", "blur(0px)", "blur(3px)"],
+                    // filter: ["blur(3px)", "blur(0px)", "blur(3px)"],
                 }}
                 transition={{
                     duration,
