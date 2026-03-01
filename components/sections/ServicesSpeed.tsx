@@ -34,7 +34,8 @@ export function ServicesSpeed() {
                 <div className="py-size-xl gap-size-xl flex w-full items-center justify-center">
                     <div className="flex flex-col items-center gap-2">
                         <Text intent="h3" text={"Moja strona"} className="mb-2" />
-                        <Rocket size={32} />
+
+                        <Rocket size={32} className="relative z-10" />
                         <Text intent="var" text={"ok. 1s"} />
                     </div>
                     <Text intent="var" className="text-xl">

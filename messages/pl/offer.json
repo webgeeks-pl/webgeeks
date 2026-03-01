@@ -16,7 +16,7 @@
             "subtitle": "+ strona w cenie",
             "isPopular": "true",
             "icon": "BadgeCheck",
-            "price": "475 zł",
+            "price": "500 zł",
             "priceDetails": "netto miesięcznie",
             "description": "Wybierz pakiet miesięczny, a ja zajmę się wszystkim, od projektu po hosting i aktualizacje. Idealne rozwiązanie gdy nie chcesz tracić czasu na zarządzanie stroną.",
             "category": "marketing",
@@ -43,7 +43,7 @@
                         "check": "true"
                     },
                     {
-                        "name": "Wsparcie techniczne 24/7",
+                        "name": "Wsparcie techniczne ",
                         "description": "estetyczny i profesjonalny wygląd",
                         "check": "true"
                     },
@@ -99,7 +99,7 @@
                         "check": "false"
                     },
                     {
-                        "name": "Wsparcie techniczne 24/7",
+                        "name": "Wsparcie techniczne ",
                         "description": "estetyczny i profesjonalny wygląd",
                         "check": "false"
                     },

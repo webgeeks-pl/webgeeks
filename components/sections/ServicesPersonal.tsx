@@ -151,8 +151,12 @@ function ClientCard({
     title: string;
 }) {
     return (
-        <div className="flex flex-col items-center">
-            <Icon className="h-8 w-8" />
+        <div className="relative flex flex-col items-center gap-1">
+            <div className="relative">
+                <div className="bg-brand absolute top-1/3 left-1/3 -z-1 h-13 w-13 -translate-1/2 rounded-full" />
+                <div className="absolute top-1/2 left-1/2 -z-1 h-13 w-13 -translate-1/2 rounded-full bg-white/30 backdrop-blur-md" />
+                <Icon className="h-8 w-8 text-white" />
+            </div>
             <h3 className="mt-size-xs text-sm font-medium">{title}</h3>
         </div>
     );

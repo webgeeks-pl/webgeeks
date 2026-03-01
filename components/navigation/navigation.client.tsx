@@ -1,226 +1,100 @@
 "use client";
 
-import useOnMount from "@/hooks/useOnMount";
-import useOnResize from "@/hooks/useOnResize";
-import useOnScroll from "@/hooks/useOnScroll";
-import { BREAKPOINT_VALUES } from "@/lib/constants";
-import type { BasicComponentProps, ScreenBreakpoint } from "@/lib/types";
+import { useNavigation } from "@/context/navigationContext";
+import { usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils/cn";
-import { useNavigation } from "@context/navigationContext";
-import Hamburger from "hamburger-react";
-import Link from "next/dist/client/link";
-import React, { ReactNode, useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-import { Button } from "../ui/button";
+import { Dialog } from "@headlessui/react";
+import React, { useEffect, useState } from "react";
 
-interface HeaderContainerProps {
-    children: ReactNode;
+interface HeaderProps {
+    children?: React.ReactNode | React.ReactNode[];
     className?: string;
+    scrollActive?: boolean;
 }
 
-export function HeaderContainer({ children, className }: HeaderContainerProps) {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const { headerRef, isNavOpen } = useNavigation();
-
-    const checkNavHeight = () => {
-        if (!headerRef.current) return;
-        const navHeight = headerRef.current.getBoundingClientRect().height;
-        if (navHeight < window.scrollY || isNavOpen) {
-            setIsScrolled(true);
-        } else {
-            setIsScrolled(false);
-        }
-    };
-
-    // Mount check
-    useOnMount(() => {
-        if (!headerRef.current) {
-            setIsScrolled(true);
-            return;
-        }
-        checkNavHeight();
-    });
-    // Nav open check
-    useEffect(() => {
-        // eslint-disable-next-line
-        if (isNavOpen) setIsScrolled(true);
-        else setIsScrolled(false);
-    }, [isNavOpen]);
-    // Scroll check
-    useOnScroll(checkNavHeight);
-
-    return (
-        <header
-            ref={headerRef}
-            data-scrolled={isScrolled ? "true" : "false"}
-            className={cn("group/header", className)}
-        >
-            {children}
-        </header>
-    );
-}
-
-interface HeaderHeightProps {
-    className?: string;
-}
-
-export function HeaderHeightPadding({ className }: HeaderHeightProps) {
-    const { headerRef } = useNavigation();
-    const paddingRef = useRef<HTMLDivElement | null>(null);
-
-    const resizeHandler = () => {
-        if (headerRef.current && paddingRef.current) {
-            const { height } = headerRef.current.getBoundingClientRect();
-            paddingRef.current.style.height = height.toString() + "px";
-        }
-    };
-
-    useOnMount(resizeHandler);
-    useOnResize(resizeHandler, headerRef);
-
-    return <div ref={paddingRef} className={className} />;
-}
-
-interface HeaderNavigationProps extends BasicComponentProps {
-    isOpened?: boolean;
-    classNameOnOpen?: string;
-    classNameOnClose?: string;
-    breakpoint: ScreenBreakpoint;
-    classNameOverlay?: string;
-}
-export function NavigationContainer({
+export function MobileDialog({
+    className,
     children,
-    breakpoint,
-    className,
-    classNameOnClose,
-    classNameOnOpen,
-    classNameOverlay,
-}: HeaderNavigationProps) {
-    const { isNavOpen, closeNav } = useNavigation();
-    const [isMobile, setIsMobile] = useState(true);
-    const targetBreakpointValue = BREAKPOINT_VALUES[breakpoint];
-
-    useOnResize(() => {
-        const { width } = window.document.body.getBoundingClientRect();
-        if (width >= targetBreakpointValue) {
-            closeNav();
-            setIsMobile(false);
-        } else {
-            setIsMobile(true);
-        }
-    });
-
-    return (
-        <nav className={cn(className, isNavOpen ? classNameOnOpen : classNameOnClose)}>
-            {isNavOpen &&
-                createPortal(
-                    <Overlay
-                        onClick={closeNav}
-                        isOpen={isMobile && isNavOpen}
-                        className={classNameOverlay}
-                    />,
-                    document.body
-                )}
-            {children}
-        </nav>
-    );
-}
-
-function Overlay({
-    onClick,
-    className,
-    isOpen,
 }: {
-    onClick: () => void;
     className?: string;
-    isOpen: boolean;
+    children?: React.ReactNode;
 }) {
+    const { isNavOpen, setIsNavOpen } = useNavigation();
     return (
-        <div
-            className={cn(
-                "fixed inset-0 z-1000 xl:hidden",
-                isOpen ? "" : "hidden",
-                className
-            )}
-            style={{
-                visibility: isOpen ? "visible" : "hidden",
-                pointerEvents: isOpen ? "auto" : "none",
-                opacity: isOpen ? "1" : "0",
-                zIndex: isOpen ? "" : "-10",
-                display: isOpen ? "block" : "hidden",
-            }}
-            onClick={onClick}
-        />
+        <Dialog open={isNavOpen} onClose={setIsNavOpen} className={cn("", className)}>
+            {children}
+        </Dialog>
     );
 }
 
-interface NavigationToggleButton {
-    className?: string;
-    size?: number;
-}
-
-export function NavigationToggleButton({ className, size = 24 }: NavigationToggleButton) {
-    const { isNavOpen, toggleNav } = useNavigation();
-    // const t = useTranslations("aria");
+export function NavbarMobileButton({
+    children,
+    type,
+}: {
+    children: React.ReactNode | React.ReactNode[];
+    type: "open" | "close" | "toggle";
+}) {
+    const { closeNav, openNav, toggleNav } = useNavigation();
     return (
         <button
-            type="button"
-            className={cn("", className)}
-            // aria-label={isNavOpen ? t("closeMenu") : t("openMenu")}
+            onClick={type === "open" ? openNav : type === "close" ? closeNav : toggleNav}
+            className="navbar:hidden z-1000"
         >
-            <Hamburger
-                size={size}
-                rounded
-                color="oklch(0.8835 0.0668 355.93)"
-                toggled={isNavOpen}
-                onToggle={toggleNav}
-            />
+            {children}
         </button>
     );
 }
 
-type ClickableChild = React.ReactElement<{
-    onClick?: (e: React.MouseEvent) => void;
-}>;
-
-export default function CloseNavigationWrapper({
+export function ActiveLink({
+    href,
     children,
-    Component,
 }: {
-    children?: React.ReactElement;
-    Component?: React.ReactElement;
-}) {
-    const { closeNav } = useNavigation();
-    const target = Component ?? children;
-    if (!React.isValidElement(target)) return null;
-
-    const child = target as ClickableChild;
-    const handleClick = (e: React.MouseEvent) => {
-        child.props.onClick?.(e);
-        closeNav();
-    };
-
-    // Zachowaj wszystkie oryginalne propsy i dodaj/nadpisz tylko onClick
-    return React.cloneElement(child, {
-        onClick: handleClick,
-        ...child.props,
-    });
-}
-
-interface CTAButtonProps extends BasicComponentProps {
-    text: string;
     href: string;
-}
-export function CTAButton({ className, text, href }: CTAButtonProps) {
-    const { closeNav } = useNavigation();
+    children: React.ReactNode;
+}) {
+    const pathname = usePathname();
+    const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
+
     return (
-        <Button
-            asChild
-            variant="outline"
-            onClick={closeNav}
-            className={cn("px-8 py-4 transition-colors", className)}
-        >
-            <Link href={href}>{text}</Link>
-        </Button>
+        <span data-active={isActive} className="group/navlink contents">
+            {children}
+        </span>
+    );
+}
+
+export function Header({ className, children, scrollActive }: HeaderProps) {
+    const { headerRef, isNavOpen } = useNavigation();
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        if (!scrollActive) return;
+        const SCROLL_THRESHOLD = 200;
+
+        const checkScroll = () => {
+            setIsScrolled(window.scrollY > SCROLL_THRESHOLD || isNavOpen);
+        };
+
+        checkScroll();
+
+        window.addEventListener("scroll", checkScroll, { passive: true });
+        window.addEventListener("resize", checkScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener("scroll", checkScroll);
+            window.removeEventListener("resize", checkScroll);
+        };
+    }, [isNavOpen]);
+
+    return (
+        <>
+            <div id="navigation-top" className="h-0" />
+            <header
+                ref={headerRef}
+                data-scrolled={isScrolled}
+                className={cn("group z-navbar", className)}
+            >
+                {children}
+            </header>
+        </>
     );
 }

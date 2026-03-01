@@ -78,11 +78,11 @@ export function HomeWhyUs() {
             <div className="absolute inset-0 -z-5 [background:linear-gradient(to_bottom,rgba(255,255,255,1)_0%,rgba(255,255,255,.5)_15%,rgba(255,255,255,0)_30%,rgba(255,255,255,0)_70%,rgba(255,255,255,0.5)_85%,rgba(255,255,255,1)_100%)]" />
             <div className="pointer-events-none absolute inset-0 -z-5 [background:radial-gradient(ellipse_at_center,rgba(255,255,255,0)_0%,rgba(255,255,255,0.2)_55%,rgba(255,255,255,1)_100%)]" />
             <div className="absolute inset-0 -z-6">
-                <FlickeringGrid />
+                {/* <FlickeringGrid /> */}
                 {/* <FlickeringGridOGL /> */}
             </div>
             <SectionContent>
-                <div className="grid grid-cols-1 grid-rows-[repeat(9,250px)] gap-6 md:grid-cols-2 md:grid-rows-[repeat(5,250px)] xl:grid-cols-4 xl:grid-rows-[repeat(3,minmax(250px,1fr))]">
+                <div className="grid grid-cols-1 grid-rows-[repeat(9,300px)] gap-6 md:grid-cols-2 md:grid-rows-[repeat(5,300px)] xl:grid-cols-4 xl:grid-rows-[repeat(3,minmax(250px,1fr))]">
                     <Card className="hover:ring-brand h-full bg-white">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative h-full overflow-hidden rounded-lg">
@@ -225,10 +225,10 @@ export function HomeWhyUs() {
                             <SectionHeader>
                                 <SectionHeaderContent>
                                     <SectionTitle>
-                                        {t("sectionHeader.title")}{" "}
-                                        <span className="font-silkscreen -tracking-widest">
+                                        {t("sectionHeader.title")}
+                                        {/* <span className="font-silkscreen -tracking-widest">
                                             {tCommon("logo")}
-                                        </span>
+                                        </span> */}
                                     </SectionTitle>
                                     <SectionLead
                                         text={t("sectionHeader.description")}

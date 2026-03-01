@@ -145,7 +145,7 @@ export function PackageCard({ pkg }: { pkg: ReturnType<typeof useAllPackages>[nu
                     0 && (
                     <>
                         <div className="mb-1 flex items-baseline justify-between">
-                            <Text intent="h4" text={"Pakiet opieka"} />
+                            <Text intent="h4" text={"Pełna opieka"} />
                             <Text intent="small" text={"200 zł / miesiąc"} />
                         </div>
                         <ul className="bg-clr-50 mb-6 flex-1 space-y-1 rounded-sm px-4 py-2">

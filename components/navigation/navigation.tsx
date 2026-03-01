@@ -1,169 +1,137 @@
-"use client";
-
-import { routes as mainRoutes } from "@/config/routes";
+import { navigationRoutes, Route } from "@/config/routes";
 import { useTrans } from "@/hooks/useTrans";
-import { usePathname } from "@/i18n/navigation";
-import { cn } from "@/lib/utils";
-import { Dialog, DialogPanel, PopoverGroup } from "@headlessui/react";
-import { NavigationRoutes } from "@types";
+import { Link } from "@/i18n/navigation";
+import { cn } from "@/lib/utils/cn";
+import { DialogPanel } from "@headlessui/react";
 import { Menu, X } from "lucide-react";
-import { useTranslations } from "next-intl";
-import Link from "next/link";
-import { useState } from "react";
 import { Button } from "../ui/button";
 import Logo from "../ui/logo";
 import ScrollButton from "../ui/scroll-button";
-import { Separator } from "../ui/separator";
-import { HeaderContainer } from "./navigation.client";
+import {
+    ActiveLink,
+    Header,
+    MobileDialog,
+    NavbarMobileButton,
+} from "./navigation.client";
 
-interface NavigationProps {
-    navigation?: NavigationRoutes;
-}
-
-export default function Navigation({ navigation }: NavigationProps) {
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-    const t = useTranslations("common.navigation");
-    const tRoutes = useTrans("common.navigation").obj("routes");
-
-    const routes = navigation ?? mainRoutes;
-    const defaultRoutes = routes.filter((route) => !route.cta);
-    const ctaRoute = routes.find((route) => route.cta);
-
-    const pathname = usePathname();
-
-    const isActiveRoute = (href: string) =>
-        href === "/" ? pathname === "/" : pathname.startsWith(href);
-
-    const isHomePage = pathname === "/" || pathname === "/#";
-
+export default function Navigation() {
     return (
-        <>
-            <div id="navigation-top" className="h-0" />
-            <HeaderContainer className="sticky top-0 z-1000 bg-white/20 backdrop-blur-md">
-                <div className="sticky inset-0 bg-black" />
-                <nav
-                    id="navigation"
-                    aria-label={t("navigation")}
-                    className="mx-auto flex max-w-[1536px] items-center justify-between p-2 xl:px-6"
-                >
-                    <div className="flex xl:flex-1">
-                        <ScrollButton
-                            target={isHomePage ? "#navigation-top" : undefined}
-                            options={{ behavior: "smooth", block: "start" }}
-                            className="flex items-center justify-center"
-                        >
-                            <Link href="/" className={"flex items-center justify-center"}>
-                                <Logo />
-                            </Link>
-                        </ScrollButton>
-                    </div>
-                    <div className="flex xl:hidden">
-                        <Button
-                            onClick={() => setMobileMenuOpen(true)}
-                            variant="ghost"
-                            size="icon"
-                            className="z-5000"
-                        >
-                            <span className="sr-only">{t("openNav")}</span>
-                            <Menu aria-hidden="true" className="size-5" />
+        <Header
+            className={cn("sticky top-0 mx-auto w-full bg-white/60 backdrop-blur-md")}
+        >
+            <div
+                className={cn(
+                    "navbar:px-6 mx-auto flex h-full max-w-384 items-center justify-between gap-10 p-2"
+                )}
+            >
+                <NavbarLogoContainer className="py-1">
+                    <Logo />
+                </NavbarLogoContainer>
+                <nav className="navbar:flex hidden">
+                    <ul className="flex list-none gap-x-2">
+                        {navigationRoutes.main.map((route) => (
+                            <NavLink key={route.link} route={route} />
+                        ))}
+                    </ul>
+                </nav>
+                <div className="flex items-center gap-2">
+                    {navigationRoutes.cta.map((route) => (
+                        <NavLink key={route.link} route={route} isCta />
+                    ))}
+                    <div className="navbar:hidden">
+                        <Button asChild variant="ghost" size="icon">
+                            <NavbarMobileButton type="open">
+                                <span className="sr-only">open</span>
+                                <Menu aria-hidden="true" className="size-5" />
+                            </NavbarMobileButton>
                         </Button>
                     </div>
-                    <PopoverGroup className="hidden xl:flex xl:gap-x-2">
-                        {defaultRoutes.map((route) => {
-                            return (
-                                <Button
-                                    key={route.link}
-                                    variant="link"
-                                    asChild
-                                    className={
-                                        isActiveRoute(route.link)
-                                            ? "bg-accent/80 text-brand-dark border-clr-200 border"
-                                            : ""
-                                    }
-                                >
-                                    <Link href={route.link}>{tRoutes[route.link]}</Link>
-                                </Button>
-                            );
-                        })}
-                    </PopoverGroup>
-                    <div className="hidden items-center gap-2 xl:flex xl:flex-1 xl:justify-end">
-                        {ctaRoute && (
-                            <Button variant="cta" asChild>
-                                <Link href={ctaRoute?.link || "#"}>{tRoutes["cta"]}</Link>
-                            </Button>
-                        )}
-                    </div>
-                </nav>
-                <Dialog
-                    open={mobileMenuOpen}
-                    onClose={setMobileMenuOpen}
-                    className="xl:hidden"
-                >
-                    <div className="fixed inset-0 z-5000" />
-                    <DialogPanel className="fixed inset-y-0 right-0 z-5000 w-full overflow-y-auto bg-white/90 p-2 backdrop-blur-md sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                        <div className="flex items-center justify-between">
-                            <Link
-                                href="/#"
-                                className={"flex items-center justify-center"}
-                            >
-                                <span>Logo</span>
-                            </Link>
-                            <Button
-                                onClick={() => setMobileMenuOpen(false)}
-                                variant="ghost"
-                                size="icon"
-                                className="z-5000"
-                            >
-                                <span className="sr-only">{t("closeNav")}</span>
-                                <X
-                                    aria-hidden="true"
-                                    className="text-clr-brand-red size-6"
-                                />
-                            </Button>
-                        </div>
-                        <div className="mt-10 flex flex-col items-center">
-                            <div className="-my-6 divide-gray-500/10">
-                                <div className="flex flex-col items-center gap-4 space-y-2 py-6">
-                                    {defaultRoutes.map((route) => {
-                                        return (
-                                            <Button
-                                                variant="link"
-                                                asChild
-                                                key={route.link}
-                                                onClick={() => setMobileMenuOpen(false)}
-                                                className={cn(
-                                                    "w-fit",
-                                                    isActiveRoute(route.link)
-                                                        ? "bg-accent text-brand"
-                                                        : ""
-                                                )}
-                                            >
-                                                <Link href={route.link}>
-                                                    {tRoutes[route.link]}
-                                                </Link>
-                                            </Button>
-                                        );
-                                    })}
-                                </div>
-                                <Separator />
-                                <div className="mx-auto py-6">
-                                    {ctaRoute && (
-                                        <Button variant="cta" asChild className="">
-                                            <Link
-                                                href={ctaRoute?.link || "#"}
-                                                onClick={() => setMobileMenuOpen(false)}
-                                            >
-                                                {tRoutes["cta"]}
-                                            </Link>
-                                        </Button>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    </DialogPanel>
-                </Dialog>
-            </HeaderContainer>
-        </>
+                </div>
+            </div>
+
+            {/* Mobile */}
+            <MobileNav />
+        </Header>
+    );
+}
+
+function MobileNav() {
+    return (
+        <MobileDialog>
+            <DialogPanel
+                className={cn(
+                    "fixed inset-y-0 right-0 z-5000 w-full overflow-y-auto bg-white/90 p-2 backdrop-blur-md sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+                )}
+            >
+                <div className="flex items-center justify-between">
+                    <NavbarLogoContainer>
+                        <Logo />
+                    </NavbarLogoContainer>
+                    <Button asChild variant="ghost" size="icon">
+                        <NavbarMobileButton type="close">
+                            <span className="sr-only">close</span>
+                            <X aria-hidden="true" className="text-destructive size-6" />
+                        </NavbarMobileButton>
+                    </Button>
+                </div>
+                <div className="mt-10 flex flex-col items-center gap-4">
+                    {navigationRoutes.main.map((route) => (
+                        <NavLink key={route.link} route={route} />
+                    ))}
+                    {navigationRoutes.cta.map((route) => (
+                        <NavLink key={route.link} route={route} isCta />
+                    ))}
+                </div>
+            </DialogPanel>
+        </MobileDialog>
+    );
+}
+
+function NavbarLogoContainer({
+    children,
+    className,
+}: {
+    children?: React.ReactNode;
+    className?: string;
+}) {
+    return (
+        <ScrollButton
+            as="link"
+            href="/"
+            target="#navigation-top"
+            onRoute="/"
+            options={{ behavior: "smooth", block: "start" }}
+            className={cn("flex items-center justify-center", className)}
+        >
+            {children}
+        </ScrollButton>
+    );
+}
+
+export function NavLink({
+    route,
+    className,
+    isCta,
+}: {
+    route: Route;
+    className?: string;
+    isCta?: boolean;
+}) {
+    const t = useTrans("common.navigation.routes");
+
+    return (
+        <ActiveLink href={route.link}>
+            <Button
+                variant={isCta ? "cta" : "link"}
+                asChild
+                className={cn(
+                    !isCta &&
+                        "group-data-[active=true]/navlink:text-brand-dark group-data-[active=true]/navlink:border-clr-200 group-data-[active=true]/navlink:bg-accent group-data-[active=true]/navlink:border",
+                    className
+                )}
+            >
+                <Link href={route.link}>{isCta ? t("cta") : t(route.link)}</Link>
+            </Button>
+        </ActiveLink>
     );
 }

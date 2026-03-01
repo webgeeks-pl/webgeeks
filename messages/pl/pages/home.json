@@ -140,8 +140,8 @@
     },
     "whyUs": {
         "sectionHeader": {
-            "title": "Strona z",
-            "description": "Pozwól mi stworzyć dla Ciebie stronę, która wspiera rozwój Twojego biznesu"
+            "title": "Bez kreatora, bez kompromisów",
+            "description": "Nie korzystam z gotowych szablonów. Strony tworzę od podstaw w środowisku programistycznym. Każdy piksel i każda linia kodu jest precyzyjnie dopracowana, aby zapewnić najlepszą wydajność, bezpieczeństwo i unikalny design"
         },
         "rotatingTexts": ["Strona", "Internet", "Webgeeks", "Design"],
         "typingWords": ["Fryzjer", "Salon kosmetyczny", "Gabinet masażu"],
@@ -160,7 +160,7 @@
                 "icon": "DollarSign",
                 "title": "Zacznij bez ryzyka",
                 "description": "Kompleksowa opieka, nielimitowane zmiany, hosting, a w tym 0zł za stronę na start",
-                "cta": ["475 zł / miesiąc"]
+                "cta": ["Strona w pakiecie"]
             },
             "security": {
                 "icon": "Lock",

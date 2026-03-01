@@ -88,6 +88,7 @@
     --font-silkscreen: var(--font-silkscreen), monospace;
 
     --breakpoint-xs: 25rem; /* 400px */
+    --breakpoint-navbar: 80rem; /* 1280px */
 
     --color-clr-50: oklch(0.985 0 0);
     --color-clr-100: oklch(0.97 0 0);
@@ -252,6 +253,9 @@
 }
 
 @layer utilities {
+    .z-navbar {
+        z-index: 1000;
+    }
     .conic-bg {
         width: 100%;
         height: 100%;

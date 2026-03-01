@@ -1,33 +1,41 @@
-import { NavigationRoutes } from "@/lib/types";
+import type { MessagesMap } from "@/config/i18n";
 
-export const routes: NavigationRoutes = [
-    { link: "/", name: "Strona główna" },
-    { link: "/services", name: "Usługi" },
-    { link: "/offer", name: "Oferta" },
-    // { link: "/portfolio" },
-    // { link: "/process" },
-    // { link: "/templates" },
+export type RouteKey = keyof MessagesMap["common"]["navigation"]["routes"];
 
-    { link: "/templates", name: "Szablony" },
-    { link: "/contact", name: "Kontakt" },
-    // { link: "/testimonials" },
-    {
-        name: "Skontaktuj się z nami",
-        link: "/contact",
-        cta: true,
-    },
+export interface Route {
+    link: RouteKey;
+}
+
+export type Routes = Route[];
+export type FooterRoutesKeys = "main" | "contact" | "legal";
+export type FooterRoutes = Record<FooterRoutesKeys, Routes>;
+export type NavigationRoutesKeys = "main" | "expandable" | "cta";
+export type NavigationRoutes = Record<NavigationRoutesKeys, Routes>;
+
+export const routes: Routes = [
+    { link: "/" },
+    { link: "/services" },
+    { link: "/process" },
+    { link: "/offer" },
+    { link: "/templates" },
+    { link: "/contact" },
 ];
 
-export const footerRoutes = {
-    links: [],
-    contacts: [],
-    legal: [],
+const contact: Routes = [{ link: "/contact" }];
+
+export const legalRoutes: Routes = [
+    { link: "/privacy-policy" },
+    { link: "/terms-of-service" },
+];
+
+export const navigationRoutes: NavigationRoutes = {
+    main: routes,
+    expandable: [],
+    cta: [{ link: "/contact" }],
 };
 
-export const legalRoutes: NavigationRoutes = [
-    { link: "/privacy-policy", name: "Polityka prywatności" },
-    {
-        link: "/terms-of-service",
-        name: "Warunki korzystania z usługi",
-    },
-];
+export const footerRoutes: FooterRoutes = {
+    main: routes,
+    contact: contact,
+    legal: legalRoutes,
+};
