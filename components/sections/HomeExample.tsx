@@ -1,5 +1,4 @@
 import Section, { SectionContent } from "../layout/section";
-import { Safari } from "../ui/safari";
 
 const examples = [
     { link: "/example1.png" },
@@ -29,8 +28,6 @@ export default function HomeExample() {
                         );
                     })}
                 </div> */}
-
-                <Safari url="https:\\" imageSrc="/cafe-luna.png" className="w-full" />
             </SectionContent>
         </Section>
     );

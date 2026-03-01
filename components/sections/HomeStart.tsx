@@ -8,46 +8,48 @@ import Section, {
 
 const points = [
     {
-        title: "Profesjonalna strona internetowa",
+        title: "Profesjonalny wizerunek",
         description:
-            "Nowoczesny design i funkcjonalność zapewniają lepsze doświadczenie użytkownika.",
+            "Pierwsze wrażenie jest kluczowe. Profesjonalna strona internetowa buduje zaufanie i pokazuje, że Twoja firma jest wiarygodna.",
     },
     {
-        title: "Wyróżnienie w sieci",
+        title: "Lepsza widoczność",
         description:
-            "Zwiększ swoją widoczność i atrakcyjność w porównaniu do konkurencji.",
+            "Dobra strona internetowa jest zoptymalizowana pod kątem SEO, co pozwala Twojej firmie być łatwiej znalezioną przez potencjalnych klientów.",
     },
     {
         title: "Zwiększenie zysków",
         description:
-            "Strona internetowa to narzędzie, które przyciąga klientów i zwiększa sprzedaż.",
+            "Profesjonalna strona internetowa może przyciągnąć więcej klientów i zwiększyć sprzedaż, dzięki lepszej prezentacji oferty i łatwiejszemu kontaktowi.",
     },
     {
-        title: "Najnowsze technologie",
+        title: "Konkurencyjność",
         description:
-            "Korzystamy z nowoczesnych rozwiązań, które zapewniają szybkość i niezawodność.",
+            "Profesjonalna strona internetowa pozwala Twojej firmie wyróżniać się na tle konkurencji i budować silny wizerunek marki.",
     },
 ];
 
 export default function HomeStart() {
     return (
-        <Section className="max-md:pb-size-2xl py-size-xl relative">
-            <SectionContent className="gap-size-xl flex h-full w-full flex-col xl:flex-row">
+        <Section className="max-md:pb-size-2xl py-size-4xl relative">
+            <SectionContent className="gap-size-xl flex h-full w-full flex-col xl:flex-row xl:items-center">
                 <SectionHeader className="relative z-10 xl:max-w-prose">
-                    <SectionHeaderContent className="mx-0 items-start text-start!">
-                        <SectionTitle>Zwiększ obecność swojej firmy</SectionTitle>
+                    <SectionHeaderContent className="mx-0 items-start justify-center text-start!">
+                        <SectionTitle>
+                            Czemu warto zainwestować w profesjonalną stronę internetową?
+                        </SectionTitle>
                         <SectionLead>
-                            Zainwestuj w profesjonalną stronę internetową i wyróżnij się w
-                            sieci. Postaw na najnowsze technologie, nowoczesny design i
-                            niezawodność, które przyciągną klientów i zwiększą Twoje
-                            zyski.
+                            W dzisiejszym cyfrowym świecie posiadanie profesjonalnej
+                            strony internetowej jest kluczowe dla sukcesu każdej firmy. To
+                            nie tylko wizytówka w sieci, ale także potężne narzędzie
+                            marketingowe i sprzedażowe.
                         </SectionLead>
                     </SectionHeaderContent>
                 </SectionHeader>
 
-                <div className="w-full xl:max-w-prose">
+                <div className="flex w-full flex-col justify-center gap-8 xl:max-w-prose">
                     {points.map((point, index) => (
-                        <div key={index} className="mb-size-lg">
+                        <div key={index} className="">
                             <h3 className="text-xl font-semibold">{point.title}</h3>
                             <p className="text-muted-foreground text-lg">
                                 {point.description}

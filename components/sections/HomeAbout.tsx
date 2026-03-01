@@ -1,5 +1,4 @@
 import { useTrans } from "@/hooks/useTrans";
-import Grainient from "../Grainient";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
 
@@ -10,8 +9,8 @@ export function HomeAbout() {
     const paragraphs = t.obj("paragraphs");
 
     return (
-        <Section className="py-size-xl relative h-[500px] min-h-[70vh]">
-            <div className="absolute inset-0 -z-5 [background:linear-gradient(to_bottom,rgba(255,255,255,1)_0%,rgba(255,255,255,.5)_15%,rgba(255,255,255,0)_30%,rgba(255,255,255,0)_70%,rgba(255,255,255,0.5)_85%,rgba(255,255,255,1)_100%)]" />
+        <Section className="py-size-4xl relative">
+            {/* <div className="absolute inset-0 -z-5 [background:linear-gradient(to_bottom,rgba(255,255,255,1)_0%,rgba(255,255,255,.5)_15%,rgba(255,255,255,0)_30%,rgba(255,255,255,0)_70%,rgba(255,255,255,0.5)_85%,rgba(255,255,255,1)_100%)]" />
             <div className="pointer-events-none absolute inset-0 -z-5 [background:radial-gradient(ellipse_at_center,rgba(255,255,255,0)_0%,rgba(255,255,255,0.2)_55%,rgba(255,255,255,1)_100%)]" />
             <div className="absolute inset-0 -z-10">
                 <Grainient
@@ -38,7 +37,7 @@ export function HomeAbout() {
                     centerY={0}
                     zoom={0.9}
                 />
-            </div>
+            </div> */}
             <SectionContent className="flex h-full flex-col items-start justify-center">
                 <Text intent="sectionHeader" className="mb-size-sm">
                     {t("sectionHeader")}

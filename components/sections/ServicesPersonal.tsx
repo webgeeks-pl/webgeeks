@@ -1,0 +1,165 @@
+import {
+    Camera,
+    Car,
+    Coffee,
+    Dog,
+    Dumbbell,
+    Flower2,
+    GraduationCap,
+    Hammer,
+    HandHeart,
+    HeartPulse,
+    Home,
+    Music,
+    Ruler,
+    Scale,
+    Scissors,
+    ShoppingBag,
+    Stethoscope,
+    UtensilsCrossed,
+} from "lucide-react";
+import Section, {
+    SectionContent,
+    SectionHeader,
+    SectionHeaderContent,
+    SectionLead,
+    SectionTitle,
+} from "../layout/section";
+
+const targets = [
+    {
+        icon: Scissors,
+        title: "Salon fryzjerski",
+    },
+    {
+        icon: HandHeart,
+        title: "Salon masażu",
+    },
+    {
+        icon: Ruler,
+        title: "Biuro architektoniczne",
+    },
+    {
+        icon: Home,
+        title: "Agencja nieruchomości",
+    },
+    {
+        icon: HeartPulse,
+        title: "Placówka medyczna",
+    },
+    {
+        icon: Coffee,
+        title: "Kawiarnia",
+    },
+    {
+        icon: UtensilsCrossed,
+        title: "Restauracja",
+    },
+    {
+        icon: Dumbbell,
+        title: "Siłownia / klub fitness",
+    },
+    {
+        icon: Scale,
+        title: "Kancelaria prawna",
+    },
+    {
+        icon: GraduationCap,
+        title: "Placówka edukacyjna",
+    },
+    {
+        icon: Car,
+        title: "Warsztat samochodowy",
+    },
+    {
+        icon: Dog,
+        title: "Gabinet weterynaryjny",
+    },
+    {
+        icon: Flower2,
+        title: "Kwiaciarnia",
+    },
+    {
+        icon: Camera,
+        title: "Studio fotograficzne",
+    },
+
+    {
+        icon: Hammer,
+        title: "Firma budowlana",
+    },
+    {
+        icon: ShoppingBag,
+        title: "Sklep lokalny",
+    },
+
+    {
+        icon: Music,
+        title: "Szkoła muzyczna",
+    },
+    {
+        icon: Stethoscope,
+        title: "Gabinet fizjoterapii",
+    },
+];
+
+export function ServicesPersonal() {
+    return (
+        <Section className="py-size-xl sm:py-size-4xl">
+            <SectionContent className="gap-size-lg items-start">
+                <SectionHeader>
+                    <SectionHeaderContent className="mx-0 items-start! text-start!">
+                        <div>
+                            <SectionTitle>Indywidualne podejście</SectionTitle>
+                            {/* <Text muted intent="large" className="mt-1">
+                                który napędza Twoją stronę internetową
+                            </Text> */}
+                        </div>
+
+                        <SectionLead className="max-w-prose">
+                            Jako freelancer specjalizujący się w&nbsp;tworzeniu
+                            marketingowych stron internetowych w&nbsp;technologii Next.js,
+                            pracuję inaczej niż większość agencji. Nie korzystam
+                            z&nbsp;WordPressa ani gotowych kreatorów stron. Każdą stronę
+                            tworzę od&nbsp;podstaw, pisząc czysty i&nbsp;zoptymalizowany
+                            kod. Dzięki temu mogę dostosować się do&nbsp;unikalnych
+                            potrzeb każdego klienta, tworząc rozwiązania idealnie
+                            dopasowane do&nbsp;jego biznesu i&nbsp;celów marketingowych.
+                        </SectionLead>
+                    </SectionHeaderContent>
+                </SectionHeader>
+
+                <div className="pt-size-sm sm:pt-size-xl xs:grid-cols-3 grid w-full grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-6 lg:gap-y-12 xl:grid-cols-9">
+                    {targets.map((target) => (
+                        <ClientCard
+                            key={target.title}
+                            icon={target.icon}
+                            title={target.title}
+                        />
+                    ))}
+                </div>
+            </SectionContent>
+        </Section>
+    );
+}
+
+function ClientCard({
+    icon: Icon,
+    title,
+}: {
+    icon: React.ComponentType<{ className?: string }>;
+    title: string;
+}) {
+    return (
+        <div className="relative flex flex-col items-center gap-1">
+            <div className="relative">
+                <div className="bg-brand absolute top-1/3 left-1/3 -z-1 h-13 w-13 -translate-1/2 rounded-full" />
+                <div className="absolute top-1/2 left-1/2 -z-1 h-13 w-13 -translate-1/2 rounded-full bg-white/30 backdrop-blur-md" />
+                <Icon className="h-8 w-8 text-white" />
+            </div>
+            <h3 className="mt-size-xs text-center text-xs font-medium lg:text-sm">
+                {title}
+            </h3>
+        </div>
+    );
+}

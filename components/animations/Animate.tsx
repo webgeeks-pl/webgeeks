@@ -8,25 +8,23 @@ const variants = {
             opacity: 0,
             scale: 0.95,
             filter: "blur(4px)",
-            willChange: "transform, opacity",
         },
         visible: {
             opacity: 1,
             scale: 1,
             filter: "blur(0px)",
-            willChange: "transform, opacity",
+            willChange: "auto",
         },
     },
     zoomIn: {
         hidden: {
             opacity: 0,
             scale: 0.95,
-            willChange: "transform, opacity",
         },
         visible: {
             opacity: 1,
             scale: 1,
-            willChange: "transform, opacity",
+            willChange: "auto",
         },
     },
 
@@ -34,12 +32,11 @@ const variants = {
         hidden: {
             opacity: 0,
             x: -30,
-            willChange: "transform, opacity",
         },
         visible: {
             opacity: 1,
             x: 0,
-            willChange: "transform, opacity",
+            willChange: "auto",
         },
     },
 
@@ -47,12 +44,11 @@ const variants = {
         hidden: {
             opacity: 0,
             x: 30,
-            willChange: "transform, opacity",
         },
         visible: {
             opacity: 1,
             x: 0,
-            willChange: "transform, opacity",
+            willChange: "auto",
         },
     },
 
@@ -60,11 +56,11 @@ const variants = {
         hidden: {
             opacity: 0,
             y: -30,
-            willChange: "transform, opacity",
         },
         visible: {
             opacity: 1,
             y: 0,
+            willChange: "auto",
         },
     },
 
@@ -72,12 +68,11 @@ const variants = {
         hidden: {
             opacity: 0,
             y: 35,
-            willChange: "transform, opacity",
         },
         visible: {
             opacity: 1,
             y: 0,
-            willChange: "transform, opacity",
+            willChange: "auto",
         },
     },
 };

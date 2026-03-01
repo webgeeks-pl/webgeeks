@@ -40,11 +40,11 @@ export default function ScrollButton({
     const pathname = usePathname();
 
     // Determine if on the same route based on mode
-    const isSameRoute = onRoute
+    const isSameRoute = href
         ? (() => {
               if (routeMatchMode === "exact") {
                   // Exact pathname match only
-                  return pathname === onRoute;
+                  return pathname === href;
               } else if (routeMatchMode === "full") {
                   // Full URL including query and hash
                   const fullUrl =
@@ -53,10 +53,10 @@ export default function ScrollButton({
                             window.location.search +
                             window.location.hash
                           : pathname;
-                  return fullUrl === onRoute;
+                  return fullUrl === href;
               } else {
                   // pathname mode (default) - pathname match, ignoring query and hash
-                  return pathname === onRoute;
+                  return pathname === href;
               }
           })()
         : true;
@@ -66,7 +66,7 @@ export default function ScrollButton({
 
         const element = document.querySelector(target);
 
-        if (as === "link" && href) {
+        if (as === "link" && href && !isSameRoute) {
             redirect({ href, locale });
         }
         if (element && isSameRoute) {
