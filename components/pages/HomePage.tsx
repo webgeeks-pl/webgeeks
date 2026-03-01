@@ -7,7 +7,6 @@ import { HomeHero } from "../sections/HomeHero";
 import { HomePackages } from "../sections/HomePackages";
 import { HomeSolutions } from "../sections/HomeSolutions";
 import HomeStart from "../sections/HomeStart";
-import { HomeWhyUs } from "../sections/HomeWhyUs";
 import { Separator } from "../ui/separator";
 
 export default function HomePage() {
@@ -18,7 +17,7 @@ export default function HomePage() {
 
             <HomeAbout />
             <HomeStart />
-            <HomeWhyUs />
+            {/* <HomeWhyUs /> */}
             <HomeShowcase />
             <HomePackages />
             <Separator decorative />
