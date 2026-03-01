@@ -5,7 +5,6 @@ import Grainient from "../Grainient";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
 import { Button } from "../ui/button";
-import { Safari } from "../ui/safari";
 import { TextShimmer } from "../ui/text-shimmer";
 
 export function HomeHero() {
@@ -94,11 +93,11 @@ export function HomeHero() {
                     </Button>
                 </div>
 
-                <Safari
+                {/* <Safari
                     url="https:\\"
                     imageSrc="/cafe-luna.png"
                     className="mt-4 w-full"
-                />
+                /> */}
             </SectionContent>
         </Section>
     );

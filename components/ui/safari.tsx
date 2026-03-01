@@ -85,8 +85,9 @@ export function Safari({
                         alt=""
                         className="block size-full object-cover object-top"
                         fill
-                        sizes="(max-width: 640px) calc(100vw - 24px), (max-width: 1024px) calc(100vw - 40px), (max-width: 1536px) calc(100vw - 96px), 1440px"
-                        loading="lazy"
+                        sizes={"(max-width: 768px) 100vw, 80vw"}
+                        loading="eager"
+                        fetchPriority="high"
                     />
                 </div>
             )}
