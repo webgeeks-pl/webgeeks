@@ -29,6 +29,7 @@ const nextConfig: NextConfig = {
     // THIS is the important part:
     output: "standalone",
     experimental: {
+        inlineCss: true,
         optimizePackageImports: [
             "lucide-react",
             "motion",
