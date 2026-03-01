@@ -12,25 +12,25 @@ import { Card, CardContent } from "../ui/card";
 export function ServicesSEO() {
     const seoServices = [
         {
-            icon: "file-text",
+            icon: "FileText",
             title: "Tworzenie Treści",
             description:
                 "Starannie napisane artykuły i treści, które pokazują Google, że jesteś ekspertem w Twojej branży.",
         },
         {
-            icon: "link-2",
+            icon: "Link2",
             title: "Budowanie Odnośników",
             description:
                 "Strategiczne linkowanie z wysokowartościowych źródeł, aby wzmocnić autorytet Twojej domeny.",
         },
         {
-            icon: "bar-chart-3",
+            icon: "BarChart3",
             title: "Monitoring i Raporty",
             description:
                 "Regularne śledzenie wyników, rankingów i metryk, aby wiedzieć co działa.",
         },
         {
-            icon: "activity",
+            icon: "Activity",
             title: "Optymalizacja Core Vitals",
             description:
                 "Zapewniamy, że Twoja strona spełnia wszystkie kryteria Core Web Vitals Google.",

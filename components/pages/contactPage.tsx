@@ -17,8 +17,8 @@ export default function ContactPage() {
 
     // Map icons to contact methods
     const iconMap: { [key: string]: string } = {
-        Email: "mail",
-        "Formularz kontaktowy": "file-text",
+        Email: "Mail",
+        "Formularz kontaktowy": "FileText",
     };
 
     const contactMethods = contactMethodsData.map((method: any) => ({

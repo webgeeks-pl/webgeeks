@@ -1,42 +1,12 @@
 import LucideIcon from "@/components/ui/lucideIcons";
-import type { MessagesMap } from "@/config/i18n";
 import { useTrans } from "@/hooks/useTrans";
-import type { JSX } from "react";
-
-type FormInput = {
-    _key: string;
-    _type: string;
-    name: string;
-    isRequired: boolean;
-    placeholder?: string;
-    className?: string;
-    icon?: string;
-    Icon?: JSX.Element;
-};
-
-export type Package = Omit<MessagesPackage, "icon"> & { Icon: JSX.Element };
-type MessagesPackage = MessagesMap["offer"] extends { packages: (infer U)[] } ? U : never;
-
-export type QuestionInput = { _type: "question"; isLong?: boolean } & FormInput;
-export type EmailInput = { _type: "email" } & FormInput;
-export type BooleanInput = { _type: "boolean" } & FormInput;
-export type PrivacyPolicyInput = { _type: "privacy_policy"; link: string } & FormInput;
-
-export type OptionInput = Omit<FormInput, "icon"> & {
-    _type: "option";
-    optionsTitle1: string;
-    optionsTitle2: string;
-    options_1: Package[];
-    options_2: Package[];
-    options_0: Package[];
-};
-
-export type FormInputs =
-    | QuestionInput
-    | EmailInput
-    | BooleanInput
-    | OptionInput
-    | PrivacyPolicyInput;
+import type {
+    EmailInput,
+    FormInputs,
+    OptionInput,
+    PrivacyPolicyInput,
+    QuestionInput,
+} from "@/lib/types/form";
 
 export default function CreateInputs(): FormInputs[] {
     const pageT = useTrans("pages.offer");
@@ -48,10 +18,10 @@ export default function CreateInputs(): FormInputs[] {
             name: "Imię",
             isRequired: true,
             className: "max-lg:col-span-2",
-            icon: "user",
+            icon: "User",
             Icon: (
                 <LucideIcon
-                    name="user"
+                    name="User"
                     className="text-muted-foreground absolute top-1/2 left-3.5 h-5! w-5! -translate-y-1/2"
                 />
             ),
@@ -61,10 +31,10 @@ export default function CreateInputs(): FormInputs[] {
             name: "Email",
             isRequired: true,
             className: "max-lg:col-span-2",
-            icon: "mail",
+            icon: "Mail",
             Icon: (
                 <LucideIcon
-                    name="mail"
+                    name="Mail"
                     className="text-muted-foreground absolute top-1/2 left-3.5 h-5! w-5! -translate-y-1/2"
                 />
             ),
@@ -103,7 +73,7 @@ export default function CreateInputs(): FormInputs[] {
                     name: "Nie jestem zdecydowany",
                     Icon: (
                         <LucideIcon
-                            name="message-circle-question-mark"
+                            name="MessageCircleQuestionMark"
                             className="absolute top-1/2 left-0.5 h-5! w-5! -translate-y-1/2"
                         />
                     ),
@@ -129,7 +99,7 @@ export default function CreateInputs(): FormInputs[] {
             icon: "message-square",
             Icon: (
                 <LucideIcon
-                    name="message-square"
+                    name="MessageSquare"
                     className="text-muted-foreground absolute top-6.5 left-3.5 h-5! w-5! -translate-y-1/2"
                 />
             ),

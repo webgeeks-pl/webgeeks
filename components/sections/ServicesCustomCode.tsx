@@ -6,17 +6,17 @@ import { Card, CardContent } from "../ui/card";
 export function ServicesCustomCode() {
     const benefits = [
         {
-            icon: "zap",
+            icon: "Zap",
             title: "Błyskawiczna Wydajność",
             description: "Serwisy wczytują się natychmiast",
         },
         {
-            icon: "code-2",
+            icon: "Code2",
             title: "Kod na Miarę",
             description: "Całkowicie dostosowany bez żadnych zbędnych bibliotek",
         },
         {
-            icon: "shield",
+            icon: "Shield",
             title: "Maksymalna Bezpieczeństwo",
             description: "Nie ma szans na włamania",
         },

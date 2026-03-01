@@ -25,25 +25,25 @@
         },
         "cards": [
             {
-                "icon": "gauge",
+                "icon": "Gauge",
                 "value": "kilkukrotnie",
                 "title": "Szybkie ładowanie",
                 "description": "Twoja strona otwiera się natychmiast"
             },
             {
-                "icon": "search",
+                "icon": "Search",
                 "value": "znacznie",
                 "title": "świetne SEO",
                 "description": "Twoja strona pojawi się wysoko w Google"
             },
             {
-                "icon": "trending-up",
+                "icon": "TrendingUp",
                 "value": "zauważalnie",
                 "title": "Większa konwersja",
                 "description": "Twoja strona przynosi więcej zysków"
             },
             {
-                "icon": "shield",
+                "icon": "Shield",
                 "value": "w pełni",
                 "title": "Bezpieczna strona",
                 "description": "Nie martwisz się o ataki"
@@ -68,22 +68,22 @@
         ],
         "values": [
             {
-                "icon": "rocket",
+                "icon": "Rocket",
                 "title": "Innowacja",
                 "description": "Zawsze lecz prof. nie na na bieżąco z nowinkami w branży webowej"
             },
             {
-                "icon": "users",
+                "icon": "Users",
                 "title": "Partnerstwo",
                 "description": "Twój sukces to nasz sukces. Wspólnie osiągamy cele"
             },
             {
-                "icon": "award",
+                "icon": "Award",
                 "title": "Jakość",
                 "description": "Perfekcja w każdym detalu. Dbamy o najwyższe standardy"
             },
             {
-                "icon": "heart",
+                "icon": "Heart",
                 "title": "Pasja",
                 "description": "Kochamy to, co robimy i to widać w naszych projektach"
             }
@@ -147,43 +147,43 @@
         "typingWords": ["Fryzjer", "Salon kosmetyczny", "Gabinet masażu"],
         "benefits": {
             "speed": {
-                "icon": "zap",
+                "icon": "Zap",
                 "title": "Szybkie ładowanie",
                 "description": "Twoja strona otwiera się natychmiast"
             },
             "seo": {
-                "icon": "search",
+                "icon": "Search",
                 "title": "Pojawisz się w Google",
                 "description": "Twoja strona pojawi się w wynikach wyszukiwania Google"
             },
             "costs": {
-                "icon": "dollar-sign",
+                "icon": "DollarSign",
                 "title": "Zacznij bez ryzyka",
                 "description": "Kompleksowa opieka, nielimitowane zmiany, hosting, a w tym 0zł za stronę na start",
                 "cta": ["475 zł / miesiąc"]
             },
             "security": {
-                "icon": "lock",
+                "icon": "Lock",
                 "title": "Bezpieczna strona",
                 "description": "Nie martwisz się o hakowanie ani wycieki danych"
             },
             "mobile": {
-                "icon": "smartphone",
+                "icon": "Smartphone",
                 "title": "Responsywny design",
                 "description": "Twoja strona wygląda pięknie na każdym ekranie"
             },
             "scalability": {
-                "icon": "cloud-cog",
+                "icon": "CloudCog",
                 "title": "Strona rośnie z Tobą",
                 "description": "Strona bez problemu obsługuje większy ruch i nowe funkcje"
             },
             "easy": {
-                "icon": "code-2",
+                "icon": "Code2",
                 "title": "Łatwa do zmian",
                 "description": "Szybkie aktualizacje treści i funkcji"
             },
             "conversions": {
-                "icon": "users",
+                "icon": "Users",
                 "title": "Większa konwersja",
                 "description": "Profesjonalna strona buduje zaufanie i przyciąga więcej klientów"
             }
@@ -201,55 +201,55 @@
         },
         "items": [
             {
-                "icon": "database",
+                "icon": "Database",
                 "title": "Sanity",
                 "label": "CMS",
                 "description": "Sanity to nowoczesny CMS, który pozwala w łatwy sposób zarządzać treścią, bez potrzeby znajomości kodu."
             },
             {
-                "icon": "shopping-cart",
+                "icon": "ShoppingCart",
                 "title": "E-commerce",
                 "label": "Sklep",
                 "description": "Sklepy internetowe z Shoper, Stripe lub Shopify API - prosta sprzedaż, bezpieczne płatności i pełna kontrola nad produktami."
             },
             {
-                "icon": "zap",
+                "icon": "Zap",
                 "title": "Integracje",
                 "label": "API",
                 "description": "Połączenia z systemami CRM, narzędziami marketingowymi oraz dowolnymi zewnętrznymi serwisami."
             },
             {
-                "icon": "lock",
+                "icon": "Lock",
                 "title": "Uwierzytelnianie",
                 "label": "Bezpieczeństwo",
                 "description": "Bezpieczne logowanie z OAuth (Google, Facebook) oraz Auth0 i NextAuth, z możliwością zarządzania rolami użytkowników."
             },
             {
-                "icon": "globe-2",
+                "icon": "Globe2",
                 "title": "Globalny zasięg",
                 "label": "Języki",
                 "description": "Strony w wielu językach z automatycznym wykrywaniem języka i indywidualną optymalizacją SEO."
             },
             {
-                "icon": "code-2",
+                "icon": "Code2",
                 "title": "Aplikacja",
                 "label": "PWA",
                 "description": "Strona działająca jak natywna aplikacja - offline, z powiadomieniami i opcją instalacji."
             },
             {
-                "icon": "bar-chart-3",
+                "icon": "BarChart3",
                 "title": "Analytika",
                 "label": "Analityka",
                 "description": "Śledzenie ruchu i skuteczności strony za pomocą narzędzi Google i Facebook."
             },
             {
-                "icon": "mail",
+                "icon": "Mail",
                 "title": "Marketing",
                 "label": "E-mail",
                 "description": "Wysyłaj newslettery i powiadomienia automatycznie dzięki integracji z popularnymi narzędziami, takimi jak Mailchimp, SendGrid czy Resend."
             },
             {
-                "icon": "search",
+                "icon": "Search",
                 "title": "Wyszukiwanie",
                 "label": "Szukaj",
                 "description": "Błyskawiczne wyszukiwanie z podpowiedziami i filtrami, które ułatwiają znalezienie treści."
@@ -353,28 +353,28 @@
         ],
         "differences": [
             {
-                "icon": "code-2",
+                "icon": "Code2",
                 "title": "Strona tworzona, nie składana",
                 "description": "Strona jest tworzona w środowisku programistycznym a nie w kreatorze stron. Żadnych gotowych szablonów",
                 "our": "Dopracowanie",
                 "other": "Wadliwość"
             },
             {
-                "icon": "fingerprint",
+                "icon": "Fingerprint",
                 "title": "Unikalna jak Twoja firma",
                 "description": "Strona dopasowana dokładnie do Twoich potrzeb biznesowych. Unikalny design, który się wyróżnia",
                 "our": "Unikalność",
                 "other": "Powtarzalność"
             },
             {
-                "icon": "layers",
+                "icon": "Layers",
                 "title": "Brak zbędnych wtyczek",
                 "description": "Bez wtyczek, które spowalniają stronę. Bez niepotrzebnych dodatków obciążających stronę. Tylko to, czego naprawdę potrzebujesz",
                 "our": "Lekkość i wydajność",
                 "other": "Przeciążenie"
             },
             {
-                "icon": "puzzle",
+                "icon": "Puzzle",
                 "title": "Pełna kontrola",
                 "description": "W każdej chwili możesz rozbudować stronę o nowe funkcje. Żadnych ograniczeń platformy, żadnych limitów kreatywności",
                 "our": "Elastyczność",

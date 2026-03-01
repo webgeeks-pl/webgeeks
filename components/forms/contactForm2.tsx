@@ -24,7 +24,7 @@ import type {
     Package,
     PrivacyPolicyInput,
     QuestionInput,
-} from "@/lib/utils/form";
+} from "@/lib/types/form";
 import { sendEmail } from "@/services/email/action";
 import { Send } from "lucide-react";
 import { useSearchParams } from "next/navigation";
