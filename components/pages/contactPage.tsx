@@ -1,3 +1,4 @@
+// UNDER NO CIRCUMSTANCE SHOULD THIS FILE BE A CLIENT COMPONENT.
 import Page, { PageHeader, PageHeaderContent, PageLead, PageTitle } from "../layout/page";
 import Section, { SectionContent } from "../layout/section";
 
