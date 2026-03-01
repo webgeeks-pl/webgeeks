@@ -36,12 +36,12 @@ const seoPoints = [
 
 export function ServicesSEO() {
     return (
-        <Section className="py-size-2xl bg-clr-50">
+        <Section className="py-size-lg sm:py-size-2xl lg:py-size-4xl bg-clr-50">
             <SectionContent className="gap-size-lg items-start">
                 <SectionHeader>
                     <SectionHeaderContent className="mx-0 items-start! text-start!">
-                        <SectionTitle>SEO wbudowane </SectionTitle>
-                        <SectionLead>
+                        <SectionTitle>Optymalizacja SEO</SectionTitle>
+                        <SectionLead className="max-w-prose">
                             Dobra strona to nie tylko wygląd. To również techniczna
                             optymalizacja pod wyszukiwarki. Strony, które tworzę, mają
                             poprawną strukturę HTML, szybko się ładują i&nbsp;są
@@ -53,7 +53,7 @@ export function ServicesSEO() {
                     </SectionHeaderContent>
                 </SectionHeader>
 
-                <div className="py-size-xl mx-auto grid w-full max-w-5xl grid-cols-3 gap-x-4 gap-y-12">
+                <div className="py-size-sm sm:py-size-xl mx-auto grid w-full max-w-5xl grid-cols-2 gap-x-4 gap-y-12 sm:grid-cols-3">
                     {seoPoints.map(({ icon: Icon, title }, index) => (
                         <ClientCard key={index} icon={Icon} title={title} />
                     ))}
@@ -78,7 +78,7 @@ function ClientCard({
     title: string;
 }) {
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center text-center">
             <Icon size={32} />
             <h3 className="mt-size-xs text-sm font-medium">{title}</h3>
         </div>

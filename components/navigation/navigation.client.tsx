@@ -17,7 +17,7 @@ export function MobileDialog({
     children,
 }: {
     className?: string;
-    children?: React.ReactNode;
+    children?: React.ReactNode | React.ReactNode[];
 }) {
     const { isNavOpen, setIsNavOpen } = useNavigation();
     return (
@@ -27,21 +27,42 @@ export function MobileDialog({
     );
 }
 
+function useNavAction(role?: "open" | "close" | "toggle") {
+    const { closeNav, openNav, toggleNav } = useNavigation();
+    return role === "open" ? openNav : role === "close" ? closeNav : toggleNav;
+}
+
 export function NavbarMobileButton({
     children,
-    type,
+    role,
+    className,
+    ...rest
 }: {
-    children: React.ReactNode | React.ReactNode[];
-    type: "open" | "close" | "toggle";
-}) {
-    const { closeNav, openNav, toggleNav } = useNavigation();
+    children?: React.ReactNode;
+    role?: "open" | "close" | "toggle";
+} & Omit<React.ComponentProps<"button">, "role">) {
+    const onClick = useNavAction(role);
     return (
-        <button
-            onClick={type === "open" ? openNav : type === "close" ? closeNav : toggleNav}
-            className="navbar:hidden z-1000"
-        >
+        <button {...rest} onClick={onClick} className={cn("z-1000", className)}>
             {children}
         </button>
+    );
+}
+
+export function MobileOverlay({
+    children,
+    role,
+    className,
+    ...rest
+}: {
+    children?: React.ReactNode;
+    role?: "open" | "close" | "toggle";
+} & Omit<React.ComponentProps<"div">, "role">) {
+    const onClick = useNavAction(role);
+    return (
+        <div {...rest} onClick={onClick} className={cn("z-1000", className)}>
+            {children}
+        </div>
     );
 }
 
@@ -83,7 +104,7 @@ export function Header({ className, children, scrollActive }: HeaderProps) {
             window.removeEventListener("scroll", checkScroll);
             window.removeEventListener("resize", checkScroll);
         };
-    }, [isNavOpen]);
+    }, [isNavOpen, scrollActive]);
 
     return (
         <>

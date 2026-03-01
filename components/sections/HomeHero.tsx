@@ -50,7 +50,7 @@ export function HomeHero() {
                     zoom={0.9}
                 />
             </div>
-            <SectionContent className="gap-size-sm sm:gap-size-md z-10 items-start text-start">
+            <SectionContent className="gap-size-sm sm:gap-size-md mt-size-lg z-10 items-start text-start">
                 {/* <Badge className="p-3" variant="secondary">
                     <span className="flex items-center">
                         <Zap className="h-3.5 w-3.5 text-yellow-400" />
@@ -61,13 +61,14 @@ export function HomeHero() {
                 <Text
                     as="span"
                     intent="h1"
-                    className="font-heading xs:text-4xl! max-w-5xl text-3xl! font-normal tracking-wide md:text-7xl!"
+                    className="font-heading xs:text-4xl! relative max-w-[950px] text-3xl! font-normal tracking-wide md:text-7xl!"
                 >
                     <EncryptedText
                         startDelayMs={1000}
                         text={t("hero.title")}
-                        className=""
+                        className="absolute"
                     />
+                    <span className="invisible">{t("hero.title")}</span>
                 </Text>
 
                 <Text intent="lead" className="max-w-2xl">
@@ -81,7 +82,7 @@ export function HomeHero() {
                     {t("hero.leadEnd")}
                 </Text>
 
-                <div className="relative flex gap-4">
+                <div className="mb-size-lg relative flex gap-4">
                     <Button asChild variant="secondary">
                         <Link href={t("hero.buttons.secondary.href")}>
                             <span>{t("hero.buttons.secondary.text")}</span>

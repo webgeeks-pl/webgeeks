@@ -8,6 +8,7 @@ import Section, {
     SectionTitle,
 } from "../layout/section";
 import { ServicesHero } from "../sections/ServicesHero";
+import ServicesHeroSeperator from "../sections/ServicesHeroSeperator";
 import { ServicesHosting } from "../sections/ServicesHosting";
 import { ServicesPersonal } from "../sections/ServicesPersonal";
 import { ServicesSEO } from "../sections/ServicesSEO";
@@ -28,6 +29,7 @@ export default function ServicesPage() {
                 </PageHeaderContent>
             </PageHeader>
             <ServicesHero />
+            <ServicesHeroSeperator />
             <ServicesPersonal />
             <Separator decorative />
             <ServicesSpeed />

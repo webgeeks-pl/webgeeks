@@ -11,6 +11,7 @@ import {
     ActiveLink,
     Header,
     MobileDialog,
+    MobileOverlay,
     NavbarMobileButton,
 } from "./navigation.client";
 
@@ -35,12 +36,14 @@ export default function Navigation() {
                     </ul>
                 </nav>
                 <div className="flex items-center gap-2">
-                    {navigationRoutes.cta.map((route) => (
-                        <NavLink key={route.link} route={route} isCta />
-                    ))}
+                    <div className="xs:flex hidden">
+                        {navigationRoutes.cta.map((route) => (
+                            <NavLink key={route.link} route={route} isCta />
+                        ))}
+                    </div>
                     <div className="navbar:hidden">
                         <Button asChild variant="ghost" size="icon">
-                            <NavbarMobileButton type="open">
+                            <NavbarMobileButton role="open">
                                 <span className="sr-only">open</span>
                                 <Menu aria-hidden="true" className="size-5" />
                             </NavbarMobileButton>
@@ -57,7 +60,12 @@ export default function Navigation() {
 
 function MobileNav() {
     return (
-        <MobileDialog>
+        <MobileDialog className="z-navbar-dialog relative">
+            <MobileOverlay
+                role="close"
+                className="fixed inset-0 z-10 bg-white/80 backdrop-blur-sm"
+            />
+
             <DialogPanel
                 className={cn(
                     "fixed inset-y-0 right-0 z-5000 w-full overflow-y-auto bg-white/90 p-2 backdrop-blur-md sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
@@ -67,19 +75,19 @@ function MobileNav() {
                     <NavbarLogoContainer>
                         <Logo />
                     </NavbarLogoContainer>
-                    <Button asChild variant="ghost" size="icon">
-                        <NavbarMobileButton type="close">
+                    <Button asChild variant="ghost" size="icon" className="navbar:hidden">
+                        <NavbarMobileButton role="close">
                             <span className="sr-only">close</span>
                             <X aria-hidden="true" className="text-destructive size-6" />
                         </NavbarMobileButton>
                     </Button>
                 </div>
-                <div className="mt-10 flex flex-col items-center gap-4">
+                <div className="mt-10 flex flex-col items-end gap-4">
                     {navigationRoutes.main.map((route) => (
-                        <NavLink key={route.link} route={route} />
+                        <NavLink key={route.link} route={route} isMobile />
                     ))}
                     {navigationRoutes.cta.map((route) => (
-                        <NavLink key={route.link} route={route} isCta />
+                        <NavLink key={route.link} route={route} isCta isMobile />
                     ))}
                 </div>
             </DialogPanel>
@@ -99,7 +107,6 @@ function NavbarLogoContainer({
             as="link"
             href="/"
             target="#navigation-top"
-            onRoute="/"
             options={{ behavior: "smooth", block: "start" }}
             className={cn("flex items-center justify-center", className)}
         >
@@ -112,10 +119,12 @@ export function NavLink({
     route,
     className,
     isCta,
+    isMobile,
 }: {
     route: Route;
     className?: string;
     isCta?: boolean;
+    isMobile?: boolean;
 }) {
     const t = useTrans("common.navigation.routes");
 
@@ -130,7 +139,13 @@ export function NavLink({
                     className
                 )}
             >
-                <Link href={route.link}>{isCta ? t("cta") : t(route.link)}</Link>
+                {isMobile ? (
+                    <NavbarMobileButton role="close">
+                        <Link href={route.link}>{isCta ? t("cta") : t(route.link)}</Link>
+                    </NavbarMobileButton>
+                ) : (
+                    <Link href={route.link}>{isCta ? t("cta") : t(route.link)}</Link>
+                )}
             </Button>
         </ActiveLink>
     );

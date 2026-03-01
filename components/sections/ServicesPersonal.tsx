@@ -105,7 +105,7 @@ const targets = [
 
 export function ServicesPersonal() {
     return (
-        <Section className="py-size-4xl">
+        <Section className="py-size-xl sm:py-size-4xl">
             <SectionContent className="gap-size-lg items-start">
                 <SectionHeader>
                     <SectionHeaderContent className="mx-0 items-start! text-start!">
@@ -116,7 +116,7 @@ export function ServicesPersonal() {
                             </Text> */}
                         </div>
 
-                        <SectionLead>
+                        <SectionLead className="max-w-prose">
                             Jako freelancer specjalizujący się w&nbsp;tworzeniu
                             marketingowych stron internetowych w&nbsp;technologii Next.js,
                             pracuję inaczej niż większość agencji. Nie korzystam
@@ -129,7 +129,7 @@ export function ServicesPersonal() {
                     </SectionHeaderContent>
                 </SectionHeader>
 
-                <div className="pt-size-xl grid w-full grid-cols-6 gap-x-4 gap-y-12">
+                <div className="pt-size-sm sm:pt-size-xl xs:grid-cols-3 grid w-full grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-6 lg:gap-y-12 xl:grid-cols-9">
                     {targets.map((target) => (
                         <ClientCard
                             key={target.title}
@@ -157,7 +157,9 @@ function ClientCard({
                 <div className="absolute top-1/2 left-1/2 -z-1 h-13 w-13 -translate-1/2 rounded-full bg-white/30 backdrop-blur-md" />
                 <Icon className="h-8 w-8 text-white" />
             </div>
-            <h3 className="mt-size-xs text-sm font-medium">{title}</h3>
+            <h3 className="mt-size-xs text-center text-xs font-medium lg:text-sm">
+                {title}
+            </h3>
         </div>
     );
 }

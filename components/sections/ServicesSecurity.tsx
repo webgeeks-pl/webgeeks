@@ -17,7 +17,7 @@ import Text from "../typography/text";
 
 export function ServicesSecurity() {
     return (
-        <Section className="py-size-2xl">
+        <Section className="py-size-lg sm:py-size-2xl lg:py-size-4xl">
             <SectionContent className="gap-size-lg items-start">
                 <SectionHeader>
                     <SectionHeaderContent className="mx-0 items-start! text-start!">
@@ -27,7 +27,7 @@ export function ServicesSecurity() {
                                 większe bezpieczeństwo
                             </Text> */}
                         </div>
-                        <SectionLead>
+                        <SectionLead className="max-w-prose">
                             Strony oparte na WordPressie często wykorzystują wiele wtyczek
                             i zewnętrznych rozszerzeń, które wymagają ciągłych
                             aktualizacji i mogą stanowić potencjalne luki bezpieczeństwa.
@@ -38,38 +38,83 @@ export function ServicesSecurity() {
                     </SectionHeaderContent>
                 </SectionHeader>
 
-                <div className="py-size-xl gap-size-xl flex w-full items-center justify-center">
-                    <div className="flex flex-col items-center gap-4">
-                        <Text intent="h3" text={"Moja strona"} className="mb-2" />
+                <div className="flex w-full flex-col items-center gap-6 text-center">
+                    <div className="grid w-full grid-cols-[1fr_50px_1fr] items-center">
+                        <Text
+                            intent="h3"
+                            text={"Moja strona"}
+                            className="mb-1 text-center max-sm:text-lg"
+                        />
+                        <Text intent="var" className="text-xl">
+                            vs.
+                        </Text>
+                        <Text
+                            intent="h3"
+                            text={"Strona z kreatora"}
+                            className="mb-1 text-center max-sm:text-lg"
+                        />
+                    </div>
+                    <div className="grid w-full grid-cols-[1fr_50px_1fr] items-center">
                         <div className="flex flex-col items-center gap-1">
                             <Feather size={24} />
-                            <Text intent="var" text={"lekka i szybka"} />
+                            <Text
+                                intent="var"
+                                className="max-sm:text-sm"
+                                text={"lekka i szybka"}
+                            />
                         </div>
-                        <div className="flex flex-col items-center gap-1">
-                            <ArrowBigUpDash size={24} />
-                            <Text intent="var" text={"brak niepotrzebnych wtyczek"} />
-                        </div>
-                        <div className="flex flex-col items-center gap-1">
-                            <ShieldCheck size={24} />
-                            <Text intent="var" text={"bezpieczna"} />
-                        </div>
-                    </div>
-                    <Text intent="var" className="text-xl">
-                        vs.
-                    </Text>
-                    <div className="flex flex-col items-center gap-4">
-                        <Text intent="h3" text={"Strona z kreatora"} className="mb-2" />
+                        <Text intent="var" className="text-xl">
+                            vs.
+                        </Text>
                         <div className="flex flex-col items-center gap-1">
                             <Anvil size={24} />
-                            <Text intent="var" text={"ciężka i wolna"} />
+                            <Text
+                                intent="var"
+                                className="max-sm:text-sm"
+                                text={"ciężka i wolna"}
+                            />
                         </div>
+                    </div>
+                    <div className="grid w-full grid-cols-[1fr_50px_1fr] items-center">
+                        <div className="flex flex-col items-center gap-1">
+                            <ArrowBigUpDash size={24} />
+                            <Text
+                                intent="var"
+                                className="max-sm:text-sm"
+                                text={"brak niepotrzebnych wtyczek"}
+                            />
+                        </div>
+                        <Text intent="var" className="text-xl">
+                            vs.
+                        </Text>
                         <div className="flex flex-col items-center gap-1">
                             <Puzzle size={24} />
-                            <Text intent="var" text={"dużo zbędnych wtyczek"} />
+                            <Text
+                                intent="var"
+                                className="max-sm:text-sm"
+                                text={"dużo zbędnych wtyczek"}
+                            />
                         </div>
+                    </div>
+                    <div className="grid w-full grid-cols-[1fr_50px_1fr] items-center">
+                        <div className="flex flex-col items-center gap-1">
+                            <ShieldCheck size={24} />
+                            <Text
+                                intent="var"
+                                className="max-sm:text-sm"
+                                text={"bezpieczna"}
+                            />
+                        </div>
+                        <Text intent="var" className="text-xl">
+                            vs.
+                        </Text>
                         <div className="flex flex-col items-center gap-1">
                             <ShieldAlert size={24} />
-                            <Text intent="var" text={"niebezpieczna"} />
+                            <Text
+                                intent="var"
+                                className="max-sm:text-sm"
+                                text={"niebezpieczna"}
+                            />
                         </div>
                     </div>
                 </div>

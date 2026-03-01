@@ -107,10 +107,7 @@ export function PackageCard({ pkg }: { pkg: ReturnType<typeof useAllPackages>[nu
                 <div className="flex items-baseline gap-2">
                     <Text
                         intent="h3"
-                        className={cn(
-                            "font-heading mb-2 uppercase",
-                            isPopular && "text-white"
-                        )}
+                        className={cn("font-heading mb-2 uppercase")}
                         text={pkg.name}
                     />
                     <Text intent="small" muted={!isPopular} text={pkg.subtitle} />
