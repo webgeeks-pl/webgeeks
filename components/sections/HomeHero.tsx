@@ -63,7 +63,7 @@ export function HomeHero() {
                         text={t("hero.title")}
                         className="absolute"
                     /> */}
-                    <span className="invisible">{t("hero.title")}</span>
+                    {/* <span className="invisible">{t("hero.title")}</span> */}
                 </Text>
 
                 <Text intent="lead" className="max-w-2xl">
