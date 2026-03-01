@@ -81,7 +81,7 @@ export function Iphone({
                     <Image
                         src={src}
                         alt=""
-                        sizes={"(max-width: 768px) 70vw, 33vw"}
+                        sizes={"(max-width: 768px) 30vw, 60vw"}
                         fill
                         className="block size-full object-cover object-top"
                     />
