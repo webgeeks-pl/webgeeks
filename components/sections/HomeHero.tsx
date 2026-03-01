@@ -5,7 +5,6 @@ import Grainient from "../Grainient";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
 import { Button } from "../ui/button";
-import { EncryptedText } from "../ui/encrypted-text";
 import { Safari } from "../ui/safari";
 import { TextShimmer } from "../ui/text-shimmer";
 
@@ -61,11 +60,12 @@ export function HomeHero() {
                     intent="h1"
                     className="font-heading xs:text-4xl! relative max-w-[950px] text-3xl! font-normal tracking-wide md:text-7xl!"
                 >
-                    <EncryptedText
+                    {t("hero.title")}
+                    {/* <EncryptedText
                         startDelayMs={1000}
                         text={t("hero.title")}
                         className="absolute"
-                    />
+                    /> */}
                     <span className="invisible">{t("hero.title")}</span>
                 </Text>
 
