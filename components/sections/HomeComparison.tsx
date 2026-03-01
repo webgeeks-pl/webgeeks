@@ -1,4 +1,5 @@
-import { AlertTriangle, CheckCircle2, X, Zap } from "lucide-react";
+import LucideIcon from "@/components/ui/lucideIcons";
+import { CheckCircle2, X, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Section, {
     SectionContent,
@@ -10,7 +11,6 @@ import Section, {
 import Text from "../typography/text";
 import { Badge } from "../ui/badge";
 import { Card, CardContent } from "../ui/card";
-import IconContainer from "../ui/iconContainer";
 
 export function HomeComparison() {
     const t = useTranslations("pages.home.comparison");
@@ -33,9 +33,9 @@ export function HomeComparison() {
                         <div className="absolute top-0 right-0 h-32 w-32 rounded-bl-full bg-red-200 opacity-20"></div>
                         <CardContent className="relative z-10">
                             <div className="mb-6 flex items-center gap-3">
-                                <IconContainer
-                                    Icon={AlertTriangle}
-                                    variant="destructive"
+                                <LucideIcon
+                                    name="AlertTriangle"
+                                    className="text-destructive bg-destructive/15 border-destructive/30 border"
                                 />
                                 <div>
                                     <Text intent="h3" className="font-heading">

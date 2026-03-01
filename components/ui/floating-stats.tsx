@@ -1,26 +1,16 @@
 "use client";
 import { motion } from "motion/react";
-import { useCallback, useState } from "react";
-import IconContainer from "./iconContainer";
-import { getLucideIcon } from "./lucideIcons";
-
-const icons = ["User", "ThumbsUp", "Eye", "DollarSign", "Share", "ShoppingCart"];
+import { useCallback, useState, type JSX } from "react";
 
 interface FloatingStatProps {
     id: string;
-    icon: string;
+    icon: JSX.Element;
     initialDelay: number;
     duration: number;
     value: number;
 }
 
-function FloatingStat({
-    id,
-    icon: Icon,
-    initialDelay,
-    duration,
-    value,
-}: FloatingStatProps) {
+function FloatingStat({ id, icon, initialDelay, duration, value }: FloatingStatProps) {
     const seededRandom = useCallback(
         (seed: number) => {
             const x = Math.sin(seed * 12345 + value + Math.PI) * 10000;
@@ -62,18 +52,15 @@ function FloatingStat({
                 onAnimationComplete={() => setCycle((c) => c + 1)}
                 key={`${id}-${cycle}`}
             >
-                <IconContainer
-                    variant={"none"}
-                    Icon={getLucideIcon(Icon)}
-                    className="size-3! p-0!"
-                />
+                {icon}
+
                 <span className="text-xs font-medium tabular-nums">{value}</span>
             </motion.div>
         </div>
     );
 }
 
-export function FloatingStats() {
+export function FloatingStats({ icons }: { icons: JSX.Element[] }) {
     const items = icons.map((icon, i) => {
         const idx = i * 2;
         const group = idx % 3;

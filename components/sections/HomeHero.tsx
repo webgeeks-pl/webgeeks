@@ -1,8 +1,6 @@
-import { getArrayFromMessages } from "@/lib/utils/array";
+import { useTrans } from "@/hooks/useTrans";
 import { ArrowRight } from "lucide-react";
-import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { z } from "zod";
 import Grainient from "../Grainient";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
@@ -12,9 +10,9 @@ import { Safari } from "../ui/safari";
 import { TextShimmer } from "../ui/text-shimmer";
 
 export function HomeHero() {
-    const t = useTranslations("pages.home");
-    const tHero = useTranslations("pages.home.hero");
-    const heroBadges = getArrayFromMessages(tHero.raw("badges.bottom"), z.string());
+    const t = useTrans("pages.home");
+    const tHero = useTrans("pages.home.hero");
+    // const heroBadges = tHero.obj("badges.bottom")
 
     return (
         <Section

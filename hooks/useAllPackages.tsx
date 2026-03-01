@@ -27,6 +27,5 @@ export interface AdditionalFeature extends Feature {
 export function useAllPackages() {
     const t = useTrans("offer");
     const packages = t.obj("packages");
-    console.log("Packages:", packages);
     return packages;
 }

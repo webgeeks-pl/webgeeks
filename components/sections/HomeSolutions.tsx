@@ -1,6 +1,5 @@
-import { getArrayFromMessages } from "@/lib/utils/array";
-import { useTranslations } from "next-intl";
-import { z } from "zod";
+import LucideIcon from "@/components/ui/lucideIcons";
+import { useTrans } from "@/hooks/useTrans";
 import { MotionCarousel } from "../animate-ui/components/community/motion-carousel";
 import Section, {
     SectionContent,
@@ -11,19 +10,10 @@ import Section, {
 } from "../layout/section";
 import Text from "../typography/text";
 import { Card, CardContent, CardHeader } from "../ui/card";
-import IconContainer from "../ui/iconContainer";
-import { getLucideIcon } from "../ui/lucideIcons";
-
-const SolutionSchema = z.object({
-    icon: z.string(),
-    title: z.string(),
-    label: z.string(),
-    description: z.string(),
-});
 
 export function HomeSolutions() {
-    const t = useTranslations("pages.home.solutions");
-    const solutions = getArrayFromMessages(t.raw("items"), SolutionSchema);
+    const t = useTrans("pages.home.solutions");
+    const solutions = t.obj("items");
 
     return (
         <Section className="py-size-xl md:py-size-2xl bg-clr-50">
@@ -40,7 +30,7 @@ export function HomeSolutions() {
                         return (
                             <Card className="h-full gap-2" key={index}>
                                 <CardHeader>
-                                    <IconContainer Icon={getLucideIcon(solution.icon)} />
+                                    <LucideIcon name={solution.icon} />
                                     <Text intent="h3" text={solution.title} />
                                 </CardHeader>
                                 <CardContent>

@@ -1,6 +1,5 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import * as React from "react";
 
 import { CopyButton } from "@/components/animate-ui/components/buttons/copy";
@@ -76,14 +75,13 @@ type CodeBlockProps = Omit<CodeBlockPropsPrimitive, "code"> & {
 };
 
 function CodeBlock({ cursor, className, ...props }: CodeBlockProps) {
-    const { resolvedTheme } = useTheme();
     const { code } = useCode();
     const scrollRef = React.useRef<HTMLDivElement>(null);
 
     return (
         <CodeBlockPrimitive
             ref={scrollRef}
-            theme={resolvedTheme === "dark" ? "dark" : "light"}
+            theme="light"
             scrollContainerRef={scrollRef}
             className={cn(
                 "relative overflow-auto p-4 text-sm",

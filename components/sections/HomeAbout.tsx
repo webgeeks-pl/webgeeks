@@ -1,22 +1,12 @@
-import { useTranslations } from "next-intl";
-import { z } from "zod";
+import { useTrans } from "@/hooks/useTrans";
 import Section, { SectionContent } from "../layout/section";
 import Text from "../typography/text";
 
-const ValueSchema = z.object({
-    icon: z.string(),
-    title: z.string(),
-    description: z.string(),
-});
-
-const StatSchema = z.object({
-    value: z.string(),
-    label: z.string(),
-});
-
 export function HomeAbout() {
-    const t = useTranslations("pages.home.about");
-    const paragraphs = t.raw("paragraphs") as string[];
+    const t = useTrans("pages.home.about");
+    const values = t.obj("values");
+    const stats = t.obj("stats");
+    const paragraphs = t.obj("paragraphs");
 
     return (
         <Section className="py-size-4xl relative">

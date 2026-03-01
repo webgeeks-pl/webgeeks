@@ -1,7 +1,6 @@
-import { getArrayFromMessages } from "@/lib/utils/array";
+import LucideIcon from "@/components/ui/lucideIcons";
+import { useTrans } from "@/hooks/useTrans";
 import { Sparkles } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { z } from "zod";
 import Section, {
     SectionContent,
     SectionHeader,
@@ -9,25 +8,11 @@ import Section, {
     SectionLead,
     SectionTitle,
 } from "../layout/section";
-import IconContainer from "../ui/iconContainer";
-import { getLucideIcon } from "../ui/lucideIcons";
-
-const DifferenceSchema = z.object({
-    icon: z.string(),
-    title: z.string(),
-    description: z.string(),
-    our: z.string(),
-    other: z.string(),
-});
 
 export function HandCrafted() {
-    const t = useTranslations("pages.home.crafted");
-    const codeLines = t.raw("codeLines") as Array<{
-        indent: number;
-        text: string;
-        color: string;
-    }>;
-    const differences = getArrayFromMessages(t.raw("differences"), DifferenceSchema);
+    const t = useTrans("pages.home.crafted");
+    const codeLines = t.obj("codeLines");
+    const differences = t.obj("differences");
 
     return (
         <Section className="border-clr-100 relative overflow-hidden border-b bg-white py-20 sm:py-28">
@@ -120,10 +105,10 @@ export function HandCrafted() {
                             return (
                                 <div key={index} className="group relative">
                                     <div className="flex gap-4 rounded-xl border border-transparent bg-white p-5">
-                                        <div className="bg-clr-100 text-clr-700 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg">
-                                            <IconContainer
-                                                Icon={getLucideIcon(item.icon)}
-                                                variant="ghost"
+                                        <div className="bg-clr-100 text-clr-700 flex h-12 w-12 shrink-0 items-center justify-center rounded-lg">
+                                            <LucideIcon
+                                                name={item.icon}
+                                                className="bg-transparent"
                                             />
                                         </div>
                                         <div className="flex-1">
