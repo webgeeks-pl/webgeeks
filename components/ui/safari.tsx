@@ -87,6 +87,7 @@ export function Safari({
                         fill
                         sizes={"(max-width: 768px) 100vw, 80vw"}
                         loading="eager"
+                        fetchPriority="high"
                     />
                 </div>
             )}

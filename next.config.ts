@@ -23,6 +23,12 @@ const nextConfig: NextConfig = {
     poweredByHeader: false,
     crossOrigin: "anonymous",
     reactStrictMode: true,
+    compiler: {
+        removeConsole: false,
+    },
+    // THIS is the important part:
+    output: "standalone",
+
     async headers() {
         return [
             {
