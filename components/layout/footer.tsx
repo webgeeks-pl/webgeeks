@@ -71,7 +71,7 @@ export default function Footer({ Logo }: FooterProps) {
                         <FooterSocial link="https://github.com/webgeeks-pl" />
                         <FooterSocial link="https://www.linkedin.com/company/webgeeks" />
                         <FooterSocial link="https://facebook.com/webgeeks" />
-                        <FooterSocial link="https://twitter.com/webgeeks" />
+                        {/* <FooterSocial link="https://twitter.com/webgeeks" /> */}
                     </div>
                 </div>
 
