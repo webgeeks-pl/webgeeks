@@ -24,10 +24,22 @@ const nextConfig: NextConfig = {
     crossOrigin: "anonymous",
     reactStrictMode: true,
     compiler: {
-        removeConsole: false,
+        removeConsole: process.env.NODE_ENV === "production",
     },
     // THIS is the important part:
     output: "standalone",
+    experimental: {
+        optimizePackageImports: [
+            "lucide-react",
+            "motion",
+            "motion/react",
+            "radix-ui",
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-slot",
+            "@headlessui/react",
+            "embla-carousel-react",
+        ],
+    },
 
     async headers() {
         return [

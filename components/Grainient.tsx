@@ -164,7 +164,7 @@ const Grainient: React.FC<GrainientProps> = ({
             webgl: 2,
             alpha: true,
             antialias: false,
-            dpr: Math.min(window.devicePixelRatio || 1, 2),
+            dpr: 1,
         });
 
         const gl = renderer.gl;
@@ -224,17 +224,35 @@ const Grainient: React.FC<GrainientProps> = ({
         setSize();
 
         let raf = 0;
+        let isVisible = true;
         const t0 = performance.now();
+        const TARGET_FPS = 30;
+        const FRAME_INTERVAL = 1000 / TARGET_FPS;
+        let lastFrameTime = 0;
+
         const loop = (t: number) => {
+            raf = requestAnimationFrame(loop);
+            if (!isVisible) return;
+            const elapsed = t - lastFrameTime;
+            if (elapsed < FRAME_INTERVAL) return;
+            lastFrameTime = t - (elapsed % FRAME_INTERVAL);
             (program.uniforms.iTime as { value: number }).value = (t - t0) * 0.001;
             renderer.render({ scene: mesh });
-            raf = requestAnimationFrame(loop);
         };
         raf = requestAnimationFrame(loop);
+
+        const io = new IntersectionObserver(
+            (entries) => {
+                isVisible = entries[0]?.isIntersecting ?? true;
+            },
+            { threshold: 0 }
+        );
+        io.observe(container);
 
         return () => {
             cancelAnimationFrame(raf);
             ro.disconnect();
+            io.disconnect();
             try {
                 container.removeChild(canvas);
             } catch {
