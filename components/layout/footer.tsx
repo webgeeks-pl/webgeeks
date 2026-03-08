@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 import Section, { SectionContent } from "@/components/layout/section";
 import Text from "@/components/typography/text";
-import { legalRoutes, routes } from "@/config/routes";
+import { footerRoutes } from "@/config/routes";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -20,18 +20,22 @@ interface SocialProps {
 }
 
 export default function Footer({ Logo }: FooterProps) {
-    const mainRoutes = routes.filter(
-        (r) => !r.cta && ["/", "/offer", "/process", "/portfolio"].includes(r.link)
-    );
-    const contactRoutes = routes.filter((r) => !r.cta && ["/contact"].includes(r.link));
-    contactRoutes[0].name = "Napisz do nas";
+    const t = useTranslations("common.footer");
+    const tRoutes = useTranslations("common.navigation.routes");
+
+    const mainRoutes = footerRoutes.main
+        .filter((r) => r.link !== "/" && r.link !== "/contact")
+        .map((r) => ({ link: r.link, name: tRoutes(r.link) }));
 
     const contactLinks: { link: string; name: string }[] = [
-        ...contactRoutes,
+        ...footerRoutes.contact.map((r) => ({ link: r.link, name: tRoutes(r.link) })),
         { link: "mailto:kontakt@webgeeks.pl", name: "kontakt@webgeeks.pl" },
     ];
 
-    const t = useTranslations("common.footer");
+    const legalLinks = footerRoutes.legal.map((r) => ({
+        link: r.link,
+        name: tRoutes(r.link),
+    }));
 
     return (
         <Section as="footer" className="border-border border-t">
@@ -67,7 +71,7 @@ export default function Footer({ Logo }: FooterProps) {
                         <FooterSocial link="https://github.com/webgeeks-pl" />
                         <FooterSocial link="https://www.linkedin.com/company/webgeeks" />
                         <FooterSocial link="https://facebook.com/webgeeks" />
-                        <FooterSocial link="https://twitter.com/webgeeks" />
+                        {/* <FooterSocial link="https://twitter.com/webgeeks" /> */}
                     </div>
                 </div>
 
@@ -81,7 +85,7 @@ export default function Footer({ Logo }: FooterProps) {
                 </div>
                 <div className={cn("flex w-fit flex-col gap-3")}>
                     <Text semantic="h6" text={t("legal")} />
-                    <FooterNavigation routes={legalRoutes} />
+                    <FooterNavigation routes={legalLinks} />
                 </div>
             </SectionContent>
             <Separator decorative />

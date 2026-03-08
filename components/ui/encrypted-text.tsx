@@ -76,8 +76,7 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
     const animationFrameRef = useRef<number | null>(null);
     const startTimeoutRef = useRef<number | null>(null);
     const startTimeRef = useRef<number>(0);
-    const lastFlipTimeRef = useRef<number>(0);
-    const initialScrambleChars = text ? text.split("") : [];
+    const initialScrambleChars = text ? generateGibberishPreservingSpaces(text, charset).split("") : [];
     const scrambleCharsRef = useRef<string[]>(initialScrambleChars);
     const [scrambleChars, setScrambleChars] = useState<string[]>(initialScrambleChars);
 
@@ -85,7 +84,7 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
         // Only start animation when window is loaded and element is in view
         if (!isInView || !windowLoaded) return;
 
-        // Reset state for a fresh animation whenever dependencies change
+        // Generate scramble once and keep it stable
         const initial = text ? generateGibberishPreservingSpaces(text, charset) : "";
         scrambleCharsRef.current = initial.split("");
         setScrambleChars(scrambleCharsRef.current);
@@ -109,30 +108,12 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
                 return;
             }
 
-            // Re-randomize unrevealed scramble characters on an interval
-            const timeSinceLastFlip = now - lastFlipTimeRef.current;
-            if (timeSinceLastFlip >= Math.max(0, flipDelayMs)) {
-                for (let index = 0; index < totalLength; index += 1) {
-                    if (index >= currentRevealCount) {
-                        if (text[index] !== " ") {
-                            scrambleCharsRef.current[index] =
-                                generateRandomCharacter(charset);
-                        } else {
-                            scrambleCharsRef.current[index] = " ";
-                        }
-                    }
-                }
-                lastFlipTimeRef.current = now;
-                setScrambleChars([...scrambleCharsRef.current]);
-            }
-
             animationFrameRef.current = requestAnimationFrame(update);
         };
 
         const start = () => {
             if (isCancelled) return;
             startTimeRef.current = performance.now();
-            lastFlipTimeRef.current = startTimeRef.current;
             animationFrameRef.current = requestAnimationFrame(update);
         };
 

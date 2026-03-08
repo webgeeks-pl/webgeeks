@@ -27,26 +27,26 @@
             {
                 "icon": "Gauge",
                 "value": "kilkukrotnie",
-                "title": "Szybsze ładowanie",
-                "description": "od stron z builderów"
+                "title": "Szybkie ładowanie",
+                "description": "Twoja strona otwiera się natychmiast"
             },
             {
                 "icon": "Search",
                 "value": "znacznie",
-                "title": "Lepsze SEO",
-                "description": "dla Twojej strony"
+                "title": "świetne SEO",
+                "description": "Twoja strona pojawi się wysoko w Google"
             },
             {
                 "icon": "TrendingUp",
                 "value": "zauważalnie",
                 "title": "Większa konwersja",
-                "description": "na Twojej stronie"
+                "description": "Twoja strona przynosi więcej zysków"
             },
             {
                 "icon": "Shield",
                 "value": "w pełni",
                 "title": "Bezpieczna strona",
-                "description": "bez obaw"
+                "description": "Nie martwisz się o ataki"
             }
         ]
     },
@@ -140,8 +140,8 @@
     },
     "whyUs": {
         "sectionHeader": {
-            "title": "Strona z",
-            "description": "Pozwól mi stworzyć dla Ciebie stronę, która wspiera rozwój Twojego biznesu"
+            "title": "Bez kreatora, bez kompromisów",
+            "description": "Nie korzystam z gotowych szablonów. Strony tworzę od podstaw w środowisku programistycznym. Każdy piksel i każda linia kodu jest precyzyjnie dopracowana, aby zapewnić najlepsze efekty"
         },
         "rotatingTexts": ["Strona", "Internet", "Webgeeks", "Design"],
         "typingWords": ["Fryzjer", "Salon kosmetyczny", "Gabinet masażu"],
@@ -160,7 +160,7 @@
                 "icon": "DollarSign",
                 "title": "Zacznij bez ryzyka",
                 "description": "Kompleksowa opieka, nielimitowane zmiany, hosting, a w tym 0zł za stronę na start",
-                "cta": ["475 zł / miesiąc"]
+                "cta": ["Strona w pakiecie"]
             },
             "security": {
                 "icon": "Lock",

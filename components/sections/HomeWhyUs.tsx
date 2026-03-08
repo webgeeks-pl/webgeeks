@@ -1,5 +1,8 @@
+// UNDER NO CIRCUMSTANCE SHOULD THIS FILE BE A CLIENT COMPONENT.
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
+import LucideIcon from "@/components/ui/lucideIcons";
 import { useTrans } from "@/hooks/useTrans";
+import { DollarSign, Eye, Share, ShoppingCart, ThumbsUp, User } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { HoleBackground } from "../animate-ui/components/backgrounds/hole";
 import Section, {
@@ -14,13 +17,20 @@ import Text from "../typography/text";
 import { AnimatedBackgroundSwitcher } from "../ui/animatedBackgroundSwitcher";
 import { Card, CardContent } from "../ui/card";
 import { FloatingStats } from "../ui/floating-stats";
-import IconContainer from "../ui/iconContainer";
 import { Iphone } from "../ui/iphone";
-import { getLucideIcon } from "../ui/lucideIcons";
 import { Ripple } from "../ui/ripple";
 import RotatingText from "../ui/RotatingText";
 import { Safari } from "../ui/safari";
 import { TypingAnimation } from "../ui/typing-animation";
+
+const icons = [
+    <User className="size-3 p-0!" key={0} />,
+    <ThumbsUp className="size-3 p-0!" key={1} />,
+    <Eye className="size-3 p-0!" key={2} />,
+    <DollarSign className="size-3 p-0!" key={3} />,
+    <Share className="size-3 p-0!" key={4} />,
+    <ShoppingCart className="size-3 p-0!" key={5} />,
+];
 
 export function HomeWhyUs() {
     const t = useTranslations("pages.home.whyUs");
@@ -77,12 +87,12 @@ export function HomeWhyUs() {
         <Section className="py-size-xl md:py-size-2xl relative flex min-h-screen items-center justify-center overflow-hidden">
             <div className="absolute inset-0 -z-5 [background:linear-gradient(to_bottom,rgba(255,255,255,1)_0%,rgba(255,255,255,.5)_15%,rgba(255,255,255,0)_30%,rgba(255,255,255,0)_70%,rgba(255,255,255,0.5)_85%,rgba(255,255,255,1)_100%)]" />
             <div className="pointer-events-none absolute inset-0 -z-5 [background:radial-gradient(ellipse_at_center,rgba(255,255,255,0)_0%,rgba(255,255,255,0.2)_55%,rgba(255,255,255,1)_100%)]" />
-            <div className="absolute inset-0 -z-6">
-                <FlickeringGrid />
-                {/* <FlickeringGridOGL /> */}
-            </div>
+            {/* <div className="absolute inset-0 -z-6"> */}
+            {/* <FlickeringGrid /> */}
+            {/* <FlickeringGridOGL /> */}
+            {/* </div> */}
             <SectionContent>
-                <div className="grid grid-cols-1 grid-rows-[repeat(9,250px)] gap-6 md:grid-cols-2 md:grid-rows-[repeat(5,250px)] xl:grid-cols-4 xl:grid-rows-[repeat(3,minmax(250px,1fr))]">
+                <div className="grid grid-cols-1 grid-rows-[repeat(9,300px)] gap-6 md:grid-cols-2 md:grid-rows-[repeat(5,300px)] xl:grid-cols-4 xl:grid-rows-[repeat(3,minmax(250px,1fr))]">
                     <Card className="hover:ring-brand h-full bg-white">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
                             <div className="relative h-full overflow-hidden rounded-lg">
@@ -97,10 +107,9 @@ export function HomeWhyUs() {
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.speed.icon)}
+                                    <LucideIcon
+                                        name={benefits.conversions.icon}
+                                        className="size-10 bg-transparent"
                                     />
                                     <Text
                                         intent="h4"
@@ -121,10 +130,9 @@ export function HomeWhyUs() {
                             </div>
                             <div className="h-fit shrink-0">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.security.icon)}
+                                    <LucideIcon
+                                        name={benefits.security.icon}
+                                        className="size-10 bg-transparent"
                                     />
                                     <Text
                                         intent="h4"
@@ -156,10 +164,9 @@ export function HomeWhyUs() {
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.costs.icon)}
+                                    <LucideIcon
+                                        name={benefits.costs.icon}
+                                        className="size-10 bg-transparent"
                                     />
                                     <Text
                                         intent="h4"
@@ -203,11 +210,11 @@ export function HomeWhyUs() {
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.easy.icon)}
+                                    <LucideIcon
+                                        name={benefits.conversions.icon}
+                                        className="size-10 bg-transparent"
                                     />
+
                                     <Text
                                         intent="h4"
                                         as="h3"
@@ -225,10 +232,10 @@ export function HomeWhyUs() {
                             <SectionHeader>
                                 <SectionHeaderContent>
                                     <SectionTitle>
-                                        {t("sectionHeader.title")}{" "}
-                                        <span className="font-silkscreen -tracking-widest">
+                                        {t("sectionHeader.title")}
+                                        {/* <span className="font-silkscreen -tracking-widest">
                                             {tCommon("logo")}
-                                        </span>
+                                        </span> */}
                                     </SectionTitle>
                                     <SectionLead
                                         text={t("sectionHeader.description")}
@@ -247,11 +254,11 @@ export function HomeWhyUs() {
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.mobile.icon)}
+                                    <LucideIcon
+                                        name={benefits.mobile.icon}
+                                        className="size-10 bg-transparent"
                                     />
+
                                     <Text
                                         intent="h4"
                                         as="h3"
@@ -265,14 +272,14 @@ export function HomeWhyUs() {
                     </Card>
                     <Card className="hover:ring-brand h-full bg-white xl:col-span-2">
                         <CardContent className="flex h-full flex-col justify-between gap-2">
-                            <FloatingStats />
+                            <FloatingStats icons={icons} />
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.conversions.icon)}
+                                    <LucideIcon
+                                        name={benefits.seo.icon}
+                                        className="size-10 bg-transparent"
                                     />
+
                                     <Text
                                         intent="h4"
                                         as="h3"
@@ -292,11 +299,11 @@ export function HomeWhyUs() {
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.scalability.icon)}
+                                    <LucideIcon
+                                        name={benefits.seo.icon}
+                                        className="size-10 bg-transparent"
                                     />
+
                                     <Text
                                         intent="h4"
                                         as="h3"
@@ -316,11 +323,11 @@ export function HomeWhyUs() {
                             </div>
                             <div className="h-fit">
                                 <div className="mb-0.5 flex items-center gap-1">
-                                    <IconContainer
-                                        variant={"ghost"}
-                                        size={"md"}
-                                        Icon={getLucideIcon(benefits.seo.icon)}
+                                    <LucideIcon
+                                        name={benefits.seo.icon}
+                                        className="size-10 bg-transparent"
                                     />
+
                                     <Text
                                         intent="h4"
                                         as="h3"

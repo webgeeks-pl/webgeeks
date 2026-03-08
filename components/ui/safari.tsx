@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { HTMLAttributes } from "react";
 
 const SAFARI_WIDTH = 1203;
@@ -7,7 +8,7 @@ const SCREEN_Y = 52;
 const SCREEN_WIDTH = 1200;
 const SCREEN_HEIGHT = 700;
 
-// Calculated percentages
+// Calculated percentage21s
 const LEFT_PCT = (SCREEN_X / SAFARI_WIDTH) * 100;
 const TOP_PCT = (SCREEN_Y / SAFARI_HEIGHT) * 100;
 const WIDTH_PCT = (SCREEN_WIDTH / SAFARI_WIDTH) * 100;
@@ -39,7 +40,7 @@ export function Safari({
 
     return (
         <div
-            className={`relative inline-block w-full align-middle leading-none ${className ?? ""}`}
+            className={`relative inline-block w-full overflow-hidden align-middle leading-none ${className ?? ""}`}
             style={{
                 aspectRatio: `${SAFARI_WIDTH}/${SAFARI_HEIGHT}`,
                 ...style,
@@ -72,17 +73,21 @@ export function Safari({
                 <div
                     className="pointer-events-none absolute z-0 overflow-hidden"
                     style={{
-                        left: `${LEFT_PCT}%`,
-                        top: `${TOP_PCT}%`,
-                        width: `${WIDTH_PCT}%`,
-                        height: `${HEIGHT_PCT}%`,
+                        left: `calc(${LEFT_PCT}% - 2px)`,
+                        top: `calc(${TOP_PCT}% - 2px)`,
+                        width: `calc(${WIDTH_PCT}% + 4px)`,
+                        height: `calc(${HEIGHT_PCT}% + 2px)`,
                         borderRadius: "0 0 11px 11px",
                     }}
                 >
-                    <img
+                    <Image
                         src={imageSrc}
                         alt=""
                         className="block size-full object-cover object-top"
+                        fill
+                        sizes={"(max-width: 768px) 100vw, 80vw"}
+                        loading="eager"
+                        fetchPriority="high"
                     />
                 </div>
             )}
